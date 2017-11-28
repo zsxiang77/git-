@@ -9,11 +9,13 @@
 #import "BaseViewController.h"
 #import "OrderDetailModel.h"
 #import "ConstructionPersonnelViewController.h"
+#import "AITHTMLViewController.h"
 
 @interface ConstructionPersonnelErVC : BaseViewController
 
 @property(nonatomic,strong)UITableView *main_tableView;
 @property(nonatomic,strong)NSString *ordercode;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 @property(nonatomic,strong)NSArray *chuanRuArra;
 

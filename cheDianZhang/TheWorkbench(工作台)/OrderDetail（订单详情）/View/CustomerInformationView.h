@@ -17,6 +17,7 @@
     UILabel  *car_nmuber;
     UILabel  *car_xingxi;
     UIButton  *phonebt;
+    UILabel  *car_vinLabel;
 }
 
 -(void)setYeMianWithOrderDetailModel:(OrderDetailModel *)zhuModel;

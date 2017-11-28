@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
+#import "RCLabel.h"
+#import "TheWorkModel.h"
 
 @interface XiMeiDetailHeaderView : UIView
+
+-(instancetype)initWithModel:(TheWorkModel *)chuanzhiModel;
 
 @property(nonatomic,strong)UILabel *topCarNumberLa;
 
@@ -28,6 +32,11 @@
 @property(nonatomic,strong)UISwitch *suoDanSwitch;
 
 @property(nonatomic,assign)CGFloat jiSuanHeight;
+@property(nonatomic,strong)RCLabel *aitXianShiLabel;
+@property(nonatomic,strong)UIImageView *aitBiaoZhiIm;
+@property(nonatomic,strong)UILabel *aitNumberLabel;
+@property(nonatomic,strong)UILabel *aitYouLabel;
+@property(nonatomic,strong)UIButton *aitTiaoZhuanBt;
 
 
 @property(nonatomic,strong)UIScrollView *zuoYouScrollView;

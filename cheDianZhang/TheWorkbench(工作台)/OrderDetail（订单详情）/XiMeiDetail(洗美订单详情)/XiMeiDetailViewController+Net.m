@@ -9,6 +9,8 @@
 #import "XiMeiDetailViewController.h"
 #import "SuccessfulOrderViewController.h"
 #import "CarInspectionModel.h"
+#import "AITProductInformationVC.h"
+#import "AITHTMLViewController.h"
 
 @implementation XiMeiDetailViewController (Net)
 
@@ -182,6 +184,24 @@
     self.xiMeiDetailHeaderView.dingDanText.text = model.ordercode;
     
     [self.xiMeiDetailHeaderView sheZHiBuJuWithXiangMu:self.zhuModel.subjects withHaoCaiArray:self.zhuModel.comm_imgs withSouDan:NO];
+    RTLabelComponentsStructure *components = [RCLabel extractTextStyle:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.zhuModel.ait, @"massage")]];
+    self.xiMeiDetailHeaderView.aitXianShiLabel.componentsAndPlainText = components;
+    NSString *aitNumeStr = @"";
+    NSString *aitYouStr = @"无";
+    if ([KISDictionaryHaveKey(self.zhuModel.ait, @"num")integerValue]>0) {
+        aitNumeStr = [NSString stringWithFormat:@"(%@)",KISDictionaryHaveKey(self.zhuModel.ait, @"num")];
+        aitYouStr = @"查看";
+    }
+    self.xiMeiDetailHeaderView.aitNumberLabel.text = aitNumeStr;
+    self.xiMeiDetailHeaderView.aitYouLabel.text = aitYouStr;
+    [self.xiMeiDetailHeaderView.aitTiaoZhuanBt addTarget:self action:@selector(aitTiaoZhuanBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    if ([NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.zhuModel.ait, @"massage")].length<=0) {
+        self.xiMeiDetailHeaderView.aitXianShiLabel.hidden = YES;
+        self.xiMeiDetailHeaderView.aitBiaoZhiIm.hidden = YES;
+    }else{
+        self.xiMeiDetailHeaderView.aitXianShiLabel.hidden = NO;
+        self.xiMeiDetailHeaderView.aitBiaoZhiIm.hidden = NO;
+    }
     self.mainTableView.tableHeaderView = self.xiMeiDetailHeaderView;
 }
 
@@ -213,6 +233,27 @@
     {
         self.xiMeiDetailHeaderView2.suoDanSwitch.on = YES;
     }
+    RTLabelComponentsStructure *components = [RCLabel extractTextStyle:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.zhuModel.ait, @"massage")]];
+    self.xiMeiDetailHeaderView2.aitXianShiLabel.componentsAndPlainText = components;
+
+    
+    NSString *aitNumeStr = @"";
+    NSString *aitYouStr = @"无";
+    if ([KISDictionaryHaveKey(self.zhuModel.ait, @"num")integerValue]>0) {
+        aitNumeStr = [NSString stringWithFormat:@"(%@)",KISDictionaryHaveKey(self.zhuModel.ait, @"num")];
+        aitYouStr = @"查看";
+    }
+    self.xiMeiDetailHeaderView2.aitNumberLabel.text = aitNumeStr;
+    self.xiMeiDetailHeaderView2.aitYouLabel.text = aitYouStr;
+    [self.xiMeiDetailHeaderView2.aitTiaoZhuanBt addTarget:self action:@selector(aitTiaoZhuanBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    if ([NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.zhuModel.ait, @"massage")].length<=0) {
+        self.xiMeiDetailHeaderView2.aitXianShiLabel.hidden = YES;
+        self.xiMeiDetailHeaderView2.aitBiaoZhiIm.hidden = YES;
+    }else{
+        self.xiMeiDetailHeaderView2.aitXianShiLabel.hidden = NO;
+        self.xiMeiDetailHeaderView2.aitBiaoZhiIm.hidden = NO;
+    }
+    
     self.mainTableView.tableHeaderView = self.xiMeiDetailHeaderView2;
 }
 
@@ -241,6 +282,39 @@
     }];
 }
 
+-(void)aitTiaoZhuanBtChick:(UIButton *)sender
+{
+    if ([KISDictionaryHaveKey(self.zhuModel.ait, @"num")integerValue]>0) {
+        
+        NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+        [mDict setObject:self.chuanzhiModel.ordercode forKey:@"ordercode"];
+        
+        kWeakSelf(weakSelf)
+        [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            
+            if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                NSArray* dataDic = kParseData(responseObject);
+                if (![dataDic isKindOfClass:[NSArray class]]) {
+                    return;
+                }
+                vc.chuanZhiArray = dataDic;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else
+            {
+                [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+            }
+            
+        } failure:^(id error) {
+            
+        }];
+        
+    }else{
+        AITProductInformationVC *vc = [[AITProductInformationVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 #pragma mark - 锁单
 -(void)postSuoDanWithModel:(TheWorkModel *)model{
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
@@ -248,13 +322,9 @@
     
     kWeakSelf(weakSelf)
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/order_queue/lock_order" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
-        //        NSArray* dataDic = kParseData(responseObject);
-        //        if (![dataDic isKindOfClass:[NSArray class]]) {
-        //            return;
-        //        }
         
         if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
-            self.zhuModel.is_lock = @"1";
+            weakSelf.zhuModel.is_lock = @"1";
             [weakSelf shuaXinHeaderView2];
         }else
         {

@@ -152,7 +152,7 @@
     self.schemeTextView.font = [UIFont systemFontOfSize:13];
     self.schemeTextView.delegate = self;
     self.schemeTextView.returnKeyType = UIReturnKeyDone;
-    self.schemeTextView.placeholder = @"备注信息。。";
+    self.schemeTextView.placeholder = @"备注信息...";
     self.schemeTextView.placeholderColor = kRGBColor(220, 220, 220);
     [self.mianScrollView addSubview:self.schemeTextView];
     sheZhiHeight+=140;

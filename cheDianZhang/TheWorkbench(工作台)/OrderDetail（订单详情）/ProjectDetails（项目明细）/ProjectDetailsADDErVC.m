@@ -57,6 +57,21 @@
         make.height.mas_equalTo(35);
         make.bottom.mas_equalTo(-15);
     }];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 
 -(void)queDingBtChick:(UIButton *)sender
@@ -245,6 +260,63 @@
     } failure:^(id error) {
         
     }];
+}
+
+
+
+#pragma mark 获取自定义消息内容
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
+    NSDictionary * userInfo = [notification userInfo];
+    NPrintLog(@"%@",userInfo);
+    
+    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
+    
+    if (![extras isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    ProjectDetailsViewController *vc = (ProjectDetailsViewController *)self.suerViewController;
+    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
+        if ([vc.ordercode isEqualToString:KISDictionaryHaveKey(extras, @"ordercode")]) {
+            UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
+            artView.tag = 200;
+            [artView show];
+            self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
+        }
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 200) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+            [mDict setObject:self.tiaoZhuanordercode forKey:@"ordercode"];
+            
+            kWeakSelf(weakSelf)
+            [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+                
+                if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                    
+                    AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                    NSArray* dataDic = kParseData(responseObject);
+                    if (![dataDic isKindOfClass:[NSArray class]]) {
+                        return;
+                    }
+                    vc.chuanZhiArray = dataDic;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                }else
+                {
+                    [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+                }
+                
+            } failure:^(id error) {
+                
+            }];
+        }
+    }
 }
 
 

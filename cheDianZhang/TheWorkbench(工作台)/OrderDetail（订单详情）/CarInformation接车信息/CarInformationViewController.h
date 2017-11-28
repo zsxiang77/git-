@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "AITHTMLViewController.h"
 
 @interface CarInformationViewController : BaseViewController
 
 @property(nonatomic,strong)NSString *ordercode;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 @end

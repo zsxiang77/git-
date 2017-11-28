@@ -33,6 +33,8 @@
 @property(nonatomic,strong)OrderDetailModel *zhuModel;
 @property(nonatomic,strong)NSString *anNiuStr;
 
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
+
 -(void)zuoYouScrollViewBuju;
 
 @end

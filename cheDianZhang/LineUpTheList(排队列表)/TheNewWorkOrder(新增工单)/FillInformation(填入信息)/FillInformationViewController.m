@@ -712,8 +712,8 @@
         return;
     }
     self.chuanZhiDict.carvin = carIdentifyTextField.text;
-    
-    if (faNumTextField.text.length <= 0 && [[UserInfo shareInstance].isExplod isEqualToString:@"1"]) {
+    BOOL shiFouBeiJing = [[UserInfo shareInstance].isExplod boolValue];
+    if (faNumTextField.text.length <= 0 && shiFouBeiJing == YES) {
         [self showMessageWithContent:@"请填写发动机号" point:self.view.center afterDelay:2.0];
         return;
     }

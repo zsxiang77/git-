@@ -14,6 +14,8 @@
 #import "CarInformationViewController.h"
 #import "SalesStaffViewController.h"
 #import "NewOrderDetailTiJiaoView.h"
+#import "AITHTMLViewController.h"
+#import "AITProductInformationVC.h"
 
 
 
@@ -69,6 +71,7 @@
     
     if (self.shiFouKeXiugai == NO) {
         wanChengBt.hidden = YES;
+        self.mainTableView.frame = CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight);
     }
     
     
@@ -77,6 +80,14 @@
     
     [self postpeiJianMingXiWithModel:self.chuanzhiModel withTiaoZhua:NO With:nil];
     [self postrequest_methodMingXiWithModel:self.chuanzhiModel withTiaoZhua:NO With:nil];
+    
+    
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -84,6 +95,9 @@
     [super viewWillAppear:animated];
     [self setrequest_methodwithOrdercodevarchar:self.chuanzhiModel];
     [self postRequest_methodWithModel:self.chuanzhiModel];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
 }
 
 -(void)backButtonGuanBiClick:(UIButton *)sender
@@ -112,7 +126,35 @@
                 //        }
                 
                 if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }else
+                {
+                    [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+                }
+                
+            } failure:^(id error) {
+                
+            }];
+        }
+    }
+    
+    if (alertView.tag == 200) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+            [mDict setObject:self.tiaoZhuanordercode forKey:@"ordercode"];
+            
+            kWeakSelf(weakSelf)
+            [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+                
+                if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                    
+                    AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                    NSArray* dataDic = kParseData(responseObject);
+                    if (![dataDic isKindOfClass:[NSArray class]]) {
+                        return;
+                    }
+                    vc.chuanZhiArray = dataDic;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
                 }else
                 {
                     [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
@@ -128,7 +170,7 @@
 -(void)wanChengBtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     if ([self.zhuModel.is_lock isEqualToString:@"1"] && [self.zhuModel.is_free intValue] == 0) {
@@ -254,10 +296,38 @@
                 CarInformationViewController *vc = [[CarInformationViewController alloc]init];
                 vc.ordercode = weakSelf.chuanzhiModel.ordercode;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
+            }else if (tag == 2) {
+                if ([KISDictionaryHaveKey(self.zhuModel.ait, @"num")integerValue]>0) {
+                    
+                    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+                    [mDict setObject:weakSelf.chuanzhiModel.ordercode forKey:@"ordercode"];
+                    [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:weakSelf withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+                        
+                        if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                            AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                            NSArray* dataDic = kParseData(responseObject);
+                            if (![dataDic isKindOfClass:[NSArray class]]) {
+                                return;
+                            }
+                            vc.chuanZhiArray = dataDic;
+                            [weakSelf.navigationController pushViewController:vc animated:YES];
+                        }else
+                        {
+                            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+                        }
+                        
+                    } failure:^(id error) {
+                        
+                    }];
+                    
+                }else{
+                    AITProductInformationVC *vc = [[AITProductInformationVC alloc]init];
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                }
             }else
             {
                 if (_shiFouKeXiugai == NO) {
-                    [weakSelf showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+                    [weakSelf showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
                     return;
                 }
                 
@@ -266,7 +336,11 @@
                     return;
                 }
                 SalesStaffViewController *vc = [[SalesStaffViewController alloc]init];
-                vc.operLeiXin = tag;
+                if (tag == 1) {
+                    vc.operLeiXin = tag;
+                }else{
+                    vc.operLeiXin = 2;
+                }
                 vc.ordercode = weakSelf.chuanzhiModel.ordercode;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             }
@@ -298,7 +372,7 @@
     
     if (sender.on == YES) {
         if (_shiFouKeXiugai == NO) {
-            [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+            [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
             sender.on = NO;
             return;
         }
@@ -307,7 +381,7 @@
     {
         
         if (_shiFouKeXiugai == NO) {
-            [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+            [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
             sender.on = YES;
             return;
         }
@@ -613,7 +687,7 @@
 -(void)guanLiPeiJianbtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     if ([self.zhuModel.is_lock isEqualToString:@"1"] && [self.zhuModel.is_free intValue] == 0) {
@@ -637,7 +711,7 @@
 -(void)guanLibtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     
@@ -661,7 +735,7 @@
 -(void)xuanZeShiGongBtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     
@@ -773,7 +847,7 @@
 -(void)tianJianbtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     
@@ -833,7 +907,7 @@
 -(void)guanbiBtChick:(UIButton *)sender
 {
     if (_shiFouKeXiugai == NO) {
-        [self showAlertViewWithTitle:nil Message:@"该用户不能操作次单" buttonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil Message:@"该用户不能操作此单" buttonTitle:@"确定"];
         return;
     }
     if ([self.zhuModel.is_lock isEqualToString:@"1"] && [self.zhuModel.is_free intValue] == 0) {
@@ -1028,6 +1102,34 @@
         [_peiJianMingXiArray removeAllObjects];
         [self.mainTableView reloadData];
     }
+}
+
+
+#pragma mark 获取自定义消息内容
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+   
+    NPrintLog(@"notification上不去%@",notification);
+//    NSDictionary * userInfo2 = (NSDictionary *)notification;
+//    userInfo2 = [notification userInfo];
+    NSDictionary * userInfo = [notification userInfo];
+    NPrintLog(@"%@",userInfo);
+    
+    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
+    
+    if (![extras isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    
+    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
+        if ([self.chuanzhiModel.ordercode isEqualToString:KISDictionaryHaveKey(extras, @"ordercode")]) {
+            UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
+            artView.tag = 200;
+            [artView show];
+            self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
+        }
+    }
+    
 }
 
 @end

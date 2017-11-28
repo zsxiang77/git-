@@ -114,6 +114,35 @@
             make.top.mas_equalTo(10);
         }];
         
+        
+        
+        self.stateImageView = [[UIImageView alloc]init];
+        [self.backView addSubview:self.stateImageView];
+        [self.stateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.topStateLabel);
+            make.right.mas_equalTo(self.topStateLabel.mas_left).mas_equalTo(-7);
+            make.width.height.mas_equalTo(15);
+        }];
+        
+        self.aitLabel = [[UILabel alloc]init];
+        self.aitLabel.font = [UIFont systemFontOfSize:13];
+        self.aitLabel.textColor = UIColorFromRGBA(0x63bcfe, 1);
+        [self.backView addSubview:self.aitLabel];
+        [self.aitLabel  mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-80);
+            make.top.mas_equalTo(self.topStateLabel.mas_bottom).mas_equalTo(3);
+        }];
+        
+        self.aitImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"01_youbaogao")];
+        self.aitImageView.hidden = YES;
+        [self.backView addSubview:self.aitImageView];
+        [self.aitImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.aitLabel);
+            make.right.mas_equalTo(self.aitLabel.mas_left).mas_equalTo(-7);
+            make.width.height.mas_equalTo(15);
+        }];
+        
+        
         self.stateImageView = [[UIImageView alloc]init];
         [self.backView addSubview:self.stateImageView];
         [self.stateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -134,7 +163,7 @@
         self.suoImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"yiSuoDan")];
         [self.backView addSubview:self.suoImageView];
         [self.suoImageView  mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-80);
+            make.centerX.mas_equalTo(self.backView);
             make.bottom.mas_equalTo(-14);
             make.width.mas_equalTo(104/2);
             make.height.mas_equalTo(55/2);
@@ -176,10 +205,20 @@
     }else
     {
         if (model.shanChuState == YES) {
-            self.backView.frame = CGRectMake(-kDELEBTWHIGHT, 0, kWindowW+kDELEBTWHIGHT, 80);
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                self.biXianShiAnniu.imageView.transform = CGAffineTransformMakeRotation(M_PI);
+                self.backView.frame = CGRectMake(-kDELEBTWHIGHT, 0, kWindowW+kDELEBTWHIGHT, 80);
+            } completion:^(BOOL finished) {
+            }];
+            
         }else
         {
-            self.backView.frame = CGRectMake(0, 0, kWindowW+kDELEBTWHIGHT, 80);
+            [UIView animateWithDuration:0.2 animations:^{
+                self.biXianShiAnniu.imageView.transform = CGAffineTransformMakeRotation(0);
+                self.backView.frame = CGRectMake(0, 0, kWindowW+kDELEBTWHIGHT, 80);
+            } completion:^(BOOL finished) {
+            }];
         }
         self.biXianShiAnniu.hidden = NO;
     }
@@ -220,6 +259,15 @@
     {
         self.youShangLabel.hidden = YES;
         self.youShangImageView.hidden = YES;
+    }
+    
+    if (model.ait_report.length>0) {
+        self.aitLabel.hidden = NO;
+        self.aitLabel.text = model.ait_report;
+        self.aitImageView.hidden = NO;
+    }else{
+        self.aitLabel.hidden = YES;
+        self.aitImageView.hidden = YES;
     }
 }
 

@@ -37,6 +37,9 @@
 
 @property(nonatomic,strong)TheWorkModel *zhuModel;
 
+@property(nonatomic,strong)UILabel   *aitLabel;
+@property(nonatomic,strong)UIImageView   *aitImageView;
+
 -(void)refeleseWithModel:(TheWorkModel *)model WithShiFouKeShan:(BOOL)shan;
 
 @end

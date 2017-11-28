@@ -13,6 +13,7 @@
 #import "SellerInForMetionView.h"
 #import "HaoCaiInFormetionView.h"
 #import "PreviewPictureViewController.h"
+#import "AITHTMLViewController.h"
 
 #define YULANTAG  (5000)
 #define GUANBITAG  (6000)
@@ -54,8 +55,23 @@
     
     if (self.yingCangAnNiu == YES) {
         self.wanChengBt.hidden = YES;
+        self.mainTableView.frame = CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight);
     }
-    
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
+    [self setrequest_methodwithOrdercodevarchar:self.chuanzhiModel];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 -(void)sethandle_orderordercodeWithTheWorkModel:(TheWorkModel *)model shiFouXimei:(UIButton *)sender
 {
@@ -142,11 +158,6 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setrequest_methodwithOrdercodevarchar:self.chuanzhiModel];
-}
 
 -(void)wanChengBtChick:(UIButton *)sender
 {
@@ -194,7 +205,7 @@
 -(XiMeiDetailHeaderView *)xiMeiDetailHeaderView
 {
     if (!_xiMeiDetailHeaderView) {
-        _xiMeiDetailHeaderView = [[XiMeiDetailHeaderView alloc]init];
+        _xiMeiDetailHeaderView = [[XiMeiDetailHeaderView alloc]initWithModel:self.chuanzhiModel];
         kWeakSelf(weakSelf)
         _xiMeiDetailHeaderView.erWeiMaButtonBlock = ^{
             Order_info *model = (Order_info *)weakSelf.zhuModel.order_info;
@@ -216,7 +227,7 @@
 -(XiMeiDetailHeaderView *)xiMeiDetailHeaderView2
 {
     if (!_xiMeiDetailHeaderView2) {
-        _xiMeiDetailHeaderView2 = [[XiMeiDetailHeaderView alloc]init];
+        _xiMeiDetailHeaderView2 = [[XiMeiDetailHeaderView alloc]initWithModel:self.chuanzhiModel];
         kWeakSelf(weakSelf)
         _xiMeiDetailHeaderView2.erWeiMaButtonBlock = ^{
             Order_info *model = (Order_info *)weakSelf.zhuModel.order_info;
@@ -431,7 +442,8 @@
         make.height.mas_equalTo(35);
     }];
     
-    UIView *backWhictView = [[UIView alloc]initWithFrame:CGRectMake(0,jiSuanGao+ 35, kWindowW, 60)];
+    jiSuanGao += 35;
+    UIView *backWhictView = [[UIView alloc]initWithFrame:CGRectMake(0,jiSuanGao, kWindowW, 60)];
     backWhictView.backgroundColor = [UIColor whiteColor];
     [footView addSubview:backWhictView];
     
@@ -445,6 +457,7 @@
         make.top.mas_equalTo(10);
         make.right.mas_equalTo(-10);
     }];
+    jiSuanGao += 60;
     
     return footView;
 }
@@ -454,7 +467,7 @@
     if ([self.wanChengBt.titleLabel.text isEqualToString:@"施工完成"]) {
         return 200;
     }
-    return 100;
+    return 100+55;
 }
 
 #pragma mark - 拍照
@@ -705,6 +718,61 @@
     }else{
         NPrintLog(@"视频保存成功.");
         [self showMessageWindowWithTitle:@"视频保存成功" point:self.view.center delay:1];
+    }
+}
+
+#pragma mark 获取自定义消息内容
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
+    NSDictionary * userInfo = [notification userInfo];
+    NPrintLog(@"%@",userInfo);
+    
+    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
+    
+    if (![extras isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    
+    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
+        if ([self.chuanzhiModel.ordercode isEqualToString:KISDictionaryHaveKey(extras, @"ordercode")]) {
+            UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
+            artView.tag = 200;
+            [artView show];
+            self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
+        }
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 200) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+            [mDict setObject:self.tiaoZhuanordercode forKey:@"ordercode"];
+            
+            kWeakSelf(weakSelf)
+            [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+                
+                if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                    
+                    AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                    NSArray* dataDic = kParseData(responseObject);
+                    if (![dataDic isKindOfClass:[NSArray class]]) {
+                        return;
+                    }
+                    vc.chuanZhiArray = dataDic;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                }else
+                {
+                    [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+                }
+                
+            } failure:^(id error) {
+                
+            }];
+        }
     }
 }
 

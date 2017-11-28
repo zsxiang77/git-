@@ -9,9 +9,10 @@
 #import "XiMeiDetailHeaderView.h"
 #import "CheDianZhangCommon.h"
 
+
 @implementation XiMeiDetailHeaderView
 
--(instancetype)init
+-(instancetype)initWithModel:(TheWorkModel *)chuanzhiModel
 {
     if (self = [super init]) {
         self.backgroundColor = kRGBColor(244, 245,246);
@@ -165,6 +166,75 @@
             make.right.mas_equalTo(self.erWeiMaImageView.mas_left).mas_equalTo(-10);
         }];
         //        ========================
+//        chuanzhiModel.ait_switch = YES;
+        if (chuanzhiModel.ait_switch == YES) {
+            UIView *aitBackView = [[UIView alloc]init];
+            aitBackView.backgroundColor = [UIColor whiteColor];
+            [self addSubview:aitBackView];
+            [aitBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.mas_equalTo(0);
+                make.top.mas_equalTo(jisuanGao);
+                make.height.mas_equalTo(80);
+            }];
+            jisuanGao+=80;
+            
+            UILabel *aitLIne = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, kWindowW, 1)];
+            aitLIne.backgroundColor = kLineBgColor;
+            [aitBackView addSubview:aitLIne];
+            UILabel *aitLIne2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, kWindowW, 1)];
+            aitLIne2.backgroundColor = kLineBgColor;
+            [aitBackView addSubview:aitLIne2];
+            
+            UILabel *aITLabel = [[UILabel alloc]init];
+            aITLabel.text = @"AIT检测报告";
+            aITLabel.textColor = [UIColor grayColor];
+            aITLabel.font = [UIFont systemFontOfSize:14];
+            [aitBackView addSubview:aITLabel];
+            [aITLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(10);
+                make.top.mas_equalTo(0);
+                make.height.mas_equalTo(40);
+            }];
+            
+            self.aitNumberLabel = [[UILabel alloc]init];
+            self.aitNumberLabel.textColor = [UIColor redColor];
+            self.aitNumberLabel.font = [UIFont systemFontOfSize:14];
+            [aitBackView addSubview:self.aitNumberLabel];
+            [self.aitNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.mas_equalTo(aITLabel);
+                make.left.mas_equalTo(aITLabel.mas_right).mas_equalTo(3);
+            }];
+            
+            self.aitYouLabel = [[UILabel alloc]init];
+            self.aitYouLabel.textColor = kNavBarColor;
+            self.aitYouLabel.font = [UIFont systemFontOfSize:14];
+            [aitBackView addSubview:self.aitYouLabel];
+            [self.aitYouLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.mas_equalTo(aITLabel);
+                make.right.mas_equalTo(-10);
+            }];
+            
+            self.aitTiaoZhuanBt = [[UIButton alloc]init];
+            [aitBackView addSubview:self.aitTiaoZhuanBt];
+            [self.aitTiaoZhuanBt mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.right.mas_equalTo(0);
+                make.width.mas_equalTo(kWindowW/2);
+                make.height.mas_equalTo(40);
+            }];
+            
+            self.aitBiaoZhiIm = [[UIImageView alloc]initWithImage:DJImageNamed(@"04_prompt")];
+            self.aitBiaoZhiIm.frame = CGRectMake(10, 40+(40-15)/2, 15, 15);
+            [aitBackView addSubview:self.aitBiaoZhiIm];
+            
+            self.aitXianShiLabel = [[RCLabel alloc] initWithFrame:CGRectMake(30, 50, kWindowW-40, 40)];
+            self.aitXianShiLabel.textAlignment = NSTextAlignmentLeft;
+            self.aitXianShiLabel.lineBreakMode = 1;
+            self.aitXianShiLabel.font = [UIFont systemFontOfSize:13];
+            [aitBackView addSubview:self.aitXianShiLabel];
+        }
+        
+        
+        
         self.jiSuanHeight = jisuanGao;
         
         self.frame = CGRectMake(0, 0, kWindowW, jisuanGao);
@@ -186,10 +256,10 @@
         [self addSubview:diangHaoView2];
         [diangHaoView2 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0);
-            make.top.mas_equalTo(jisuanGao);
+            make.top.mas_equalTo(jisuanGao+1);
             make.height.mas_equalTo(38);
         }];
-        jisuanGao += 38;
+        jisuanGao += 39;
         
         UILabel *line3 = [[UILabel alloc]init];
         line3.backgroundColor = kLineBgColor;

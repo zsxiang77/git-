@@ -12,6 +12,7 @@
 #import "PerformanceViewController.h"
 #import "UIImageView+WebCache.h"
 
+
 @interface UserViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView  *main_tabelView;
 @property(nonatomic,strong)UIView  *touView;
@@ -21,13 +22,15 @@
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UILabel *stateLabel;
 
+@property(nonatomic,strong)NSDictionary *mainDataDict;
+
 @end
 
 @implementation UserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    m_mainTopTitle = @"扫一扫";
+    m_mainTopTitle = @"我";
     self.touView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 80)];
     self.touView.backgroundColor = kNavBarColor;
     [self.view addSubview:self.touView];
@@ -53,12 +56,14 @@
     self.stateLabel.font = [UIFont systemFontOfSize:13];
     [self.touView addSubview:self.stateLabel];
     [self.main_tabelView reloadData];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self postHuoQuModele];
+
 }
 
 -(void)postHuoQuModele
@@ -73,6 +78,7 @@
         if (![adData isKindOfClass:[NSDictionary class]]) {
             return ;
         }
+        weakSelf.mainDataDict = adData;
         [UserInfo shareInstance].userMobile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(adData, @"mobile")];
         [UserInfo saveUserName];
         
@@ -86,9 +92,12 @@
 
 -(void)touXiangBtChick:(UIButton *)sender
 {
-    UserPersonalDataVC *vc = [[UserPersonalDataVC alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController  pushViewController:vc animated:YES];
+    if (self.mainDataDict) {
+        UserPersonalDataVC *vc = [[UserPersonalDataVC alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.chiZhiDict = self.mainDataDict;
+        [self.navigationController  pushViewController:vc animated:YES];
+    }
 }
 
 -(UITableView *)main_tabelView

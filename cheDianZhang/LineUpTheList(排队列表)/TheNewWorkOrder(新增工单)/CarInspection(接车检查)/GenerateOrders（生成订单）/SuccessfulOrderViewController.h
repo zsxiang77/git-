@@ -10,8 +10,8 @@
 
 @interface SuccessfulOrderViewController : BaseViewController
 
-@property(nonatomic,strong)NSString *ordercode;
-@property(nonatomic,strong)NSString *query_url;
+@property(nonatomic,strong)NSDictionary *chuZhiDict;
+
 
 //生成最原始的二维码
 + (CIImage *)qrCodeImageWithContent:(NSString *)content;

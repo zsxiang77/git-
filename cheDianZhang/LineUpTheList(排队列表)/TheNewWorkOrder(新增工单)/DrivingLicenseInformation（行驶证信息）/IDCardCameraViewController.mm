@@ -204,7 +204,7 @@
     }
     
     /*提示：该开发码和项目中的授权仅为演示用，客户开发时请替换该开发码及项目中Copy Bundle Resources 中的.lsc授权文件*/
-    int intRecog = [self.cardRecog InitIDCardWithDevcode:@"5YYX5LQS5YAM56U" recogLanguage:initLanguages];
+    int intRecog = [self.cardRecog InitIDCardWithDevcode:@"6L2M5PEP572R77Y" recogLanguage:initLanguages];
     NSLog(@"核心初始化返回值 = %d\n返回值为0成功 其他失败\n\n常见错误：\n-10601 开发码错误(核心初始化方法传入开发码)\n-10602 Bundle identifier错误\n-10605 Bundle display name错误\n-10606 CompanyName错误\n请检查授权文件（wtproject.lsc）绑定的信息与Info.plist中设置是否一致!!!\n",intRecog);
     
     //设置扫描模式下核心的配置

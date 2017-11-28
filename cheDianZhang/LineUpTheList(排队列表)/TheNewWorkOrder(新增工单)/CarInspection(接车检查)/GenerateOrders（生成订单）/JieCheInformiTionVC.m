@@ -216,7 +216,15 @@
         make.height.mas_equalTo(1);
     }];
     
+    
+    NumberKeyboard *m_keyBoard2;
+    m_keyBoard2 = [[NumberKeyboard alloc]init];
+    m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
+    m_keyBoard2.maxLength = 8;
+    m_keyBoard2.myDelegate = self;
     self.liChengTextField = [[UITextField alloc]init];
+    m_keyBoard2.currentField = self.liChengTextField;
+    self.liChengTextField.inputView = m_keyBoard2;
     self.liChengTextField.placeholder = @"请输入公里数...";
     self.liChengTextField.delegate = self;
     self.liChengTextField.returnKeyType = UIReturnKeyDone;
@@ -345,8 +353,7 @@
         NSString *query_url = KISDictionaryHaveKey(dataDic, @"query_url");
         if (query_url.length>0) {
             SuccessfulOrderViewController *vc = [[SuccessfulOrderViewController alloc]init];
-            vc.query_url = query_url;
-            vc.ordercode  = KISDictionaryHaveKey(dataDic, @"ordercode");
+            vc.chuZhiDict = dataDic;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
         

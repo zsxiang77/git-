@@ -51,6 +51,7 @@
 @property(nonatomic,strong)UIScrollView *zuoYouScrollView;
 @property(nonatomic,strong)ErWeiMaView *erWeiMaView;
 @property(nonatomic,strong)NSString *repairmileStr;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 -(void)zuoYouScrollViewBuju;
 

@@ -10,6 +10,7 @@
 #import "CheDianZhangCommon.h"
 #import "UIImage+ImageWithColor.h"
 
+
 @implementation NewOrderDetailTiJiaoView
 
 -(instancetype)init
@@ -85,12 +86,19 @@
             make.height.mas_equalTo(40);
             make.top.mas_equalTo(40);
         }];
+        
+        NumberKeyboard *m_keyBoard2;
+        m_keyBoard2 = [[NumberKeyboard alloc]init];
+        m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
+        m_keyBoard2.maxLength = 8;
+        m_keyBoard2.myDelegate = self;
+        
         self.chuChangTextField = [[UITextField alloc]init];
         self.chuChangTextField.font = [UIFont systemFontOfSize:14];
+        m_keyBoard2.currentField = self.chuChangTextField;
+        self.chuChangTextField.inputView = m_keyBoard2;
         self.chuChangTextField.placeholder = @"请输入公里数...";
-        self.chuChangTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         self.chuChangTextField.delegate = self;
-        self.chuChangTextField.returnKeyType = UIReturnKeyDone;
         [backV addSubview:self.chuChangTextField];
         [self.chuChangTextField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(la3.mas_left).mas_equalTo(5);

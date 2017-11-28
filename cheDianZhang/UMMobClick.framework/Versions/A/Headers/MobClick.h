@@ -140,7 +140,7 @@ typedef NS_ENUM (NSUInteger, eScenarioType)
  
  @param  keyPath 字符串数组代表的结构化事件路径，其长度最大为8，不能使用unicode 48以内的字符，keyPath[0]必须在网站注册事件ID.
  @param  value 事件的数值
- @param  (optional) label 标签
+ @param  label label 标签
  @return void.
  */
 + (void)event:(NSArray *)keyPath value:(int)value label:(NSString *)label;

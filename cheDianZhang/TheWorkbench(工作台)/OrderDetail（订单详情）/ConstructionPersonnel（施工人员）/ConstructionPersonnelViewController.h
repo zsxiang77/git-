@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "OrderDetailViewController.h"
+#import "AITHTMLViewController.h"
 
 @interface ConstructionPersonnelViewController : BaseViewController
 
@@ -16,6 +17,7 @@
 @property(nonatomic,strong)UITableView *main_tableView;
 
 @property(nonatomic,strong)NSString *ordercode;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 @property(nonatomic,strong)BaseViewController *suerViewController;
 

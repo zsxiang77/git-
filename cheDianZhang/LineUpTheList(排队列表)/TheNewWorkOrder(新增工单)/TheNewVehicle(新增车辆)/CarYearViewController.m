@@ -72,6 +72,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.xinZengModel.models = KISDictionaryHaveKey(self.maiArray[indexPath.row], @"name");
     self.xinZengModel.modelsId = KISDictionaryHaveKey(self.maiArray[indexPath.row], @"spec_id");
+    self.xinZengModel.ait = [KISDictionaryHaveKey(self.maiArray[indexPath.row], @"ait") boolValue];
     self.xinZengModel.shiFouXinZeng = YES;
     self.xinZengModel.shifouXuanZHong = YES;
     [self.navigationController popToViewController:self.superViewController animated:YES];

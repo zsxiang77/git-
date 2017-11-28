@@ -37,6 +37,7 @@
 @property(nonatomic,strong)NSString *trainSystem;
 @property(nonatomic,strong)NSString *models;
 @property(nonatomic,strong)NSString *modelsId;
+@property(nonatomic,assign)BOOL ait;
 
 
 @property(nonatomic,assign)BOOL shiFouXinZeng;//是否新增

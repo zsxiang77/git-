@@ -34,7 +34,12 @@
     [self setTopViewWithTitle:@"项目明细" withBackButton:YES];
     self.bianJiButton = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-60, 20, 44, 44)];
     [self.bianJiButton addTarget:self action:@selector(bianJiButtonChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.bianJiButton setTitle:@"编辑" forState:(UIControlStateNormal)];
+    if (self.chuanRuArray.count>0) {
+        [self.bianJiButton setTitle:@"管理" forState:(UIControlStateNormal)];
+    }else{
+        [self.bianJiButton setTitle:@"添加" forState:(UIControlStateNormal)];
+    }
+    
     [self.bianJiButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [m_baseTopView addSubview:self.bianJiButton];
     
@@ -69,6 +74,21 @@
     [self.tianJiabt setTitle:@"+ 添加项目" forState:(UIControlStateNormal)];
     [self.tianJiabt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [self.view addSubview:self.tianJiabt];
+    
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 
 -(void)backButtonClick:(id)sender
@@ -167,8 +187,8 @@
 
 -(void)bianJiButtonChick:(UIButton *)sender
 {
-    if ([sender.titleLabel.text isEqualToString:@"编辑"]) {
-        [sender setTitle:@"确定" forState:(UIControlStateNormal)];
+    if ([sender.titleLabel.text isEqualToString:@"管理"]||[sender.titleLabel.text isEqualToString:@"添加"]) {
+        [sender setTitle:@"完成" forState:(UIControlStateNormal)];
         self.tianJiabt.backgroundColor = [UIColor orangeColor];
         self.tianJiabt.userInteractionEnabled = YES;
         
@@ -277,7 +297,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.bianJiButton.titleLabel.text isEqualToString:@"编辑"]) {
+    if ([self.bianJiButton.titleLabel.text isEqualToString:@"管理"]||[self.bianJiButton.titleLabel.text isEqualToString:@"添加"]) {
         static NSString *myIdentifier = @"Cell2";
         OrderDetailCell2 *cell = (OrderDetailCell2 *)[tableView dequeueReusableCellWithIdentifier:myIdentifier];
         if (cell == nil)
@@ -338,6 +358,61 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 130;
+}
+
+#pragma mark 获取自定义消息内容
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
+    NSDictionary * userInfo = [notification userInfo];
+    NPrintLog(@"%@",userInfo);
+    
+    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
+    
+    if (![extras isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    
+    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
+        if ([self.ordercode isEqualToString:KISDictionaryHaveKey(extras, @"ordercode")]) {
+            UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
+            artView.tag = 200;
+            [artView show];
+            self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
+        }
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 200) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+            [mDict setObject:self.tiaoZhuanordercode forKey:@"ordercode"];
+            
+            kWeakSelf(weakSelf)
+            [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+                
+                if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                    
+                    AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                    NSArray* dataDic = kParseData(responseObject);
+                    if (![dataDic isKindOfClass:[NSArray class]]) {
+                        return;
+                    }
+                    vc.chuanZhiArray = dataDic;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                }else
+                {
+                    [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+                }
+                
+            } failure:^(id error) {
+                
+            }];
+        }
+    }
 }
 
 @end

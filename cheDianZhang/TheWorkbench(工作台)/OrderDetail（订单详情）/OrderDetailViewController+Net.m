@@ -326,8 +326,21 @@
     UILabel *label1 = [self.orderDetailHeaderView viewWithTag:4001];
     label1.text = KISDictionaryHaveKey(self.zhuModel.seller, @"real_name");
     
-    UILabel *label2 = [self.orderDetailHeaderView viewWithTag:4002];
+    UILabel *label2 = [self.orderDetailHeaderView viewWithTag:4003];
     label2.text = KISDictionaryHaveKey(self.zhuModel.inspector, @"staff_name");
+    
+    NSString *aitNumeStr = @"";
+    if ([KISDictionaryHaveKey(self.zhuModel.ait, @"num")integerValue]>0) {
+        aitNumeStr = [NSString stringWithFormat:@"(%@)",KISDictionaryHaveKey(self.zhuModel.ait, @"num")];
+        self.orderDetailHeaderView.aitDianJiLel.text = @"查看";
+    }else{
+        self.orderDetailHeaderView.aitDianJiLel.text = @"无";
+    }
+    UILabel *label3 = [self.orderDetailHeaderView viewWithTag:4002];
+    label3.text = aitNumeStr;
+    
+    RTLabelComponentsStructure *components = [RCLabel extractTextStyle:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.zhuModel.ait, @"massage")]];
+    self.orderDetailHeaderView.aitXianShiLabel.componentsAndPlainText = components;
    
 }
 

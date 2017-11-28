@@ -67,6 +67,17 @@
         
         jiSuanGao+= 35;
         
+        car_vinLabel = [[UILabel alloc]init];
+        car_vinLabel.font = [UIFont systemFontOfSize:14];
+        [zhuView addSubview:car_vinLabel];
+        [car_vinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(90+25+40);
+            make.centerX.mas_equalTo(zhuView);
+            make.height.mas_equalTo(35);
+        }];
+        
+        jiSuanGao+= 35;
+        
         car_xingxi = [[UILabel alloc]init];
         car_xingxi.textAlignment = NSTextAlignmentCenter;
         car_xingxi.font = [UIFont systemFontOfSize:13];
@@ -111,6 +122,7 @@
     nameLabel.text = KISDictionaryHaveKey(dict, @"realname");
     car_nmuber.text = model.car_number;
     car_xingxi.text = model.cars_spec;
+    car_vinLabel.text = [NSString stringWithFormat:@"VIN:%@",model.vin];
     
     
     [phonebt setTitle:KISDictionaryHaveKey(dict, @"mobile") forState:(UIControlStateNormal)];

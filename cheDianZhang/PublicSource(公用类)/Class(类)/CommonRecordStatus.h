@@ -16,8 +16,6 @@
 + (CommonRecordStatus *)commonRecordStatusManager;
 
 
-+ (NSString*)lotNameWithLotNo:(NSString*)lotNo;
-
 + (BOOL)identityIScorrect:(NSString*)birthday;
 + (BOOL)nameIScorrect:(NSString*)name;
 + (BOOL)URLIScorrect:(NSString*)name;

@@ -31,7 +31,13 @@
     [self setTopViewWithTitle:@"配件明细" withBackButton:YES];
     self.bianJiButton = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-60, 20, 44, 44)];
     [self.bianJiButton addTarget:self action:@selector(bianJiButtonChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.bianJiButton setTitle:@"编辑" forState:(UIControlStateNormal)];
+    if (self.chuanRuArray.count>0) {
+        [self.bianJiButton setTitle:@"管理" forState:(UIControlStateNormal)];
+    }else
+    {
+        [self.bianJiButton setTitle:@"添加" forState:(UIControlStateNormal)];
+    }
+    
     [self.bianJiButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [m_baseTopView addSubview:self.bianJiButton];
     
@@ -156,8 +162,8 @@
 
 -(void)bianJiButtonChick:(UIButton *)sender
 {
-    if ([sender.titleLabel.text isEqualToString:@"编辑"]) {
-        [sender setTitle:@"确定" forState:(UIControlStateNormal)];
+    if ([sender.titleLabel.text isEqualToString:@"添加"]||[sender.titleLabel.text isEqualToString:@"管理"]) {
+        [sender setTitle:@"完成" forState:(UIControlStateNormal)];
         self.tianJiabt.backgroundColor = [UIColor orangeColor];
         self.tianJiabt.userInteractionEnabled = YES;
         
@@ -257,7 +263,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.bianJiButton.titleLabel.text isEqualToString:@"编辑"]) {
+    if ([self.bianJiButton.titleLabel.text isEqualToString:@"添加"]||[self.bianJiButton.titleLabel.text isEqualToString:@"管理"]) {
         static NSString *myIdentifier = @"Cell2";
         OrderDetailCell2 *cell = (OrderDetailCell2 *)[tableView dequeueReusableCellWithIdentifier:myIdentifier];
         if (cell == nil)

@@ -21,7 +21,7 @@
     [[NetWorkManagerGet sharedAFManager] GET:path parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self showOrHideLoadView:NO];
+        [weakSelf showOrHideLoadView:NO];
         NSData *responseData = responseObject;
         NSData *filData = responseData;
         NSDictionary* parserDict = (NSDictionary *)filData;
@@ -31,7 +31,7 @@
         {
             [[UserInfo shareInstance] cleanUserInfor];
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [NetWorkManager loginAgain:self];
+            [NetWorkManager loginAgain:weakSelf];
             return;
         }
         
@@ -51,7 +51,7 @@
             [weakSelf postrequest_methodDataWithIndex:diJiYeIndex withShuaXin:YES];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self showOrHideLoadView:NO];
+        [weakSelf showOrHideLoadView:NO];
     }];
     
 }
@@ -75,7 +75,6 @@
     [m_myTableView[0].mj_footer endRefreshing];
     [m_myTableView[1].mj_footer endRefreshing];
     
-    m_myTableView[index].mj_footer = nil;
     
     kWeakSelf(weakSelf)
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/order_queue/simple_order_list" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
@@ -97,6 +96,8 @@
                 page[index] ++;
                 [weakSelf postrequest_methodDataWithIndex:index withShuaXin:NO];
             }];
+        }else{
+            m_myTableView[index].mj_footer = nil;
         }
         
         

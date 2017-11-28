@@ -17,6 +17,8 @@
         self.media_images = [[NSArray alloc]init];
     }
     self.media_images  = KISDictionaryHaveKey(dict, @"media_images");
+    self.ait  = KISDictionaryHaveKey(dict, @"ait");
+    self.ait_switch  = [KISDictionaryHaveKey(dict, @"ait_switch") boolValue];
     self.comm_imgs = KISDictionaryHaveKey(dict, @"comm_imgs");
     self.comm_info = KISDictionaryHaveKey(dict, @"comm_info");
     self.holder_info = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"holder_info")];
@@ -62,6 +64,7 @@
     self.source = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"source")];
     self.status = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"status")];
     self.add_time = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"add_time")];
+    self.vin = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"vin")];
 }
 
 @end

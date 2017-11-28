@@ -17,5 +17,6 @@
 @property(nonatomic,strong)NSString *mainClass;
 
 @property(nonatomic,strong)BaseViewController *suerViewController;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 @end

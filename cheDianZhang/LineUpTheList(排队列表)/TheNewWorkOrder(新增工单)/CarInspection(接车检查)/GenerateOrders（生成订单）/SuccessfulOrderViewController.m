@@ -9,6 +9,9 @@
 #import "SuccessfulOrderViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
+#import "AITDetectView.h"
+#import "BuyAITProductsViewController.h"
+#import "SettingAITSerialNumberVC.h"
 
 @interface SuccessfulOrderViewController ()
 
@@ -28,7 +31,7 @@
     
     
     UIImageView *wechatImageView = [[UIImageView alloc] init];
-    wechatImageView.image = [SuccessfulOrderViewController qrCodeImageWithContent:self.query_url codeImageSize:130 red:41 green:41 blue:224];//重绘二维码,使其显示清晰
+    wechatImageView.image = [SuccessfulOrderViewController qrCodeImageWithContent:KISDictionaryHaveKey(self.chuZhiDict, @"query_url") codeImageSize:130 red:41 green:41 blue:224];//重绘二维码,使其显示清晰
     [erweiView addSubview:wechatImageView];
     [wechatImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(erweiView);
@@ -53,6 +56,7 @@
     
     
     UIButton *daYingBt = [[UIButton alloc]init];
+    daYingBt.hidden = YES;
     [daYingBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
     [daYingBt.layer setCornerRadius:3];
     daYingBt.backgroundColor = kNavBarColor;
@@ -67,6 +71,25 @@
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(35);
     }];
+    
+    
+    
+    if ([KISDictionaryHaveKey(self.chuZhiDict, @"ait_switch") boolValue] == YES) {
+        AITDetectView *aITDetectView = [[AITDetectView alloc]initWithFrame:CGRectMake(0, kWindowH-190, kWindowW, 190)];
+        [self.view addSubview:aITDetectView];
+        [self.view bringSubviewToFront:aITDetectView];
+        [aITDetectView setYeMianYangShiWith:[KISDictionaryHaveKey(self.chuZhiDict, @"is_ait") boolValue]];
+//        [aITDetectView setYeMianYangShiWith:NO];
+        kWeakSelf(weakSelf)
+        aITDetectView.buyAitBtChickBlock = ^{
+            BuyAITProductsViewController *vc = [[BuyAITProductsViewController alloc]init];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        };
+        aITDetectView.settingAitBtChickBlock = ^{
+            SettingAITSerialNumberVC *vc = [[SettingAITSerialNumberVC alloc]init];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        };
+    }
 }
 
 
@@ -151,9 +174,10 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 //    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-
+#pragma mark - 蓝牙打印
 -(void)daYingBtChick:(UIButton *)sender
 {
 }
+
 
 @end

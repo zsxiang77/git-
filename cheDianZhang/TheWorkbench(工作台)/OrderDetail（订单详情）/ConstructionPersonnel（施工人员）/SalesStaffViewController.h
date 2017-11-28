@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "AITHTMLViewController.h"
 
 @interface SalesStaffViewController : BaseViewController
 @property(nonatomic,strong)UITableView *main_tableView;
 @property(nonatomic,strong)NSString *ordercode;
+@property(nonatomic,strong)NSString *tiaoZhuanordercode;
 
 @property(nonatomic,assign)NSInteger operLeiXin;
 @property(nonatomic,strong)BaseViewController *superViewController;

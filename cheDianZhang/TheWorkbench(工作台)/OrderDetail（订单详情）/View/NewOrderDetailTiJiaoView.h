@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "OrderDetailViewController.h"
+#import "NumberKeyboard.h"
 
-@interface NewOrderDetailTiJiaoView : UIView<UITextFieldDelegate>
+@interface NewOrderDetailTiJiaoView : UIView<UITextFieldDelegate,NumKeyboardDelegate>
 @property(nonatomic,strong)NSString *zhiBaoStr;
 
 @property(nonatomic,strong)UILabel *jinChangLabei;

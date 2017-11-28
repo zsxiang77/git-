@@ -21,7 +21,10 @@
     self.status = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"status")];
     self.class_name = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"class_name")];
     self.brand_img = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"brand_img")];
+    self.ait_report = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"ait_report")];
     self.is_lock = [KISDictionaryHaveKey(dict, @"is_lock") integerValue];
+    
+    self.ait_switch = [KISDictionaryHaveKey(dict, @"ait_switch") boolValue];
     
     self.shanChuState = NO;
 }

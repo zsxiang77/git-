@@ -37,6 +37,7 @@
     self.spec_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"spec_id")];
     self.unit_full_name = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"unit_full_name")];
     self.tip = KISDictionaryHaveKey(dict, @"tip");
+    self.ait = [KISDictionaryHaveKey(dict, @"ait") boolValue];
     
     self.shiFouXinZeng = NO;
     self.shifouXuanZHong = NO;

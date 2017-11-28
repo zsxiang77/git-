@@ -9,6 +9,7 @@
 #import "XiMeiXinZengVC.h"
 #import "TheNewWorkOrderCell.h"
 #import "NewVehicleVC.h"
+#import "AITProductInformationVC.h"
 
 @interface XiMeiXinZengVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,NumKeyboardDelegate>
 @property(nonatomic,assign)BOOL shiFouYinCangXinZeng;
@@ -350,9 +351,15 @@
         
         if (model.shifouXuanZHong == YES) {
             cell.xuanZhongBt.image = DJImageNamed(@"cell_select");
+            cell.xiaView.hidden = NO;
+            if (model.ait == NO) {
+                cell.xiaView.hidden = YES;
+            }
+            
         }else
         {
             cell.xuanZhongBt.image = DJImageNamed(@"cell_noselect");
+            cell.xiaView.hidden = YES;
         }
         
         
@@ -372,6 +379,7 @@
         }else
         {
             [cell.shanChuButton setImage:DJImageNamed(@"car_delete") forState:(UIControlStateNormal)];
+            
         }
         cell.shanChuButtonBlock = ^(Users_carsModel *chuLiModel) {
             if (chuLiModel.shiFouXinZeng == NO) {
@@ -385,6 +393,11 @@
                 weakSelf.xinZengModel = [[Users_carsModel alloc]init];
                 [weakSelf.main_tabelView reloadData];
             }
+        };
+        
+        cell.tiaoZhuanAitBlock = ^{
+            AITProductInformationVC *vuiVc = [[AITProductInformationVC alloc]init];
+            [weakSelf.navigationController pushViewController:vuiVc animated:YES];
         };
         
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -408,6 +421,21 @@
         return 50;
     }else
     {
+        Users_carsModel *model;
+        if (self.zuiZongModel.shiFoNiMing == YES) {
+            model = niMingxinZengArray[indexPath.row];
+        }else
+        {
+            model = xinZengArray[indexPath.row];
+        }
+        if (model.shifouXuanZHong == YES) {
+            if (model.ait == YES) {
+                return 100;
+            }else{
+                return 70;
+            }
+            
+        }
         return 70;
     }
     
@@ -507,9 +535,11 @@
     [xinZengBt setTitle:@"新增车辆" forState:UIControlStateNormal];
     xinZengBt.tag = 1001;
     if (self.xinZengModel.shiFouXinZeng == NO)  {
+        xinZengBt.hidden = NO;
         [xinZengBt setTitleColor:kNavBarColor forState:UIControlStateNormal];
     }else
     {
+        xinZengBt.hidden = YES;
         [xinZengBt setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
     
@@ -543,7 +573,7 @@
 
 -(void)xinZengBtChick:(UIButton *)sender
 {
-    if (self.shiFouNiMing == YES) {
+    if (self.zuiZongModel.shiFoNiMing == NO) {
         if (!((phoneTextField.text.length>10)&&(phoneTextField.text.length<13))) {
             [self showMessageWithContent:@"请输入正确的手机号" point:self.view.center afterDelay:2.0];
             return;

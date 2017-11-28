@@ -33,7 +33,7 @@
 + (ZXCharacterSetECI *)characterSetECIByValue:(int)value;
 
 /**
- * @param name character set ECI encoding name
+ * @param encoding character set ECI encoding name
  * @return CharacterSetECI representing ECI for character encoding, or nil if it is legal
  *   but unsupported
  */

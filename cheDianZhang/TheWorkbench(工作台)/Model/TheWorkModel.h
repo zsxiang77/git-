@@ -20,7 +20,9 @@
 @property(nonatomic,strong)NSString *status;
 @property(nonatomic,strong)NSString *class_name;
 @property(nonatomic,strong)NSString *brand_img;
+@property(nonatomic,strong)NSString *ait_report;
 @property(nonatomic,assign)NSInteger is_lock;
+@property(nonatomic,assign)BOOL ait_switch;
 
 @property(nonatomic,assign)BOOL  shanChuState;//删除按钮
 

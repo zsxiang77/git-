@@ -129,8 +129,7 @@
             NSString *query_url = KISDictionaryHaveKey(dataDic, @"query_url");
             if (query_url.length>0) {
                 SuccessfulOrderViewController *vc = [[SuccessfulOrderViewController alloc]init];
-                vc.query_url = query_url;
-                vc.ordercode  = KISDictionaryHaveKey(dataDic, @"ordercode");
+                vc.chuZhiDict = dataDic;
                 [self.navigationController pushViewController:vc animated:YES];
             }
         }else

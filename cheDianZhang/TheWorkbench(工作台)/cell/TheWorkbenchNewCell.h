@@ -26,6 +26,9 @@
 
 @property(nonatomic,strong)UILabel *nameLabel;
 
+@property(nonatomic,strong)UILabel   *aitLabel;
+@property(nonatomic,strong)UIImageView   *aitImageView;
+
 
 -(void)refeleseWithModel:(TheWorkModel *)model;
 

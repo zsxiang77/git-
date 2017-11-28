@@ -10,10 +10,20 @@
 #import "LonInViewController.h"
 #import "JPUSHService.h"
 #import "UIImageView+WebCache.h"
+#import "SettingAITSerialNumberVC.h"
+#import "AITListViewController.h"
+
 
 @interface UserPersonalDataVC ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property(nonatomic,strong)UILabel *modileLabel;
 @property(nonatomic, retain)UIImageView* userImageView;//选择的照片
+
+@property(nonatomic,strong)UILabel *nameLabel;
+
+@property(nonatomic,strong)UILabel *stateLabel;
+
+
+@property(nonatomic,strong)UIView *aitZhanShiView;
 
 @end
 
@@ -21,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTopViewWithTitle:@"个人资料" withBackButton:YES];
+    [self setTopViewWithTitle:@"个人资料" withBackButton:NO];
     
     UIView *shangView = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+10, kWindowW, 80)];
     shangView.backgroundColor = [UIColor whiteColor];
@@ -42,21 +52,21 @@
         make.width.height.mas_equalTo(60);
     }];
     
-    UILabel *nameLabel = [[UILabel alloc]init];
-    nameLabel.text =  [UserInfo shareInstance].userReal_name;
-    [shangView addSubview:nameLabel];
-    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.nameLabel = [[UILabel alloc]init];
+    self.nameLabel.text =  [UserInfo shareInstance].userReal_name;
+    [shangView addSubview:self.nameLabel];
+    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(shangView.mas_centerY);
         make.left.mas_equalTo(75);
     }];
     
-    UILabel *stateLabel = [[UILabel alloc]init];
-    stateLabel.text =  [UserInfo shareInstance].userRole;
-    stateLabel.font = [UIFont systemFontOfSize:13];
-    [shangView addSubview:stateLabel];
-    [stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.stateLabel = [[UILabel alloc]init];
+    self.stateLabel.text =  [UserInfo shareInstance].userRole;
+    self.stateLabel.font = [UIFont systemFontOfSize:13];
+    [shangView addSubview:self.stateLabel];
+    [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(75);
-        make.top.mas_equalTo(nameLabel.mas_bottom).mas_equalTo(5);
+        make.top.mas_equalTo(self.nameLabel.mas_bottom).mas_equalTo(5);
     }];
     
     UIView *view2 = [[UIView alloc]init];
@@ -78,6 +88,7 @@
     }];
     
     UILabel *zhangLabel2 = [[UILabel alloc]init];
+    zhangLabel2.tag = 3001;
     zhangLabel2.font = [UIFont systemFontOfSize:14];
     zhangLabel2.textColor = [UIColor grayColor];
     zhangLabel2.text = [UserInfo shareInstance].userZhangHao;
@@ -115,18 +126,75 @@
         make.centerY.mas_equalTo(view3);
     }];
     
-    UIButton *view4 = [[UIButton alloc]init];
-    view4.titleLabel.font = [UIFont systemFontOfSize:14];
-    [view4 setTitle:@"关于我们" forState:(UIControlStateNormal)];
-     [view4 setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-    [view4 addTarget:self action:@selector(guanYuMeChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    view4.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:view4];
-    [view4 mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    UIButton *guanYuBt = [[UIButton alloc]init];
+    self.aitZhanShiView = [[UIView alloc]init];
+    self.aitZhanShiView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.aitZhanShiView];
+    [self.aitZhanShiView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(view3.mas_bottom).mas_equalTo(10);
         make.height.mas_equalTo(40);
     }];
+    self.aitZhanShiView.hidden = YES;
+    
+    UILabel *aITnameLabel = [[UILabel alloc]init];
+    aITnameLabel.font = [UIFont systemFontOfSize:14];
+    aITnameLabel.text = @"AIT产品";
+    [self.aitZhanShiView addSubview:aITnameLabel];
+    [aITnameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+        make.centerY.mas_equalTo(self.aitZhanShiView);
+    }];
+    
+    UIImageView *youAitImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"13_arrow")];
+    [self.aitZhanShiView addSubview:youAitImageView];
+    [youAitImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.centerY.mas_equalTo(self.aitZhanShiView);
+        make.width.mas_equalTo(19/2);
+        make.height.mas_equalTo(((19/2)*33)/19);
+    }];
+    
+    self.aITLabel = [[UILabel alloc]init];
+    self.aITLabel.font = [UIFont systemFontOfSize:14];
+//    if (indexAit>0) {
+//        self.aITLabel.text = [NSString stringWithFormat:@"%ld",(long)indexAit];
+//    }else{
+//        self.aITLabel.text = @"前往设置序列号";
+//    }
+    
+    self.aITLabel.textColor = UIColorFromRGBA(0x00d383, 1);
+    [self.aitZhanShiView addSubview:self.aITLabel];
+    [self.aITLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(youAitImageView.mas_left).mas_equalTo(-5);
+        make.centerY.mas_equalTo(self.aitZhanShiView);
+    }];
+    
+    UIButton *aitBt = [[UIButton alloc]init];
+    [aitBt addTarget:self action:@selector(aitBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.aitZhanShiView addSubview:aitBt];
+    [aitBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    guanYuBt.titleLabel.font = [UIFont systemFontOfSize:14];
+    [guanYuBt setTitle:@"关于我们" forState:(UIControlStateNormal)];
+    [guanYuBt setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+    [guanYuBt addTarget:self action:@selector(guanYuMeChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    guanYuBt.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:guanYuBt];
+    [guanYuBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.aitZhanShiView.mas_bottom).mas_equalTo(10);
+        make.height.mas_equalTo(40);
+    }];
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -145,13 +213,75 @@
         make.bottom.mas_equalTo(-100);
     }];
     
+    [self postHuoQuModele];
+
 }
 
+-(void)postHuoQuModele
+{
+    
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"data_center/privateinfo/staff_detail" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        
+        NSDictionary *adData = kParseData(responseObject);
+        if (![adData isKindOfClass:[NSDictionary class]]) {
+            return ;
+        }
+        weakSelf.chiZhiDict = adData;
+        [UserInfo shareInstance].userMobile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(adData, @"mobile")];
+        [UserInfo shareInstance].userAvatar = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(adData, @"avatar")];
+        [UserInfo saveUserName];
+        
+        [weakSelf.userImageView  sd_setImageWithURL:[NSURL URLWithString:[UserInfo shareInstance].userAvatar] placeholderImage:DJImageNamed(@"touxiang")];
+        weakSelf.aITLabel.text =  [UserInfo shareInstance].userReal_name;
+        weakSelf.stateLabel.text =  [UserInfo shareInstance].userRole;
+        
+        UILabel *zhaLa = [weakSelf.view viewWithTag:3001];
+        zhaLa.text = [UserInfo shareInstance].userZhangHao;
+        
+        weakSelf.modileLabel.text = [UserInfo shareInstance].userMobile;
+        
+        NSInteger indexAit = [KISDictionaryHaveKey(weakSelf.chiZhiDict, @"ait_num") integerValue];
+        BOOL ait_switch = [KISDictionaryHaveKey(weakSelf.chiZhiDict, @"ait_switch") boolValue];
+        if (ait_switch == YES) {
+            weakSelf.aitZhanShiView.hidden = NO;
+            if (indexAit>0) {
+                weakSelf.aITLabel.text = [NSString stringWithFormat:@"%ld",(long)indexAit];
+            }else{
+                weakSelf.aITLabel.text = @"前往设置序列号";
+            }
+        }else{
+            weakSelf.aitZhanShiView.hidden = YES;
+        }
+    } failure:^(id error) {
+        
+    }];
+}
 
+-(void)aitBtChick:(UIButton *)sender
+{
+//    SettingAITSerialNumberVC *vc = [[SettingAITSerialNumberVC alloc]init];
+    
+    
+    AITListViewController *vc = [[AITListViewController alloc]init];
+    kWeakSelf(weakSelf)
+    vc.shuXianNumber = ^(NSInteger sender) {
+        if (sender>0) {
+            weakSelf.aITLabel.text = [NSString stringWithFormat:@"%ld",(long)sender];
+        }else{
+            weakSelf.aITLabel.text = @"前往设置序列号";
+        }
+    };
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 -(void)guanYuMeChick:(UIButton *)sender
 {
     AboutUsViewController *vc = [[AboutUsViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

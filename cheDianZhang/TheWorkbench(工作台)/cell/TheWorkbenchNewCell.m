@@ -105,6 +105,24 @@
             make.width.height.mas_equalTo(15);
         }];
         
+        self.aitLabel = [[UILabel alloc]init];
+        self.aitLabel.font = [UIFont systemFontOfSize:13];
+        self.aitLabel.textColor = UIColorFromRGBA(0x63bcfe, 1);
+        [self.contentView addSubview:self.aitLabel];
+        [self.aitLabel  mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-10);
+            make.top.mas_equalTo(self.topStateLabel.mas_bottom).mas_equalTo(3);
+        }];
+        
+        self.aitImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"01_youbaogao")];
+        self.aitImageView.hidden = YES;
+        [self.contentView addSubview:self.aitImageView];
+        [self.aitImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.aitLabel);
+            make.right.mas_equalTo(self.aitLabel.mas_left).mas_equalTo(-7);
+            make.width.height.mas_equalTo(15);
+        }];
+        
         self.timeLabel = [[UILabel alloc]init];
         self.timeLabel.font = [UIFont systemFontOfSize:13];
         self.timeLabel.textColor = [UIColor grayColor];
@@ -117,7 +135,7 @@
         self.suoImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"yiSuoDan")];
         [self.contentView addSubview:self.suoImageView];
         [self.suoImageView  mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-80);
+            make.centerX.mas_equalTo(self.contentView);
             make.bottom.mas_equalTo(-14);
             make.width.mas_equalTo(104/2);
             make.height.mas_equalTo(55/2);
@@ -176,6 +194,15 @@
     {
         self.youShangLabel.hidden = YES;
         self.youShangImageView.hidden = YES;
+    }
+    
+    if (model.ait_report.length>0) {
+        self.aitLabel.hidden = NO;
+        self.aitLabel.text = model.ait_report;
+        self.aitImageView.hidden = NO;
+    }else{
+        self.aitLabel.hidden = YES;
+        self.aitImageView.hidden = YES;
     }
 }
 

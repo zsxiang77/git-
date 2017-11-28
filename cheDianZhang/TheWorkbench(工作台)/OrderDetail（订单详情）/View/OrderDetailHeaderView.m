@@ -204,76 +204,219 @@
 //        ===============================
         NSInteger jigeDian = 1;
         if ([[UserInfo shareInstance].isExplod boolValue]) {
-            jigeDian = 3;
+            jigeDian = 4;
+        }else{
+            jigeDian = 4;
         }
         
         if (![chuanzhiModel.class_name isEqualToString:@"维修"]) {
             jigeDian = 0;
         }
-        
-        for (int i = 0; i<jigeDian; i++) {
-            UIView *diangHaoView3 = [[UIView alloc]init];
-            diangHaoView3.backgroundColor = [UIColor whiteColor];
-            [self addSubview:diangHaoView3];
-            [diangHaoView3 mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.mas_equalTo(0);
-                make.top.mas_equalTo(diangHaoView2.mas_bottom).mas_equalTo(i*40);
-                make.height.mas_equalTo(40);
-            }];
-            jisuanGao += 40;
-            UILabel *line4 = [[UILabel alloc]init];
-            line4.backgroundColor = kLineBgColor;
-            [diangHaoView3 addSubview:line4];
-            [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.bottom.mas_equalTo(0);
-                make.left.mas_equalTo(0);
-                make.height.mas_equalTo(1);
-            }];
-            UILabel *dingDanLa4 = [[UILabel alloc]init];
-            if (i == 0) {
-                dingDanLa4.text = @"接车信息";
-            }else  if (i == 1) {
-                dingDanLa4.text = @"销售人员";
-            }else if (i == 2) {
-                dingDanLa4.text = @"检验人员";
+//        chuanzhiModel.ait_switch = NO;
+        self.aitTiShiLabel = [[UILabel alloc]init];
+        self.aitImageView = [[UIImageView alloc]init];
+        if (chuanzhiModel.ait_switch == YES) {
+            for (int i = 0; i<jigeDian; i++)
+            {
+                UIView *diangHaoView3 = [[UIView alloc]init];
+                diangHaoView3.backgroundColor = [UIColor whiteColor];
+                [self addSubview:diangHaoView3];
+                if (i == 2) {
+                    [diangHaoView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.right.mas_equalTo(0);
+                        make.top.mas_equalTo(diangHaoView2.mas_bottom).mas_equalTo(i*40);
+                        make.height.mas_equalTo(80);
+                    }];
+                    
+                    self.aitDianJiLel = [[UILabel alloc]init];
+                    self.aitDianJiLel.font = [UIFont systemFontOfSize:14];
+                    self.aitDianJiLel.textColor = kNavBarColor;
+                    [diangHaoView3 addSubview:self.aitDianJiLel];
+                    [self.aitDianJiLel mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.right.mas_equalTo(-10);
+                        make.top.mas_equalTo(0);
+                        make.height.mas_equalTo(40);
+                        
+                    }];
+                    
+                    
+                    UILabel *aitLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, kWindowW, 1)];
+                    aitLine.backgroundColor = kLineBgColor;
+                    [diangHaoView3 addSubview:aitLine];
+                    
+                    self.aitImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"04_prompt")];
+                    self.aitImageView.frame = CGRectMake(10, 40+(40-15)/2, 15, 15);
+                    [diangHaoView3 addSubview:self.aitImageView];
+                    self.aitXianShiLabel = [[RCLabel alloc] initWithFrame:CGRectMake(30, 50, kWindowW-40, 40)];
+                    self.aitXianShiLabel.textAlignment = NSTextAlignmentLeft;
+                    self.aitXianShiLabel.lineBreakMode = 1;
+                    self.aitXianShiLabel.font = [UIFont systemFontOfSize:13];
+                    [diangHaoView3 addSubview:self.aitXianShiLabel];
+                    
+                    jisuanGao += 80;
+                }else if (i == 3) {
+                    [diangHaoView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.right.mas_equalTo(0);
+                        make.top.mas_equalTo(diangHaoView2.mas_bottom).mas_equalTo((i+1)*40);
+                        make.height.mas_equalTo(40);
+                    }];
+                    jisuanGao += 40;
+                }else{
+                    [diangHaoView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.right.mas_equalTo(0);
+                        make.top.mas_equalTo(diangHaoView2.mas_bottom).mas_equalTo(i*40);
+                        make.height.mas_equalTo(40);
+                    }];
+                    jisuanGao += 40;
+                }
+                
+                UILabel *line4 = [[UILabel alloc]init];
+                line4.backgroundColor = kLineBgColor;
+                [diangHaoView3 addSubview:line4];
+                [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.bottom.mas_equalTo(0);
+                    make.left.mas_equalTo(0);
+                    make.height.mas_equalTo(1);
+                }];
+                UILabel *dingDanLa4 = [[UILabel alloc]init];
+                if (i == 0) {
+                    dingDanLa4.text = @"接车信息";
+                }else  if (i == 1) {
+                    dingDanLa4.text = @"销售人员";
+                }else if (i == 2) {
+                    dingDanLa4.text = @"AIT检测报告";
+                }else if (i == 3) {
+                    dingDanLa4.text = @"检验人员";
+                }
+                
+                
+                dingDanLa4.font = [UIFont systemFontOfSize:14];
+                [diangHaoView3 addSubview:dingDanLa4];
+                [dingDanLa4 mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(0);
+                    make.left.mas_equalTo(10);
+                    make.height.mas_equalTo(40);
+                }];
+                
+                if (i != 2) {
+                    UIImageView *tiaozhuanImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"hall_jiantou-1")];
+                    [diangHaoView3 addSubview:tiaozhuanImageView];
+                    [tiaozhuanImageView  mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.right.mas_equalTo(-10);
+                        make.centerY.mas_equalTo(dingDanLa4);
+                        make.width.height.mas_equalTo(25);
+                    }];
+                }
+                
+                
+                UIButton *jieCheInformetionBt = [[UIButton alloc]init];
+                [jieCheInformetionBt addTarget:self action:@selector(jieCheInformetionBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+                jieCheInformetionBt.tag = 3000 + i;
+                [diangHaoView3 addSubview:jieCheInformetionBt];
+                [jieCheInformetionBt  mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.left.right.mas_equalTo(0);
+                    make.height.mas_equalTo(40);
+                }];
+                
+                UILabel *la = [[UILabel alloc]init];
+                la.font = [UIFont systemFontOfSize:13];
+                la.tag = 4000+i;
+                [diangHaoView3 addSubview:la];
+                
+                if (i == 2) {
+                    la.textColor = [UIColor redColor];
+                    [la  mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.mas_equalTo(dingDanLa4.mas_right).mas_equalTo(2);
+                        make.centerY.mas_equalTo(dingDanLa4);
+                    }];
+                }else{
+                    [la  mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.right.mas_equalTo(-40);
+                        make.centerY.mas_equalTo(diangHaoView3);
+                    }];
+                }
             }
-            
-            
-            dingDanLa4.font = [UIFont systemFontOfSize:14];
-            [diangHaoView3 addSubview:dingDanLa4];
-            [dingDanLa4 mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.mas_equalTo(0);
-                make.left.mas_equalTo(10);
-            }];
-            
-            
-            UIImageView *tiaozhuanImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"hall_jiantou-1")];
-            [diangHaoView3 addSubview:tiaozhuanImageView];
-            [tiaozhuanImageView  mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(-10);
-                make.centerY.mas_equalTo(diangHaoView3);
-                make.width.height.mas_equalTo(25);
-            }];
-            
-            UIButton *jieCheInformetionBt = [[UIButton alloc]init];
-            [jieCheInformetionBt addTarget:self action:@selector(jieCheInformetionBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
-            jieCheInformetionBt.tag = 3000 + i;
-            [diangHaoView3 addSubview:jieCheInformetionBt];
-            [jieCheInformetionBt  mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.mas_equalTo(0);
-            }];
-            
-            UILabel *la = [[UILabel alloc]init];
-            la.font = [UIFont systemFontOfSize:13];
-            la.tag = 4000+i;
-            [diangHaoView3 addSubview:la];
-            [la  mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(-40);
-                make.centerY.mas_equalTo(diangHaoView3);
-            }];
+        }else{
+            if (jigeDian>0) {
+                jigeDian = jigeDian-1;
+            }
+            for (int i = 0; i<jigeDian; i++)
+            {
+                UIView *diangHaoView3 = [[UIView alloc]init];
+                diangHaoView3.backgroundColor = [UIColor whiteColor];
+                [self addSubview:diangHaoView3];
+                [diangHaoView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.mas_equalTo(0);
+                    make.top.mas_equalTo(diangHaoView2.mas_bottom).mas_equalTo(i*40);
+                    make.height.mas_equalTo(40);
+                }];
+                jisuanGao += 40;
+                
+                UILabel *line4 = [[UILabel alloc]init];
+                line4.backgroundColor = kLineBgColor;
+                [diangHaoView3 addSubview:line4];
+                [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.bottom.mas_equalTo(0);
+                    make.left.mas_equalTo(0);
+                    make.height.mas_equalTo(1);
+                }];
+                UILabel *dingDanLa4 = [[UILabel alloc]init];
+                if (i == 0) {
+                    dingDanLa4.text = @"接车信息";
+                }else  if (i == 1) {
+                    dingDanLa4.text = @"销售人员";
+                }else if (i == 2) {
+                    dingDanLa4.text = @"检验人员";
+                }
+                
+                
+                dingDanLa4.font = [UIFont systemFontOfSize:14];
+                [diangHaoView3 addSubview:dingDanLa4];
+                [dingDanLa4 mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(0);
+                    make.left.mas_equalTo(10);
+                    make.height.mas_equalTo(40);
+                }];
+                
+                
+                UIImageView *tiaozhuanImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"hall_jiantou-1")];
+                [diangHaoView3 addSubview:tiaozhuanImageView];
+                [tiaozhuanImageView  mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(-10);
+                    make.centerY.mas_equalTo(dingDanLa4);
+                    make.width.height.mas_equalTo(25);
+                }];
+                
+                UIButton *jieCheInformetionBt = [[UIButton alloc]init];
+                [jieCheInformetionBt addTarget:self action:@selector(jieCheInformetionBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+                if (i == 2) {
+                    jieCheInformetionBt.tag = 3000 + i+1;
+                }else{
+                    jieCheInformetionBt.tag = 3000 + i;
+                }
+               
+                [diangHaoView3 addSubview:jieCheInformetionBt];
+                [jieCheInformetionBt  mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.left.right.mas_equalTo(0);
+                    make.height.mas_equalTo(40);
+                }];
+                
+                UILabel *la = [[UILabel alloc]init];
+                la.font = [UIFont systemFontOfSize:13];
+                if (i == 2) {
+                    la.tag = 4000+i+1;
+                }else{
+                   la.tag = 4000+i;
+                }
+                
+                [diangHaoView3 addSubview:la];
+                
+                [la  mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.mas_equalTo(-40);
+                    make.centerY.mas_equalTo(diangHaoView3);
+                }];
+            }
         }
-        
-        
         
         UILabel *guZhangLabel  = [[UILabel alloc]init];
         guZhangLabel.textColor = [UIColor grayColor];

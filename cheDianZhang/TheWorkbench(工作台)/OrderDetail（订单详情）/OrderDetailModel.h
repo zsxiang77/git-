@@ -29,6 +29,10 @@
 
 @property(nonatomic,strong)NSDictionary *users_info;
 
+@property(nonatomic,strong)NSDictionary *ait;
+
+@property(nonatomic,assign)BOOL ait_switch;
+
 
 -(void)setDangQIanWIthData:(NSDictionary *)dict;
 
@@ -52,6 +56,7 @@
 @property(nonatomic,strong)NSString *service;
 @property(nonatomic,strong)NSString *source;
 @property(nonatomic,strong)NSString *status;
+@property(nonatomic,strong)NSString *vin;
 
 @property(nonatomic,strong)NSString *add_time;
 

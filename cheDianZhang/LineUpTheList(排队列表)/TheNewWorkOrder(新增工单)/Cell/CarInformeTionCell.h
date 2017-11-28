@@ -21,9 +21,14 @@
 @property(nonatomic,strong)UILabel *colorLabel;
 @property(nonatomic,strong)UIButton *shanChuButton;
 
+
+@property(nonatomic,strong)UIView *shangView;
+@property(nonatomic,strong)UIView *xiaView;
+
 @property(nonatomic,strong)Users_carsModel *chuLiModel;
 
 @property(nonatomic,strong)void (^shanChuButtonBlock)(Users_carsModel *chuLiModel);
+@property(nonatomic,strong)void (^tiaoZhuanAitBlock)(void);
 
 
 @end

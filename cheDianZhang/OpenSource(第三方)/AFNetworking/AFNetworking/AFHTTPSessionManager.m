@@ -160,7 +160,7 @@
                        failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure
 {
     NSURLSessionDataTask *dataTask = [self dataTaskWithHTTPMethod:@"POST" URLString:URLString parameters:parameters uploadProgress:uploadProgress downloadProgress:nil success:success failure:failure];
-//    NPrintLog(@"dataTask是%@",dataTask);
+    NSLog(@"dataTask是%@",dataTask);
 
     [dataTask resume];
 

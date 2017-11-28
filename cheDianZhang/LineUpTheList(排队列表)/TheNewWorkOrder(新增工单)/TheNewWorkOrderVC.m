@@ -9,6 +9,7 @@
 #import "TheNewWorkOrderVC.h"
 #import "TheNewWorkOrderCell.h"
 #import "NewVehicleVC.h"
+#import "AITProductInformationVC.h"
 
 @interface TheNewWorkOrderVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,NumKeyboardDelegate>
 @property(nonatomic,assign)BOOL shiFouYinCangXinZeng;
@@ -508,9 +509,16 @@
         
         if (model.shifouXuanZHong == YES) {
             cell.xuanZhongBt.image = DJImageNamed(@"cell_select");
+            
+            cell.xiaView.hidden = NO;
+            if (model.ait == NO) {
+                cell.xiaView.hidden = YES;
+            }
         }else
         {
             cell.xuanZhongBt.image = DJImageNamed(@"cell_noselect");
+            
+            cell.xiaView.hidden = YES;
         }
         
         
@@ -546,6 +554,10 @@
             }
         };
         
+        cell.tiaoZhuanAitBlock = ^{
+            AITProductInformationVC *xinvc = [[AITProductInformationVC alloc]init];
+            [weakSelf.navigationController pushViewController:xinvc animated:YES];
+        };
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -567,6 +579,14 @@
         return 50;
     }else
     {
+        Users_carsModel *model = xinZengArray[indexPath.row];
+        if (model.shifouXuanZHong == YES) {
+            if (model.ait == YES) {
+                return 100;
+            }else{
+                return 70;
+            }
+        }
         return 70;
     }
     
@@ -673,9 +693,11 @@
     [xinZengBt setTitle:@"新增车辆" forState:UIControlStateNormal];
     xinZengBt.tag = 1001;
     if (self.xinZengModel.shiFouXinZeng == NO)  {
+        xinZengBt.hidden = NO;
         [xinZengBt setTitleColor:kNavBarColor forState:UIControlStateNormal];
     }else
     {
+        xinZengBt.hidden = YES;
         [xinZengBt setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
     

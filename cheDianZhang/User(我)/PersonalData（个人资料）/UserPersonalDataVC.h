@@ -10,5 +10,7 @@
 #import "AboutUsViewController.h"
 
 @interface UserPersonalDataVC : BaseViewController
+@property(nonatomic,strong)UILabel *aITLabel;
+@property(nonatomic,strong)NSDictionary *chiZhiDict;
 
 @end

@@ -87,7 +87,7 @@
     self.mainTextField.inputView = _accessView;
     self.mainTextField.inputAccessoryView = _accessView1;
     
-    NSArray * tit = @[@"取消",@"提交"];
+    NSArray * tit = @[@"删除",@"提交"];
     CGFloat www = (kWindowW-10)/9;
     CGFloat wwww = (kWindowW-5-www*3-15)/2;
     
@@ -206,38 +206,39 @@ BOOL validateCarNo(NSString * carNo)
 }
 
 -(void)btnClick:(UIButton *)btn{
-    if (self.mainTextField.text.length>7) {
-        [self.mainTextField deleteBackward];
-        return;
-    }
-    switch (btn.tag) {
-        case 200:
-        {
-            self.mainTextField.text = [self.mainTextField.text stringByAppendingFormat:@"%@",btn.currentTitle];
+    if (btn.tag == 301) {
+        [self.mainTextField resignFirstResponder];
+        if ([self checkCarID:self.mainTextField.text]==NO) {
+            [self showMessageWithContent:@"车牌号有误" point:self.view.center afterDelay:2.0];
+            return;
         }
-            break;
-        case 300:
-        {
+        self.xinZengModel.car_number = self.mainTextField.text;
+        ModelCarViewController *vc = [[ModelCarViewController alloc]init];
+        vc.superViewController = self.superViewController;
+        vc.xinZengModel = self.xinZengModel;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        if (self.mainTextField.text.length>7) {
             [self.mainTextField deleteBackward];
+            return;
         }
-            break;
-        case 301:
-        {
-            [self.mainTextField resignFirstResponder];
-            if ([self checkCarID:self.mainTextField.text]==NO) {
-                [self showMessageWithContent:@"车牌号有误" point:self.view.center afterDelay:2.0];
-                return;
+        switch (btn.tag) {
+            case 200:
+            {
+                self.mainTextField.text = [self.mainTextField.text stringByAppendingFormat:@"%@",btn.currentTitle];
             }
-            self.xinZengModel.car_number = self.mainTextField.text;
-            ModelCarViewController *vc = [[ModelCarViewController alloc]init];
-            vc.superViewController = self.superViewController;
-            vc.xinZengModel = self.xinZengModel;
-            [self.navigationController pushViewController:vc animated:YES];
+                break;
+            case 300:
+            {
+                [self.mainTextField deleteBackward];
+            }
+                break;
+
+            default:
+                break;
         }
-            break;
-        default:
-            break;
     }
+    
 }
 
 

@@ -35,6 +35,16 @@
     [super viewWillAppear:animated];
     
     [self rREQUEST_METHODNetwork];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -56,10 +66,9 @@
     [self setupNavigationBar];
     
     [self buildSearchView];
-    //获取自定义消息
-    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+
 }
+
 - (void)setupNavigationBar
 {
     [self setNavBarAssistantButtonWithItems:@[@"新增订单"]];
@@ -355,6 +364,11 @@
         
         RTDragCellTableView *tabi = (RTDragCellTableView *)tableView;
         NSInteger indx = tabi.tag - 2000;
+//        NPrintLog(@"indx%ld",indx);
+//        NPrintLog(@"indx%ld",indexPath.row);
+        if (main_dataArry[indx].count<indexPath.row || main_dataArry[indx].count<=0) {
+            return cell;
+        }
         model = main_dataArry[indx][indexPath.row];
         
         [cell refeleseWithModel:model WithShiFouKeShan:YES];

@@ -30,11 +30,12 @@
     diJiYeIndex = 0;
     [self rREQUEST_METHODNetwork];
     
-    
-    //获取自定义消息
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-    
+    [defaultCenter removeObserver:self name:kJieShouXiaoXi object:nil];
 }
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     NSDictionary * userInfo = [notification userInfo];
@@ -52,6 +53,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
     
     if (self.shiFouJiaZai == YES) {
        [self postrequest_methodDataWithIndex:diJiYeIndex withShuaXin:YES];

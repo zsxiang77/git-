@@ -7,7 +7,7 @@
 //
 
 #import "UserInfo.h"
-#import "SSKeychain.h"
+//#import "SSKeychain.h"
 
 @implementation UserInfo
 
@@ -26,7 +26,7 @@
         self.userHuanCunXiTongArray = [[NSArray alloc]init];
         self.userDingDanArray = [[NSArray alloc]init];
         [self buildUserName];
-        [self buildHuanCunArray];
+//        [self buildHuanCunArray];
     }
     return self;
 }
@@ -111,8 +111,13 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:userMobile];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:userDingDanArray];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.userDingDanArray = [[NSArray alloc]init];
+    
     self.isLogined = NO;
     self.userNameDict = [[NSDictionary alloc]init];
+//    [self cleanDingDanArray];
     
 }
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TheWorkModel.h"
+#import "RCLabel.h"
 
 @interface OrderDetailHeaderView : UIView
 -(instancetype)initWithModel:(TheWorkModel *)chuanzhiModel;
@@ -20,6 +21,11 @@
 @property(nonatomic,strong)UILabel *topStateLabel;
 @property(nonatomic,strong)UIImageView *stateImageView;
 @property(nonatomic,strong)UILabel *timeLabel;
+
+@property(nonatomic,strong)UILabel *aitTiShiLabel;
+@property(nonatomic,strong)UILabel *aitDianJiLel;
+@property(nonatomic,strong)UIImageView *aitImageView;
+@property(nonatomic,strong)RCLabel *aitXianShiLabel;
 
 @property(nonatomic,strong)UIImageView *erWeiMaImageView;
 @property(nonatomic,strong)UILabel *dingDanText;
