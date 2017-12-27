@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>打印</title>
+<script src='http://192.168.1.114:8000/CLodopfuncs.js'></script>
+</head>
+</html>
+<script type="text/javascript">
+    //选择打印机
+    var name=LODOP.GET_PRINTER_NAME(-1);
+   
+    // 打印内容
+    LODOP.SET_PRINTER_INDEXA(name);
+  LODOP.PRINT_INITA(1,1,770,660,"测试预览功能");
+  LODOP.ADD_PRINT_TEXT(10,60,300,200,"这是测试的纯文本，下面是超文本:");
+  LODOP.ADD_PRINT_HTM(30,5,"100%","80%",'测试打印');
+  LODOP.PRINTA();//选择打印机
+</script>
