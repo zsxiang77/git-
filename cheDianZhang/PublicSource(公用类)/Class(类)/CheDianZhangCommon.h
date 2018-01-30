@@ -10,11 +10,12 @@
 #import "Masonry.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UserInfo.h"
+#import "CommonRecordStatus.h"
 
 #define KAgentId @"iOStest" //渠道号
 
-//#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
-#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
+#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
+//#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
 //#define HOST_URL @"http://beta.icarzoo.com/api/"/**生产*/
 
 
@@ -28,13 +29,14 @@ static float const  REFRESH_HEADER_HEIGHT = 60.0f;//下拉刷新和上拉加载�
 #define kViewBgColor ([UIColor colorWithRed:248/255.f green:248/255.f blue:248/255.f alpha:1.0])
 #define kLineBgColor ([UIColor colorWithRed:217/255.f green:217/255.f blue:217/255.f alpha:1.0])
 #define kButtonHighColor ([UIColor colorWithRed:245/255.f green:86/255.f blue:115/255.f alpha:1.0])
-#define kJieShouXiaoXi  @"kJieShouXiaoXiNSNotificationCenter"
-#define kShuaXinGuoZuoTai  @"kShuaXinGuoZuoTaiNotificationCenter"//刷新工作台
+
 
 //通过RGB设置颜色
 #define kRGBColor(R,G,B)        [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
 #define kColorWithRGB(r, g, b, a) \
 [UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a]
+
+
 
 //设备信息
 #define kWindowH   [UIScreen mainScreen].bounds.size.height //应用程序的屏幕高度
@@ -71,7 +73,7 @@ alpha:alphaValue]//16进制颜色转换
 boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
 attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;//计算字符宽高
 
-#define DEBUG_MODE//Debug模式 发布前注释掉
+//#define DEBUG_MODE//Debug模式 发布前注释掉
 
 #ifdef DEBUG_MODE
 #define NPrintLog(FORMAT, ...) printf("%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -113,3 +115,10 @@ static inline void drawFan(CGContextRef ctx, CGPoint point, float angle_start, f
     CGContextFillPath(ctx);
 }
 
+
+#pragma mark - 处理消息
+
+#define kJieShouXiaoXi  @"kJieShouXiaoXiNSNotificationCenter"
+#define kJieShouXiaoXiDangQianAIT  @"kJieShouXiaoXiDangQianAITNSNotificationCenter"//接收消息刷新当前AIt页面
+#define kShuaXinGuoZuoTai  @"kShuaXinGuoZuoTaiNotificationCenter"//刷新工作台
+#define kTiaoZhuanVinYe  @"kTiaoZhuanVinYeNSNotificationCenter"//跳装VIN通知

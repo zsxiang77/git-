@@ -70,7 +70,12 @@
     }
     
     self.nameLabel.text = model.cname;
-    self.kuCunLabel.text = [NSString stringWithFormat:@"库存：%@",model.parts_total];
+    if (model.parts_total.length<=0) {
+        self.kuCunLabel.text = @"库存：0.00";
+    }else{
+        self.kuCunLabel.text = [NSString stringWithFormat:@"库存：%@",model.parts_total];
+    }
+    
     self.bianHaoLabel.text = [NSString stringWithFormat:@"编号：%@",model.commodity_code];
 }
 

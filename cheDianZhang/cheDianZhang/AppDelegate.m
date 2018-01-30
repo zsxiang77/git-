@@ -27,16 +27,25 @@
 #import "DCURLNavgation.h"
 #import "UserPersonalDataVC.h"
 
+#import "HomeRightBottomButton.h"
+#import "FillVINCodeViewController.h"
+#import "VINNewAlertView.h"
+
 #define kAPPKEY  @"bde8e49072393efd31ff1028"
 static NSString *channel = @"APP Store";
 static BOOL isProduction = FALSE;
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate,UIAlertViewDelegate>
+{
+    HomeRightBottomButton   *m_homeRightBottomXiaoXi;
+}
 
 @property(nonatomic,strong)ScanViewController *scanViewController;
 @property(nonatomic,strong)TheWorkbenchViewController *theWorkbenchViewController;
 @property(nonatomic,strong)UserViewController *userViewController;
 @property(nonatomic,strong)UserPersonalDataVC *sixViewController;
+
+@property(nonatomic,strong)VINNewAlertView  *aitAlert;
 
 @end
 
@@ -116,7 +125,53 @@ static BOOL isProduction = FALSE;
 
 
 
+#pragma mark 右下角图标
+- (void)buildHomeRightBottom
+{
+    m_homeRightBottomXiaoXi = [[HomeRightBottomButton alloc] initWithFrame:CGRectMake(kWindowW-75, kWindowH-60-80, 75, 75)];
+    m_homeRightBottomXiaoXi.hidden = YES;
+    m_homeRightBottomXiaoXi.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [m_homeRightBottomXiaoXi setImage:DJImageNamed(@"xiaoXi_youHong") forState:(UIControlStateNormal)];
+    [m_homeRightBottomXiaoXi addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:m_homeRightBottomXiaoXi];
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [m_homeRightBottomXiaoXi animationWithRotation0_10];
+//    });
+}
+
+-(void)rightButtonClick:(UIButton *)sender
+{
+    if ([m_homeRightBottomXiaoXi isShowStatus]) {
+        m_homeRightBottomXiaoXi.hidden = YES;
+        FillVINCodeViewController *vc = [[FillVINCodeViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.touStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")];
+        UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
+        [navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        [m_homeRightBottomXiaoXi animationWithRotation10_0];
+    }
+}
+
+-(void)networkDidReceiveMessageYingCangXiaoXi:(NSNotification*) notification
+{
+    if (!m_homeRightBottomXiaoXi) {
+        [self buildHomeRightBottom];
+    }
+    
+    BOOL br = [[notification object] boolValue];
+    if (br == YES) {
+        m_homeRightBottomXiaoXi.hidden = NO;
+    }else{
+        m_homeRightBottomXiaoXi.hidden = YES;
+    }
+    [self.window bringSubviewToFront:m_homeRightBottomXiaoXi];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self.window makeKeyAndVisible];
     
     [self umengTrack];
     
@@ -129,26 +184,21 @@ static BOOL isProduction = FALSE;
     {
         [self buildMainWindowView];
     }
-
-//    if ([[NSUserDefaults standardUserDefaults] objectForKey:kNewfuctionKey] == nil || ![[[NSUserDefaults standardUserDefaults] objectForKey:kNewfuctionKey] isEqualToString:kCurrentVersion]) {
-//        IntroduceViewController* viewController = [[IntroduceViewController alloc] init];
-//        self.window.rootViewController = viewController;
-//
-//    }
-//    else{
-//        if ([UserInfo shareInstance].isLogined == NO) {
-//            LonInViewController* viewController = [[LonInViewController alloc] init];
-//            self.window.rootViewController = viewController;
-//        }else
-//        {
-//            [self buildMainWindowView];
-//        }
-//
-//    }
-
-
-//    LonInViewController* viewController = [[LonInViewController alloc] init];
-//    self.window.rootViewController = viewController;
+    
+    
+    
+    [self buildHomeRightBottom];
+    
+    
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessageYingCangXiaoXi:) name:kTiaoZhuanVinYe object:nil];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kTiaoZhuanVinYe] != nil) {
+        self.xiaoXiVINDict = [[NSUserDefaults standardUserDefaults] objectForKey:kTiaoZhuanVinYe];
+        [defaultCenter postNotificationName:kTiaoZhuanVinYe object:@"1"];
+    }
+    
 
 
     //Required
@@ -175,8 +225,6 @@ static BOOL isProduction = FALSE;
                           channel:channel
                  apsForProduction:isProduction
             advertisingIdentifier:advertisingId];
-    //获取自定义消息
-    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
 
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
 
@@ -209,28 +257,98 @@ static BOOL isProduction = FALSE;
         [UserInfo saveuseruserDingDanArray:KISDictionaryHaveKey(userInfo, @"extras")];
     }
     
+    
+    
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    if ([content_type isEqualToString:@"11"]) {
+        self.xiaoXiVINDict = KISDictionaryHaveKey(userInfo, @"extras");
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTiaoZhuanVinYe];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:self.xiaoXiVINDict forKey:kTiaoZhuanVinYe];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+//        [self.window removeFromSuperview];
+        
+        UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
+        if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO) {
+            return;
+        }
+        m_homeRightBottomXiaoXi.hidden = NO;
+        
+        
+        
+        [defaultCenter postNotificationName:kTiaoZhuanVinYe object:@"1"];
+        if (!self.aitAlert) {
+            self.aitAlert = [[VINNewAlertView alloc]initWithTitleWithmessage:[NSString stringWithFormat:@"VIN:%@未能检测出当前车辆的VIN码，请您手动输入VIN码",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")] cancelButtonTitle:@"取消" otherButtonTitle:@"输入VIN码"];
+        }
+        if (self.aitAlert.hidden == NO) {
+            return;
+        }
+        
+        self.aitAlert.maLabel.text = [NSString stringWithFormat:@"VIN:%@未能检测出当前车辆的VIN码，请您手动输入VIN码",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")];
+        
+        self.aitAlert.tag = 4000;
+        [self.aitAlert show];
+        kWeakSelf(weakSelf)
+        self.aitAlert.queRenBtBlock = ^{
+            [weakSelf m_homeRightBottomxianshi];
+            FillVINCodeViewController *vc = [[FillVINCodeViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.touStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(weakSelf.xiaoXiVINDict, @"serial_number")];
+            [navigationController pushViewController:vc animated:YES];
+        };
+        [self.window addSubview:self.aitAlert];
+//        [self.window bringSubviewToFront:alert];
+        [self.aitAlert daoJiShi];
+    }
+    
+    
     [defaultCenter postNotificationName:kJieShouXiaoXi object:nil userInfo:userInfo];
-//    [defaultCenter postNotificationName:kJieShouXiaoXi object:userInfo];
+}
+-(void)m_homeRightBottomxianshi
+{
+    m_homeRightBottomXiaoXi.hidden = YES;
+}
+
+-(void)jiguangZhiZhiXingYiCiWith:(NSDictionary *)dict WithNSNotificationCenter:(NSNotificationCenter *)defaultCenter
+{
     
-//    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
-//    
-////    UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
-////    artView.tag = 200;
-////    [artView show];
-//    
-//    if (![extras isKindOfClass:[NSDictionary class]]) {
-//        return;
-//    }
-//    
-//    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
-//        UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
-//        artView.tag = 200;
-//        [artView show];
-//        self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
-//        
-//    }
-    
+    VINNewAlertView* alert2 = [self.window viewWithTag:4000];
+    alert2.hidden = YES;
+    [self.window removeFromSuperview];
+    alert2 = nil;
+
+    UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
+    if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO) {
+        return;
+    }
+    m_homeRightBottomXiaoXi.hidden = NO;
+    self.xiaoXiVINDict = KISDictionaryHaveKey(dict, @"extras");
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTiaoZhuanVinYe];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [[NSUserDefaults standardUserDefaults] setObject:self.xiaoXiVINDict forKey:kTiaoZhuanVinYe];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [defaultCenter postNotificationName:kTiaoZhuanVinYe object:@"1"];
+    VINNewAlertView* alert = [[VINNewAlertView alloc]initWithTitleWithmessage:[NSString stringWithFormat:@"VIN:%@未能检测出当前车辆的VIN码，请您手动输入VIN码",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")] cancelButtonTitle:@"取消" otherButtonTitle:@"输入VIN码"];
+    alert.tag = 4000;
+    [alert show];
+    alert.queRenBtBlock = ^{
+        m_homeRightBottomXiaoXi.hidden = YES;
+        FillVINCodeViewController *vc = [[FillVINCodeViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.touStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")];
+
+
+        [navigationController pushViewController:vc animated:YES];
+    };
+    [self.window addSubview:alert];
+    [self.window bringSubviewToFront:alert];
+    [alert daoJiShi];
 }
 
 
@@ -292,6 +410,64 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [JPUSHService handleRemoteNotification:userInfo];
     }
     completionHandler();  // 系统要求执行这个方法
+    
+    if ([UserInfo shareInstance].isLogined == NO) {
+        if ([[self currentViewController] isKindOfClass:[LonInViewController class]]) {
+            return;
+        }else{
+            
+        }
+    }
+    
+    if (KISDictionaryHaveKey(userInfo, @"serial_number")) {
+        NSString *serial_numberSTR = KISDictionaryHaveKey(userInfo, @"serial_number");
+        if (serial_numberSTR.length>0) {
+            if (![[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] &&[UserInfo shareInstance].isLogined == YES) {
+                VINNewAlertView* alert = [self.window viewWithTag:4000];
+                alert.hidden = YES;
+                [self.window removeFromSuperview];
+                alert = nil;
+                
+                m_homeRightBottomXiaoXi.hidden = YES;
+                FillVINCodeViewController *vc = [[FillVINCodeViewController alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.touStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(userInfo, @"serial_number")];
+                UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
+                [navigationController pushViewController:vc animated:YES];
+            }else{
+                NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+                [defaultCenter postNotificationName:kJieShouXiaoXiDangQianAIT object:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(userInfo, @"serial_number")] userInfo:nil];
+            }
+        }
+        
+    }
+    
+    if ([KISDictionaryHaveKey(userInfo, @"is_ait") boolValue] == YES) {
+        
+        NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+        [mDict setObject:KISDictionaryHaveKey(userInfo, @"ordercode") forKey:@"ordercode"];
+        kWeakSelf(weakSelf)
+        [NetWorkManager requestWithParameters:mDict withUrl:@"order/order/order_report" viewController:nil withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            
+            if ([KISDictionaryHaveKey(responseObject, @"code")integerValue]==200) {
+                AITHTMLViewController *vc = [[AITHTMLViewController alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                NSArray* dataDic = kParseData(responseObject);
+                if (![dataDic isKindOfClass:[NSArray class]]) {
+                    return;
+                }
+                vc.chuanZhiArray = dataDic;
+                UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
+                [navigationController pushViewController:vc animated:YES];
+            }
+            
+        } failure:^(id error) {
+            
+        }];
+        
+    }
+    
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {

@@ -1815,13 +1815,6 @@
 			path = "PersonalData（个人资料）";
 			sourceTree = "<group>";
 		};
-		C602EF381F8E302C008359C8 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		C602EF3D1F8F5670008359C8 /* Word文案 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,7 +1947,6 @@
 				C60549481FEB99370020EF9B /* wtproject.lsc */,
 				C60DB9E81FB15152002B0CC4 /* AIT产品 */,
 				C602EF3D1F8F5670008359C8 /* Word文案 */,
-				C602EF381F8E302C008359C8 /* images */,
 				C6F6C6931F596CE500ADFED4 /* UMMobClick.framework */,
 				C6FAF9E41F554AAC00FE1935 /* LogIn(登陆) */,
 				C625CFF61F53E06200CC3E73 /* LineUpTheList(排队列表) */,
@@ -2034,7 +2026,6 @@
 				C625CCA31F53DA5B00CC3E73 /* Category(类别) */,
 				C625CCA41F53DA5B00CC3E73 /* Class(类) */,
 				C625CCA51F53DA5B00CC3E73 /* NetWork(联网) */,
-				C625CCA61F53DA5B00CC3E73 /* URLRouterManager */,
 				C625CCA71F53DA5B00CC3E73 /* View(视图) */,
 				C625CCA81F53DA5B00CC3E73 /* ViewController(基类) */,
 				C6F190251F568BBA00D95244 /* NSString+MD5.h */,
@@ -2083,13 +2074,6 @@
 				C6FAF9DF1F553E9800FE1935 /* NetWorkManagerGet.m */,
 			);
 			path = "NetWork(联网)";
-			sourceTree = "<group>";
-		};
-		C625CCA61F53DA5B00CC3E73 /* URLRouterManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = URLRouterManager;
 			sourceTree = "<group>";
 		};
 		C625CCA71F53DA5B00CC3E73 /* View(视图) */ = {
@@ -4054,7 +4038,7 @@
 				TargetAttributes = {
 					C625CC611F53D29600CC3E73 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 6VJABKFRS2;
+						DevelopmentTeam = 6963264XN3;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -4833,7 +4817,7 @@
 				CODE_SIGN_ENTITLEMENTS = cheDianZhang/cheDianZhang.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VJABKFRS2;
+				DEVELOPMENT_TEAM = 6963264XN3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4857,7 +4841,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyu365.dajiang;
+				PRODUCT_BUNDLE_IDENTIFIER = cheZuWang.cheDianZhang.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4873,7 +4857,7 @@
 				CODE_SIGN_ENTITLEMENTS = cheDianZhang/cheDianZhang.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VJABKFRS2;
+				DEVELOPMENT_TEAM = 6963264XN3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4897,7 +4881,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyu365.dajiang;
+				PRODUCT_BUNDLE_IDENTIFIER = cheZuWang.cheDianZhang.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

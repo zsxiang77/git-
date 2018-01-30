@@ -26,6 +26,15 @@
     self.zongDataArray = [[NSMutableArray alloc]init];
     self.xuanZhongArray = [[NSMutableArray alloc]init];
     
+    if (self.chuanName) {
+        if (self.chuanName.length>0) {
+            ConstructionStaffModel *model = [[ConstructionStaffModel alloc]init];
+            model.shiFouXuanZhong = YES;
+            model.real_name = self.chuanName;
+            [self.xuanZhongArray addObject:model];
+        }
+    }
+    
     UILabel *la = [[UILabel alloc]init];
     la.textColor = [UIColor grayColor];
     la.text = @"选定人员";
@@ -77,16 +86,16 @@
     }
     
     NSString *operation = @"";
-    NSString *name = @"";
+//    NSString *name = @"";
     for (int i = 0; i<self.xuanZhongArray.count; i++) {
         ConstructionStaffModel *model = self.xuanZhongArray[i];
         if (operation.length>0) {
             operation = [NSString stringWithFormat:@"%@,%@",operation,model.staff_id];
-            name = [NSString stringWithFormat:@"%@|%@",name,model.real_name];
+//            name = [NSString stringWithFormat:@"%@|%@",name,model.real_name];
         }else
         {
             operation = model.staff_id;
-            name = model.real_name;
+//            name = model.real_name;
         }
     }
     
@@ -147,7 +156,19 @@
             for (int i = 0; i<works.count; i++) {
                 ConstructionPersonnelErModel *model = [[ConstructionPersonnelErModel alloc]init];
                 model.zheHe = YES;
-                [model setQingQiuData:works[i]];
+                
+                if (weakSelf.chuanName) {
+                    if (weakSelf.chuanName.length>0) {
+                        [model setQingQiuData:works[i] withXuanZong:weakSelf.chuanName];
+                    }else{
+                        [model setQingQiuData:works[i] withXuanZong:@""];
+                    }
+                }else{
+                    [model setQingQiuData:works[i] withXuanZong:@""];
+                }
+                
+                
+                
                 [weakSelf.zongDataArray addObject:model];
             }
             [weakSelf.main_tableView reloadData];
@@ -211,7 +232,7 @@
     {
         ConstructionPersonnelErModel *model = self.zongDataArray[indexPath.section - 1];
         NSArray *array = model.staff;
-        return (array.count/4+1)*(kWindowW/4);
+        return (array.count/4+1)*(kWindowW/4+20);
     }
 }
 

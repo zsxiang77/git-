@@ -52,6 +52,17 @@
 		C613ABAF1F5D4CB5001ABFDE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0BD1F5532B300CC3E73 /* Security.framework */; };
 		C613ABB01F5D4CDB001ABFDE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0D51F55339F00CC3E73 /* UserNotifications.framework */; };
 		C613ABB11F5D4CE7001ABFDE /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0F31F5534DA00CC3E73 /* libresolv.tbd */; };
+		C617431C1FF3801F00FB7AD8 /* FillVINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C617431B1FF3801F00FB7AD8 /* FillVINCodeViewController.m */; };
+		C61743261FF38C3600FB7AD8 /* UITextField+GTExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C617431E1FF38C3400FB7AD8 /* UITextField+GTExtend.m */; };
+		C61743271FF38C3600FB7AD8 /* UIFont+MBExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743201FF38C3400FB7AD8 /* UIFont+MBExtend.m */; };
+		C61743281FF38C3600FB7AD8 /* UIView+MBLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743221FF38C3500FB7AD8 /* UIView+MBLayout.m */; };
+		C61743291FF38C3600FB7AD8 /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743251FF38C3600FB7AD8 /* UIColor+Extend.m */; };
+		C617432C1FF38C4000FB7AD8 /* GTVerifyCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C617432B1FF38C4000FB7AD8 /* GTVerifyCodeView.m */; };
+		C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C617432E1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m */; };
+		C61743321FF3A33000FB7AD8 /* VINinPutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743311FF3A33000FB7AD8 /* VINinPutView.m */; };
+		C61743351FF49AA200FB7AD8 /* FillVINCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743341FF49AA200FB7AD8 /* FillVINCodeCell.m */; };
+		C61743391FF4F4CA00FB7AD8 /* VINNewAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743381FF4F4CA00FB7AD8 /* VINNewAlertView.m */; };
+		C617433C1FF65D0900FB7AD8 /* VINquedingVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = C617433B1FF65D0900FB7AD8 /* VINquedingVIew.m */; };
 		C625CC671F53D29600CC3E73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC661F53D29600CC3E73 /* main.m */; };
 		C625CC6A1F53D29600CC3E73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC691F53D29600CC3E73 /* AppDelegate.m */; };
 		C625CC6D1F53D29600CC3E73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC6C1F53D29600CC3E73 /* ViewController.m */; };
@@ -670,6 +681,28 @@
 		C613ABA41F5D4C3F001ABFDE /* jcore-ios-1.1.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.5.a"; sourceTree = "<group>"; };
 		C613ABA51F5D4C3F001ABFDE /* jpush-ios-3.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.6.a"; sourceTree = "<group>"; };
 		C613ABA61F5D4C3F001ABFDE /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		C617431A1FF3801F00FB7AD8 /* FillVINCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FillVINCodeViewController.h; sourceTree = "<group>"; };
+		C617431B1FF3801F00FB7AD8 /* FillVINCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FillVINCodeViewController.m; sourceTree = "<group>"; };
+		C617431E1FF38C3400FB7AD8 /* UITextField+GTExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+GTExtend.m"; sourceTree = "<group>"; };
+		C617431F1FF38C3400FB7AD8 /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
+		C61743201FF38C3400FB7AD8 /* UIFont+MBExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+MBExtend.m"; sourceTree = "<group>"; };
+		C61743211FF38C3500FB7AD8 /* UIFont+MBExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+MBExtend.h"; sourceTree = "<group>"; };
+		C61743221FF38C3500FB7AD8 /* UIView+MBLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBLayout.m"; sourceTree = "<group>"; };
+		C61743231FF38C3500FB7AD8 /* UIView+MBLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MBLayout.h"; sourceTree = "<group>"; };
+		C61743241FF38C3500FB7AD8 /* UITextField+GTExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+GTExtend.h"; sourceTree = "<group>"; };
+		C61743251FF38C3600FB7AD8 /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
+		C617432A1FF38C3F00FB7AD8 /* GTVerifyCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTVerifyCodeView.h; sourceTree = "<group>"; };
+		C617432B1FF38C4000FB7AD8 /* GTVerifyCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTVerifyCodeView.m; sourceTree = "<group>"; };
+		C617432D1FF38EC000FB7AD8 /* FillVINCodeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FillVINCodeHeaderView.h; sourceTree = "<group>"; };
+		C617432E1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FillVINCodeHeaderView.m; sourceTree = "<group>"; };
+		C61743301FF3A33000FB7AD8 /* VINinPutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VINinPutView.h; sourceTree = "<group>"; };
+		C61743311FF3A33000FB7AD8 /* VINinPutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VINinPutView.m; sourceTree = "<group>"; };
+		C61743331FF49AA200FB7AD8 /* FillVINCodeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FillVINCodeCell.h; sourceTree = "<group>"; };
+		C61743341FF49AA200FB7AD8 /* FillVINCodeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FillVINCodeCell.m; sourceTree = "<group>"; };
+		C61743371FF4F4CA00FB7AD8 /* VINNewAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VINNewAlertView.h; sourceTree = "<group>"; };
+		C61743381FF4F4CA00FB7AD8 /* VINNewAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VINNewAlertView.m; sourceTree = "<group>"; };
+		C617433A1FF65D0900FB7AD8 /* VINquedingVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VINquedingVIew.h; sourceTree = "<group>"; };
+		C617433B1FF65D0900FB7AD8 /* VINquedingVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VINquedingVIew.m; sourceTree = "<group>"; };
 		C625CC621F53D29600CC3E73 /* cheDianZhang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cheDianZhang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C625CC661F53D29600CC3E73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C625CC681F53D29600CC3E73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1866,6 +1899,7 @@
 		C60DB9E81FB15152002B0CC4 /* AIT产品 */ = {
 			isa = PBXGroup;
 			children = (
+				C617431D1FF38C2700FB7AD8 /* View */,
 				C60DB9F71FB2B747002B0CC4 /* Cell */,
 				C60DB9EC1FB15CE3002B0CC4 /* Buy（购买） */,
 				C60DB9E91FB1522B002B0CC4 /* SettingAITSerialNumberVC.h */,
@@ -1878,6 +1912,8 @@
 				C60DBA121FB400AC002B0CC4 /* AITProductInformationVC.m */,
 				C60DBA141FB4287B002B0CC4 /* AITHTMLViewController.h */,
 				C60DBA151FB4287B002B0CC4 /* AITHTMLViewController.m */,
+				C617431A1FF3801F00FB7AD8 /* FillVINCodeViewController.h */,
+				C617431B1FF3801F00FB7AD8 /* FillVINCodeViewController.m */,
 			);
 			path = "AIT产品";
 			sourceTree = "<group>";
@@ -1909,6 +1945,8 @@
 				C60DB9FE1FB2F03E002B0CC4 /* SWLongPressGestureRecognizer.m */,
 				C60DB9FF1FB2F03E002B0CC4 /* SWTableViewCell.h */,
 				C60DBA041FB2F03F002B0CC4 /* SWTableViewCell.m */,
+				C61743331FF49AA200FB7AD8 /* FillVINCodeCell.h */,
+				C61743341FF49AA200FB7AD8 /* FillVINCodeCell.m */,
 				C60DBA001FB2F03E002B0CC4 /* SWUtilityButtonTapGestureRecognizer.h */,
 				C60DBA051FB2F03F002B0CC4 /* SWUtilityButtonTapGestureRecognizer.m */,
 				C60DBA021FB2F03E002B0CC4 /* SWUtilityButtonView.h */,
@@ -1948,6 +1986,38 @@
 			path = Jpush;
 			sourceTree = "<group>";
 		};
+		C617431D1FF38C2700FB7AD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C61743211FF38C3500FB7AD8 /* UIFont+MBExtend.h */,
+				C61743201FF38C3400FB7AD8 /* UIFont+MBExtend.m */,
+				C61743231FF38C3500FB7AD8 /* UIView+MBLayout.h */,
+				C61743221FF38C3500FB7AD8 /* UIView+MBLayout.m */,
+				C617431F1FF38C3400FB7AD8 /* UIColor+Extend.h */,
+				C61743251FF38C3600FB7AD8 /* UIColor+Extend.m */,
+				C61743241FF38C3500FB7AD8 /* UITextField+GTExtend.h */,
+				C617431E1FF38C3400FB7AD8 /* UITextField+GTExtend.m */,
+				C617432A1FF38C3F00FB7AD8 /* GTVerifyCodeView.h */,
+				C617432B1FF38C4000FB7AD8 /* GTVerifyCodeView.m */,
+				C617432D1FF38EC000FB7AD8 /* FillVINCodeHeaderView.h */,
+				C617432E1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m */,
+				C61743301FF3A33000FB7AD8 /* VINinPutView.h */,
+				C61743311FF3A33000FB7AD8 /* VINinPutView.m */,
+				C617433A1FF65D0900FB7AD8 /* VINquedingVIew.h */,
+				C617433B1FF65D0900FB7AD8 /* VINquedingVIew.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C61743361FF4F49F00FB7AD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C61743371FF4F4CA00FB7AD8 /* VINNewAlertView.h */,
+				C61743381FF4F4CA00FB7AD8 /* VINNewAlertView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C625CC591F53D29600CC3E73 = {
 			isa = PBXGroup;
 			children = (
@@ -1984,6 +2054,7 @@
 		C625CC641F53D29600CC3E73 /* cheDianZhang */ = {
 			isa = PBXGroup;
 			children = (
+				C61743361FF4F49F00FB7AD8 /* View */,
 				C60549421FEA272A0020EF9B /* VersionUpdate（版本更新） */,
 				C68A90311F8B77C90001BDE0 /* BenDiTuiSong(本地推送) */,
 				C6D2C6E61F7CEA7700752430 /* cheDianZhang.entitlements */,
@@ -4054,7 +4125,7 @@
 				TargetAttributes = {
 					C625CC611F53D29600CC3E73 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 6VJABKFRS2;
+						DevelopmentTeam = 6963264XN3;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -4182,12 +4253,14 @@
 				C625CFF11F53DE4E00CC3E73 /* BaseViewController.m in Sources */,
 				C625CFCF1F53DE1900CC3E73 /* MJRefreshNormalHeader.m in Sources */,
 				C6FCD3D11F627FE700F258B4 /* CarInformeTionCell.m in Sources */,
+				C61743271FF38C3600FB7AD8 /* UIFont+MBExtend.m in Sources */,
 				C6F41CF71F57AE3F00E6B5E3 /* rijndael.c in Sources */,
 				C6FB3EF41F691DFA00AB3D1C /* FillInforMationErModel.m in Sources */,
 				C68E91841FA1D9C200975D68 /* ZXMultiDetector.m in Sources */,
 				C60DBA0B1FB2F03F002B0CC4 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,
 				C68E91891FA1D9C200975D68 /* ZXMultiFormatReader.m in Sources */,
+				C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */,
 				C625CFE51F53DE1900CC3E73 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C6D2C6EC1F7E28EF00752430 /* SalesStaffViewController.m in Sources */,
 				C6F360151F6654A000F2A870 /* FillInformationViewController.m in Sources */,
@@ -4226,6 +4299,7 @@
 				C625CFB81F53DE1900CC3E73 /* iCarousel.m in Sources */,
 				C6B5D27B1F5FB11300C968F5 /* PlateIDResultViewController.m in Sources */,
 				C68E90CE1FA1D9C200975D68 /* ZXResultParser.m in Sources */,
+				C61743321FF3A33000FB7AD8 /* VINinPutView.m in Sources */,
 				C68E917B1FA1D9C200975D68 /* ZXQRCodeDetector.m in Sources */,
 				C68E917A1FA1D9C200975D68 /* ZXQRCodeAlignmentPatternFinder.m in Sources */,
 				C6F84C5A1F74C13B00D90C32 /* ProjectDetailsCell.m in Sources */,
@@ -4255,6 +4329,7 @@
 				C6BA12B51FBD4765005081A3 /* UIViewController+DCURLRouter.m in Sources */,
 				C6F26C771F6FC48D0026031D /* XiMeiNewOrdersErVC.m in Sources */,
 				C692D0FC1F99B0F500FECF74 /* OrderMessageViewController.m in Sources */,
+				C617431C1FF3801F00FB7AD8 /* FillVINCodeViewController.m in Sources */,
 				C68E90D81FA1D9C200975D68 /* ZXURLTOResultParser.m in Sources */,
 				C68E915D1FA1D9C200975D68 /* ZXPDF417CodewordDecoder.m in Sources */,
 				C68E90B91FA1D9C200975D68 /* ZXAztecReader.m in Sources */,
@@ -4349,6 +4424,7 @@
 				C68E916A1FA1D9C200975D68 /* ZXPDF417HighLevelEncoder.m in Sources */,
 				C60DB9EB1FB1522B002B0CC4 /* SettingAITSerialNumberVC.m in Sources */,
 				C6B5D26D1F5FAD9C00C968F5 /* WorkOrderTypeVC.m in Sources */,
+				C61743391FF4F4CA00FB7AD8 /* VINNewAlertView.m in Sources */,
 				C6B5D2931F60051800C968F5 /* AmountSettingView.m in Sources */,
 				C68E90ED1FA1D9C200975D68 /* ZXByteArray.m in Sources */,
 				C625CFBC1F53DE1900CC3E73 /* MJPropertyKey.m in Sources */,
@@ -4362,6 +4438,7 @@
 				C68E91561FA1D9C200975D68 /* ZXModulusGF.m in Sources */,
 				C68A90251F7F93610001BDE0 /* HaoCaiInFormetionCell.m in Sources */,
 				C68E90E91FA1D9C200975D68 /* ZXBitArray.m in Sources */,
+				C61743281FF38C3600FB7AD8 /* UIView+MBLayout.m in Sources */,
 				C68E90DC1FA1D9C200975D68 /* ZXVINResultParser.m in Sources */,
 				C625CFE01F53DE1900CC3E73 /* SDWebImagePrefetcher.m in Sources */,
 				C68E916D1FA1D9C200975D68 /* ZXPDF417ResultMetadata.m in Sources */,
@@ -4404,6 +4481,7 @@
 				C6F26C7E1F6FCC000026031D /* XiMeiNewOrdersErCell1.m in Sources */,
 				C6F3600C1F6646DF00F2A870 /* IDCardOverView.m in Sources */,
 				C68E91681FA1D9C200975D68 /* ZXPDF417Dimensions.m in Sources */,
+				C61743261FF38C3600FB7AD8 /* UITextField+GTExtend.m in Sources */,
 				C6F26C841F6FCC1D0026031D /* XiMeiNewOrdersErCell3.m in Sources */,
 				C625CC6A1F53D29600CC3E73 /* AppDelegate.m in Sources */,
 				C6D2C6E21F7CA37900752430 /* XiMeiDetailHeaderView.m in Sources */,
@@ -4471,6 +4549,7 @@
 				C64C99551FDFF2F7007E3E71 /* WeiXiuZhanShiView.m in Sources */,
 				C6F462091F70F7450027D51E /* NewMaterialViewController+Net.m in Sources */,
 				C613AB9E1F5D364D001ABFDE /* OrderDetailViewController+Net.m in Sources */,
+				C61743291FF38C3600FB7AD8 /* UIColor+Extend.m in Sources */,
 				C68E90D91FA1D9C200975D68 /* ZXVCardResultParser.m in Sources */,
 				C68E90B01FA1D9C200975D68 /* ZXAztecDetector.m in Sources */,
 				C68E912A1FA1D9C200975D68 /* ZXRSSExpandedBlockParsedResult.m in Sources */,
@@ -4490,6 +4569,7 @@
 				C625CFF21F53DE4E00CC3E73 /* WKWebViewViewController.m in Sources */,
 				C625CC671F53D29600CC3E73 /* main.m in Sources */,
 				C68E90FE1FA1D9C200975D68 /* ZXErrors.m in Sources */,
+				C61743351FF49AA200FB7AD8 /* FillVINCodeCell.m in Sources */,
 				C60DBA101FB3F30F002B0CC4 /* RCLabel.m in Sources */,
 				C68E91861FA1D9C200975D68 /* ZXQRCodeMultiReader.m in Sources */,
 				C68A90431F8B77CA0001BDE0 /* UIImage+ColorAtPoint.m in Sources */,
@@ -4616,6 +4696,7 @@
 				C625CFD41F53DE1900CC3E73 /* UIScrollView+MJRefresh.m in Sources */,
 				C68E90C21FA1D9C200975D68 /* ZXEmailAddressParsedResult.m in Sources */,
 				C625CFC01F53DE1900CC3E73 /* NSObject+MJKeyValue.m in Sources */,
+				C617433C1FF65D0900FB7AD8 /* VINquedingVIew.m in Sources */,
 				C6F26C811F6FCC0F0026031D /* XiMeiNewOrdersErCell2.m in Sources */,
 				C64C99511FDFE7BB007E3E71 /* ZhanShiDetailViewController.m in Sources */,
 				C6B5D29E1F60073300C968F5 /* TheNewWorkOrderVC+Net.m in Sources */,
@@ -4625,6 +4706,7 @@
 				C6AC05A41F7F53850040B32B /* PingHelper.m in Sources */,
 				C6FB3F0B1F6A56C500AB3D1C /* CarInspectionModel.m in Sources */,
 				C6F4137B1F6151CE00B9F4C0 /* ModelCarJiBenCell.m in Sources */,
+				C617432C1FF38C4000FB7AD8 /* GTVerifyCodeView.m in Sources */,
 				C68E91881FA1D9C200975D68 /* ZXQRCodeWriter.m in Sources */,
 				C6FB3F121F6A7B6F00AB3D1C /* AccessoryEquipmentModel.m in Sources */,
 				C68E90C11FA1D9C200975D68 /* ZXCalendarParsedResult.m in Sources */,
@@ -4833,7 +4915,7 @@
 				CODE_SIGN_ENTITLEMENTS = cheDianZhang/cheDianZhang.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VJABKFRS2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4857,7 +4939,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyu365.dajiang;
+				PRODUCT_BUNDLE_IDENTIFIER = cheZuWang.cheDianZhang.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4873,7 +4955,7 @@
 				CODE_SIGN_ENTITLEMENTS = cheDianZhang/cheDianZhang.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VJABKFRS2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4897,7 +4979,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyu365.dajiang;
+				PRODUCT_BUNDLE_IDENTIFIER = cheZuWang.cheDianZhang.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -151,7 +151,7 @@
                 ConstructionPersonnelErModel *model = [[ConstructionPersonnelErModel alloc]init];
                 
                 model.zheHe = YES;
-                [model setQingQiuData:works[i]];
+                [model setQingQiuData:works[i] withXuanZong:@""];
                 [weakSelf.zongDataArray addObject:model];
             }
             [weakSelf.main_tableView reloadData];
@@ -253,12 +253,13 @@
     [xiangXiaZhanShibt addTarget:self action:@selector(xiangXiaZhanShibtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [headerV addSubview:xiangXiaZhanShibt];
     
-    UIButton *quanXuanBt = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-100, 0, 60, 38)];
+    quanXuanBt = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-100, 0, 60, 38)];
     [quanXuanBt setTitle:@"全选" forState:(UIControlStateNormal)];
     quanXuanBt.tag = 2000 + section;
     [quanXuanBt setTitleColor:kZhuTiColor forState:(UIControlStateNormal)];
     [quanXuanBt addTarget:self action:@selector(quanXuanBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [headerV addSubview:quanXuanBt];
+    
     
     if (section == 0) {
         zuoLabel.text = @"已派人员";
@@ -274,7 +275,17 @@
         biaoJi.hidden = NO;
         xiangXiaZhanShibt.hidden = NO;
         if (model.zheHe == YES) {
-            quanXuanBt.hidden = NO;
+            quanXuanBt.hidden = YES;
+            if (self.zongDataArray.count>0) {
+                NSInteger zongZhu = 0;
+                for (int i = 0; i<self.zongDataArray.count; i++) {
+                    ConstructionPersonnelErModel *model = self.zongDataArray[i];
+                    zongZhu += model.staff.count;
+                }
+                if (zongZhu<4) {
+                    quanXuanBt.hidden = NO;
+                }
+            }
         }else
         {
             quanXuanBt.hidden = YES;

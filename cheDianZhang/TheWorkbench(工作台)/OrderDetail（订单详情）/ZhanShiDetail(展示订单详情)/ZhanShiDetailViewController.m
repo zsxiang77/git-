@@ -33,6 +33,15 @@
     [self setrequest_methodwithOrdercodevarchar:self.chuanZhiModel];
     [self postpeiJianMingXiWithModel:self.chuanZhiModel];
     [self postrequest_methodMingXiWithModel :self.chuanZhiModel];
+    
+    //获取自定义消息
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
+}
+-(void)viewWillAppear:(BOOL)animate
+{
+    [super viewWillAppear:animate];
+    
 }
 
 -(WeiXiuZhanShiModel *)zhuModel
@@ -176,8 +185,10 @@
             jiaGe += [model.reality_fee floatValue];
         }
     }
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%.2f",jiaGe]];
-    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, [NSString stringWithFormat:@"%.2f",jiaGe].length)];
+    
+    NSString *qudianStr = [CommonRecordStatus getAvaildNumberWithDoubleStr:[NSString stringWithFormat:@"%.2f",jiaGe]];
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%@",qudianStr]];
+    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, qudianStr.length)];
     return att;
 }
 -(NSMutableAttributedString *)jisuanPeiJianZongE{
@@ -188,8 +199,9 @@
             jiaGe += [model.parts_total floatValue];
         }
     }
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%.2f",jiaGe]];
-    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, [NSString stringWithFormat:@"%.2f",jiaGe].length)];
+    NSString *qudianStr = [CommonRecordStatus getAvaildNumberWithDoubleStr:[NSString stringWithFormat:@"%.2f",jiaGe]];
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%@",qudianStr]];
+    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, qudianStr.length)];
     return att;
 }
 -(NSMutableAttributedString *)jisuanZongE{
@@ -207,8 +219,9 @@
             jiaGe += [model.reality_fee floatValue];
         }
     }
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%.2f",jiaGe]];
-    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, [NSString stringWithFormat:@"%.2f",jiaGe].length)];
+    NSString *qudianStr = [CommonRecordStatus getAvaildNumberWithDoubleStr:[NSString stringWithFormat:@"%.2f",jiaGe]];
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%@",qudianStr]];
+    [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, qudianStr.length)];
     return att;
 }
 
@@ -449,9 +462,9 @@
                     if (indexPath.row == 0) {
                         cell.zuoLabel.text = @"项目明细";
                         CGFloat jiaGe = [KISDictionaryHaveKey(self.zhuModel.service_info, @"service_fee") floatValue];
-                        
-                        NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%.2f",jiaGe]];
-                        [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, [NSString stringWithFormat:@"%.2f",jiaGe].length)];
+                        NSString *qudianStr = [CommonRecordStatus getAvaildNumberWithDoubleStr:[NSString stringWithFormat:@"%.2f",jiaGe]];
+                        NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总价：%@",qudianStr]];
+                        [att addAttribute:NSForegroundColorAttributeName value:kRGBColor(74, 74, 74) range:NSMakeRange(3, qudianStr.length)];
                         cell.youLabel.attributedText = att;
                     }
                     
@@ -1031,6 +1044,33 @@
         pingJiaZhanHe =!pingJiaZhanHe;
         [self.mainTableView reloadData];
     }
+}
+
+#pragma mark 获取自定义消息内容
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
+    NPrintLog(@"notification上不去%@",notification);
+    //    NSDictionary * userInfo2 = (NSDictionary *)notification;
+    //    userInfo2 = [notification userInfo];
+    NSDictionary * userInfo = [notification userInfo];
+    NPrintLog(@"%@",userInfo);
+    
+    NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
+    
+    if (![extras isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    
+    if ([KISDictionaryHaveKey(extras, @"is_ait") boolValue] == YES) {
+        if ([self.chuanZhiModel.ordercode isEqualToString:KISDictionaryHaveKey(extras, @"ordercode")]) {
+            UIAlertView  *artView = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(userInfo, @"content") delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
+            artView.tag = 200;
+            [artView show];
+            self.tiaoZhuanordercode = KISDictionaryHaveKey(extras, @"ordercode");
+        }
+    }
+    
 }
 
 @end
