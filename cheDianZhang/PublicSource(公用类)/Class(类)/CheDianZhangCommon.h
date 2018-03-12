@@ -14,8 +14,8 @@
 
 #define KAgentId @"iOStest" //渠道号
 
-#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
-//#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
+//#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
+#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
 //#define HOST_URL @"http://beta.icarzoo.com/api/"/**生产*/
 
 

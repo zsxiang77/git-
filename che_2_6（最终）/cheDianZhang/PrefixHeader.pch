@@ -1,0 +1,31 @@
+//
+//  PrefixHeader.pch
+//  cheDianZhang
+//
+//  Created by sykj on 2018/2/4.
+//  Copyright © 2018年 马蜂. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#define LC_isStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]) || ([_ref isEqual:@"(null)"]))
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "YYKit.h"
+#import "Masonry.h"
+#import "UIFont+Addition.h"
+#import "NSString+Additions.h"
+#import "NSDate+Additions.h"
+#import "NSObject+Parse.h"
+#import "UINavigationController+Additions.h"
+
+#import "NetWorkManager.h"
+#import "OrderInfoPushManager.h"
+#import "AppDelegate.h"
+#import "CreatOrderFlowChartManager.h"
+
+#endif
+#endif /* PrefixHeader_pch */

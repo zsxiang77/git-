@@ -416,6 +416,8 @@
 
 -(void)getrequest_method
 {
+    
+    [self showOrHideLoadView:YES];
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     
     
@@ -425,7 +427,7 @@
         
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        [weakSelf showOrHideLoadView:NO];
         NSData *filData = responseObject;
         NSDictionary* parserDict = (NSDictionary *)filData;
         NPrintLog(@"\n返回：%@",parserDict);
@@ -460,7 +462,7 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [weakSelf showOrHideLoadView:NO];
     }];
     
 }
