@@ -171,6 +171,7 @@ static BOOL isProduction = FALSE;
         m_homeRightBottomXiaoXi.hidden = YES;
     }
     [self.window bringSubviewToFront:m_homeRightBottomXiaoXi];
+
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -514,7 +515,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     IQKeyboardManager.sharedManager.enableAutoToolbar = NO;
     IQKeyboardManager.sharedManager.shouldResignOnTouchOutside = YES;
     /// 需要禁用的控制器
-    //    [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[LMEChatBaseViewController class]];
+    [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[LonInViewController class]];
 }
 
 @end

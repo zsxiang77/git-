@@ -37,70 +37,63 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    
+
     [super viewWillDisappear:animated];
 }
 #pragma 键盘的通知
 - (void) keyboardWillShow:(NSNotification*)noti
 {
     CGRect keyboardFrameBeginRect = [[[noti userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
+
     kWeakSelf(weakSelf)
     [UIView animateWithDuration:0.3 animations:^{
         if (CGRectGetHeight(keyboardFrameBeginRect)>0) {
-            weakSelf.mainview.frame = CGRectMake(0, kNavBarHeight-CGRectGetHeight(keyboardFrameBeginRect)+100, kWindowW, kWindowH-kNavBarHeight);
+            weakSelf.mainview.frame = CGRectMake(0, -keyboardFrameBeginRect.size.height/2.0, kWindowW, kWindowH);
         }else
         {
-            weakSelf.mainview.frame = CGRectMake(0, kNavBarHeight-150, kWindowW, kWindowH-kNavBarHeight);
+            weakSelf.mainview.frame = CGRectMake(0, -150, kWindowW, kWindowH);
         }
-        
-        
+
+
         [weakSelf setNavBarToBring];
     }];
 }
 
 - (void) keyboardWillHidden:(NSNotification*)noti
 {
-    
+
     kWeakSelf(weakSelf)
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.mainview.frame = CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight);
+        weakSelf.mainview.frame = CGRectMake(0, 0, kWindowW, kWindowH);
     }];
-    
+
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTopViewWithTitle:@"登录" withBackButton:NO];
-    
-    self.mainview = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight)];
+    m_mainTopTitle = @"登陆";
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.mainview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
     [self.view addSubview:self.mainview];
     
-    UIImageView *titilimagView = [[UIImageView alloc]initWithImage:DJImageNamed(@"Login_01-logo")];
-    [self.mainview addSubview:titilimagView];
-    [titilimagView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(65);
-        make.centerX.mas_equalTo(self.view);
-        make.width.height.mas_equalTo(65);
-    }];
+
+    UIImageView *touImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowW*1314/2259)];
+    touImageView.image = DJImageNamed(@"longIn_16 copy 10");
+    [self.mainview addSubview:touImageView];
     
-    UILabel *titielLabel = [[UILabel alloc]init];
-    titielLabel.text = @"让门店经营更简单";
-    titielLabel.font = [UIFont systemFontOfSize:20];
-    [self.mainview addSubview:titielLabel];
-    [titielLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.top.mas_equalTo(titilimagView.mas_bottom).mas_equalTo(20);
-    }];
+
+
     
-    UIImageView *userNameim = [[UIImageView alloc]initWithImage:DJImageNamed(@"Login_01-user")];
+    UIImageView *userNameim = [[UIImageView alloc]initWithImage:DJImageNamed(@"longIn_账号管理(1)")];
     [self.mainview addSubview:userNameim];
     [userNameim mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(30);
-        make.top.mas_equalTo(titielLabel.mas_bottom).mas_equalTo(50);
-        make.width.height.mas_equalTo(20);
+        make.left.mas_equalTo(12);
+        make.top.mas_equalTo(touImageView.mas_bottom).mas_equalTo(45);
+        make.width.height.mas_equalTo(22);
     }];
     
     
@@ -122,18 +115,18 @@
     [self.mainview addSubview:line1];
     line1.backgroundColor = kLineBgColor;
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-30);
+        make.right.mas_equalTo(-10);
         make.left.mas_equalTo(userNameim);
         make.top.mas_equalTo(userNameTextField.mas_bottom).mas_equalTo(10);
         make.height.mas_equalTo(1);
     }];
     
-    UIImageView *passwordim = [[UIImageView alloc]initWithImage:DJImageNamed(@"Login_01-lock")];
+    UIImageView *passwordim = [[UIImageView alloc]initWithImage:DJImageNamed(@"longIn_密码")];
     [self.mainview addSubview:passwordim];
     [passwordim mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(30);
+        make.left.mas_equalTo(12);
         make.top.mas_equalTo(line1.mas_bottom).mas_equalTo(15);
-        make.width.height.mas_equalTo(20);
+        make.width.height.mas_equalTo(25);
     }];
     
     
@@ -147,17 +140,30 @@
     [self.mainview addSubview:passWordTextField];
     [passWordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(passwordim);
-        make.width.mas_equalTo(kWindowW - 120);
+        make.width.mas_equalTo(kWindowW - 100);
         make.height.mas_equalTo(30);
         make.left.mas_equalTo(passwordim.mas_right).mas_equalTo(20);
         
+    }];
+    
+    UIButton *yanJingBt = [[UIButton alloc]init];
+    yanJingBt.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    yanJingBt.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    [yanJingBt setImage:DJImageNamed(@"longIn_23424") forState:(UIControlStateNormal)];
+    [yanJingBt setImage:DJImageNamed(@"longIn_453454") forState:(UIControlStateSelected)];
+    [yanJingBt addTarget:self action:@selector(yanJingBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.mainview addSubview:yanJingBt];
+    [yanJingBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(passwordim);
+        make.right.mas_equalTo(-10);
+        make.width.height.mas_equalTo(30);
     }];
     
     UILabel *line2 = [[UILabel alloc]init];
     [self.mainview addSubview:line2];
     line2.backgroundColor = kLineBgColor;
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-30);
+        make.right.mas_equalTo(-10);
         make.left.mas_equalTo(passwordim);
         make.top.mas_equalTo(passWordTextField.mas_bottom).mas_equalTo(10);
         make.height.mas_equalTo(1);
@@ -278,6 +284,16 @@
         }
     }
     return hex;
+}
+
+-(void)yanJingBtChick:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [passWordTextField setSecureTextEntry:NO];
+    }else{
+        [passWordTextField setSecureTextEntry:YES];
+    }
 }
 
 

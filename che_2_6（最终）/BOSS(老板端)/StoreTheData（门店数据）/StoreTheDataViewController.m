@@ -33,6 +33,7 @@
         [self.view bringSubviewToFront:self.progressView];
     }
     return _progressView;
+    
 }
 
 // 计算wkWebView进度条
@@ -67,6 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
 //    config.mediaPlaybackRequiresUserAction = NO;//把手动播放设置NO ios(8.0, 9.0)
@@ -92,6 +94,7 @@
         [m_webView.scrollView.mj_header endRefreshing];
         [m_webView reload];
     }];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

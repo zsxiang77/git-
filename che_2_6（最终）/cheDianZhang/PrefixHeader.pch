@@ -11,6 +11,10 @@
 
 #ifdef __OBJC__
 #define LC_isStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]) || ([_ref isEqual:@"(null)"]))
+
+
+
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 

@@ -96,7 +96,7 @@
                 @strongify(self)
                 self.send_nation = text;
             };
-            tf.titleLb.text = @"名族：";
+            tf.titleLb.text = @"民族：";
             self.send_nation_tf = tf;
         }else if (i == 1) {
             @weakify(self)

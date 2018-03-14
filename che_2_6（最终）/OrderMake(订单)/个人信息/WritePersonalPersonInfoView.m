@@ -98,7 +98,7 @@
                 self.nation = text;
                 !self.userInfoChangeCallBack ?: self.userInfoChangeCallBack();
             };
-            tf.titleLb.text = @"名族：";
+            tf.titleLb.text = @"民族：";
             self.nation_tf = tf;
         }else if (i == 1) {
             @weakify(self)

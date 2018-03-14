@@ -68,6 +68,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];

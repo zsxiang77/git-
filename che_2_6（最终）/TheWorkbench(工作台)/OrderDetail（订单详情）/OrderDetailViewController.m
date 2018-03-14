@@ -30,6 +30,7 @@
 @interface OrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)OrderDetailErWeiView *orderDetailErWeiView;
+@property(nonatomic,assign)BOOL    shiFouGuZhangZhan;
 
 @end
 
@@ -38,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTopViewWithTitle:@"工单详情" withBackButton:YES];
+    
+    self.shiFouGuZhangZhan = YES;
+    
     self.mainDataArray = [[NSMutableArray alloc]init];
     
     UIButton *erweiBt = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-35, 24, 25, 25)];
@@ -103,6 +107,7 @@
     if (!_main_tabelView) {
         _main_tabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight) style:UITableViewStylePlain];
         _main_tabelView.delegate = self;
+        _main_tabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _main_tabelView.dataSource = self;
         _main_tabelView.mj_header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
         _main_tabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -228,8 +233,13 @@
             return 0;
         }
     }else if ([panduan isEqualToString:@"repair_describe"]) {
-        NSArray *arra = dict[@"vely"];
-        return arra.count;
+        if (self.shiFouGuZhangZhan == YES) {
+            NSArray *arra = dict[@"vely"];
+            return arra.count;
+        }else{
+            return 0;
+        }
+        
     }else
     {
         return 0;
@@ -469,12 +479,24 @@
         hejiLabel2.text = [NSString stringWithFormat:@"¥%.2f",[self jiSuanCommodsZongE]];
     }else if ([panduan isEqualToString:@"repair_describe"]) {
         zhanShiIm.image = DJImageNamed(@"ic_sa_info_parts");
+        zhanShiIm.tag = 3000;
         NSArray *arra = dict[@"vely"];
         zhanshiLabel.text = [NSString stringWithFormat:@"故障描述（%ld）",arra.count];
         jianTouIm.image = DJImageNamed(@"jiaoTou_DownUp");
         [bt setTitle:@"故障描述" forState:(UIControlStateNormal)];
         if (arra.count>0) {
             line.hidden = YES;
+        }
+        if (self.shiFouGuZhangZhan == YES) {
+            [UIView animateWithDuration:0.2 animations:^{
+                jianTouIm.transform = CGAffineTransformMakeRotation(0);
+            } completion:^(BOOL finished) {
+            }];
+        }else{
+            [UIView animateWithDuration:0.2 animations:^{
+                jianTouIm.transform = CGAffineTransformMakeRotation(M_PI);
+            } completion:^(BOOL finished) {
+            }];
         }
     }
 
@@ -489,6 +511,8 @@
 -(void)tiaoHuanXiuGaiChick:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqualToString:@"故障描述"]) {
+        self.shiFouGuZhangZhan = !self.shiFouGuZhangZhan;
+        [self.main_tabelView reloadData];
         return;
     }else if ([sender.titleLabel.text isEqualToString:@"项目"]) {
         if ([self.mainData.order_info.order_status integerValue] == 1) {

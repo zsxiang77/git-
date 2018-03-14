@@ -12,9 +12,11 @@
 #import "kehuXuQiuViewController.h"
 #import "MaintenanceHistoryVC.h"
 #import "AddXiMeiViewController.h"
+#import "GDYuYueViewController.h"
+#import "DWSegmentedControl.h"
 
-@interface CustomerInformationVC ()
-
+@interface CustomerInformationVC ()<DWSegmentedControlDelegate>
+@property(nonatomic,strong)DWSegmentedControl *segmentedControl;
 @property(nonatomic,strong)UIScrollView *maScrollView;
 
 @end
@@ -28,6 +30,18 @@
     
     self.maScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight-60)];
     [self.view addSubview:self.maScrollView];
+    
+}
+
+-(CustomerInformationYYueView *)fuCengView
+{
+    if (!_fuCengView) {
+        _fuCengView = [[CustomerInformationYYueView alloc]init];
+        _fuCengView.hidden = YES;
+        [self.view addSubview:_fuCengView];
+        [self.view bringSubviewToFront:_fuCengView];
+    }
+    return _fuCengView;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -37,6 +51,54 @@
         [[self.maScrollView.subviews lastObject] removeFromSuperview];
     }
     [self setBuJuWithmaScrollView:self.maScrollView];
+    [self postHuoQuDataget_appointment];
+}
+
+-(void)postHuoQuDataget_appointment
+{
+    
+    NSArray *order_list = KISDictionaryHaveKey(self.userInformetionDict, @"order_list");
+    if (!([order_list isKindOfClass:[NSArray class]]&&order_list.count>0)) {
+        return;
+    }
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(order_list[0], @"ordercode")] forKey:@"ordercode"];
+    
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"order/order_query/get_appointment" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        if ([dataDic isKindOfClass:[NSDictionary class]]) {
+            weakSelf.mainModel = [[CustomerInformationYYueModel alloc]init];
+            [weakSelf.mainModel setDataShuJu:dataDic];
+            
+            [self upDataShuJu];
+        }else{
+            return ;
+        }
+    } failure:^(id error) {
+        
+    }];
+}
+
+-(void)upDataShuJu
+{
+    if ([self.mainModel.status integerValue] == 8) {
+        yuYueTitleLabel.text = @"预约信息";
+        yuYueTimeLabel.text=@"预约到店时间";
+        yuYueTimeLabel2.text=self.mainModel.appointment;
+        yuYueTitleXiaoLabel.text=@"工单预约";
+        yuYueXiaoImageView.image = DJImageNamed(@"ic_repair_old");
+
+    }else{
+        yuYueTitleLabel.text = @"信息详情";
+        yuYueTimeLabel.text=@"询价时间";
+        yuYueTimeLabel2.text=self.mainModel.create_time;
+        yuYueTitleXiaoLabel.text=@"询价追踪";
+        yuYueXiaoImageView.image = DJImageNamed(@"Boss_jopHeader_xunJia");
+    }
+
+    yuYueLeiXLabel2.text=self.mainModel.order_type;
+    yuYueSYuLabel2.text=[NSString stringWithFormat:@"还剩%@天到期",self.mainModel.end_days];
 }
 
 
@@ -193,101 +255,149 @@
         make.right.bottom.top.mas_equalTo(0);
         make.width.mas_equalTo(kWindowW/2);
     }];
-    
-#warning 客户预约
-    
-//    if (order_list.count>0) {
-//        UIView *view3 = [[UIView alloc]initWithFrame:CGRectMake(0, jisuanHei, kWindowW, 260)];
-//        jisuanHei += 260;
-//        [maScrollView addSubview:view3];
-//        
-//        UIImageView *yuyueImage = [[UIImageView alloc]initWithImage:DJImageNamed(@"new_liShiYuYue")];
-//        [view3 addSubview:yuyueImage];
-//        [yuyueImage mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(10);
-//            make.top.mas_equalTo(10);
-//            make.width.height.mas_equalTo(19);
-//        }];
-//        
-//        UILabel *yuyueLabel = [[UILabel alloc]init];
-//        yuyueLabel.text = @"该客户当日预约";
-//        yuyueLabel.font = [UIFont systemFontOfSize:15];
-//        yuyueLabel.textColor = kRGBColor(51, 51, 51);
-//        [view3 addSubview:yuyueLabel];
-//        [yuyueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.mas_equalTo(yuyueImage);
-//            make.left.mas_equalTo(73/2);
-//        }];
-//        
-//        UIView *yuyueView = [[UIView alloc]init];
-//        [view3 addSubview:yuyueView];
-//        [yuyueView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerX.mas_equalTo(view3);
-//            make.top.mas_equalTo(yuyueLabel.mas_bottom).mas_equalTo(19);
-//            make.width.mas_equalTo(167);
-//            make.height.mas_equalTo(209);
-//        }];
-//        
-//        UIImageView *yuyueBackIm = [[UIImageView alloc]initWithImage:DJImageNamed(@"new_yuYueView")];
-//        [yuyueView addSubview:yuyueBackIm];
-//        [yuyueBackIm mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.mas_equalTo(0);
-//        }];
-//        
-//        UIImageView *tuBiaoImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"ic_repair_old")];
-//        [yuyueView addSubview:tuBiaoImageView];
-//        [tuBiaoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(10);
-//            make.centerX.mas_equalTo(yuyueView);
-//            make.width.height.mas_equalTo(22);
-//        }];
-//        
-//        UILabel *yuyueLabelTitle = [[UILabel alloc]init];
-//        yuyueLabelTitle.textColor = kRGBColor(51, 51, 51);
-//        yuyueLabelTitle.text = @"工单预约";
-//        yuyueLabelTitle.font = [UIFont boldSystemFontOfSize:15];
-//        [yuyueView addSubview:yuyueLabelTitle];
-//        [yuyueLabelTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(41);
-//            make.centerX.mas_equalTo(yuyueView);
-//        }];
-//        
-//        UILabel *yuYueline = [[UILabel alloc]init];
-//        yuYueline.backgroundColor = kLineBgColor;
-//        [yuyueView addSubview:yuYueline];
-//        [yuYueline mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(10);
-//            make.right.mas_equalTo(-10);
-//            make.top.mas_equalTo(75);
-//            make.height.mas_equalTo(1);
-//        }];
-//        
-//        NSDictionary *order_listDict = order_list[0];
-//        
-//        UILabel *yuyueLabelLeiBie = [[UILabel alloc]init];
-//        yuyueLabelLeiBie.textColor = kRGBColor(51, 51, 51);
-//        yuyueLabelLeiBie.font = [UIFont boldSystemFontOfSize:13];
-//        yuyueLabelLeiBie.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(order_listDict, @"service")];
-//        yuyueLabelLeiBie.numberOfLines = 0;
-//        [yuyueView addSubview:yuyueLabelLeiBie];
-//        [yuyueLabelLeiBie mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(10);
-//            make.right.mas_equalTo(-10);
-//            make.top.mas_equalTo(81);
-//        }];
-//        
-//        UILabel *yuyueLabelDate = [[UILabel alloc]init];
-//        yuyueLabelDate.textColor = kRGBColor(155, 155, 155);
-//        yuyueLabelDate.font = [UIFont boldSystemFontOfSize:12];
-//        yuyueLabelDate.text = [NSString stringWithFormat:@"预约到店时间：\n%@",KISDictionaryHaveKey(order_listDict, @"appointment")];
-//        yuyueLabelDate.numberOfLines = 2;
-//        [yuyueView addSubview:yuyueLabelDate];
-//        [yuyueLabelDate mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(10);
-//            make.right.mas_equalTo(-10);
-//            make.top.mas_equalTo(114);
-//        }];
-//    }
+    if (order_list.count>0) {
+        
+        
+        UIView *view3 = [[UIView alloc]initWithFrame:CGRectMake(0, jisuanHei, kWindowW, 260)];
+        jisuanHei += 260;
+        [maScrollView addSubview:view3];
+
+        UIImageView *yuYueImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"new_liShiYuYue")];
+        [view3 addSubview:yuYueImageView];
+        [yuYueImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(10);
+            make.top.mas_equalTo(10);
+            make.width.height.mas_equalTo(19);
+        }];
+
+        yuYueTitleLabel = [[UILabel alloc]init];
+        yuYueTitleLabel.text = @"预约信息";
+        yuYueTitleLabel.font = [UIFont boldSystemFontOfSize:15];
+        yuYueTitleLabel.textColor = kRGBColor(51, 51, 51);
+        [view3 addSubview:yuYueTitleLabel];
+        [yuYueTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(yuYueImageView);
+            make.left.mas_equalTo(73/2);
+        }];
+
+        UIView *yuyueView = [[UIView alloc]init];
+        [view3 addSubview:yuyueView];
+        yuyueView.layer.shadowColor = kRGBColor(123, 123, 123).CGColor;//shadowColor阴影颜色
+        yuyueView.layer.shadowOffset = CGSizeMake(5,-2);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+        yuyueView.layer.shadowOpacity = 0.5;
+        yuyueView.layer.shadowRadius = 2;// 阴影扩散的范围控制
+        yuyueView.layer.shadowOffset = CGSizeMake(0, 1);// 阴影的范围
+        yuyueView.backgroundColor = [UIColor whiteColor];
+        [yuyueView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(10);
+            make.right.mas_equalTo(-10);
+            make.top.mas_equalTo(yuYueImageView.mas_bottom).mas_equalTo(10);
+            make.height.mas_equalTo(88);
+        }];
+
+
+        yuYueXiaoImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"ic_repair_old")];
+        [yuyueView addSubview:yuYueXiaoImageView];
+        [yuYueXiaoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(10);
+            make.left.mas_equalTo(10);
+            make.width.height.mas_equalTo(22);
+        }];
+        
+        yuYueTitleXiaoLabel = [[UILabel alloc]init];
+        yuYueTitleXiaoLabel.textColor = kRGBColor(51, 51, 51);
+        yuYueTitleXiaoLabel.font = [UIFont boldSystemFontOfSize:15];
+        [yuyueView addSubview:yuYueTitleXiaoLabel];
+        [yuYueTitleXiaoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(yuYueXiaoImageView);
+            make.left.mas_equalTo(yuYueXiaoImageView.mas_right).mas_equalTo(5);
+        }];
+        
+      
+        yuYueTimeLabel=[[UILabel alloc]init];
+        yuYueTimeLabel.textColor=kRGBColor(74, 74, 74);
+        //yuYueTimeLabel.text=@"预约到店时间:";
+        yuYueTimeLabel.font = [UIFont systemFontOfSize:13];
+        [yuyueView addSubview:yuYueTimeLabel];
+        [yuYueTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(5);
+            make.right.mas_equalTo(-10);
+        }];
+        
+        yuYueTimeLabel2=[[UILabel alloc]init];
+        yuYueTimeLabel2.textColor=kRGBColor(51, 51, 51);
+        yuYueTimeLabel2.font = [UIFont boldSystemFontOfSize:13];
+        [yuyueView addSubview:yuYueTimeLabel2];
+        [yuYueTimeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(yuYueTimeLabel.mas_bottom).mas_equalTo(5);
+            make.right.mas_equalTo(-10);
+        }];
+        
+        
+        
+        yuYueLeiXLabel2=[[UILabel alloc]init];
+        yuYueLeiXLabel2.textColor=kRGBColor(155, 155, 155);
+        yuYueLeiXLabel2.font = [UIFont boldSystemFontOfSize:13];
+        [yuyueView addSubview:yuYueLeiXLabel2];
+        [yuYueLeiXLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(38);
+            make.bottom.mas_equalTo(-15);
+        }];
+        
+        yuYueSYuLabel2=[[UILabel alloc]init];
+        yuYueSYuLabel2.textColor=kRGBColor(74, 144, 266);
+        yuYueSYuLabel2.font = [UIFont systemFontOfSize:12];
+        [yuyueView addSubview:yuYueSYuLabel2];
+        [yuYueSYuLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-10);
+            make.centerY.mas_equalTo(yuYueLeiXLabel2);
+        }];
+        
+        yuYueQieHView = [[UIView alloc]init];
+        [view3 addSubview:yuYueQieHView];
+        [yuYueQieHView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(0);
+            make.top.mas_equalTo(yuyueView.mas_bottom);
+            make.height.mas_equalTo(100);
+            make.width.mas_equalTo(200);
+        }];
+        
+        
+        _segmentedControl = ({
+            DWSegmentedControl *sc = [[DWSegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
+            sc.backgroundColor = [UIColor clearColor];
+            sc.selectedViewColor = [UIColor colorWithHexString:@"4A90E2"];
+            sc.normalLabelColor = [UIColor colorWithHexString:@"4a4a4a"];
+            sc.delegate = self;
+            sc.titles = @[@"是",@"否"];
+            [yuYueQieHView addSubview:sc];
+            [sc mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(15);
+                make.right.mas_equalTo(-12);
+                make.size.mas_equalTo(CGSizeMake(85, 30));
+            }];
+            sc;
+        });
+
+        UILabel *yuLabel = [[UILabel alloc]init];
+        yuLabel.text = @"是否沿用预约：";
+        yuLabel.font = [UIFont systemFontOfSize:13];
+        yuLabel.textColor = kRGBColor(74, 74, 74);
+        [yuYueQieHView addSubview:yuLabel];
+        [yuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.segmentedControl);
+            make.right.mas_equalTo(self.segmentedControl.mas_left).mas_equalTo(2);
+        }];
+        
+        UIButton *yuyueViewBt = [[UIButton alloc]init];
+        [yuyueViewBt addTarget:self action:@selector(yuyueViewBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [yuyueView addSubview:yuyueViewBt];
+        [yuyueViewBt mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+        
+        
+    }
     maScrollView.contentSize = CGSizeMake(kWindowW, jisuanHei);
     
     //    ====================================
@@ -306,6 +416,19 @@
         make.bottom.mas_equalTo(-13);
         make.height.mas_equalTo(47);
     }];
+}
+-(void)yuyueViewBtChick:(UIButton *)sender
+{
+    self.fuCengView.mainModel = self.mainModel;
+    self.fuCengView.hidden =! self.fuCengView.hidden;
+    [self.view bringSubviewToFront:self.fuCengView];
+    [self.fuCengView shuaXinDaTaShuJu];
+}
+
+#pragma mark - DWSegmentedControlDelegate
+-(void)dw_segmentedControl:(DWSegmentedControl *)control didSeletRow:(NSInteger)row
+{
+    
 }
 
 -(void)xiugaiBtChick:(UIButton *)sender
@@ -340,11 +463,27 @@
     }else{
         AddXiMeiViewController *vc = [[AddXiMeiViewController alloc]init];
         vc.userInformetionDict = self.userInformetionDict;
-#warning 家数据
         vc.xiMeiZuiZhongModel = self.xiMeiZuiZhongModel;
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+//    NSArray *order_list = KISDictionaryHaveKey(self.userInformetionDict, @"order_list");
+//    if (order_list.count>0) {
+//        GDYuYueViewController *vc = [[GDYuYueViewController alloc]init];
+//        vc.userInformetionDict = self.userInformetionDict;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else
+//    {
+//        if (self.shiFouWeiXiu) {
+//            kehuXuQiuViewController *kehuXuQiu = [kehuXuQiuViewController new];
+//            [self.navigationController pushViewController:kehuXuQiu animated:YES];
+//        }else{
+//            AddXiMeiViewController *vc = [[AddXiMeiViewController alloc]init];
+//            vc.userInformetionDict = self.userInformetionDict;
+//            vc.xiMeiZuiZhongModel = self.xiMeiZuiZhongModel;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }
 }
 
 @end

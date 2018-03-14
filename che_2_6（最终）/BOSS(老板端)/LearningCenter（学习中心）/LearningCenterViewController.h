@@ -7,7 +7,6 @@
 //
 
 #import "BOSSBaseViewController.h"
-
 @interface LearningCenterViewController : BOSSBaseViewController
 
 @end

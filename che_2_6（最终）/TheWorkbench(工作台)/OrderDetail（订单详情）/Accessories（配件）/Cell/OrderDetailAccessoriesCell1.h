@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OrderDetailModel.h"
 
-@interface OrderDetailAccessoriesCell1 : UITableViewCell<UITextFieldDelegate>
+@interface OrderDetailAccessoriesCell1 : UITableViewCell
 {
     UILabel         *titleLabel;
     
@@ -17,9 +17,12 @@
     UILabel         *kuCunLabel;
     UILabel         *danWeiLabel;
     
-    UITextField     *gongShiTextField;
-    UITextField     *gongShiFeiTextField;
+    UIButton     *gongShiTextBt;
+    UIButton     *gongShiFeiTextBt;
 }
+
+@property(nonatomic,strong)void (^gongShiTextBtChickBlock)(void);
+@property(nonatomic,strong)void(^gongShiTextBtnField)(void);
 
 @property(nonatomic,strong)OrderDetailPartsModel *model;
 

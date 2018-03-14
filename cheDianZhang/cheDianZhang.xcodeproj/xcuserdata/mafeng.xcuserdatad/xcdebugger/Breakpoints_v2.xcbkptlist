@@ -29,5 +29,21 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheWorkbench(&#x5de5;&#x4f5c;&#x53f0;)/OrderDetail&#xff08;&#x8ba2;&#x5355;&#x8be6;&#x60c5;&#xff09;/ProjectDetails&#xff08;&#x9879;&#x76ee;&#x660e;&#x7ec6;&#xff09;/ProjectDetailsViewController.m"
+            timestampString = "542541028.7577699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

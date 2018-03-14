@@ -10,6 +10,7 @@
 #import "OrderDetailAccessoriesCell1.h"
 #import "OrderDetailAccessoriesCell2.h"
 #import "PartsSubsidiaryADDViewController.h"
+#import "NewJianPanShuView.h"
 
 @interface AccessoriesViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -171,6 +172,30 @@
         [cell refeleseWithModel:model];
         cell.baoCunChcickBlock = ^(void) {
             [weakSelf.main_tabelView reloadData];
+        };
+        cell.gongShiTextBtChickBlock = ^{
+            NewJianPanShuView* multipleView = [[NewJianPanShuView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH) value:model.parts_num];
+            multipleView.xiaoShuWeiShu = 1;
+            multipleView.zuiDaZhiFloat = 999.9;
+            multipleView.okClick = ^(NSString* value){
+                model.parts_num = value;
+                
+                [weakSelf.main_tabelView reloadData];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:multipleView];
+            [multipleView displayView];
+        };
+        cell.gongShiTextBtnField = ^{
+            NewJianPanShuView* multipleView = [[NewJianPanShuView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH) value:model.parts_fee];
+            multipleView.xiaoShuWeiShu = 2;
+            multipleView.zuiDaZhiFloat = 99999.99;
+            multipleView.okClick = ^(NSString* value){
+                model.parts_fee = value;
+                
+                [weakSelf.main_tabelView reloadData];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:multipleView];
+            [multipleView displayView];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

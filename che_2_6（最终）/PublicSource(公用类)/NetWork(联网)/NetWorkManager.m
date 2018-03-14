@@ -68,6 +68,8 @@
             return;
         }
         
+        NPrintLog(@"Set-Cookieqweqeq%@",KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie"));
+        
         [manager.requestSerializer setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
 //        NSData *qweasddata =  [NSJSONSerialization dataWithJSONObject:[UserInfo shareInstance].userNameDict options:NSJSONWritingPrettyPrinted error:nil];
 //        NSString *str = [[NSString alloc] initWithData:qweasddata encoding:NSUTF8StringEncoding];
@@ -129,7 +131,8 @@
             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
             NSDictionary *allHeaders = response.allHeaderFields;
             NPrintLog(@"allHeaders%@\n",allHeaders);
-            [UserInfo shareInstance].userNameDict = allHeaders;
+            NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:allHeaders];
+            [UserInfo shareInstance].userNameDict = dict;
             [UserInfo saveUserName];
             
             

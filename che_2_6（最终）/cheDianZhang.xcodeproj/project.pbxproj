@@ -274,6 +274,10 @@
 		C60ECCEB205226CA00F94EAF /* SCDDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECCEA205226CA00F94EAF /* SCDDanViewController.m */; };
 		C60ECCEE2052805E00F94EAF /* GDYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECCED2052805E00F94EAF /* GDYuYueViewController.m */; };
 		C60ECCF1205290BD00F94EAF /* GDYuYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECCF0205290BD00F94EAF /* GDYuYueCell.m */; };
+		C60ECD04205777E600F94EAF /* CustomerInformationYYueView.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD03205777E600F94EAF /* CustomerInformationYYueView.m */; };
+		C60ECD0820577D2900F94EAF /* CustomerInformationYYueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD0720577D2900F94EAF /* CustomerInformationYYueModel.m */; };
+		C60ECD0E20578C1300F94EAF /* CustomerInformationYYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */; };
+		C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */; };
 		C61005AB2042CC630045968C /* BOSSAboutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AA2042CC630045968C /* BOSSAboutCell.m */; };
 		C61005AE2043BF2E0045968C /* ViewPerfectInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AD2043BF2E0045968C /* ViewPerfectInformationCell.m */; };
 		C61005B1204530D90045968C /* XiMeiNewOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AF204530D80045968C /* XiMeiNewOrdersCell.m */; };
@@ -1408,6 +1412,14 @@
 		C60ECCED2052805E00F94EAF /* GDYuYueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDYuYueViewController.m; sourceTree = "<group>"; };
 		C60ECCEF205290BD00F94EAF /* GDYuYueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDYuYueCell.h; sourceTree = "<group>"; };
 		C60ECCF0205290BD00F94EAF /* GDYuYueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDYuYueCell.m; sourceTree = "<group>"; };
+		C60ECD02205777E600F94EAF /* CustomerInformationYYueView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueView.h; sourceTree = "<group>"; };
+		C60ECD03205777E600F94EAF /* CustomerInformationYYueView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueView.m; sourceTree = "<group>"; };
+		C60ECD0620577D2900F94EAF /* CustomerInformationYYueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueModel.h; sourceTree = "<group>"; };
+		C60ECD0720577D2900F94EAF /* CustomerInformationYYueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueModel.m; sourceTree = "<group>"; };
+		C60ECD0C20578C1300F94EAF /* CustomerInformationYYueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueCell.h; sourceTree = "<group>"; };
+		C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueCell.m; sourceTree = "<group>"; };
+		C60ECD0F2057C4BD00F94EAF /* CustomerInformationYYueCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueCell2.h; sourceTree = "<group>"; };
+		C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueCell2.m; sourceTree = "<group>"; };
 		C61005A92042CC630045968C /* BOSSAboutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSAboutCell.h; sourceTree = "<group>"; };
 		C61005AA2042CC630045968C /* BOSSAboutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BOSSAboutCell.m; sourceTree = "<group>"; };
 		C61005AC2043BF2E0045968C /* ViewPerfectInformationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewPerfectInformationCell.h; sourceTree = "<group>"; };
@@ -3704,6 +3716,24 @@
 			path = "订单";
 			sourceTree = "<group>";
 		};
+		C60ECCFE205777C000F94EAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C60ECD02205777E600F94EAF /* CustomerInformationYYueView.h */,
+				C60ECD03205777E600F94EAF /* CustomerInformationYYueView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C60ECD0520577CBD00F94EAF /* M0del */ = {
+			isa = PBXGroup;
+			children = (
+				C60ECD0620577D2900F94EAF /* CustomerInformationYYueModel.h */,
+				C60ECD0720577D2900F94EAF /* CustomerInformationYYueModel.m */,
+			);
+			path = M0del;
+			sourceTree = "<group>";
+		};
 		C61005C020453B880045968C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3784,7 +3814,6 @@
 			isa = PBXGroup;
 			children = (
 				C6134C57202D832D0099431E /* PartsSubsidiary（配件明细） */,
-				C6134C1F202AADC10099431E /* Model */,
 				C6134C15202AA6F80099431E /* Cell */,
 				C6134C12202AA6880099431E /* AccessoriesViewController.h */,
 				C6134C13202AA6880099431E /* AccessoriesViewController.m */,
@@ -3802,13 +3831,6 @@
 				C6134C1A202AA73D0099431E /* OrderDetailAccessoriesCell2.m */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		C6134C1F202AADC10099431E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C6134C2C202BF8710099431E /* 保养项目 */ = {
@@ -3839,6 +3861,10 @@
 				C60ECCE62050F8EA00F94EAF /* TianRuXXCell.m */,
 				C60ECCEF205290BD00F94EAF /* GDYuYueCell.h */,
 				C60ECCF0205290BD00F94EAF /* GDYuYueCell.m */,
+				C60ECD0C20578C1300F94EAF /* CustomerInformationYYueCell.h */,
+				C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */,
+				C60ECD0F2057C4BD00F94EAF /* CustomerInformationYYueCell2.h */,
+				C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4676,13 +4702,6 @@
 				C643F3502025E2C000A2AA57 /* PaiGongModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C643F35520261E1500A2AA57 /* SwitchRoles（角色切换） */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "SwitchRoles（角色切换）";
 			sourceTree = "<group>";
 		};
 		C643F3622026AB4500A2AA57 /* 车辆外观检查 */ = {
@@ -6048,6 +6067,8 @@
 		C6F6C6921F595D8000ADFED4 /* Workordertype（工单类型） */ = {
 			isa = PBXGroup;
 			children = (
+				C60ECD0520577CBD00F94EAF /* M0del */,
+				C60ECCFE205777C000F94EAF /* View */,
 				C60ECCE820511E8D00F94EAF /* 订单 */,
 				C6134C45202C26DA0099431E /* Cell */,
 				C6B5D26B1F5FAD9C00C968F5 /* WorkOrderTypeVC.h */,
@@ -6068,7 +6089,6 @@
 		C6FAF9E41F554AAC00FE1935 /* LogIn(登陆) */ = {
 			isa = PBXGroup;
 			children = (
-				C643F35520261E1500A2AA57 /* SwitchRoles（角色切换） */,
 				C6FAF9E51F554AC800FE1935 /* LonInViewController.h */,
 				C6FAF9E61F554AC800FE1935 /* LonInViewController.m */,
 			);
@@ -6408,6 +6428,7 @@
 				BD99E36220277F6200027D23 /* LCMessageViewModel.m in Sources */,
 				C643F3712026ACC500A2AA57 /* HPGrowingTextView.m in Sources */,
 				C625CFDA1F53DE1900CC3E73 /* SDImageCacheConfig.m in Sources */,
+				C60ECD0820577D2900F94EAF /* CustomerInformationYYueModel.m in Sources */,
 				C625CFBA1F53DE1900CC3E73 /* MJFoundation.m in Sources */,
 				C68E91581FA1D9C200975D68 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				BDD4D31D20270A1500C433D1 /* YYTextKeyboardManager.m in Sources */,
@@ -6495,6 +6516,7 @@
 				C68E91501FA1D9C200975D68 /* ZXUPCEANExtension2Support.m in Sources */,
 				C6134C48202C26F60099431E /* MaintenanceHistoryCell.m in Sources */,
 				BDD4D34D20270A1500C433D1 /* YYKeychain.m in Sources */,
+				C60ECD04205777E600F94EAF /* CustomerInformationYYueView.m in Sources */,
 				C68E90D01FA1D9C200975D68 /* ZXSMSParsedResult.m in Sources */,
 				BDD4D33420270A1500C433D1 /* UIImage+YYAdd.m in Sources */,
 				BDD4D40E20270C3B00C433D1 /* CarCheckCell.m in Sources */,
@@ -6537,6 +6559,7 @@
 				C625CFBD1F53DE1900CC3E73 /* MJPropertyType.m in Sources */,
 				C6134C4F202C5DD70099431E /* SwitchRolesCell.m in Sources */,
 				C68E917D1FA1D9C200975D68 /* ZXQRCodeFinderPatternFinder.m in Sources */,
+				C60ECD0E20578C1300F94EAF /* CustomerInformationYYueCell.m in Sources */,
 				C60940262018909600530205 /* FoundDetailCell.m in Sources */,
 				C625CFC61F53DE1900CC3E73 /* MJRefreshFooter.m in Sources */,
 				C625CFB31F53DE1900CC3E73 /* UIImageView+AFNetworking.m in Sources */,
@@ -7092,6 +7115,7 @@
 				C63CCA33202741CA00BD7815 /* ModelCarZiVC.m in Sources */,
 				C68E91121FA1D9C200975D68 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				C6AC05A11F7F53850040B32B /* ReachStateWWAN.m in Sources */,
+				C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
