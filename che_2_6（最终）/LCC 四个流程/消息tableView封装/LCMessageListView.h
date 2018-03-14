@@ -17,4 +17,6 @@
 @interface LCMessageListView : UIView
 - (void)addMessageViewModels:(NSArray <LCMessageViewModel *>*)dataArr;
 - (void)addMessageViewModel:(LCMessageViewModel *)vmodel;
+
+@property (nonatomic, strong) UIView *header;
 @end

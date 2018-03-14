@@ -8,6 +8,8 @@
 
 #import "MaintenanceProjecClasstCell.h"
 #import "MaintenanceProjectModel.h"
+#import "UIImageView+WebCache.h"
+
 @interface  MaintenanceProjecClasstCell()<UITextFieldDelegate>
 @property (nonatomic, strong) UIButton *selectBT;
 @property (nonatomic, strong) UIImageView *iconImageView;
@@ -238,7 +240,9 @@
 -(void)bingViewModel:(id)viewModel{
     MaintenanceProjectModel *model = viewModel;
     self.model = model;
-    self.iconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"xiangmu_%@",model.img_num]];
+//    [UIImage imageNamed:[NSString stringWithFormat:@"xiangmu_%@",model.img_num]];
+//
+    [self.iconImageView setImageWithURL:[NSURL URLWithString:model.img_num] placeholder:DJImageNamed(@"xiangmu_2")];
     self.selectBT.selected = model.isSelect;
     self.nameLB.text = model.name;
     self.timeLB.text = [NSString stringWithFormat:@"工时:%@",model.hour];

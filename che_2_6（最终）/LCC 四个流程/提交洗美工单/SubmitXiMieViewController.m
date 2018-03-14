@@ -203,22 +203,26 @@
     if (indexPath.section == 0) {
         
         LCXiMieChePaiCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCXiMieChePaiCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }else if (indexPath.section == 1){
         
         OrderProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderProjectCell" forIndexPath:indexPath];
         [cell bingViewModel:self.fuWuXiangMuDataArr[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 2){
         
         OrderAccessoriesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderAccessoriesCell" forIndexPath:indexPath];
         [cell bingViewModel:self.haoCaiXinXiDataArr[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 3){
         
         LCMessageListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCMessageListViewCell" forIndexPath:indexPath];
         [cell bingViewModel:self.messageDataArr[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     return [UITableViewCell new];

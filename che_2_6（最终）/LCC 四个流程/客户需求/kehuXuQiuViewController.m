@@ -29,8 +29,12 @@
     
     [super viewDidLoad];
     [self setTopViewWithTitle:@"客户需求" withBackButton:YES];
+    
+    
+    
 #warning 这里是单利 初始化 + 单利清空数据
     [[CreatOrderFlowChartManager defaultOrderFlowChartManager] resetDefault];
+
     
     self.topView = [[TopDanXuanCollectionView alloc]initWithFrame:CGRectMake(0, 64, 0, 0)];
     [self.view addSubview:_topView];
@@ -63,12 +67,54 @@
         model.title = title;
         model.imageName = title;
         model.isSelect = NO;
+        if ([self.mainModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+            if (self.mainModel.order_typeArray.count>0) {
+                for (int h = 0; h<self.mainModel.order_typeArray.count; h++) {
+                    if ([model.title isEqualToString:self.mainModel.order_typeArray[h]]) {
+                        model.isSelect = YES;
+                    }
+                }
+            }
+        }
+        if ([model.title isEqualToString:@"事故车"]) {
+            model.isSelect = NO;
+        }
         [self.topArr addObject:model];
     }
     _topView.dataArr = self.topArr.copy;
     
+    for (int i = 0; i< self.topArr.count; i++) {
+        TopDanXuanViewModel *vmodel = self.topArr[i];
+        BaseCreatOrderFlowChart *flowChart = [CreatOrderFlowChartManager defaultOrderFlowChartManager].creatOrderFlowArr[i];
+        flowChart.isSelect = vmodel.isSelect;
+        if (!flowChart.isSelect) {
+            //
+            [flowChart qingKongData];
+        }
+    }
+    
+    if ([self.mainModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+        [CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel = self.mainModel;
+        if (self.mainModel.order_typeArray.count>0) {
+            for (int h = 0; h<self.mainModel.order_typeArray.count; h++) {
+                if ([self.mainModel.order_typeArray[h] isEqualToString:@"事故车"]) {
+                    //事故车
+                    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保险",@"非保险", nil];
+                    sheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+                    [sheet showInView:self.view];
+                }
+            }
+        }
+    }
+    
     self.bottomView = [LCBottomView new];
     [self.view addSubview:_bottomView];
+    
+    
+    
+    
+    
+    
     //发送消息
     _bottomView.sendMessage = ^(id model) {
         @strongify(self);
@@ -124,6 +170,40 @@
         make.top.mas_equalTo(self.topView.mas_bottom).mas_offset(10);
         make.bottom.mas_equalTo(self.bottomView.mas_top).mas_offset(0);
     }];
+    
+    if ([self.mainModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+        NSMutableArray *neArray = [[NSMutableArray alloc]init];
+        if (self.mainModel.info.count > 0) {
+            for (int i = 0; i< self.mainModel.info.count; i++) {
+                NSDictionary *dict = self.mainModel.info[i];
+                LCMessageViewModel *model = [[LCMessageViewModel alloc]init];
+                model.timeStamp = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"time")];
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:[model.timeStamp longValue]];;
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"MM-dd HH:mm"];
+                model.time = [dateFormatter stringFromDate:date];
+                model.message = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"info")];
+                model.cell_H = [self setMessage:model.message];
+                
+                [neArray addObject:model];
+                }
+        }
+        
+        [self.messageListView addMessageViewModels:neArray];
+    }
+}
+- (CGFloat )setMessage:(NSString *)message{
+    
+    if (message.length<=0) {
+        return 40;
+    }else{
+        CGFloat maxImgv_W = kScreenWidth - 100 - 15;
+        
+        CGFloat height = 0;
+        height = [message heightForFont:[UIFont pf_PingFangSCRegularFontOfSize:15] width:maxImgv_W];
+        
+        return height + 40;
+    }
 }
 
 #pragma mark ****** 代理 ***********

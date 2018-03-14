@@ -103,12 +103,9 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     self.gas = 0;
-    UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, 40)];
-    titleLa.text = @"2.输入公里数和汽油量";
-    titleLa.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:titleLa];
 
-    UIView *shangView = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+40, kWindowW, 230)];
+
+    UIView *shangView = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, 230)];
     shangView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:shangView];
 
@@ -154,11 +151,7 @@
     [queDingBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
     [queDingBt.layer setCornerRadius:3];
     queDingBt.backgroundColor = kZhuTiColor;
-    if (self.shiFouFanHui == YES) {
-        [queDingBt setTitle:@"确定" forState:(UIControlStateNormal)];
-    }else{
-        [queDingBt setTitle:@"生成订单" forState:(UIControlStateNormal)];
-    }
+    [queDingBt setTitle:@"确定" forState:(UIControlStateNormal)];
     [queDingBt addTarget:self action:@selector(queDingBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [queDingBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
 

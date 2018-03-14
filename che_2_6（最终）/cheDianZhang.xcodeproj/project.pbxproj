@@ -3837,7 +3837,7 @@
 			isa = PBXGroup;
 			children = (
 				C6134C2D202BF8710099431E /* MaintenanceProjecPartstCell.h */,
-				C6134C31202BF8710099431E /* MaintenanceProjecClasstCell.m */,
+				C6134C33202BF8710099431E /* MaintenanceProjecPartstCell.m */,
 				C6134C30202BF8710099431E /* MaintenanceProjectPartstModel.h */,
 				C6134C34202BF8710099431E /* MaintenanceProjectPartstModel.m */,
 				C6134C35202BF8710099431E /* MaintenanceProjectViewController.h */,
@@ -3847,7 +3847,7 @@
 				C6134C37202BF8710099431E /* MaintenanceProjectModel.h */,
 				C6134C32202BF8710099431E /* MaintenanceProjectModel.m */,
 				C6134C38202BF8710099431E /* MaintenanceProjecClasstCell.h */,
-				C6134C33202BF8710099431E /* MaintenanceProjecPartstCell.m */,
+				C6134C31202BF8710099431E /* MaintenanceProjecClasstCell.m */,
 			);
 			path = "保养项目";
 			sourceTree = "<group>";

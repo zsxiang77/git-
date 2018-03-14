@@ -93,7 +93,7 @@
 
 @interface LCMessageListView() <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIView *header;
+
 @property (nonatomic, strong) UILabel *tableViewHeaderViewLB;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
@@ -105,7 +105,7 @@
 @implementation LCMessageListView
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [self setUpViews];
+        [self setUpViews1];
         self.backgroundColor = [UIColor whiteColor];
         self.dataArr = [CreatOrderFlowChartManager defaultOrderFlowChartManager].messageVModelArr;
         
@@ -115,7 +115,8 @@
     return self;
 }
 
-- (void)setUpViews{
+- (void)setUpViews1
+{
     self.tableView = ({
         UITableView *tableView  = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         [tableView registerClass:[LCMessageListViewCell class] forCellReuseIdentifier:@"LCMessageListViewCell"];
@@ -292,8 +293,12 @@
 
 - (void)addMessageViewModels:(NSArray<LCMessageViewModel *> *)dataArr{
     [self.dataArr addObjectsFromArray:dataArr];
+    if (self.dataArr.count> 0) {
+        [self hidenPromptViews];
+    }
     [self.tableView reloadData];
     self.tableViewHeaderViewLB.text = [NSString stringWithFormat:@"(%lu)",(unsigned long)self.dataArr.count];
+    
 }
 
 - (void)hidenPromptViews{

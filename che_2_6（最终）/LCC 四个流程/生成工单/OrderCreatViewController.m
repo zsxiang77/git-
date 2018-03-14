@@ -174,6 +174,20 @@
     
     //PartsModel 配件
     [self.peiJianDaraArr addObjectsFromArray:maintenance.partsListModel.partsModelArr];
+    if ([[CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+        CustomerInformationYYueModel *newModel = [CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel;
+        for (int i = 0; i<newModel.parts.count; i++) {
+            PartsModel *mdel = [[PartsModel alloc]init];
+            OrderDetailPartsModel *md = newModel.parts[i];
+            mdel.partsName = md.parts_name;
+            mdel.unitPrice = md.unit;
+            mdel.num = md.parts_num;
+            mdel.partsId = md.parts_id;
+            [self.peiJianDaraArr addObject:mdel];
+        }
+    }
+    
+    
     //LCMessageViewModel 消息
     self.messageDataArr = [CreatOrderFlowChartManager defaultOrderFlowChartManager].messageVModelArr;
     
@@ -428,6 +442,11 @@
     }else{
         [dic setValue:[UserInfo shareInstance].user_id forKey:@"user_id"];
     }
+    
+    if ([[CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+        [dic setValue:[CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel.ordercode forKey:@"ordercode"];
+    }
+    
     
 
     

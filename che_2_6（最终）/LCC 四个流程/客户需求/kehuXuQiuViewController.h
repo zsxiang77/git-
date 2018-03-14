@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "CustomerInformationYYueModel.h"
+
 @interface kehuXuQiuViewController : BaseViewController
 
+@property(nonatomic,strong)CustomerInformationYYueModel *mainModel;
 
 @end

@@ -291,27 +291,6 @@
             [weak_self.navigationController pushViewController:vc animated:YES];
             
             
-            NSLog(@"👀👀👀👀👀👀👀👀👀👀👀看这里看这里👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀 == %d",i);
-            // 这里你肯定是 跳转对吧..... 比如说这里跳转到   "配件选择列表"
-            //伪代码
-            /*
-             partSelectViewController *partSelectVC = [partSelectViewController new];
-             
-             这个是配件选择列表的 选择之后回调
-             partSelectVC.changePartst = ^(id model  这个是你回调过来一个model){
-                 //这里 吧你的 model 转化为 我这个类型的
-                    MaintenanceProjectPartstModel *partModel = [MaintenanceProjectPartstModel new];
-                    partModel.xxx = model.xxx;
-                    partModel.xxx = model.xxx;
-                    partModel.xxx = model.xxx;
-                    partModel.xxx = model.xxx;
-                    [tempArr replaceObjectAtIndex:i withObject:partModel];
-                    MaintenanceProjectModel *model =  self.dataArr[indexPath.row];
-                    model.parts = tempArr.copy;
-                    [self.tableView reloadData];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"LC_preChangeNotification" object:nil];
-             }
-             */
         };
         [cell bingViewModel:self.partsDataArr[indexPath.row]];
         return cell;
@@ -392,6 +371,24 @@
             [self.partsDataArr addObject:model.parts];
             [self.tableView reloadData];
         }
+        
+        for (int i = 0; i<self.dataArr.count; i++) {
+            MaintenanceProjectModel *modelProject1 = self.dataArr[i];
+            if ([[CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+                CustomerInformationYYueModel *modelProject2 = [CreatOrderFlowChartManager defaultOrderFlowChartManager].yueYueModel;
+                for (int h = 0; h<modelProject2.subject.count; h++) {
+                    OrderDetailSubjectsModel *md = modelProject2.subject[h];
+                    if ([modelProject1.subject_id isEqualToString:md.subject_id]) {
+                        modelProject1.isSelect = YES;
+                    }
+                }
+                
+            }else{
+                 modelProject1.isSelect = YES;
+            }
+            
+        }
+        [self.tableView reloadData];
         
 //        NSDictionary *data = [responseObject objectForKey:@"data"];
         

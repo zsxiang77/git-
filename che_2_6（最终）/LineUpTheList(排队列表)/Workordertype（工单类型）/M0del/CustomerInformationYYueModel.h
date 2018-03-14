@@ -15,6 +15,7 @@
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *appointment;
 @property(nonatomic,strong)NSString *order_type;
+@property(nonatomic,strong)NSArray *order_typeArray;
 @property(nonatomic,strong)NSString*end_days;
 
 

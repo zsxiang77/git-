@@ -378,6 +378,7 @@
             }];
             sc;
         });
+        self.shiFouYanYong = YES;
 
         UILabel *yuLabel = [[UILabel alloc]init];
         yuLabel.text = @"是否沿用预约：";
@@ -428,7 +429,11 @@
 #pragma mark - DWSegmentedControlDelegate
 -(void)dw_segmentedControl:(DWSegmentedControl *)control didSeletRow:(NSInteger)row
 {
-    
+    if (row == 0) {
+        self.shiFouYanYong = YES;
+    }else{
+        self.shiFouYanYong = NO;
+    }
 }
 
 -(void)xiugaiBtChick:(UIButton *)sender
@@ -459,6 +464,13 @@
 {
     if (self.shiFouWeiXiu) {
         kehuXuQiuViewController *kehuXuQiu = [kehuXuQiuViewController new];
+        if ([self.mainModel isKindOfClass:[CustomerInformationYYueModel class]]) {
+            if ([self.mainModel.status integerValue] == 8) {
+                if (self.shiFouYanYong == YES) {
+                    kehuXuQiu.mainModel = self.mainModel;
+                }
+            }
+        }
         [self.navigationController pushViewController:kehuXuQiu animated:YES];
     }else{
         AddXiMeiViewController *vc = [[AddXiMeiViewController alloc]init];

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LCMessageViewModel.h"
+#import "CustomerInformationYYueModel.h"
 
 //
 //@interface SecondarySafeguardModel :NSObject
@@ -99,5 +100,13 @@
 @property (nonatomic, strong) SecondarySafeguardCreatOrderFlowChart *secondarySafeguard;//二级维护
 @property (nonatomic, strong) NSString *orderNun;
 @property (nonatomic, strong) ChePaiDanLi *chePaiDict;
+
+@property (nonatomic, strong) NSString *ordercode;
+
+
+@property(nonatomic,strong)CustomerInformationYYueModel *yueYueModel;
+
+
+
 - (void)resetDefault;
 @end

@@ -29,6 +29,8 @@
 @property(nonatomic,strong)XiMeiXinZengZuiZongModel *xiMeiZuiZhongModel;
 
 @property(nonatomic,strong)CustomerInformationYYueModel *mainModel;
+@property(nonatomic,assign)BOOL shiFouYanYong;
+
 
 @property(nonatomic,strong)NSDictionary *userInformetionDict;
 

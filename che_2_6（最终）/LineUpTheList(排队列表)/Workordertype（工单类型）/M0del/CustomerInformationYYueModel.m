@@ -37,6 +37,8 @@
     self.parts = ar2;
     
     self.info = KISDictionaryHaveKey(dict, @"info");
+    
+    self.order_typeArray = [self.order_type componentsSeparatedByString:@","];
 }
 
 @end
