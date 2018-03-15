@@ -51,7 +51,7 @@
         im;
     });
     
-    self.leftBT.hidden = YES;
+    self.leftBT.hidden = NO;
     
     self.xiaYibuBT = ({
         UIButton *bt = [[UIButton alloc]init];
@@ -96,8 +96,8 @@
     _textFiled.layer.borderWidth = 0.5;
     [self addSubview:_textFiled];
     [_textFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.leftBT.mas_right).mas_equalTo(5);
-        make.left.mas_equalTo(8);
+        make.left.mas_equalTo(self.leftBT.mas_right).mas_equalTo(5);
+//        make.left.mas_equalTo(8);
         make.right.mas_equalTo(-125);
         make.centerY.mas_equalTo(0);
         make.height.mas_equalTo(35);
