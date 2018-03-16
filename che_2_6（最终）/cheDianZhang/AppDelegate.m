@@ -281,7 +281,7 @@ static BOOL isProduction = FALSE;
 //        [self.window removeFromSuperview];
         
         UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
-        if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO) {
+        if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO ||[[self currentViewController] isKindOfClass:[BOSSBaseViewController class]]) {
             return;
         }
         m_homeRightBottomXiaoXi.hidden = NO;

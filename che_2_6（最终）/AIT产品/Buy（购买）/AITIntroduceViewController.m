@@ -12,6 +12,8 @@
 
 @interface AITIntroduceViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 {
+    
+    UIImageView              *titImageView;
     HomeRightBottomButton*         m_homeRightBottom;//右下角动画
 }
 
@@ -34,7 +36,11 @@
     UIScrollView *scrView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight)];
     scrView.delegate = self;
     [self.view addSubview:scrView];
-    UIImageView *titImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"ait_introduce.jpg")];
+    
+    titImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"ait_introduce.jpg")];
+    if (self.shiFouGouMai == YES) {
+        titImageView.image = DJImageNamed(@"ait_introduce2.jpg");
+    }
     titImageView.frame = CGRectMake(0, 0, kWindowW, kWindowW*5599/750);
     [scrView addSubview:titImageView];
     scrView.contentSize = CGSizeMake(kWindowW,  kWindowW*5599/750);
@@ -122,7 +128,7 @@
 -(void)buyChick:(UIButton *)sender
 {
     if (self.shiFouGouMai == YES) {
-        [self showMessageWindowWithTitle:@"已有订购项目" point:self.view.center delay:1];
+        return;
     }else{
         BuyAITProductsViewController *vc = [[BuyAITProductsViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];

@@ -323,22 +323,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Scan&#xff08;&#x626b;&#x4e00;&#x626b;&#xff09;/ScanViewController.m"
-            timestampString = "542777653.186023"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-scanButtonChick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Scan&#xff08;&#x626b;&#x4e00;&#x626b;&#xff09;/Camera/PlateIDResultViewController.m"
             timestampString = "542777658.2428989"
             startingColumnNumber = "9223372036854775807"
@@ -388,27 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PublicSource(&#x516c;&#x7528;&#x7c7b;)/NetWork(&#x8054;&#x7f51;)/NetWorkManager.m"
-            timestampString = "542864936.098359"
+            timestampString = "542882813.58596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "+requestWithParameters:withUrl:viewController:withRedictLogin:isShowLoading:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PublicSource(&#x516c;&#x7528;&#x7c7b;)/NetWork(&#x8054;&#x7f51;)/NetWorkManager.m"
-            timestampString = "542864936.098935"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
             landmarkName = "+requestWithParameters:withUrl:viewController:withRedictLogin:isShowLoading:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,6 +394,22 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "-getReMenNetWork"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LCC &#x56db;&#x4e2a;&#x6d41;&#x7a0b;/&#x751f;&#x6210;&#x6d17;&#x7f8e;&#x5de5;&#x5355;/XiMeiNewOrdersErVC+Net.m"
+            timestampString = "542882813.586336"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-postREQUEST_METHODWithTiaoJiao"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

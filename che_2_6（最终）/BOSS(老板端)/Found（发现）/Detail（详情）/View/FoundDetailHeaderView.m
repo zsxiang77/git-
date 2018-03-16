@@ -125,13 +125,37 @@
     m_zanNumberLable.text = [NSString stringWithFormat:@"赞 %@",model.praisenum];
 }
 
+- (NSString *)timeBeforeInfoWithString:(NSString *)dangQianStr withguoLeDate:(NSString *)guoLeDate{
+    NSInteger timeInt = [dangQianStr integerValue] - [guoLeDate integerValue]; //时间差
+    
+    NSInteger year = timeInt / (3600 * 24 * 30 *12);
+    NSInteger month = timeInt / (3600 * 24 * 30);
+    NSInteger day = timeInt / (3600 * 24);
+    NSInteger hour = timeInt / 3600;
+    NSInteger minute = timeInt / 60;
+    //    NSInteger seconstr = timeInt;
+    if (year > 0) {
+        return [NSString stringWithFormat:@"%ld年以前",(long)year];
+    }else if(month > 0){
+        return [NSString stringWithFormat:@"%ld个月以前",(long)month];
+    }else if(day > 0){
+        return [NSString stringWithFormat:@"%ld天以前",(long)day];
+    }else if(hour > 0){
+        return [NSString stringWithFormat:@"%ld小时以前",(long)hour];
+    }else if(minute > 0){
+        return [NSString stringWithFormat:@"%ld分钟以前",(long)minute];
+    }else{
+        return [NSString stringWithFormat:@"刚刚"];
+    }
+}
+
 -(void)refleshdata:(FoundDetailModel *)model withBuju:(BOOL)buju
 {
     CGFloat jisuanHei = 102;
     
     m_titleLable.text = model.title;
     m_nameLable.text = model.author;
-    m_dateLable.text = model.time;
+    m_dateLable.text = [self timeBeforeInfoWithString:model.now_time withguoLeDate:model.time];
 
     
     if (buju == YES) {

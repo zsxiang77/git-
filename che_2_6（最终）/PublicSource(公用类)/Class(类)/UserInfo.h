@@ -72,4 +72,7 @@ static NSString* const userPositions = @"userPositions";
 @property(nonatomic,strong)NSString *chuanCheArrayStr;
 @property(nonatomic,strong)NSDictionary *userInformetionDict;
 @property(nonatomic,strong)NSString *user_id;
+
+//是否手动或点击扫一扫生成工单
+@property(nonatomic,assign)BOOL shiFouShouDong;//yes是手动
 @end

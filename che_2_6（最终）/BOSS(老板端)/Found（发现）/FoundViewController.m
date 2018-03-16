@@ -45,6 +45,8 @@
     [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
         
     }];
+    
+    [self postrequest_methodDatawithShuaXin:YES];
 }
 
 -(UITableView *)mainTableView
@@ -69,7 +71,7 @@
     //设置打开抽屉模式
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 //    [touImaage  sd_setImageWithURL:[NSURL URLWithString:[UserInfo shareInstance].userAvatar] placeholderImage:DJImageNamed(@"touxiang")];
-    [self postrequest_methodDatawithShuaXin:YES];
+//    [self postrequest_methodDatawithShuaXin:YES];
 }
 -(void)toubtChick:(UIButton *)sender
 {

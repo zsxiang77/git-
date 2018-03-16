@@ -132,6 +132,7 @@
                 [dateFormatter setDateFormat:@"MM-dd HH:mm"];
                 model.time = [dateFormatter stringFromDate:date];
                 NSLog(@"currentDateString = %@",model.time);
+                [MobClick event:@"Diagnosis_Self_Motion_Manual_Operation"];
                 !self.sendMessage ? : self.sendMessage(model);
                 self.textFiled.text = nil;
             }
@@ -331,6 +332,7 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
     [dateFormatter setDateFormat:@"MM-dd HH:mm"];
     model.time = [dateFormatter stringFromDate:date];
     if (self.yuYingZhuanHStr.length>0) {
+        [MobClick event:@"Diagnosis_Self_Motion"];
         !self.sendMessage ? : self.sendMessage(model);
     }
 }

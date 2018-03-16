@@ -121,7 +121,6 @@
     [mDict setObject:[self convertToJsonData:infoDict] forKey:@"info"];
 //    [mDict setObject:infoDict forKey:@"info"];
     
-    
     kWeakSelf(weakSelf)
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/new_order/create_wash" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
@@ -130,6 +129,13 @@
         }
         
         if ([KISDictionaryHaveKey(responseObject, @"code") integerValue]== 200) {
+            if ([UserInfo shareInstance].shiFouShouDong == YES) {
+                [MobClick event:@"Finish_Order_Self_Motion_Manual_Operation"];
+            }else{
+                [MobClick event:@"Finish_Order_Self_Motion"];
+            }
+            
+            
             NSString *query_url = KISDictionaryHaveKey(dataDic, @"query_url");
             if (query_url.length>0) {
                 SuccessfulOrderViewController *vc = [[SuccessfulOrderViewController alloc]init];

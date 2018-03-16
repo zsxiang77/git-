@@ -79,6 +79,8 @@
 }
 -(void)scanCheButtonChick:(UIButton *)sender
 {
+    [UserInfo shareInstance].shiFouShouDong = NO;
+    [MobClick event:@"RichScan_Self_Motion"];
     PlateIDCameraViewController *vc = [[PlateIDCameraViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -87,6 +89,10 @@
 
 -(void)scanButtonChick:(UIButton *)sender
 {
+    [MobClick event:@"RichScan_Self_Motion_Manual_Operation"];
+    
+    [UserInfo shareInstance].shiFouShouDong = YES;
+    
     [self showOrHideLoadView:YES];
     kWeakSelf(weakSelf)
     NSString *path = [NSString stringWithFormat:@"%@order/order/channels",HOST_URL];

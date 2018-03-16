@@ -469,6 +469,13 @@
         NSString *ordercode = [[responseObject objectForKey:@"data"] objectForKey:@"ordercode"];
         
         if (![ordercode isEmptyOrWhitespace]) {
+            if ([UserInfo shareInstance].shiFouShouDong == YES) {
+                [MobClick event:@"Finish_Order_Self_Motion_Manual_Operation_wei"];
+            }else{
+                [MobClick event:@"Finish_Order_Self_Motion_wei"];
+            }
+            
+            
 //            bbn
             [OrderInfoPushManager sharedOrderInfoPushManager].type = OrderInfoPushTypeBuildOrder;
             [CreatOrderFlowChartManager defaultOrderFlowChartManager].orderNun = ordercode;
