@@ -30,6 +30,7 @@
     [super viewDidLoad];
     [self setTopViewWithTitle:@"客户需求" withBackButton:YES];
     
+    self.navigationController.interactivePopGestureRecognizer.delaysTouchesBegan=NO;
     
     
 #warning 这里是单利 初始化 + 单利清空数据
@@ -108,6 +109,7 @@
     }
     
     self.bottomView = [LCBottomView new];
+    self.bottomView.superViewController = self;
     [self.view addSubview:_bottomView];
     
     

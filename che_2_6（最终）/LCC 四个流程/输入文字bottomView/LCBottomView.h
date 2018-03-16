@@ -7,10 +7,17 @@
 //  
 
 #import <UIKit/UIKit.h>
+#import "kehuXuQiuViewController.h"
 
 @interface LCBottomView : UIView
 @property (nonatomic, strong) void (^sendMessage)(id model);
 @property (nonatomic, strong) void (^nextStep)(void);
+
+@property(nonatomic,strong)UIImageView *fuCengImageView;
+
+@property(nonatomic,strong)NSString *yuYingZhuanHStr;
+
+@property(nonatomic,strong)kehuXuQiuViewController *superViewController;
 
 - (void)hidenKeyboard;
 @end

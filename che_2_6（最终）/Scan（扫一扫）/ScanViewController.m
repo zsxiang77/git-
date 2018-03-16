@@ -14,7 +14,10 @@
 
 
 
+
 @interface ScanViewController ()
+
+
 
 
 @end
@@ -73,7 +76,6 @@
         make.edges.mas_equalTo(0);
     }];
     [self.view bringSubviewToFront:scanButton];
-    
 }
 -(void)scanCheButtonChick:(UIButton *)sender
 {

@@ -285,6 +285,9 @@
 
 - (void)addMessageViewModel:(LCMessageViewModel *)vmodel{
     [self.dataArr addObject:vmodel];
+    if (self.dataArr.count> 0) {
+        [self hidenPromptViews];
+    }
     self.tableViewHeaderViewLB.text = [NSString stringWithFormat:@"(%lu)",(unsigned long)self.dataArr.count];
     [self.tableView reloadData];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataArr.count-1 inSection:0]; //刷新第0段第2行
