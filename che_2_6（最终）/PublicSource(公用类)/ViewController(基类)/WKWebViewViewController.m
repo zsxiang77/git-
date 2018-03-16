@@ -217,7 +217,7 @@
     NSDictionary *requestHeaders = navigationAction.request.allHTTPHeaderFields;
     //我们项目使用的token同步的，cookie的话类似
     if (requestHeaders[@"Set-Cookie"]) {
-        
+        [mutableRequest setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
         decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
         
     } else {

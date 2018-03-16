@@ -7,6 +7,7 @@
 //
 
 #import "BOSSBaseViewController.h"
+#import "UMMobClick/MobClick.h"
 
 @interface StoreTheDataViewController : BOSSBaseViewController
 

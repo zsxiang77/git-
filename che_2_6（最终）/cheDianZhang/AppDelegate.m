@@ -48,7 +48,7 @@ static BOOL isProduction = FALSE;
 
 #pragma mark 友盟
 - (void)umengTrack {
-    UMConfigInstance.appKey = @"5a011823aed179348b000041";
+    UMConfigInstance.appKey = @"5aaa3cc0b27b0a674400025f";
     UMConfigInstance.channelId = KAgentId;
     [MobClick setAppVersion:kCurrentVersion];
     //    [MobClick setLogEnabled:YES];

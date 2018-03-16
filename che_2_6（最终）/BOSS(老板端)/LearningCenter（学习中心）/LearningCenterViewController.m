@@ -65,12 +65,21 @@
     [m_webView setUIDelegate:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"学习中心"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [MobClick endLogPageView:@"学习中心"];
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
+
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
@@ -107,7 +116,7 @@
     NSDictionary *requestHeaders = navigationAction.request.allHTTPHeaderFields;
     //我们项目使用的token同步的，cookie的话类似
     if (requestHeaders[@"Set-Cookie"]) {
-        
+        [mutableRequest setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
         decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
         
     } else {

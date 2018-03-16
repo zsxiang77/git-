@@ -99,7 +99,6 @@
         }
         
     };
-    
     [cell refleshData:self.mainDataArray[indexPath.row]];
     
     return cell;

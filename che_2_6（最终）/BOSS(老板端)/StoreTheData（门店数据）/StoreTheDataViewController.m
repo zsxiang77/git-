@@ -65,6 +65,18 @@
     [m_webView setUIDelegate:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"门店数据"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [MobClick endLogPageView:@"门店数据"];
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -96,10 +108,6 @@
     }];
     
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -108,7 +116,7 @@
     NSDictionary *requestHeaders = navigationAction.request.allHTTPHeaderFields;
     //我们项目使用的token同步的，cookie的话类似
     if (requestHeaders[@"Set-Cookie"]) {
-        
+        [mutableRequest setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
         decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
         
     } else {
@@ -123,6 +131,7 @@
         
         decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
     }
+    
 }
 
 
