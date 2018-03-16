@@ -24,12 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    if ([UserInfo shareInstance].userMobile.length>0) {
-        [self setTopViewWithTitle:@"修改手机号" withBackButton:YES];
-    }else
-    {
-        [self setTopViewWithTitle:@"绑定手机号" withBackButton:YES];
+    if (self.chuanZhiModile.length>0) {
+        [self setTopViewWithTitle:@"激活手机号" withBackButton:YES];
+    }else{
+        if ([UserInfo shareInstance].userMobile.length>0) {
+            [self setTopViewWithTitle:@"修改手机号" withBackButton:YES];
+        }else
+        {
+            [self setTopViewWithTitle:@"绑定手机号" withBackButton:YES];
+        }
     }
+    
     
     for (int i = 0; i<3; i++) {
         UILabel *line = [[UILabel alloc]init];
@@ -71,6 +76,34 @@
     [LogInBaseBt zhuTiButton:tijiaoBt];
     [self.view addSubview:tijiaoBt];
     
+    if (self.chuanZhiModile.length>0) {
+        _phoneTextField.text = self.chuanZhiModile;
+    }
+    if (self.shiFouBiGai == 2) {
+        _phoneTextField.userInteractionEnabled = NO;
+    }
+    
+    
+    
+    if (self.phoneTextField.text.length>=11) {
+        [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        self.yanZhengMaBt.backgroundColor = kZhuTiColor;
+        self.yanZhengMaBt.userInteractionEnabled = YES;
+    }else{
+        [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        self.yanZhengMaBt.backgroundColor = kRGBColor(208, 208, 208);
+        self.yanZhengMaBt.userInteractionEnabled = NO;
+    }
+}
+
+- (void)backButtonClick:(id)sender
+{
+    if (self.chuanZhiModile.length>0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 -(void)tijiaoBtChick:(UIButton *)sender
 {
@@ -90,25 +123,49 @@
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:self.phoneTextField.text forKey:@"mobile"];
     [mDict setObject:self.yanZhengMaTextField.text forKey:@"code"];
+    if (self.chuanZhiModile.length>0) {
+        kWeakSelf(weakSelf)
+        [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/active_user" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            
+            NSDictionary *adData = kParseData(responseObject);
+            if (![adData isKindOfClass:[NSDictionary class]]) {
+                return ;
+            }
+            NSInteger code = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
+            
+            if (code == 200) {
+                [weakSelf showMessageWindowWithTitle:@"激活成功" point:weakSelf.view.center delay:1];
+                //发送登录成功的通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+                AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate startFirstPage];
+            }else{
+                [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:weakSelf.view.center delay:1];
+            }
+        } failure:^(id error) {
+            
+        }];
+    }else{
+        kWeakSelf(weakSelf)
+        [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/mobile_update" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            
+            NSDictionary *adData = kParseData(responseObject);
+            if (![adData isKindOfClass:[NSDictionary class]]) {
+                return ;
+            }
+            NSInteger code = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
+            
+            if (code == 200) {
+                [weakSelf showMessageWindowWithTitle:@"修改成功" point:weakSelf.view.center delay:1];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }else{
+                [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:weakSelf.view.center delay:1];
+            }
+        } failure:^(id error) {
+            
+        }];
+    }
     
-    kWeakSelf(weakSelf)
-    [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/mobile_update" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
-        
-        NSDictionary *adData = kParseData(responseObject);
-        if (![adData isKindOfClass:[NSDictionary class]]) {
-            return ;
-        }
-        NSInteger code = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
-        
-        if (code == 200) {
-            [weakSelf showMessageWindowWithTitle:@"修改成功" point:weakSelf.view.center delay:1];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:weakSelf.view.center delay:1];
-        }
-    } failure:^(id error) {
-        
-    }];
 }
 
 -(UITextField *)phoneTextField {
@@ -205,9 +262,12 @@
     if(self.phoneTextField.text.length == 11){
         NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
         [mDict setObject:self.phoneTextField.text forKey:@"mobile"];
-        
+        NSString *uelr = @"store_staff/staff_user/send_msg";
+        if (self.chuanZhiModile.length>0) {
+            uelr = @"store_staff/send_code/send_mobile";
+        }
         kWeakSelf(weakSelf)
-        [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/send_msg" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        [NetWorkManager requestWithParameters:mDict withUrl:uelr viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             
             NSDictionary *adData = kParseData(responseObject);
             if (![adData isKindOfClass:[NSDictionary class]]) {

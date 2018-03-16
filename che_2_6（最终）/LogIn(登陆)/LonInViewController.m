@@ -12,14 +12,34 @@
 #import <AdSupport/AdSupport.h>
 #import "sys/utsname.h"
 #import "NetWorkManagerGet.h"
-
-@interface LonInViewController ()<UITextFieldDelegate>
+#import "LogInBaseBt.h"
+#import "NumberKeyboard.h"
+@interface LonInViewController ()<UITextFieldDelegate,NumKeyboardDelegate>
 {
     UITextField      *userNameTextField;
     UITextField      *passWordTextField;
+    
+//
+//    UITextField      *shoujiTextField;
+//    UITextField      *yanzhengmaTextField;
+    
+    UIView           *shoujiLogin;
+    UIView           *zhanghuLogin;
+    
+    UIButton  *shoujiBtn;
+    UIButton  *zhanghuBtn;
+    
+    
+    UILabel *btnLine1;
+    UILabel *btnLine2;
+    
 }
+@property(nonatomic,strong)UITextField *phoneTextField;
+@property(nonatomic,strong)UITextField *yanZhengMaTextField;
+@property(nonatomic,strong)UIButton *yanZhengMaBt;
 
 @property(nonatomic,strong)UIButton  *logInBt;
+@property(nonatomic,strong)UIButton  *shoujilogInBt;
 @property(nonatomic,strong)UIView *mainview;
 
 
@@ -80,22 +100,110 @@
     self.mainview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
     [self.view addSubview:self.mainview];
     
-
+    
     UIImageView *touImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowW*1314/2259)];
     touImageView.image = DJImageNamed(@"longIn_16 copy 10");
     [self.mainview addSubview:touImageView];
     
-
+    
 
     
-    UIImageView *userNameim = [[UIImageView alloc]initWithImage:DJImageNamed(@"longIn_账号管理(1)")];
-    [self.mainview addSubview:userNameim];
-    [userNameim mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(12);
-        make.top.mas_equalTo(touImageView.mas_bottom).mas_equalTo(45);
-        make.width.height.mas_equalTo(22);
+    
+    //新版
+    UILabel *labelText=[[UILabel alloc]init];
+    labelText.text=@"车店长";
+    labelText.font=[UIFont boldSystemFontOfSize:17];
+    labelText.textColor=kRGBColor(74, 144, 266);
+    [self.mainview addSubview:labelText];
+    [labelText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(touImageView);
+        make.top.mas_equalTo(touImageView.mas_bottom).mas_equalTo(2);
     }];
     
+   
+    
+    
+    //两按钮
+   
+    
+    shoujiBtn=[[UIButton alloc]init];
+    [shoujiBtn setTitle:@"手机登陆" forState:UIControlStateNormal];
+    [ shoujiBtn setFont:[UIFont boldSystemFontOfSize:15]];
+    [shoujiBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
+    [shoujiBtn addTarget:self action:@selector(shoujidenglu:) forControlEvents:UIControlEventTouchUpInside];
+    shoujiBtn.tag=101;
+    [self.mainview addSubview:shoujiBtn];
+    [shoujiBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(touImageView.mas_bottom).mas_equalTo(22);
+        make.left.mas_equalTo(0);
+        make.height.mas_equalTo(57);
+        make.width.mas_equalTo(kWindowW/2);
+    }];
+    //按钮线
+    btnLine1=[[UILabel alloc]init];
+    [self.mainview addSubview:btnLine1];
+     btnLine1.backgroundColor = kRGBColor(74, 144, 266);
+     btnLine1.hidden=NO;
+    [btnLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(shoujiBtn.mas_bottom).mas_equalTo(0);
+        make.height.mas_equalTo(1.5);
+        make.width.mas_equalTo(kWindowW/2);
+    }];
+    
+    zhanghuBtn=[[UIButton alloc]init];
+    [zhanghuBtn setTitle:@"账户登录" forState:UIControlStateNormal];
+    [ zhanghuBtn setFont:[UIFont boldSystemFontOfSize:15]];
+    [zhanghuBtn addTarget:self action:@selector(shoujidenglu:) forControlEvents:UIControlEventTouchUpInside];
+    zhanghuBtn.tag=102;
+    [zhanghuBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
+    [self.mainview addSubview:zhanghuBtn];
+    [zhanghuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(shoujiBtn);
+        make.left.mas_equalTo(kWindowW/2);
+        make.height.mas_equalTo(57);
+        make.width.mas_equalTo(kWindowW/2);
+    }];
+    //按钮线
+    btnLine2=[[UILabel alloc]init];
+    [self.mainview addSubview:btnLine2];
+    btnLine2.backgroundColor = kRGBColor(74, 144, 266);
+    btnLine2.hidden=YES;
+    [btnLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kWindowW/2);
+        make.top.mas_equalTo(zhanghuBtn.mas_bottom).mas_equalTo(0);
+        make.height.mas_equalTo(1.5);
+        make.width.mas_equalTo(kWindowW/2);
+    }];
+    //按钮下长线
+    UILabel *btnLine3=[[UILabel alloc]init];
+    [self.mainview addSubview:btnLine3];
+    btnLine3.backgroundColor = kLineBgColor;
+    [btnLine3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(zhanghuBtn.mas_bottom).mas_equalTo(1.5);
+        make.height.mas_equalTo(1);
+        make.width.mas_equalTo(kWindowW);
+    }];
+   //账户登陆view
+       zhanghuLogin=[[UIView alloc]init];
+    [self.mainview addSubview:zhanghuLogin];
+    zhanghuLogin.hidden=YES;
+    [zhanghuLogin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btnLine3.mas_bottom).mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+
+    UIImageView *userNameim = [[UIImageView alloc]initWithImage:DJImageNamed(@"longIn_账号管理(1)")];
+    userNameim.contentMode=UIViewContentModeScaleAspectFit;
+    [zhanghuLogin addSubview:userNameim];
+    [userNameim mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(12);
+        make.top.mas_equalTo(18);
+        make.width.height.mas_equalTo(22);
+    }];
     
     userNameTextField = [[UITextField alloc]init];
     userNameTextField.delegate = self;
@@ -103,16 +211,16 @@
     userNameTextField.placeholder = @"请输入用户名";
     userNameTextField.clearButtonMode = UITextFieldViewModeAlways;
     userNameTextField.font = [UIFont systemFontOfSize:14];
-    [self.mainview addSubview:userNameTextField];
+    [zhanghuLogin addSubview:userNameTextField];
     [userNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(userNameim);
         make.width.mas_equalTo(kWindowW - 120);
         make.height.mas_equalTo(30);
         make.left.mas_equalTo(userNameim.mas_right).mas_equalTo(20);
     }];
-    
+
     UILabel *line1 = [[UILabel alloc]init];
-    [self.mainview addSubview:line1];
+    [zhanghuLogin addSubview:line1];
     line1.backgroundColor = kLineBgColor;
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-10);
@@ -122,7 +230,8 @@
     }];
     
     UIImageView *passwordim = [[UIImageView alloc]initWithImage:DJImageNamed(@"longIn_密码")];
-    [self.mainview addSubview:passwordim];
+    passwordim.contentMode=UIViewContentModeScaleAspectFit;
+    [zhanghuLogin addSubview:passwordim];
     [passwordim mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);
         make.top.mas_equalTo(line1.mas_bottom).mas_equalTo(15);
@@ -137,7 +246,7 @@
     passWordTextField.returnKeyType = UIReturnKeyDone;
     [passWordTextField setSecureTextEntry:YES];
     passWordTextField.font = [UIFont systemFontOfSize:14];
-    [self.mainview addSubview:passWordTextField];
+    [zhanghuLogin addSubview:passWordTextField];
     [passWordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(passwordim);
         make.width.mas_equalTo(kWindowW - 100);
@@ -152,7 +261,7 @@
     [yanJingBt setImage:DJImageNamed(@"longIn_23424") forState:(UIControlStateNormal)];
     [yanJingBt setImage:DJImageNamed(@"longIn_453454") forState:(UIControlStateSelected)];
     [yanJingBt addTarget:self action:@selector(yanJingBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.mainview addSubview:yanJingBt];
+    [zhanghuLogin addSubview:yanJingBt];
     [yanJingBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(passwordim);
         make.right.mas_equalTo(-10);
@@ -160,7 +269,7 @@
     }];
     
     UILabel *line2 = [[UILabel alloc]init];
-    [self.mainview addSubview:line2];
+    [zhanghuLogin addSubview:line2];
     line2.backgroundColor = kLineBgColor;
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-10);
@@ -169,7 +278,7 @@
         make.height.mas_equalTo(1);
     }];
     
-    [self.mainview addSubview:self.logInBt];
+    [zhanghuLogin addSubview:self.logInBt];
     [self.logInBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-25);
         make.left.mas_equalTo(25);
@@ -177,6 +286,143 @@
         make.height.mas_equalTo(50);
     }];
     
+    UILabel *lianxiText=[[UILabel alloc]init];
+    lianxiText.text=@"如有疑问，请拨打";
+    lianxiText.textColor=kRGBColor(74, 74, 74);
+    lianxiText.font=[UIFont systemFontOfSize:12];
+    [zhanghuLogin addSubview:lianxiText];
+    [lianxiText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.logInBt);
+        make.bottom.mas_equalTo(-39);
+    }];
+    UILabel *tetelLable=[[UILabel alloc]init];
+    tetelLable.text=@"400-1234567";
+    tetelLable.textColor=kRGBColor(245, 166, 35);
+    tetelLable.font=[UIFont systemFontOfSize:18];
+    [zhanghuLogin addSubview:tetelLable];
+    [tetelLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.logInBt);
+        make.bottom.mas_equalTo(-11);
+    }];
+    
+   //手机登陆view
+    shoujiLogin=[[UIView alloc]init];
+    [self.mainview addSubview:shoujiLogin];
+    shoujiLogin.hidden=NO;
+    [shoujiLogin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btnLine3.mas_bottom).mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+    
+    UIImageView *shoujihao = [[UIImageView alloc]initWithImage:DJImageNamed(@"手机")];
+    shoujihao.contentMode = UIViewContentModeScaleAspectFit;
+    [shoujiLogin addSubview:shoujihao];
+    [shoujihao mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(12);
+        make.top.mas_equalTo(18);
+        make.width.height.mas_equalTo(25);
+    }];
+  
+    [shoujiLogin addSubview:self.phoneTextField];
+    [self.phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(userNameim);
+        make.width.mas_equalTo(kWindowW - 120);
+        make.height.mas_equalTo(30);
+        make.left.mas_equalTo(shoujihao.mas_right).mas_equalTo(20);
+    }];
+    UILabel *zline1 = [[UILabel alloc]init];
+    [shoujiLogin addSubview:zline1];
+    zline1.backgroundColor = kLineBgColor;
+    [zline1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.left.mas_equalTo(shoujihao);
+        make.top.mas_equalTo(userNameTextField.mas_bottom).mas_equalTo(10);
+        make.height.mas_equalTo(1);
+    }];
+    
+    UIImageView *yanzhengma = [[UIImageView alloc]initWithImage:DJImageNamed(@"YDUI-验证码")];
+    yanzhengma.contentMode = UIViewContentModeScaleAspectFit;
+    [shoujiLogin addSubview:yanzhengma];
+    [yanzhengma mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(12);
+        make.top.mas_equalTo(zline1.mas_bottom).mas_equalTo(15);
+        make.width.height.mas_equalTo(22);
+    }];
+    [shoujiLogin addSubview:self.yanZhengMaBt];
+    [self.yanZhengMaBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(passwordim);
+        make.right.mas_equalTo(-10);
+        make.width.mas_equalTo(110);
+        make.height.mas_equalTo(38);
+    }];
+
+    [shoujiLogin addSubview:self.yanZhengMaTextField];
+    [self.yanZhengMaTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(yanzhengma);
+        make.right.mas_equalTo(self.yanZhengMaBt.mas_left).mas_equalTo(-20);
+        make.height.mas_equalTo(30);
+        make.left.mas_equalTo(yanzhengma.mas_right).mas_equalTo(20);
+    }];
+    
+    UILabel *zline2 = [[UILabel alloc]init];
+    [shoujiLogin addSubview:zline2];
+    zline2.backgroundColor = kLineBgColor;
+    [zline2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.left.mas_equalTo(yanzhengma);
+        make.top.mas_equalTo(passWordTextField.mas_bottom).mas_equalTo(10);
+        make.height.mas_equalTo(1);
+    }];
+    
+    [shoujiLogin addSubview:self.shoujilogInBt];
+    [self.shoujilogInBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-25);
+        make.left.mas_equalTo(25);
+        make.top.mas_equalTo(zline2.mas_bottom).mas_equalTo(50);
+        make.height.mas_equalTo(50);
+    }];
+    
+    UILabel *lianxiText2=[[UILabel alloc]init];
+    lianxiText2.text=@"如有疑问，请拨打";
+    lianxiText2.textColor=kRGBColor(74, 74, 74);
+    lianxiText2.font=[UIFont systemFontOfSize:12];
+    [shoujiLogin addSubview:lianxiText2];
+    [lianxiText2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.shoujilogInBt);
+        make.bottom.mas_equalTo(-39);
+    }];
+    UILabel *tetelLable2=[[UILabel alloc]init];
+    tetelLable2.text=@"400-1234567";
+    tetelLable2.textColor=kRGBColor(245, 166, 35);
+    tetelLable2.font=[UIFont systemFontOfSize:18];
+    [shoujiLogin addSubview:tetelLable2];
+    [tetelLable2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.shoujilogInBt);
+        make.bottom.mas_equalTo(-11);
+    }];
+    
+}
+//切换按钮
+-(void)shoujidenglu:(UIButton*) sender
+{
+     [shoujiBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
+     [zhanghuBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
+     btnLine1.hidden=YES;
+     btnLine2.hidden=YES;
+    shoujiLogin.hidden=YES;
+    zhanghuLogin.hidden=YES;
+    if(sender.tag==101){
+     [shoujiBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
+        btnLine1.hidden=NO;
+        shoujiLogin.hidden=NO;
+    }
+    if(sender.tag==102){
+     [zhanghuBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
+        btnLine2.hidden=NO;
+        zhanghuLogin.hidden=NO;
+    }
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -188,6 +434,246 @@
     return YES;
 }
 
+-(UIButton *)shoujilogInBt
+{
+    if (!_shoujilogInBt) {
+        _shoujilogInBt = [[UIButton alloc]init];
+        [_shoujilogInBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
+        [_shoujilogInBt.layer setCornerRadius:3];
+        [_shoujilogInBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        _shoujilogInBt.backgroundColor = kZhuTiColor;
+        _shoujilogInBt.titleLabel.font = [UIFont systemFontOfSize:18];
+        [_shoujilogInBt setTitle:@"登录" forState:(UIControlStateNormal)];
+        [_shoujilogInBt addTarget:self action:@selector(shoujilogInBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _shoujilogInBt;
+}
+
+//验证吗按钮
+-(UITextField *)phoneTextField {
+    if (!_phoneTextField) {
+        _phoneTextField = [[UITextField alloc]init];
+        _phoneTextField.delegate = self;
+        [_phoneTextField addTarget:self action:@selector(phoneTextFieldChange:) forControlEvents:(UIControlEventEditingChanged)];
+        _phoneTextField.placeholder = @"请输入手机号";
+        _phoneTextField.font = [UIFont systemFontOfSize:14];
+        _phoneTextField.clearButtonMode = UITextFieldViewModeAlways;
+        
+        NumberKeyboard *m_keyBoard2;
+        m_keyBoard2 = [[NumberKeyboard alloc]init];
+        m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
+        m_keyBoard2.maxLength = 11;
+        m_keyBoard2.myDelegate = self;
+        m_keyBoard2.currentField = _phoneTextField;
+        _phoneTextField.inputView = m_keyBoard2;
+        _phoneTextField.delegate = self;
+    }
+    return _phoneTextField;
+}
+-(void)phoneTextFieldChange:(UITextField *)sender
+{
+    if (self.phoneTextField.text.length>=11) {
+        [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        self.yanZhengMaBt.backgroundColor = kZhuTiColor;
+        self.yanZhengMaBt.userInteractionEnabled = YES;
+    }else{
+        [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        self.yanZhengMaBt.backgroundColor = kRGBColor(208, 208, 208);
+        self.yanZhengMaBt.userInteractionEnabled = NO;
+    }
+}
+-(UITextField *)yanZhengMaTextField
+{
+    if (!_yanZhengMaTextField) {
+        _yanZhengMaTextField = [[UITextField alloc]init];
+        _yanZhengMaTextField.delegate = self;
+        _yanZhengMaTextField.placeholder = @"请输入验证码";
+        _yanZhengMaTextField.font = [UIFont systemFontOfSize:14];
+        _yanZhengMaTextField.clearButtonMode = UITextFieldViewModeAlways;
+        NumberKeyboard *m_keyBoard2;
+        m_keyBoard2 = [[NumberKeyboard alloc]init];
+        m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
+        m_keyBoard2.maxLength = 5;
+        m_keyBoard2.myDelegate = self;
+        m_keyBoard2.currentField = _yanZhengMaTextField;
+        _yanZhengMaTextField.inputView = m_keyBoard2;
+        _yanZhengMaTextField.delegate = self;
+    }
+    return _yanZhengMaTextField;
+}
+-(UIButton *)yanZhengMaBt
+{
+    if (!_yanZhengMaBt) {
+        _yanZhengMaBt = [[UIButton alloc]init];
+        _yanZhengMaBt.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_yanZhengMaBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
+        [_yanZhengMaBt.layer setCornerRadius:2];
+        [_yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        _yanZhengMaBt.backgroundColor = kRGBColor(208, 208, 208);
+        [_yanZhengMaBt setTitle:@"获取验证码" forState:(UIControlStateNormal)];
+        [_yanZhengMaBt addTarget:self action:@selector(toResend:) forControlEvents:(UIControlEventTouchUpInside)];
+        _yanZhengMaBt.userInteractionEnabled = NO;
+    }
+    return _yanZhengMaBt;
+}
+
+- (void)fieldChangeing:(NumberKeyboard*) numKeyboard
+{
+    if (numKeyboard.currentField == self.phoneTextField) {
+        if (self.phoneTextField.text.length>=11) {
+            [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+            self.yanZhengMaBt.backgroundColor = kZhuTiColor;
+            self.yanZhengMaBt.userInteractionEnabled = YES;
+        }else{
+            [self.yanZhengMaBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+            self.yanZhengMaBt.backgroundColor = kRGBColor(208, 208, 208);
+            self.yanZhengMaBt.userInteractionEnabled = NO;
+        }
+    }
+}
+- (void)hideKeyBoard
+{
+    [self.phoneTextField resignFirstResponder];
+    [self.yanZhengMaTextField resignFirstResponder];
+}
+
+-(void)toResend:(UIButton *)sender
+{
+    [self hideKeyBoard];
+    
+    if(self.phoneTextField.text.length == 11){
+        NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+        [mDict setObject:self.phoneTextField.text forKey:@"mobile"];
+        
+        kWeakSelf(weakSelf)
+        [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/send_code/send_mobile" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            
+            NSDictionary *adData = kParseData(responseObject);
+            if (![adData isKindOfClass:[NSDictionary class]]) {
+                return ;
+            }
+            NSInteger code = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
+            
+            if (code == 200) {
+                [weakSelf showMessageWindowWithTitle:@"获取成功，请保持电话畅通" point:weakSelf.view.center delay:1];
+                [LogInBaseBt startWithTime:60 title:@"获取验证码" countDownTitle:@"s后重发" mainColor:kZhuTiColor countColor:kRGBColor(208, 208, 208) withButton:self.yanZhengMaBt mainTextColor:[UIColor whiteColor] countTextColor:[UIColor whiteColor]];
+            }else{
+                [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:weakSelf.view.center delay:1];
+            }
+        } failure:^(id error) {
+            
+        }];
+        
+    }
+}
+#pragma mark -手机登陆
+-(void)shoujilogInBtChick:(UIButton*)sender
+{
+    if (_phoneTextField.text.length<10) {
+        [self showMessageWindowWithTitle:@"请输入正确的手机号" point:self.view.center delay:1];
+        return;
+    }
+    if (self.yanZhengMaTextField.text.length<4) {
+        [self showMessageWindowWithTitle:@"验证码不正确" point:self.view.center delay:1];
+        return;
+    }
+    NSMutableDictionary *mDict = [[NSMutableDictionary alloc]init];
+    [mDict setObject:_phoneTextField.text forKey:@"mobile"];
+    [mDict setObject:self.yanZhengMaTextField.text forKey:@"code"];
+    
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/staff" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        if (![dataDic isKindOfClass:[NSDictionary class]]) {
+            return;
+        }
+        
+        if ([KISDictionaryHaveKey(responseObject, @"code") integerValue] == 202) {
+            NSDictionary *staff_info = KISDictionaryHaveKey(dataDic, @"staff_info");
+            if (![staff_info isKindOfClass:[NSDictionary class]]) {
+                return;
+            }
+            NPrintLog(@"staff_infosbaijc%@",KISDictionaryHaveKey(staff_info, @"tag"));
+            NSDictionary *tagDict = KISDictionaryHaveKey(staff_info, @"tag");
+            //            NSSet *tagSet = @[[NSString stringWithFormat:@""],];
+            //            NSArray *tagArray = [NSArray arrayWithObjects:KISDictionaryHaveKey(tagDict, @"group_tags"),KISDictionaryHaveKey(tagDict, @"position_tags"),KISDictionaryHaveKey(tagDict, @"role_tags"),KISDictionaryHaveKey(tagDict, @"store_tags"), nil];
+            NSArray *group_tagsArray = KISDictionaryHaveKey(tagDict, @"group_tags");
+            NSArray *position_tagsArray = KISDictionaryHaveKey(tagDict, @"position_tags");
+            NSArray *role_tagsArray = KISDictionaryHaveKey(tagDict, @"role_tags");
+            NSString *store_tags = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(tagDict, @"store_tags")];
+            
+            
+            
+            NSMutableSet *newtagSet = [[NSMutableSet alloc]init];
+            if (position_tagsArray.count>0) {
+                if ([NSString stringWithFormat:@"%@",position_tagsArray[0]].length>0) {
+                    [newtagSet addObject:[NSString stringWithFormat:@"%@",position_tagsArray[0]]];
+                }
+            }
+            
+            if (role_tagsArray.count>0) {
+                if ([NSString stringWithFormat:@"%@",role_tagsArray[0]].length>0) {
+                    [newtagSet addObject:[NSString stringWithFormat:@"%@",role_tagsArray[0]]];
+                }
+            }
+            
+            if (store_tags.length>0) {
+                [newtagSet addObject:store_tags];
+            }
+            
+            if (group_tagsArray.count>0) {
+                if ([NSString stringWithFormat:@"%@",group_tagsArray[0]].length>0) {
+                    [newtagSet addObject:[NSString stringWithFormat:@"%@",group_tagsArray[0]]];
+                }
+            }
+            
+            
+            
+            
+            NPrintLog(@"%@",KISDictionaryHaveKey(tagDict, @"store_tags"));
+            [JPUSHService addTags:newtagSet completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
+                NPrintLog(@"添加的iResCode是%ld",(long)iResCode);
+                
+            } seq:1];
+            
+            
+            [JPUSHService setAlias:KISDictionaryHaveKey(staff_info, @"alias") completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                NPrintLog(@"添加的Alias是%@",iAlias);
+            } seq:1];
+            
+            [UserInfo shareInstance].userReal_name = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"real_name")];
+            [UserInfo shareInstance].userAvatar = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"avatar")];
+            [UserInfo shareInstance].userRole = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"role")];
+            [UserInfo shareInstance].userPositions = KISDictionaryHaveKey(staff_info, @"positions");
+            
+            [UserInfo shareInstance].isLogined = YES;
+            [UserInfo shareInstance].userZhangHao = userNameTextField.text;
+            [UserInfo saveUserName];
+            
+            [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
+            
+            BOOL is_active = [KISDictionaryHaveKey(dataDic, @"is_active")boolValue];
+            if (is_active == YES) {
+                //发送登录成功的通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+                AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate startFirstPage];
+            }else{
+                ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
+                vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
+                vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }else
+        {
+            [[UserInfo shareInstance] cleanUserInfor];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
+        }
+    } failure:^(id error) {
+        
+    }];
+}
 -(UIButton *)logInBt
 {
     if (!_logInBt) {
@@ -212,14 +698,10 @@
         [self showMessageWithContent:@"账户不能为空" point:self.view.center afterDelay:2.0];
         return;
     }
-    
     if (passWordTextField.text.length<=0) {
         [self showMessageWithContent:@"请输入密码" point:self.view.center afterDelay:2.0];
         return;
     }
-    
-    
-    
     [self longInNetwork:userNameTextField.text WithpassWord:passWordTextField.text];
 }
 
@@ -358,7 +840,7 @@
         if (![dataDic isKindOfClass:[NSDictionary class]]) {
             return;
         }
-        
+
         if ([KISDictionaryHaveKey(responseObject, @"code") integerValue] == 202) {
             NSDictionary *staff_info = KISDictionaryHaveKey(dataDic, @"staff_info");
             if (![staff_info isKindOfClass:[NSDictionary class]]) {
@@ -372,51 +854,67 @@
             NSArray *position_tagsArray = KISDictionaryHaveKey(tagDict, @"position_tags");
             NSArray *role_tagsArray = KISDictionaryHaveKey(tagDict, @"role_tags");
             NSString *store_tags = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(tagDict, @"store_tags")];
-            
-            
+
+
             NSMutableSet *newtagSet = [[NSMutableSet alloc]init];
             if (position_tagsArray.count>0) {
                 if ([NSString stringWithFormat:@"%@",position_tagsArray[0]].length>0) {
                     [newtagSet addObject:[NSString stringWithFormat:@"%@",position_tagsArray[0]]];
                 }
             }
-            
+
             if (role_tagsArray.count>0) {
                 if ([NSString stringWithFormat:@"%@",role_tagsArray[0]].length>0) {
                     [newtagSet addObject:[NSString stringWithFormat:@"%@",role_tagsArray[0]]];
                 }
             }
-            
+
             if (store_tags.length>0) {
                 [newtagSet addObject:store_tags];
             }
-            
+
             if (group_tagsArray.count>0) {
                 if ([NSString stringWithFormat:@"%@",group_tagsArray[0]].length>0) {
                     [newtagSet addObject:[NSString stringWithFormat:@"%@",group_tagsArray[0]]];
                 }
             }
-            
-            
-            
-            
+
+
+
+
             NPrintLog(@"%@",KISDictionaryHaveKey(tagDict, @"store_tags"));
             [JPUSHService addTags:newtagSet completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
                 NPrintLog(@"添加的iResCode是%ld",(long)iResCode);
-                
+
             } seq:1];
 
 
             [JPUSHService setAlias:KISDictionaryHaveKey(staff_info, @"alias") completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 NPrintLog(@"添加的Alias是%@",iAlias);
             } seq:1];
-            
+
             [UserInfo shareInstance].userReal_name = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"real_name")];
             [UserInfo shareInstance].userAvatar = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"avatar")];
             [UserInfo shareInstance].userRole = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(staff_info, @"role")];
             [UserInfo shareInstance].userPositions = KISDictionaryHaveKey(staff_info, @"positions");
-            
-            [weakSelf getrequest_method];
+
+            [UserInfo shareInstance].isLogined = YES;
+            [UserInfo shareInstance].userZhangHao = userNameTextField.text;
+            [UserInfo saveUserName];
+
+            [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
+            BOOL is_active = [KISDictionaryHaveKey(dataDic, @"is_active")boolValue];
+            if (is_active == YES) {
+                //发送登录成功的通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+                AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate startFirstPage];
+            }else{
+                ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
+                vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
+                vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
+                [weakSelf presentViewController:vc animated:YES completion:nil];
+            }
         }else
         {
             [[UserInfo shareInstance] cleanUserInfor];
@@ -424,61 +922,61 @@
             [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
         }
     } failure:^(id error) {
-        
+
     }];
 
 }
 
 
--(void)getrequest_method
-{
-    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    [self showOrHideLoadView:YES];
-    
-    kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@store_staff/store_set/settings",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *filData = responseObject;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NPrintLog(@"\n返回：%@",parserDict);
-        
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        
-        NSDictionary *adData = kParseData(responseObject);
-        if (![adData isKindOfClass:[NSDictionary class]]) {
-            
-            return ;
-        }
-        
-        NSDictionary *settings = KISDictionaryHaveKey(adData, @"settings");
-        
-        if (code == 200) {
-            [UserInfo shareInstance].isLogined = YES;
-            [UserInfo shareInstance].isExplod = KISDictionaryHaveKey(settings, @"is_explod");
-            [UserInfo savekIsExplod];
-            [UserInfo shareInstance].userZhangHao = userNameTextField.text;
-            [UserInfo saveUserName];
-            
-            [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
-            //发送登录成功的通知
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
-            AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [delegate startFirstPage];
-        }else
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
-            [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
-    }];
-    
-}
+//-(void)getrequest_method
+//{
+//    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+//    [self showOrHideLoadView:YES];
+//
+//    kWeakSelf(weakSelf)
+//    NSString *path = [NSString stringWithFormat:@"%@store_staff/store_set/settings",HOST_URL];
+//    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
+//
+//        nil;
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [weakSelf showOrHideLoadView:NO];
+//        NSData *filData = responseObject;
+//        NSDictionary* parserDict = (NSDictionary *)filData;
+//        NPrintLog(@"\n返回：%@",parserDict);
+//
+//        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
+//
+//        NSDictionary *adData = kParseData(responseObject);
+//        if (![adData isKindOfClass:[NSDictionary class]]) {
+//
+//            return ;
+//        }
+//
+//        NSDictionary *settings = KISDictionaryHaveKey(adData, @"settings");
+//
+//        if (code == 200) {
+//            [UserInfo shareInstance].isLogined = YES;
+//            [UserInfo shareInstance].isExplod = KISDictionaryHaveKey(settings, @"is_explod");
+//            [UserInfo savekIsExplod];
+//            [UserInfo shareInstance].userZhangHao = userNameTextField.text;
+//            [UserInfo saveUserName];
+//
+//            [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
+//            //发送登录成功的通知
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+//            AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//            [delegate startFirstPage];
+//        }else
+//        {
+//            [[UserInfo shareInstance] cleanUserInfor];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+//            [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
+//        }
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        [weakSelf showOrHideLoadView:NO];
+//    }];
+//
+//}
 
 @end
