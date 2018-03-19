@@ -187,7 +187,7 @@
             m_mySegBtn[i].selected = YES;
         }
     }
-    [m_segButtonsView SGBscrollViewDidScroll:scrollView];
+    [m_segButtonsView SGBscrollViewDidScroll2:scrollView];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

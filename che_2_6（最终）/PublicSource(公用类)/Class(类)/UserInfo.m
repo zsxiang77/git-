@@ -17,7 +17,7 @@
     if (self) {
         self.isLogined = NO;
         self.userZhangHao = @"";
-        self.isExplod = @"0";
+//        self.isExplod = @"0";
         self.userRole = @"";
         self.userAvatar = @"";
         self.userReal_name = @"";
@@ -66,12 +66,12 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)savekIsExplod
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[UserInfo shareInstance].isExplod forKey:kIsExplod];
-
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+//+ (void)savekIsExplod
+//{
+//    [[NSUserDefaults standardUserDefaults] setObject:[UserInfo shareInstance].isExplod forKey:kIsExplod];
+//
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
 
 + (void)saveUserImageUrl
 {
@@ -80,10 +80,10 @@
 
 - (void)buildUserName
 {
-    if (([[NSUserDefaults standardUserDefaults] objectForKey:kUserToken] != nil)&&([[NSUserDefaults standardUserDefaults] objectForKey:kIsExplod] != nil)) {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kUserToken] != nil) {
         self.userNameDict = [[NSUserDefaults standardUserDefaults] objectForKey:kUserToken];
         self.userZhangHao = [[NSUserDefaults standardUserDefaults] objectForKey:userZhangHao];
-        self.isExplod = [[NSUserDefaults standardUserDefaults] objectForKey:kIsExplod];
+//        self.isExplod = [[NSUserDefaults standardUserDefaults] objectForKey:kIsExplod];
         self.userReal_name = [[NSUserDefaults standardUserDefaults] objectForKey:userReal_name];
         self.userAvatar = [[NSUserDefaults standardUserDefaults] objectForKey:userAvatar];
         self.userRole = [[NSUserDefaults standardUserDefaults] objectForKey:userRole];
@@ -108,8 +108,8 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:userPositions];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kIsExplod];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kIsExplod];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:userReal_name];
     [[NSUserDefaults standardUserDefaults] synchronize];

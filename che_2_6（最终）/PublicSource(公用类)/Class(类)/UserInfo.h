@@ -11,8 +11,8 @@
 #import "CheDianZhangCommon.h"
 
 static NSString* const kUserToken = @"userToken";
-static NSString* const kIsExplod = @"kIsExplod";//是否是北京用户
-static NSString* const userZhangHao = @"USERZhangHao";//是否是北京用户
+//static NSString* const kIsExplod = @"kIsExplod";//是否是北京用户
+static NSString* const userZhangHao = @"USERZhangHao";
 
 //缓存
 static NSString* const userHuanCunXiTongArray = @"userHuanCunXiTongArray";//系统消息
@@ -38,7 +38,7 @@ static NSString* const userPositions = @"userPositions";
 @property(nonatomic,strong)NSString *userMobile;
 @property(nonatomic, assign)BOOL isLogined;//是否登录
 @property(nonatomic,strong)NSDictionary *userNameDict;
-@property(nonatomic,strong)NSString *isExplod;//是否北京用户
+//@property(nonatomic,strong)NSString *isExplod;//是否北京用户
 
 @property(nonatomic,strong)NSArray *userHuanCunXiTongArray;
 @property(nonatomic,strong)NSArray *userDingDanArray;
@@ -52,7 +52,7 @@ static NSString* const userPositions = @"userPositions";
 
 + (void)saveUserName;
 
-+ (void)savekIsExplod;
+//+ (void)savekIsExplod;
 
 /**
  无网络弹框

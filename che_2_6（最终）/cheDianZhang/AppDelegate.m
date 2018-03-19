@@ -59,15 +59,22 @@ static BOOL isProduction = FALSE;
 
 - (void)startFirstPage
 {
-    if ([[UserInfo shareInstance].userPositions[0] integerValue] == 1) {
-//        [self buildMainWindowView];
-        [self BOSSbuildMainWindowView];
-    }else if([[UserInfo shareInstance].userPositions[0] integerValue] == 2)
-    {
-        [self buildMainWindowView];
+    if ([[UserInfo shareInstance].userPositions isKindOfClass:[NSArray class]]&&[UserInfo shareInstance].userPositions.count>0) {
+        if ([[UserInfo shareInstance].userPositions[0] integerValue] == 1) {
+            //        [self buildMainWindowView];
+            [self BOSSbuildMainWindowView];
+        }else if([[UserInfo shareInstance].userPositions[0] integerValue] == 2)
+        {
+            [self buildMainWindowView];
+        }else{
+            [[UserInfo shareInstance] cleanUserInfor];
+        }
     }else{
         [[UserInfo shareInstance] cleanUserInfor];
+        LonInViewController* viewController = [[LonInViewController alloc] init];
+        self.window.rootViewController = viewController;
     }
+   
 }
 
 - (void)buildMainWindowView

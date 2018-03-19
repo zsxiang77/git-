@@ -12,6 +12,7 @@
 @interface ChangeModileViewController : BaseViewController
 
 @property(nonatomic,strong)NSString *chuanZhiModile;
+@property(nonatomic,strong)NSString *staff_id;
 @property(nonatomic,assign)NSInteger   shiFouBiGai;
 
 @end

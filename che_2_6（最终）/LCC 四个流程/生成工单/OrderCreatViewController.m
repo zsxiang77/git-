@@ -192,7 +192,12 @@
     self.messageDataArr = [CreatOrderFlowChartManager defaultOrderFlowChartManager].messageVModelArr;
     
     OrderSectionModel *model2 = [OrderSectionModel new];
-    model2.title = maintenance.projectListModel.title ? maintenance.projectListModel.title : @"项目";
+    if (self.xiangMuDataArr.count>0) {
+        model2.title = [NSString stringWithFormat:@"项目(%ld)",self.xiangMuDataArr.count];
+    }else{
+        model2.title = @"项目";
+    }
+//    model2.title = maintenance.projectListModel.title ? maintenance.projectListModel.title : @"项目";
     model2.imageName = @"项目";
     float projectPrice = maintenance.projectListModel.allGongShiPrice + secondarySafeguard.allGongShiPrice;
 //    NSLog(@"maintenance.projectListModel.allGongShiPrice == %lf",maintenance.projectListModel.allGongShiPrice);

@@ -680,6 +680,7 @@
                 [delegate startFirstPage];
             }else{
                 ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
+                vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
                 vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
                 vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
                 [self.navigationController pushViewController:vc animated:YES];
@@ -931,6 +932,7 @@
                 [delegate startFirstPage];
             }else{
                 ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
+                vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
                 vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
                 vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
                 [weakSelf presentViewController:vc animated:YES completion:nil];

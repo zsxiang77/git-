@@ -124,6 +124,7 @@
     [mDict setObject:self.phoneTextField.text forKey:@"mobile"];
     [mDict setObject:self.yanZhengMaTextField.text forKey:@"code"];
     if (self.chuanZhiModile.length>0) {
+        [mDict setObject:self.staff_id forKey:@"staff_id"];
         kWeakSelf(weakSelf)
         [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/active_user" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             

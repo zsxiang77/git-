@@ -355,38 +355,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "User(&#x6211;)/PersonalData&#xff08;&#x4e2a;&#x4eba;&#x8d44;&#x6599;&#xff09;/AboutUsViewController.m"
-            timestampString = "542777664.6270289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-getHuoQuDangQianVesion"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PublicSource(&#x516c;&#x7528;&#x7c7b;)/NetWork(&#x8054;&#x7f51;)/NetWorkManager.m"
-            timestampString = "542882813.58596"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "+requestWithParameters:withUrl:viewController:withRedictLogin:isShowLoading:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OrderMake(&#x8ba2;&#x5355;)/&#x626b;&#x63cf;&#x884c;&#x9a76;&#x8bc1;/TheNewVehicle(&#x65b0;&#x589e;&#x8f66;&#x8f86;)/ModelCarViewController+Net.m"
             timestampString = "542787099.811653"
             startingColumnNumber = "9223372036854775807"
@@ -410,6 +378,54 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "-postREQUEST_METHODWithTiaoJiao"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PublicSource(&#x516c;&#x7528;&#x7c7b;)/View(&#x89c6;&#x56fe;)/SegmentButtonsView.m"
+            timestampString = "543124322.259173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-SGBscrollViewDidScroll3:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PublicSource(&#x516c;&#x7528;&#x7c7b;)/View(&#x89c6;&#x56fe;)/SegmentButtonsView.m"
+            timestampString = "543124322.259221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-setButtonSelectedWithIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LineUpTheList(&#x6392;&#x961f;&#x5217;&#x8868;)/Workordertype&#xff08;&#x5de5;&#x5355;&#x7c7b;&#x578b;&#xff09;/&#x8ba2;&#x5355;/SCDDanViewController.m"
+            timestampString = "543137420.336592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
