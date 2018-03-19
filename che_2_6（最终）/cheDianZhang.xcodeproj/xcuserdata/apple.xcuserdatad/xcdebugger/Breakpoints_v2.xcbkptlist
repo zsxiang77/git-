@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LogIn(&#x767b;&#x9646;)/LonInViewController.m"
-            timestampString = "542888130.1548131"
+            timestampString = "543140350.310845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "654"
-            endingLineNumber = "654"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
             landmarkName = "-shoujilogInBtChick:"
             landmarkType = "7">
          </BreakpointContent>

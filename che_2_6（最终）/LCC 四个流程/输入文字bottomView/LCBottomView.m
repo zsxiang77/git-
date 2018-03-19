@@ -166,9 +166,9 @@
     self.changanYuyinBtn=({
         UIButton * Cbtn=[[UIButton alloc]init];
         [Cbtn setTitle:@"按住 说话" forState:UIControlStateNormal];
-        [Cbtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [Cbtn setTitleColor:kRGBColor(102, 102, 102) forState:UIControlStateNormal];
         [Cbtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        Cbtn.titleLabel.font=[UIFont systemFontOfSize:17];
+        Cbtn.titleLabel.font=[UIFont boldSystemFontOfSize:17];
         Cbtn.layer.cornerRadius=2.5;
         Cbtn.layer.masksToBounds=YES;
         Cbtn.backgroundColor=[UIColor whiteColor];

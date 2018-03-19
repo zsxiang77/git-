@@ -11,7 +11,7 @@
 
 @interface BOSSLoadView : UIView
 {
-    UIActivityIndicatorView *m_activityView;
+      UIWebView *mainWebView;
 }
 - (void)displayView;
 - (void)dismissView;

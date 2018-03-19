@@ -296,7 +296,7 @@
         make.bottom.mas_equalTo(-39);
     }];
     UILabel *tetelLable=[[UILabel alloc]init];
-    tetelLable.text=@"400-1234567";
+    tetelLable.text=kDianHuaChanded;
     tetelLable.textColor=kRGBColor(245, 166, 35);
     tetelLable.font=[UIFont systemFontOfSize:18];
     [zhanghuLogin addSubview:tetelLable];
@@ -304,7 +304,15 @@
         make.centerX.mas_equalTo(self.logInBt);
         make.bottom.mas_equalTo(-11);
     }];
-    
+    UIButton * dianhua=[[UIButton alloc]init];
+    [zhanghuLogin addSubview:dianhua];
+    [dianhua addTarget:self action:@selector(dianhuaClick:) forControlEvents:UIControlEventTouchUpInside];
+    [dianhua mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.logInBt);
+        make.bottom.mas_equalTo(-11);
+        make.width.mas_equalTo(121);
+        make.height.mas_equalTo(25);
+    }];
    //手机登陆view
     shoujiLogin=[[UIView alloc]init];
     [self.mainview addSubview:shoujiLogin];
@@ -394,7 +402,7 @@
         make.bottom.mas_equalTo(-39);
     }];
     UILabel *tetelLable2=[[UILabel alloc]init];
-    tetelLable2.text=@"400-1234567";
+    tetelLable2.text=kDianHuaChanded;
     tetelLable2.textColor=kRGBColor(245, 166, 35);
     tetelLable2.font=[UIFont systemFontOfSize:18];
     [shoujiLogin addSubview:tetelLable2];
@@ -402,7 +410,19 @@
         make.centerX.mas_equalTo(self.shoujilogInBt);
         make.bottom.mas_equalTo(-11);
     }];
-    
+    UIButton * dianhua2=[[UIButton alloc]init];
+    [shoujiLogin addSubview:dianhua2];
+    [dianhua2 addTarget:self action:@selector(dianhuaClick:) forControlEvents:UIControlEventTouchUpInside];
+    [dianhua2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.shoujilogInBt);
+        make.bottom.mas_equalTo(-11);
+        make.width.mas_equalTo(121);
+        make.height.mas_equalTo(25);
+    }];
+}
+-(void)dianhuaClick:(UIButton*)sender
+{
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",kDianHuaChanded]]];
 }
 //切换按钮
 -(void)shoujidenglu:(UIButton*) sender

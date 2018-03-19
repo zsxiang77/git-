@@ -25,7 +25,8 @@
 #define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
 //#define HOST_URL @"http://beta.icarzoo.com/api/"/**生产*/
 
-
+//电话
+#define kDianHuaChanded @"400-091-2209"
 
 static NSString* const kLoginSuccessNotification = @"loginSuccessNotification";
 static float const  REFRESH_HEADER_HEIGHT = 60.0f;//下拉刷新和上拉加载高度
