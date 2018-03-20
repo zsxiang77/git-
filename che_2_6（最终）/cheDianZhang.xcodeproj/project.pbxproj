@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1803C801205A57A000F25BB1 /* LCBottomDianJiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C800205A57A000F25BB1 /* LCBottomDianJiView.m */; };
 		1803C803205A811E00F25BB1 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1803C802205A811E00F25BB1 /* Speech.framework */; };
-		18FD6E52205FA70D000E192C /* gif20.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18FD6E51205FA70D000E192C /* gif20.gif */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -281,6 +280,7 @@
 		C60ECD0820577D2900F94EAF /* CustomerInformationYYueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD0720577D2900F94EAF /* CustomerInformationYYueModel.m */; };
 		C60ECD0E20578C1300F94EAF /* CustomerInformationYYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */; };
 		C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */; };
+		C60ECD16205FC5D500F94EAF /* gif20.gif in Resources */ = {isa = PBXBuildFile; fileRef = C60ECD15205FC5D500F94EAF /* gif20.gif */; };
 		C61005AB2042CC630045968C /* BOSSAboutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AA2042CC630045968C /* BOSSAboutCell.m */; };
 		C61005AE2043BF2E0045968C /* ViewPerfectInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AD2043BF2E0045968C /* ViewPerfectInformationCell.m */; };
 		C61005B1204530D90045968C /* XiMeiNewOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AF204530D80045968C /* XiMeiNewOrdersCell.m */; };
@@ -902,7 +902,6 @@
 		1803C7FF205A57A000F25BB1 /* LCBottomDianJiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCBottomDianJiView.h; sourceTree = "<group>"; };
 		1803C800205A57A000F25BB1 /* LCBottomDianJiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCBottomDianJiView.m; sourceTree = "<group>"; };
 		1803C802205A811E00F25BB1 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
-		18FD6E51205FA70D000E192C /* gif20.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif20.gif; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -1427,6 +1426,7 @@
 		C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueCell.m; sourceTree = "<group>"; };
 		C60ECD0F2057C4BD00F94EAF /* CustomerInformationYYueCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueCell2.h; sourceTree = "<group>"; };
 		C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueCell2.m; sourceTree = "<group>"; };
+		C60ECD15205FC5D500F94EAF /* gif20.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif20.gif; sourceTree = "<group>"; };
 		C61005A92042CC630045968C /* BOSSAboutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSAboutCell.h; sourceTree = "<group>"; };
 		C61005AA2042CC630045968C /* BOSSAboutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BOSSAboutCell.m; sourceTree = "<group>"; };
 		C61005AC2043BF2E0045968C /* ViewPerfectInformationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewPerfectInformationCell.h; sourceTree = "<group>"; };
@@ -3320,17 +3320,17 @@
 				BDEFA3C320293EFC0094A158 /* NSString+QMUI.m */,
 				BDEFA3C120293EFC0094A158 /* UITextField+QMUI.h */,
 				BDEFA3C020293EFC0094A158 /* UITextField+QMUI.m */,
+				BDD4D3DF20270C3B00C433D1 /* BorderColorButton.h */,
 				BDD4D3D920270C3B00C433D1 /* BorderColorButton.m */,
+				BDD4D3E020270C3B00C433D1 /* DWSegmentedControl.h */,
 				BDD4D3DA20270C3B00C433D1 /* DWSegmentedControl.m */,
 				BDD4D3DB20270C3B00C433D1 /* PopTimePickerView.h */,
 				BDD4D3E220270C3B00C433D1 /* PopTimePickerView.m */,
 				BDD4D3DC20270C3B00C433D1 /* PopInsuranceListView.h */,
 				BDD4D3DD20270C3B00C433D1 /* PopInsuranceListModel.m */,
-				BDD4D3DE20270C3B00C433D1 /* KLCPopup.h */,
-				BDD4D3DF20270C3B00C433D1 /* BorderColorButton.h */,
-				BDD4D3E020270C3B00C433D1 /* DWSegmentedControl.h */,
-				BDD4D3E120270C3B00C433D1 /* PopInsuranceListView.m */,
 				BDD4D3E320270C3B00C433D1 /* PopInsuranceListModel.h */,
+				BDD4D3E120270C3B00C433D1 /* PopInsuranceListView.m */,
+				BDD4D3DE20270C3B00C433D1 /* KLCPopup.h */,
 				BDD4D3E420270C3B00C433D1 /* KLCPopup.m */,
 			);
 			path = Views;
@@ -4132,7 +4132,7 @@
 		C625CCA51F53DA5B00CC3E73 /* NetWork(联网) */ = {
 			isa = PBXGroup;
 			children = (
-				18FD6E51205FA70D000E192C /* gif20.gif */,
+				C60ECD15205FC5D500F94EAF /* gif20.gif */,
 				C6FAF9DA1F553E9800FE1935 /* LoadView.h */,
 				C6FAF9DB1F553E9800FE1935 /* LoadView.m */,
 				C6FAF9DC1F553E9800FE1935 /* NetWorkManager.h */,
@@ -6318,7 +6318,7 @@
 				BD99E35C20277F6200027D23 /* xiangmu_3.png in Resources */,
 				BDD4D38620270C0D00C433D1 /* IQKeyboardManager.bundle in Resources */,
 				C6F35FF01F66461A00F2A870 /* AdminDivCode.txt in Resources */,
-				18FD6E52205FA70D000E192C /* gif20.gif in Resources */,
+				C60ECD16205FC5D500F94EAF /* gif20.gif in Resources */,
 				BD99E35920277F6200027D23 /* xiangmu_1.png in Resources */,
 				C6F35FFE1F66461A00F2A870 /* thocr_Driver_License.lib in Resources */,
 				C6F35FFA1F66461A00F2A870 /* pntWTPENPDA.lib in Resources */,

@@ -23,15 +23,15 @@
             weakSelf.mainData = [[OrderDetailModel alloc]init];
             [weakSelf.mainData setdataWithDict:dataDic];
             if (weakSelf.mainData.show_list.is_show_recom) {
-                weakSelf.tableHeaderView.frame = CGRectMake(0, 0, kWindowW, 798/2);
+                weakSelf.tableHeaderView.frame = CGRectMake(0, 0, kWindowW, 798/2+40);
             }else
             {
-                weakSelf.tableHeaderView.frame = CGRectMake(0, 0, kWindowW, 798/2-152/2);
+                weakSelf.tableHeaderView.frame = CGRectMake(0, 0, kWindowW, 798/2-152/2+40);
             }
             
             [weakSelf.tableHeaderView refreshData:weakSelf.mainData];
             weakSelf.main_tabelView.tableHeaderView = self.tableHeaderView;
-            
+            weakSelf.tableHeaderView.heJiLabel.text = [NSString stringWithFormat:@"¥%.2f",[weakSelf jiSuanZongE]];
             [weakSelf shengChengZhuShuZu];
             [weakSelf.main_tabelView reloadData];
         }else{

@@ -11,6 +11,7 @@
 
 @interface LoadView : UIView
 {
+    UIActivityIndicatorView  *m_activityView;
      UIWebView *mainWebView;
 }
 - (void)displayView;

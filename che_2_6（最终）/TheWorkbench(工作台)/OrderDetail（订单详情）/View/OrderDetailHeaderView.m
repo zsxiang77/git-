@@ -334,6 +334,40 @@
         }];
         
         
+        UIView *heJiView = [[UILabel alloc]init];
+        heJiView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:heJiView];
+        [heJiView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.height.mas_equalTo(40);
+        }];
+        
+        UILabel *heJiLine = [[UILabel alloc]init];
+        heJiLine.backgroundColor = kLineBgColor;
+        [heJiView addSubview:heJiLine];
+        [heJiLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.height.mas_equalTo(0.5);
+        }];
+        
+        self.heJiLabel = [[UILabel alloc]init];
+        self.heJiLabel.textColor = [UIColor redColor];
+        self.heJiLabel.font = [UIFont systemFontOfSize:14];
+        [heJiView addSubview:self.heJiLabel];
+        [self.heJiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-10);
+            make.bottom.top.mas_equalTo(0);
+        }];
+        
+        UILabel *hejiLabel1 = [[UILabel alloc]init];
+        hejiLabel1.font = [UIFont systemFontOfSize:14];
+        hejiLabel1.textColor = kRGBColor(74, 74, 75);
+        hejiLabel1.text = @"总计：";
+        [heJiView addSubview:hejiLabel1];
+        [hejiLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.heJiLabel.mas_left).mas_equalTo(-3);
+            make.bottom.top.mas_equalTo(0);
+        }];
     }
     return self;
 }

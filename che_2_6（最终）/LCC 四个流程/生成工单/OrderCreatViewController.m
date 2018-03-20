@@ -422,7 +422,9 @@
         [dic setValue:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(users_carsDict, @"car_id")] forKey:@"targetid"];
         plate_color = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(users_carsDict, @"car_body_color")];
     }
-    
+    if (plate_color.length<=0) {
+        plate_color = @"蓝色";
+    }
     if (LC_isStrEmpty(plate_color)) {
         [self showMessageWindowWithTitle:@"车牌信息不全" point:self.view.center delay:1];
         return ;

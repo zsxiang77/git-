@@ -38,6 +38,8 @@
     
     UIImageView *tuiJianImageView;
     UILabel *tuiJianLabel;
+    
+    
 }
 
 -(void)refreshData:(OrderDetailModel *)model;
@@ -49,5 +51,7 @@
 @property(nonatomic,strong)void (^aitjieShaoBtChickBlock)(void);
 
 @property(nonatomic,strong)void (^wanShanXXiChcickBlock)(void);
+
+@property(nonatomic,strong)UILabel *heJiLabel;
 
 @end

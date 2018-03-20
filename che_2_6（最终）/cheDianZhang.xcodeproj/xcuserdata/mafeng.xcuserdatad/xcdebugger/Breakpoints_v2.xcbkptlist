@@ -339,22 +339,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheWorkbench(&#x5de5;&#x4f5c;&#x53f0;)/TheWorkbenchViewController+Net.m"
-            timestampString = "542777661.426069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-rREQUEST_METHODNetwork"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OrderMake(&#x8ba2;&#x5355;)/&#x626b;&#x63cf;&#x884c;&#x9a76;&#x8bc1;/TheNewVehicle(&#x65b0;&#x589e;&#x8f66;&#x8f86;)/ModelCarViewController+Net.m"
             timestampString = "542787099.811653"
             startingColumnNumber = "9223372036854775807"
