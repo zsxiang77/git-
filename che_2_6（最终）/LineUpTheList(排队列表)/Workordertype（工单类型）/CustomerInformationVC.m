@@ -404,7 +404,7 @@
     //    ====================================
     UIButton *okButton = [[UIButton alloc]init];
     okButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    [okButton setTitle:@"新建工单" forState:(UIControlStateNormal)];
+    [okButton setTitle:@"下一步" forState:(UIControlStateNormal)];
     [okButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     okButton.backgroundColor = kZhuTiColor;
     [okButton.layer setMasksToBounds:YES];

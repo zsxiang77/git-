@@ -160,7 +160,6 @@
         
         [kebianArray addObject:dict];
     }
-    
     NSArray *childVcs = kebianArray;
 
     NSInteger BetShow = 0;

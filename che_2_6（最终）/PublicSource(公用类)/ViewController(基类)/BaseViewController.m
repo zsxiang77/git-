@@ -56,7 +56,6 @@
     m_loadView = [[LoadView alloc] init];
     [self.view addSubview:m_loadView];
     m_loadView.hidden = YES;
-
 }
 
 - (void)didReceiveMemoryWarning {

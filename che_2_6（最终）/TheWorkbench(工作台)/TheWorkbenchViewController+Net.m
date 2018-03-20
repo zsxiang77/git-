@@ -130,7 +130,6 @@
             cLabel.font = [UIFont boldSystemFontOfSize:20];
             cLabel.backgroundColor = [UIColor clearColor];
             [m_myTableView[index] addSubview:cLabel];
-            
         }
         
         [m_myTableView[index] reloadData];

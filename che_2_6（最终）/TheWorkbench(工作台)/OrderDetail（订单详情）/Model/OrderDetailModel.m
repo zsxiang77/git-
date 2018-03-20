@@ -119,7 +119,6 @@
 
 -(void)setdataWithDict:(NSDictionary *)dict
 {
-    
     self.parts_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"parts_id")];
     self.parts_name = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"parts_name")];
     self.parts_num = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"parts_num")];

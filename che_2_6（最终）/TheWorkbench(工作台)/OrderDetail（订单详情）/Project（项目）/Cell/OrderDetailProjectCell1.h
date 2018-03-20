@@ -13,9 +13,13 @@
 {
     UILabel         *titleLabel;
     
-    UITextField     *gongShiTextField;
-    UITextField     *gongShiFeiTextField;
+//    UITextField     *gongShiTextField;
+//    UITextField     *gongShiFeiTextField;
+    UIButton     *gongShiTextBt;
+    UIButton     *gongShiFeiTextBt;
 }
+@property(nonatomic,strong)void (^gongShiTextBtChickBlock)(void);
+@property(nonatomic,strong)void(^gongShiTextBtnField)(void);
 
 @property(nonatomic,strong)OrderDetailSubjectsModel *model;
 

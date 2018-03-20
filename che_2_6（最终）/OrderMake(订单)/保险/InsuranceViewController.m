@@ -168,7 +168,7 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     InsuranceSectionModel *model = _model.dataSource[indexPath.section];
     InsuranceCellModel *cellModel = model.lists[indexPath.row];
-    switch (cellModel.type) {
+    switch (cellModel.type){
         case InsuranceDataTypeForceDate:
         case InsuranceDataTypeBusinessDate:
         case InsuranceDataTypeYearlyCheck:
@@ -179,7 +179,6 @@ UITableViewDataSource
             [self showInsurancePopViewFromCellModel:cellModel];
             break;
     }
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

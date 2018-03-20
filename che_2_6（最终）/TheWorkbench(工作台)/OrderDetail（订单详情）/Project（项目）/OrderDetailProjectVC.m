@@ -11,7 +11,7 @@
 #import "OrderDetailProjectCell2.h"
 #import "ProjectDetailsADDVC.h"
 #import "OrderDetailProjectVC.h"
-
+#import "NewJianPanShuView.h"
 
 @interface OrderDetailProjectVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -282,6 +282,30 @@
         [cell refeleseWithModel:model];
         cell.baoCunChcickBlock = ^(void) {
             [weakSelf.main_tabelView reloadData];
+        };
+        cell.gongShiTextBtChickBlock = ^{
+            NewJianPanShuView* multipleView = [[NewJianPanShuView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH) value:model.hour];
+            multipleView.xiaoShuWeiShu = 1;
+            multipleView.zuiDaZhiFloat = 999.9;
+            multipleView.okClick = ^(NSString* value){
+                model.hour = value;
+                
+                [weakSelf.main_tabelView reloadData];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:multipleView];
+            [multipleView displayView];
+        };
+        cell.gongShiTextBtnField = ^{
+            NewJianPanShuView* multipleView = [[NewJianPanShuView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH) value:model.reality_fee];
+            multipleView.xiaoShuWeiShu = 2;
+            multipleView.zuiDaZhiFloat = 99999.99;
+            multipleView.okClick = ^(NSString* value){
+                model.reality_fee = value;
+                
+                [weakSelf.main_tabelView reloadData];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:multipleView];
+            [multipleView displayView];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

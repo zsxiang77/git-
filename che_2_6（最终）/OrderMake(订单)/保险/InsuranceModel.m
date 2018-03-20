@@ -87,7 +87,6 @@
 - (void)setDate:(NSDate *)date
 {
     _date = date;
-    
     _selectedContent = [NSDate stringFromDate:date withFormat:@"yyyy-MM-dd"];
 }
 

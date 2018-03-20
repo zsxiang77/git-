@@ -120,8 +120,9 @@
         }];
         
         m_remainTupianLabel = [[UILabel alloc]init];
+        m_remainTupianLabel.adjustsFontSizeToFitWidth = YES;
         m_remainTupianLabel.textColor = [UIColor whiteColor];
-        m_remainTupianLabel.font = [UIFont boldSystemFontOfSize:25];
+        m_remainTupianLabel.font = [UIFont boldSystemFontOfSize:24];
         m_remainTupianLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:m_remainTupianLabel];
         [m_remainTupianLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -272,7 +272,6 @@ static NSString *const PopInsuranceListCellIdf = @"PopInsuranceListCell";
     popup.willStartDismissingCompletion = ^{
         [self endEditing:YES];
     };
-    
     popup.didFinishDismissingCompletion = ^{
         if (self.isCommit) {
             PopInsuranceListCellModel *model = [self getSelectedModel];

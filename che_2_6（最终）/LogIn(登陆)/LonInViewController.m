@@ -216,6 +216,7 @@
         make.centerY.mas_equalTo(userNameim);
         make.width.mas_equalTo(kWindowW - 120);
         make.height.mas_equalTo(30);
+        make.right.mas_equalTo(-10);
         make.left.mas_equalTo(userNameim.mas_right).mas_equalTo(20);
     }];
 
@@ -338,6 +339,7 @@
         make.centerY.mas_equalTo(userNameim);
         make.width.mas_equalTo(kWindowW - 120);
         make.height.mas_equalTo(30);
+        make.right.mas_equalTo(-10);
         make.left.mas_equalTo(shoujihao.mas_right).mas_equalTo(20);
     }];
     UILabel *zline1 = [[UILabel alloc]init];

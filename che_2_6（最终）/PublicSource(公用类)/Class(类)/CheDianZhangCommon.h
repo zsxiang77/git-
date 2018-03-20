@@ -45,7 +45,6 @@ static float const  REFRESH_HEADER_HEIGHT = 60.0f;//下拉刷新和上拉加载�
 [UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a]
 
 
-
 //设备信息
 #define kWindowH   [UIScreen mainScreen].bounds.size.height //应用程序的屏幕高度
 #define kWindowW    [UIScreen mainScreen].bounds.size.width  //应用程序的屏幕宽度

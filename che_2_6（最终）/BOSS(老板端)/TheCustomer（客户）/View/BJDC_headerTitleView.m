@@ -21,8 +21,6 @@
     if (self = [super initWithFrame:frame]) {
         CGFloat anNIuWight = kWindowW/5;
         for (int i = 0; i<childVcs.count; i++) {
-            
-            
             NSDictionary *dict = childVcs[i];
             
             UIView *dingweiView = [[UIView alloc]initWithFrame:CGRectMake(i*anNIuWight, 0, anNIuWight, 61)];
@@ -52,8 +50,6 @@
             dingweiBt.tag = 600+i;
             [dingweiBt addTarget:self action:@selector(dingweiBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
             [dingweiView addSubview:dingweiBt];
-            
-            
             if (i == 0) {
                 shangLabel.textColor = kZhuTiColor;
                 xiaLabel.textColor = kZhuTiColor;
@@ -99,7 +95,6 @@
         UILabel *line = [dingweiView viewWithTag:300];
         line.hidden = YES;
     }
-    
     NSInteger xuanzhong = inex;
     UIView *dingweiView2 = [self viewWithTag:500+xuanzhong];
     UILabel *shangLabel = [dingweiView2 viewWithTag:100];

@@ -3744,13 +3744,6 @@
 			path = M0del;
 			sourceTree = "<group>";
 		};
-		C60ECD12205F60D600F94EAF /* ImageView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImageView;
-			sourceTree = "<group>";
-		};
 		C61005C020453B880045968C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4010,7 +4003,6 @@
 		C625CC591F53D29600CC3E73 = {
 			isa = PBXGroup;
 			children = (
-				C60ECD12205F60D600F94EAF /* ImageView */,
 				BD99E2E720277F6200027D23 /* LCC 四个流程 */,
 				BDCAFFA520202BFB0009CF1D /* Reveal.framework */,
 				C6E57B8820030C9600E945F3 /* BOSS(老板端) */,

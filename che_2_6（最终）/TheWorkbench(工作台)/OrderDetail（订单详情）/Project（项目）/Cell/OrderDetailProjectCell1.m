@@ -67,37 +67,40 @@
             make.width.mas_equalTo(30);
         }];
         
-        gongShiTextField = [[UITextField alloc]init];
-        [gongShiTextField addTarget:self action:@selector(gongShiTextFieldChange:) forControlEvents:(UIControlEventEditingChanged)];
-        gongShiTextField.textAlignment = NSTextAlignmentCenter;
-        gongShiFeiTextField.returnKeyType = UIReturnKeyDone;
-        gongShiTextField.delegate = self;
-        [gongShiView addSubview:gongShiTextField];
-        [gongShiTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        gongShiTextBt = [[UIButton alloc]init];
+        gongShiTextBt.titleLabel.font = [UIFont systemFontOfSize:13];
+        [gongShiTextBt addTarget:self action:@selector(gongShiTextBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [gongShiTextBt setTitleColor:kRGBColor(74, 74, 74) forState:(UIControlStateNormal)];
+        [gongShiView addSubview:gongShiTextBt];
+        [gongShiTextBt mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.top.mas_equalTo(0);
             make.left.mas_equalTo(jianBt.mas_right);
             make.right.mas_equalTo(jiaBt.mas_left);
         }];
         
-        
-        gongShiFeiTextField = [[UITextField alloc]init];
-        gongShiFeiTextField.returnKeyType = UIReturnKeyDone;
-        [gongShiFeiTextField addTarget:self action:@selector(gongShiFeiTextFieldChange:) forControlEvents:(UIControlEventEditingChanged)];
-        gongShiFeiTextField.delegate = self;
-        gongShiFeiTextField.font = [UIFont systemFontOfSize:15];
-        gongShiFeiTextField.textColor = kRGBColor(255, 0, 31);
-        gongShiFeiTextField.textAlignment = NSTextAlignmentCenter;
-        [gongShiFeiTextField.layer setMasksToBounds:YES];
-        [gongShiFeiTextField.layer setCornerRadius:4];
-        [gongShiFeiTextField.layer setBorderColor:kLineBgColor.CGColor];
-        [gongShiFeiTextField.layer setBorderWidth:1];
-        [backView addSubview:gongShiFeiTextField];
-        [gongShiFeiTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        gongShiFeiTextBt = [[UIButton alloc]init];
+        gongShiFeiTextBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [gongShiFeiTextBt addTarget:self action:@selector(gongShiFeiTextFieldChange:) forControlEvents:(UIControlEventTouchUpInside)];
+        //        gongShiFeiTextBt.returnKeyType = UIReturnKeyDone;
+        //        [gongShiFeiTextBt addTarget:self action:@selector(gongShiFeiTextFieldChange:) forControlEvents:(UIControlEventEditingChanged)];
+        //        gongShiFeiTextBt.delegate = self;
+        //        gongShiFeiTextBt.font = [UIFont systemFontOfSize:15];
+        [gongShiFeiTextBt setTitleColor:kRGBColor(255, 0, 31) forState:(UIControlStateNormal)];
+        // gongShiFeiTextBt.textColor = kRGBColor(255, 0, 31);
+        //  gongShiFeiTextBt.textAlignment = NSTextAlignmentCenter;
+        [gongShiFeiTextBt.layer setMasksToBounds:YES];
+        [gongShiFeiTextBt.layer setCornerRadius:4];
+        [gongShiFeiTextBt.layer setBorderColor:kLineBgColor.CGColor];
+        [gongShiFeiTextBt.layer setBorderWidth:1];
+        [self.contentView addSubview:gongShiFeiTextBt];
+        [gongShiFeiTextBt mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(125);
             make.bottom.mas_equalTo(-10);
             make.width.mas_equalTo(80);
             make.height.mas_equalTo(32);
         }];
+        
+    
         
         UILabel *qianL = [[UILabel alloc]init];
         qianL.text = @"¥";
@@ -106,8 +109,8 @@
         qianL.textColor = kRGBColor(255, 0, 31);
         [backView addSubview:qianL];
         [qianL mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(gongShiFeiTextField.mas_centerY);
-            make.right.mas_equalTo(gongShiFeiTextField.mas_left).mas_equalTo(-3);
+            make.centerY.mas_equalTo(gongShiFeiTextBt.mas_centerY);
+            make.right.mas_equalTo(gongShiFeiTextBt.mas_left).mas_equalTo(-3);
             make.width.mas_equalTo(20);
         }];
         
@@ -132,14 +135,20 @@
     return self;
 }
 
--(void)gongShiTextFieldChange:(UITextField *)sender
+//-(void)gongShiTextFieldChange:(UITextField *)sender
+//{
+//    self.model.hour = sender.text;
+//}
+-(void)gongShiFeiTextFieldChange:(UIButton *)sender
 {
-    self.model.hour = sender.text;
+    //self.model.parts_fee = sender.text;
+    self.gongShiTextBtnField();
 }
--(void)gongShiFeiTextFieldChange:(UITextField *)sender
+-(void)gongShiTextBtChick:(UIButton *)sender
 {
-    self.model.reality_fee = sender.text;
+    self.gongShiTextBtChickBlock();
 }
+
 -(void)jianBtChick:(UIButton *)sender
 {
     if ([self.model.hour floatValue]<=1) {
@@ -156,8 +165,8 @@
 
 -(void)baoCunChick:(UIButton *)sender
 {
-    [gongShiTextField resignFirstResponder];
-    [gongShiFeiTextField resignFirstResponder];
+    [gongShiTextBt resignFirstResponder];
+    [gongShiFeiTextBt resignFirstResponder];
     self.model.shiFouBianJi = !self.model.shiFouBianJi;
     self.baoCunChcickBlock();
 }
@@ -167,14 +176,14 @@
 {
     self.model = model;
     titleLabel.text = model.name;
-    gongShiTextField.text = model.hour;
-    gongShiFeiTextField.text = model.reality_fee;
+    [gongShiTextBt setTitle: model.hour forState:(UIControlStateNormal)];
+    [gongShiFeiTextBt setTitle:model.reality_fee forState:(UIControlStateNormal)];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([string isEqualToString:@"\n"]) {
-        [gongShiTextField resignFirstResponder];
-        [gongShiFeiTextField resignFirstResponder];
+        [gongShiTextBt resignFirstResponder];
+        [gongShiFeiTextBt resignFirstResponder];
         
         return NO;
     }

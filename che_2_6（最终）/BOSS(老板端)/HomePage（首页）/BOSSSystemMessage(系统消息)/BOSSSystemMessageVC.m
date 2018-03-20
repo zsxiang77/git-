@@ -47,6 +47,37 @@
         }
         [m_myTableView[2] reloadData];
     }
+    if(date_dataArray[0].count<=0)
+    {
+        UILabel *cLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, kWindowW, 50)];
+        cLabel.text = @"暂无我的消息";
+        cLabel.textAlignment = NSTextAlignmentCenter;
+        cLabel.textColor = kColorWithRGB(116.0, 116.0, 116.0, 1.0);
+        cLabel.font = [UIFont boldSystemFontOfSize:20];
+        cLabel.backgroundColor = [UIColor clearColor];
+        [m_myTableView[0] addSubview:cLabel];
+    }
+    if(date_dataArray[1].count<=0)
+    {
+        UILabel *cLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, kWindowW, 50)];
+        cLabel.text = @"暂无课程更新";
+        cLabel.textAlignment = NSTextAlignmentCenter;
+        cLabel.textColor = kColorWithRGB(116.0, 116.0, 116.0, 1.0);
+        cLabel.font = [UIFont boldSystemFontOfSize:20];
+        cLabel.backgroundColor = [UIColor clearColor];
+        [m_myTableView[1] addSubview:cLabel];
+    }
+    if(date_dataArray[2].count<=0)
+    {
+        UILabel *cLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, kWindowW, 50)];
+        cLabel.text = @"暂无系统通知";
+        cLabel.textAlignment = NSTextAlignmentCenter;
+        cLabel.textColor = kColorWithRGB(116.0, 116.0, 116.0, 1.0);
+        cLabel.font = [UIFont boldSystemFontOfSize:20];
+        cLabel.backgroundColor = [UIColor clearColor];
+        [m_myTableView[2] addSubview:cLabel];
+    }
+    
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkkJieShouXiaoXiDangQianAITDidReceiveMessageBenDI:) name:kJieShouXiaoXiDangQianAIT object:nil];
