@@ -24,6 +24,9 @@
 @property(nonatomic,strong)SFSpeechRecognitionTask *bufferTask;//语音识别任务
 @property(nonatomic,strong)AVAudioEngine *bufferEngine;//录音引擎
 @property(nonatomic,strong)AVAudioInputNode *buffeInputNode;
+
+
+@property(nonatomic,assign)BOOL shiFouShiJianDao;
 @end
 
 @implementation LCBottomView
@@ -67,6 +70,14 @@
         self.fuCengImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kWindowW/2-60, kWindowH/2-60, 120, 120)];
         self.fuCengImageView.image=[UIImage imageNamed:@"WechatIMG19"];
         self.fuCengImageView.hidden = YES;
+        self.yuyinTime=[[UILabel alloc]init];
+        self.yuyinTime.frame=CGRectMake(0, 95, 120, 20);
+        self.yuyinTime.textColor=[UIColor whiteColor];
+        self.yuyinTime.font=[UIFont systemFontOfSize:13];
+        self.yuyinTime.textAlignment = NSTextAlignmentCenter;
+        [self.fuCengImageView addSubview:self.yuyinTime];
+        
+        
         [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];
         UIWindow* window = [UIApplication sharedApplication].keyWindow;
         [window addSubview:self.fuCengImageView];
@@ -101,7 +112,6 @@
         }];
         [btn addTarget:self action:@selector(yuyinanANniuClick:) forControlEvents:UIControlEventTouchUpInside];
         @weakify(self)
-
         btn;
     });
     
@@ -253,7 +263,9 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
         _bufferTask = nil;
     }
     
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    if (!audioSession) {
+        audioSession = [AVAudioSession sharedInstance];
+    }
     [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
     [audioSession setMode:AVAudioSessionModeMeasurement error:nil];
     [audioSession setActive:true error:nil];
@@ -305,15 +317,27 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
 //长安说话
 -(void)anzhaunSpenckClick:(UIButton*)sander
 {
+    self.shiFouShiJianDao = NO;
     self.yuYingZhuanHStr = @"";
-    self.fuCengImageView.hidden = NO;
+    
     NSLog(@"开始录音");
     [self startRecording];
     [sander setTitle:@"松开 结束" forState:UIControlStateNormal];
+    self.shiFouJieShuLuYin = NO;
+    leftTime = 15;
+    [self setDaoJiShi];
+    
+    
+//    [self yuyindaojishiWirhShiJian:15];
 }
 //结束语音
 -(void)speakBtnPress:(UIButton*)sender
 {
+    leftTime = 15;
+    if (self.shiFouShiJianDao) {
+        return;
+    }
+    self.shiFouJieShuLuYin = YES;
     self.fuCengImageView.hidden = YES;
     NSLog(@"结束录音");
     [sender setTitle:@"按住 说话" forState:UIControlStateNormal];
@@ -336,4 +360,69 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
         !self.sendMessage ? : self.sendMessage(model);
     }
 }
+
+//语音倒计时
+
+- (void)setDaoJiShi
+{
+    
+    NPrintLog(@"12412414124");
+    if(m_timer != nil)
+    {
+        [m_timer invalidate];
+        m_timer = nil;
+    }
+    
+    m_timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(refreshLeftTime)
+                                             userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:m_timer forMode:NSRunLoopCommonModes];
+}
+- (void)refreshLeftTime
+{
+
+    if (leftTime > 0)
+    {
+        if (self.shiFouJieShuLuYin) {
+            if(m_timer != nil)
+            {
+                [m_timer invalidate];
+                m_timer = nil;
+            }
+            return;
+        }
+        self.yuyinTime.text=[NSString stringWithFormat:@"倒计时:%lds",leftTime];
+        self.fuCengImageView.hidden = NO;
+        [self startRecording];
+    }else
+    {
+        if(m_timer != nil)
+        {
+            [m_timer invalidate];
+            m_timer = nil;
+        }
+        leftTime = 15;
+        self.shiFouShiJianDao = YES;
+        self.fuCengImageView.hidden = YES;
+        NSLog(@"结束录音");
+        [self.changanYuyinBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
+        [self.bufferEngine stop];
+        [self.buffeInputNode removeTapOnBus:0];
+        self.bufferRequest = nil;
+        self.bufferTask = nil;
+        
+        LCMessageViewModel *model = [LCMessageViewModel new];
+        model.message = self.yuYingZhuanHStr;
+        NSDate *date = [[NSDate alloc]init];
+        model.timeStamp = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM-dd HH:mm"];
+        model.time = [dateFormatter stringFromDate:date];
+        if (self.yuYingZhuanHStr.length>0) {
+            [MobClick event:@"Diagnosis_Self_Motion"];
+            !self.sendMessage ? : self.sendMessage(model);
+        }
+    }
+    leftTime --;
+}
+
 @end

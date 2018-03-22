@@ -127,6 +127,7 @@
                 !self.userInfoChangeCallBack ?: self.userInfoChangeCallBack();
             };
             tf.titleLb.text = @"住址：";
+            tf.textField.placeholder=@"请输入您的住址";
             self.addr_tf = tf;
         }else if (i == 3) {
             @weakify(self)
@@ -137,6 +138,8 @@
             };
             tf.titleLb.text = @"身份证号：";
             tf.textField.maximumTextLength = 18;
+            
+            tf.textField.placeholder=@"请输入您的身份证号码";
             self.id_car_tf = tf;
         }else if (i == 4) {
             @weakify(self)

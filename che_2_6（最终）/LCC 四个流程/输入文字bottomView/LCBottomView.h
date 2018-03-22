@@ -10,12 +10,20 @@
 #import "kehuXuQiuViewController.h"
 
 @interface LCBottomView : UIView
+{
+    NSTimer*            m_timer;
+    NSInteger           leftTime;
+    AVAudioSession *audioSession;
+}
 @property (nonatomic, strong) void (^sendMessage)(id model);
 @property (nonatomic, strong) void (^nextStep)(void);
 
 @property(nonatomic,strong)UIImageView *fuCengImageView;
 
+@property(nonatomic,strong)UILabel *yuyinTime;
 @property(nonatomic,strong)NSString *yuYingZhuanHStr;
+
+@property(nonatomic,assign)BOOL shiFouJieShuLuYin;
 
 @property(nonatomic,strong)kehuXuQiuViewController *superViewController;
 

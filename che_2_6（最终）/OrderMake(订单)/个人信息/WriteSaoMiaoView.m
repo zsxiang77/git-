@@ -126,6 +126,7 @@
             };
             tf.titleLb.text = @"住址：";
             self.send_addr_tf = tf;
+            tf.textField.placeholder=@"请输入您的住址";
         }else if (i == 3) {
             @weakify(self)
             tf.textFieldTextChangeBlock = ^(NSString *text) {
@@ -134,6 +135,7 @@
             };
             tf.titleLb.text = @"身份证号：";
             tf.textField.maximumTextLength = 18;
+            tf.textField.placeholder=@"请输入您的身份证号码";
             self.send_id_car_tf = tf;
         }else if (i == 4) {
             @weakify(self)
@@ -143,6 +145,7 @@
             };
             tf.titleLb.text = @"电话：";
             self.send_mobile_tf = tf;
+            tf.textField.placeholder=@"请输入您的电话号码";
             NumberKeyboard *m_keyBoard2;
             m_keyBoard2 = [[NumberKeyboard alloc]init];
             m_keyBoard2.keyboardType = NumberKeyboardType_Normal;

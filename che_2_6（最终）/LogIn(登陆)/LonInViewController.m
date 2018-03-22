@@ -31,7 +31,6 @@
     
     
     UILabel *btnLine1;
-    UILabel *btnLine2;
     
 }
 @property(nonatomic,strong)UITextField *phoneTextField;
@@ -124,11 +123,9 @@
     
     
     //两按钮
-   
-    
     shoujiBtn=[[UIButton alloc]init];
     [shoujiBtn setTitle:@"手机登陆" forState:UIControlStateNormal];
-    [ shoujiBtn setFont:[UIFont boldSystemFontOfSize:15]];
+    shoujiBtn.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [shoujiBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
     [shoujiBtn addTarget:self action:@selector(shoujidenglu:) forControlEvents:UIControlEventTouchUpInside];
     shoujiBtn.tag=101;
@@ -140,20 +137,14 @@
         make.width.mas_equalTo(kWindowW/2);
     }];
     //按钮线
-    btnLine1=[[UILabel alloc]init];
+    btnLine1=[[UILabel alloc]initWithFrame:CGRectMake(0, 57+22+kWindowW*1314/2259-1, kWindowW/2, 1.5)];
     [self.mainview addSubview:btnLine1];
-     btnLine1.backgroundColor = kRGBColor(74, 144, 266);
-     btnLine1.hidden=NO;
-    [btnLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(0);
-        make.top.mas_equalTo(shoujiBtn.mas_bottom).mas_equalTo(0);
-        make.height.mas_equalTo(1.5);
-        make.width.mas_equalTo(kWindowW/2);
-    }];
+    btnLine1.backgroundColor = kRGBColor(74, 144, 266);
+    btnLine1.hidden=NO;
     
     zhanghuBtn=[[UIButton alloc]init];
     [zhanghuBtn setTitle:@"账户登录" forState:UIControlStateNormal];
-    [ zhanghuBtn setFont:[UIFont boldSystemFontOfSize:15]];
+    zhanghuBtn.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [zhanghuBtn addTarget:self action:@selector(shoujidenglu:) forControlEvents:UIControlEventTouchUpInside];
     zhanghuBtn.tag=102;
     [zhanghuBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
@@ -164,24 +155,15 @@
         make.height.mas_equalTo(57);
         make.width.mas_equalTo(kWindowW/2);
     }];
-    //按钮线
-    btnLine2=[[UILabel alloc]init];
-    [self.mainview addSubview:btnLine2];
-    btnLine2.backgroundColor = kRGBColor(74, 144, 266);
-    btnLine2.hidden=YES;
-    [btnLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(kWindowW/2);
-        make.top.mas_equalTo(zhanghuBtn.mas_bottom).mas_equalTo(0);
-        make.height.mas_equalTo(1.5);
-        make.width.mas_equalTo(kWindowW/2);
-    }];
+
+
     //按钮下长线
     UILabel *btnLine3=[[UILabel alloc]init];
     [self.mainview addSubview:btnLine3];
     btnLine3.backgroundColor = kLineBgColor;
     [btnLine3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
-        make.top.mas_equalTo(zhanghuBtn.mas_bottom).mas_equalTo(1.5);
+        make.top.mas_equalTo(zhanghuBtn.mas_bottom).mas_equalTo(0.5);
         make.height.mas_equalTo(1);
         make.width.mas_equalTo(kWindowW);
     }];
@@ -429,21 +411,24 @@
 //切换按钮
 -(void)shoujidenglu:(UIButton*) sender
 {
-     [shoujiBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
-     [zhanghuBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
-     btnLine1.hidden=YES;
-     btnLine2.hidden=YES;
+    [shoujiBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
+    [zhanghuBtn setTitleColor:kRGBColor(74, 74, 74) forState:UIControlStateNormal];
     shoujiLogin.hidden=YES;
     zhanghuLogin.hidden=YES;
     if(sender.tag==101){
-     [shoujiBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
-        btnLine1.hidden=NO;
+        [shoujiBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
         shoujiLogin.hidden=NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            btnLine1.frame=CGRectMake(0, 57+22+kWindowW*1314/2259-1, kWindowW/2, 1.5);
+        }];
     }
     if(sender.tag==102){
-     [zhanghuBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
-        btnLine2.hidden=NO;
+        
+        [zhanghuBtn setTitleColor:kRGBColor(74, 144, 266) forState:UIControlStateNormal];
         zhanghuLogin.hidden=NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            btnLine1.frame=CGRectMake(kWindowW/2, 57+22+kWindowW*1314/2259-1, kWindowW/2, 1.5);
+        }];
     }
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
