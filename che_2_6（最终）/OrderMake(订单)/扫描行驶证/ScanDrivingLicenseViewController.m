@@ -436,7 +436,14 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 }
 
 #pragma mark -
-
+-(ScanDrivingView *)scanDrivingView
+{
+    if (!_scanDrivingView) {
+        _scanDrivingView = [[ScanDrivingView alloc]init];
+        [self.view addSubview:_scanDrivingView];
+    }
+    return _scanDrivingView;
+}
 
 #pragma mark - Action
 /// 点击扫描
@@ -448,12 +455,22 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
     cameraVC.recogType = 6;
     cameraVC.typeName = @"中国行驶证";
     cameraVC.recogOrientation = 0;
+    kWeakSelf(weakSelf)
     cameraVC.saoMiaoXSZHuiBlcok = ^(XinShiZheng_carsModel *model) {
+        NSString *puanDuanStr = [NSString stringWithFormat:@"%@",weakSelf.model.model.car_number];
         
         [self.model.model buildModelWithScanDrivingLicenseDataModel:model];
         
         [self.tableView reloadData];
         [self updateHeaderView];
+        
+        
+        if (puanDuanStr.length>0) {
+            if (![puanDuanStr isEqualToString:model.carno]) {
+                [weakSelf.scanDrivingView displayViewWithChePai:puanDuanStr withChePai2:model.carno];
+                return ;
+            }
+        }
         
         if (model.carvin.length != 17) {
             [self showTipViewWithMessage:@"车辆识别代码（VIN）不是17位\n请重新扫描或手动修改"];

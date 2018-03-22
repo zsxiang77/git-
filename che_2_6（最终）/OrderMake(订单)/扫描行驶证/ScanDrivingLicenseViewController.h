@@ -8,9 +8,12 @@
 
 #import "BaseViewController.h"
 #import "TheNewWorkOrderModel.h"
+#import "ScanDrivingView.h"
 
 @interface ScanDrivingLicenseViewController : BaseViewController
 
 @property (nonatomic, copy) NSString *ordercode;
+@property (nonatomic, copy) ScanDrivingView *scanDrivingView;//车牌不符合提示View
+
 
 @end

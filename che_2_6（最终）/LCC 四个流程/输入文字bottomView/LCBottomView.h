@@ -18,6 +18,8 @@
 @property (nonatomic, strong) void (^sendMessage)(id model);
 @property (nonatomic, strong) void (^nextStep)(void);
 
+@property (nonatomic, strong) UIButton *xiaYibuBT;
+
 @property(nonatomic,strong)UIImageView *fuCengImageView;
 
 @property(nonatomic,strong)UILabel *yuyinTime;

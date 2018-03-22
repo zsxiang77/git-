@@ -14,7 +14,7 @@
 //@property (nonatomic, strong) UIImageView *leftBT;
 @property(nonatomic,strong)UIButton *leftBT;
 @property (nonatomic, strong) UITextField *textFiled;
-@property (nonatomic, strong) UIButton *xiaYibuBT;
+
 @property (nonatomic,strong) UIButton *changanYuyinBtn;
 @property (nonatomic, strong) LCBottomView *bottomView;
 

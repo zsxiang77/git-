@@ -66,7 +66,7 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(m_baseTopView.mas_bottom);
-        make.bottom.mas_equalTo(-50);
+        make.bottom.mas_equalTo(-99);
     }];
     UIView *lineView = ({
         UIView *v = [[UIView alloc]init];
@@ -75,17 +75,46 @@
         [v mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0.5);
             make.left.right.mas_equalTo(0);
-            make.bottom.mas_offset(-49.5);
+            make.bottom.mas_offset(-99.5);
         }];
         v;
     });
+
     
     UIView *bottomView = [UIView new];
     [self.view addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.mas_offset(0);
+        make.bottom.mas_equalTo(-50);
+        make.left.right.mas_offset(0);
         make.height.mas_equalTo(49);
     }];
+    
+    self.allPeeLB = ({
+        UILabel *lb = [[UILabel alloc]init];
+        [bottomView addSubview:lb];
+        lb.font = [UIFont pf_PingFangSCSemiboldFontOfSize:15];
+        lb.textColor = UIColorHex(#FF001F);
+        lb.textAlignment = NSTextAlignmentLeft;
+        [lb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-10);
+            make.centerY.mas_equalTo(bottomView);
+        }];
+        lb.text = @"0.00";
+        lb;
+    });
+    
+    UIImageView *im = ({
+        UIImageView *im = [[UIImageView alloc]init];
+        [bottomView addSubview:im];
+        im.image = [UIImage imageNamed:@"人民币图标"];
+        im.contentMode = UIViewContentModeScaleAspectFit;
+        [im mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(bottomView);
+            make.right.mas_equalTo(self.allPeeLB.mas_left).mas_equalTo(-2);
+            make.size.mas_equalTo(CGSizeMake(11.5, 11.5));
+        }];
+        im;
+    });
     
     UILabel*hejiLB = ({
         UILabel *lb = [[UILabel alloc]init];
@@ -94,59 +123,39 @@
         lb.textColor = UIColorHex(#4A4A4A);
         lb.textAlignment = NSTextAlignmentLeft;
         [lb mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(9);
+            make.right.mas_equalTo(im.mas_left).mas_equalTo(-5);
             make.size.mas_equalTo(CGSizeMake(47.5, 21));
-            make.centerY.mas_equalTo(0);
+            make.centerY.mas_equalTo(bottomView);
         }];
         lb.text = @"0";
         lb;
     });
     hejiLB.text = @"合计:";
-    UIImageView *im = ({
-        UIImageView *im = [[UIImageView alloc]init];
-        [bottomView addSubview:im];
-        im.image = [UIImage imageNamed:@"人民币图标"];
-        im.contentMode = UIViewContentModeScaleAspectFit;
-        [im mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(hejiLB);
-            make.left.mas_equalTo(hejiLB.mas_right).mas_equalTo(0);
-            make.size.mas_equalTo(CGSizeMake(11.5, 11.5));
-        }];
-        im;
-    });
-    self.allPeeLB = ({
-        UILabel *lb = [[UILabel alloc]init];
-        [bottomView addSubview:lb];
-        lb.font = [UIFont pf_PingFangSCSemiboldFontOfSize:15];
-        lb.textColor = UIColorHex(#FF001F);
-        lb.textAlignment = NSTextAlignmentLeft;
-        [lb mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(im.mas_right).mas_equalTo(0);
-            make.centerY.mas_equalTo(hejiLB);
-        }];
-        lb.text = @"0.00";
-        lb;
-    });
+   
     
-    UIButton *quDingBT = ({
-        UIButton *bt = [[UIButton alloc]init];
-        [bottomView addSubview:bt];
-        [bt setTitle:@"确定" forState:UIControlStateNormal];
-        bt.titleLabel.font = [UIFont pf_PingFangSCRegularFontOfSize:17];
-        [bt setTitleColor:UIColorHex(#ffffff) forState:UIControlStateNormal];
-        bt.backgroundColor = UIColorHex(#4A90E2);
-        [bt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.bottom.top.mas_equalTo(0);
-            make.width.mas_equalTo(kScreenWidth * 230 / 375);
-        }];
-        @weakify(self)
-        [bt addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-            @strongify(self)
-            [self submitOrder];
-        }];
-        bt;
-    });
     
+    LCBottomView *bottomViewNew = [LCBottomView new];
+    [self.view addSubview:bottomViewNew];
+    [bottomViewNew.xiaYibuBT setTitle:@"确定" forState:(UIControlStateNormal)];
+    kWeakSelf(weakSelf)
+    bottomViewNew.sendMessage = ^(id model) {
+        
+        [weakSelf.messageDataArr addObject:model];
+        
+        OrderSectionModel *model4 = weakSelf.headerDataArr[4];        
+        if (weakSelf.messageDataArr.count>0) {
+            model4.title = [NSString stringWithFormat:@"需求描述(%lu)",(unsigned long)weakSelf.messageDataArr.count];
+        }else{
+            model4.title = @"需求描述";
+        }
+        
+        [weakSelf.tableView reloadData];
+    };
+    
+    
+    bottomViewNew.nextStep = ^() {
+        [weakSelf submitOrder];
+    };
     CreatOrderFlowChartManager *orderManager = [CreatOrderFlowChartManager defaultOrderFlowChartManager];
 //    SmallFixCreatOrderFlowChart *smallFix       = orderManager.smallFix;    //小修
     MaintenanceCreatOrderFlowChart *maintenance = orderManager.maintenance; //保养
@@ -318,6 +327,44 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section != 0) {
+        
+        return YES;
+    }
+    return NO;
+    
+}
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return @"删除";
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        LCMessageListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCMessageListViewCell" forIndexPath:indexPath];
+        [cell bingViewModel:self.messageDataArr[indexPath.row]];
+        
+        OrderSectionModel *model4 = self.headerDataArr[4];
+        
+        [self.messageDataArr removeObjectAtIndex:indexPath.row];
+        if (self.messageDataArr.count>0) {
+            model4.title = [NSString stringWithFormat:@"需求描述(%lu)",(unsigned long)self.messageDataArr.count];
+        }else{
+            model4.title = @"需求描述";
+        }
+        
+        [self.tableView reloadData];
+    }
+}
 #pragma mark ****** 提交订单 ***********
 
 
