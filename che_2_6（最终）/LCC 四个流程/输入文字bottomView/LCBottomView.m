@@ -319,8 +319,13 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
 {
     self.shiFouShiJianDao = NO;
     self.yuYingZhuanHStr = @"";
+<<<<<<< Updated upstream
     
     NSLog(@"开始录音");
+=======
+    self.fuCengImageView.hidden = NO;
+    NPrintLog(@"开始录音");
+>>>>>>> Stashed changes
     [self startRecording];
     [sander setTitle:@"松开 结束" forState:UIControlStateNormal];
     self.shiFouJieShuLuYin = NO;
@@ -339,7 +344,7 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
     }
     self.shiFouJieShuLuYin = YES;
     self.fuCengImageView.hidden = YES;
-    NSLog(@"结束录音");
+    NPrintLog(@"结束录音");
     [sender setTitle:@"按住 说话" forState:UIControlStateNormal];
     [self.bufferEngine stop];
     [self.buffeInputNode removeTapOnBus:0];

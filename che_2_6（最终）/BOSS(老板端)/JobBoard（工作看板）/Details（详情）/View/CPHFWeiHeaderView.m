@@ -131,7 +131,7 @@
             make.width.height.mas_equalTo(56);
         }];
         
-        UILabel *daoLabel = [[UILabel alloc]init];
+        daoLabel = [[UILabel alloc]init];
         daoLabel.textColor = kRGBColor(155, 155, 155);
         daoLabel.font = [UIFont systemFontOfSize:10];
         daoLabel.text = @"倒计时";
@@ -160,6 +160,7 @@
 
 -(void)refreshData:(JobBoardDetailModel *)model
 {
+    daoLabel.hidden = NO;
     self.zhuModel = model.info;
     JobBoardInfoModel *dict = model.info;
     nameLabel.text = dict.name;
@@ -180,17 +181,8 @@
         zhongYaoImageView.hidden = YES;
     }
     
-    if ([dict.status integerValue] == 0) {
-        statusLabel.text = @"未处理";
-        statusLabel.textColor = kRGBColor(230, 67, 64);
-    }else if ([dict.status integerValue] == 1) {
-        statusLabel.text = @"已处理";
-        statusLabel.textColor = kRGBColor(98, 172, 13);
-    }else
-    {
-        statusLabel.text = @"已过期";
-        statusLabel.textColor = kRGBColor(230, 67, 64);
-    }
+    
+    
     fuzeRenLabel.text = dict.person_name;
     m_daoQiLabel.text = dict.end_time;
     m_remainLabel.text = dict.unit;
@@ -908,6 +900,27 @@
         }
     }
     
+    
+    if ([dict.status integerValue] == 0) {
+        statusLabel.text = @"未处理";
+        statusLabel.textColor = kRGBColor(230, 67, 64);
+    }else if ([dict.status integerValue] == 1) {
+        statusLabel.text = @"已处理";
+        statusLabel.textColor = kRGBColor(98, 172, 13);
+        daoLabel.hidden = YES;
+        m_remainTupianLabel.hidden = YES;
+        m_remainTupianImageView.hidden = YES;
+        m_remainLabel.hidden = YES;
+    }else
+    {
+        statusLabel.text = @"已过期";
+        statusLabel.textColor = kRGBColor(230, 67, 64);
+        daoLabel.hidden = YES;
+        m_remainTupianLabel.hidden = YES;
+        m_remainTupianImageView.hidden = YES;
+        m_remainLabel.hidden = YES;
+    }
+    
     m_pingJieView.hidden = NO;
     self.frame = CGRectMake(0, 0, kWindowW, jisuahei);
 }
@@ -936,17 +949,9 @@
         zhongYaoImageView.hidden = YES;
     }
     
-    if ([dict.status integerValue] == 0) {
-        statusLabel.text = @"未处理";
-        statusLabel.textColor = kRGBColor(230, 67, 64);
-    }else if ([dict.status integerValue] == 1) {
-        statusLabel.text = @"已处理";
-        statusLabel.textColor = kRGBColor(98, 172, 13);
-    }else
-    {
-        statusLabel.text = @"已过期";
-        statusLabel.textColor = kRGBColor(230, 67, 64);
-    }
+    
+    
+    
     fuzeRenLabel.text = dict.person_name;
     m_daoQiLabel.text = dict.end_time;
     m_remainLabel.text = dict.unit;
@@ -1316,6 +1321,29 @@
             }
         }
     }
+    
+    
+    
+    if ([dict.status integerValue] == 0) {
+        statusLabel.text = @"未处理";
+        statusLabel.textColor = kRGBColor(230, 67, 64);
+    }else if ([dict.status integerValue] == 1) {
+        statusLabel.text = @"已处理";
+        statusLabel.textColor = kRGBColor(98, 172, 13);
+        daoLabel.hidden = YES;
+        m_remainTupianLabel.hidden = YES;
+        m_remainTupianImageView.hidden = YES;
+        m_remainLabel.hidden = YES;
+    }else
+    {
+        statusLabel.text = @"已过期";
+        statusLabel.textColor = kRGBColor(230, 67, 64);
+        daoLabel.hidden = YES;
+        m_remainTupianLabel.hidden = YES;
+        m_remainTupianImageView.hidden = YES;
+        m_remainLabel.hidden = YES;
+    }
+    
     m_pingJieView.hidden = NO;
     self.frame = CGRectMake(0, 0, kWindowW, jisuahei);
 }

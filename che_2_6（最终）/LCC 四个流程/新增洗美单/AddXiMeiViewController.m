@@ -56,11 +56,20 @@
     }];
     LCBottomView *bottomView = [LCBottomView new];
     [self.view addSubview:bottomView];
-    bottomView.sendMessage = ^(id model) {
-        [self.messageDataArr addObject:model];
-        [self.tableView reloadData];
-    };
     kWeakSelf(weakSelf)
+    bottomView.sendMessage = ^(id model) {
+        
+        [weakSelf.messageDataArr addObject:model];
+        
+        if (weakSelf.messageDataArr.count>0) {
+            weakSelf.sectionModel.title = [NSString stringWithFormat:@"需求描述(%lu)",(unsigned long)weakSelf.messageDataArr.count];
+        }else{
+            weakSelf.sectionModel.title = @"需求描述";
+        }
+        
+        [weakSelf.tableView reloadData];
+    };
+    
     
     bottomView.nextStep = ^() {
         XiMeiNewOrdersErVC *vc = [[XiMeiNewOrdersErVC alloc]init];
@@ -240,6 +249,44 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1) {
+        
+        return YES;
+    }
+    return NO;
+    
+}
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return @"删除";
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        LCMessageListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LCMessageListViewCell" forIndexPath:indexPath];
+        [cell bingViewModel:self.messageDataArr[indexPath.row]];
+
+        
+        
+        [self.messageDataArr removeObjectAtIndex:indexPath.row];
+        if (self.messageDataArr.count>0) {
+            _sectionModel.title = [NSString stringWithFormat:@"需求描述(%lu)",(unsigned long)self.messageDataArr.count];
+        }else{
+            _sectionModel.title = @"需求描述";
+        }
+        
+        [self.tableView reloadData];
+    }
 }
 
 

@@ -36,6 +36,7 @@
 }
 
 @property(nonatomic,strong)UITableView *mainTabelView;
+@property(nonatomic,strong)UITableView *qiYeTabelView;
 
 @property(nonatomic,strong)UIView *titleContentView;
 @property(nonatomic,strong)UILabel *titleLb;
@@ -228,8 +229,12 @@
         }];
         sc;
     });
+    self.shiFouGeRen = YES;
     
     [self.mainTabelView reloadData];
+//    [self.qiYeTabelView reloadData];
+    
+    self.mainTabelView.hidden = NO;
     
     
     if (self.shiFouWeiXiu == NO) {
@@ -263,6 +268,7 @@
         _mainTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+48.5, kWindowW, kWindowH-(kNavBarHeight+48.5+70)) style:(UITableViewStylePlain)];
         _mainTabelView.delegate = self;
         _mainTabelView.dataSource = self;
+        _mainTabelView.hidden = YES;
         _mainTabelView.backgroundColor = self.view.backgroundColor;
         _mainTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:_mainTabelView];
@@ -270,19 +276,39 @@
     return _mainTabelView;
 }
 
+-(UITableView *)qiYeTabelView
+{
+    if (!_qiYeTabelView) {
+        _qiYeTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+48.5, kWindowW, kWindowH-(kNavBarHeight+48.5+70)) style:(UITableViewStylePlain)];
+        _qiYeTabelView.delegate = self;
+        _qiYeTabelView.dataSource = self;
+        _mainTabelView.hidden = YES;
+        _qiYeTabelView.backgroundColor = self.view.backgroundColor;
+        _qiYeTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:_qiYeTabelView];
+    }
+    return _qiYeTabelView;
+}
 
 -(void)dw_segmentedControl:(DWSegmentedControl *)control didSeletRow:(NSInteger)row
 {
     if (row == 0) {
         self.shiFouGeRen = YES;
+        self.mainTabelView.hidden = NO;
+        self.qiYeTabelView.hidden = YES;
     }else{
         self.shiFouGeRen = NO;
+        self.mainTabelView.hidden = YES;
+        self.qiYeTabelView.hidden = NO;
     }
     [self.mainTabelView reloadData];
+    [self.qiYeTabelView reloadData];
+    
 }
 
 -(void)feeTextFildChange:(UITextField *)sender
 {
+    
     if (sender == nameTextField) {
         name = sender.text;
     }else if (sender == mobileTextField) {
@@ -328,7 +354,7 @@
     cell.line.hidden = NO;
     cell.youTextField.returnKeyType = UIReturnKeyDone;
     
-    if (self.shiFouGeRen == YES) {
+    if (tableView == self.mainTabelView) {
         if (indexPath.section == 0) {
             cell.zuoLabel.textColor = kRGBColor(255, 56, 61);
             if (indexPath.row == 0) {

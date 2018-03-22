@@ -25,5 +25,6 @@
     
     self.unit = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"unit")];
     self.username = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"username")];
+    self.status = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"status")];
 }
 @end

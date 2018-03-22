@@ -122,8 +122,12 @@
     CGPoint offsetofScrollView = scrollView.contentOffset;
     CGRect bottomRect = self.bottomView.frame;
     NSUInteger count = [self.buttonArray count];
+    
     bottomRect.origin.x = ((CGRectGetWidth(self.frame)/count) - CGRectGetWidth(self.bottomView.frame))/2.0 + offsetofScrollView.x/count;//起始x＋
-    self.bottomView.frame = bottomRect;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.bottomView.frame = bottomRect;
+    }];
 }
 
 - (void)SGBscrollViewDidScroll:(UIScrollView *)scrollView

@@ -384,7 +384,7 @@
                 }
                 
             }else{
-                 modelProject1.isSelect = YES;
+                 modelProject1.isSelect = NO;
             }
             
         }

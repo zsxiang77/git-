@@ -26,6 +26,9 @@
     
     
     UIView *m_pingJieView;
+    
+    
+    UILabel *daoLabel;
 }
 
 @property(nonatomic,strong)void (^nianJianTiXingBlcok)(void);//年检提醒

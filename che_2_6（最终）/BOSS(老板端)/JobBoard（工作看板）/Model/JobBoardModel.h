@@ -22,6 +22,7 @@
 @property(nonatomic,strong)NSString *task_type;
 @property(nonatomic,strong)NSString *unit;
 @property(nonatomic,strong)NSString *username;
+@property(nonatomic,strong)NSString *status;
 
 
 -(void)setdataWithDict:(NSDictionary *)dict;

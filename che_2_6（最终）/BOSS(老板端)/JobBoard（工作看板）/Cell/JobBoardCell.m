@@ -207,6 +207,10 @@
     }else{
         rightLabel.hidden = NO;
     }
+    
+    if ([dict.status integerValue] == 1 ||[dict.status integerValue] == 2) {
+        rightLabel.hidden = YES;
+    }
 }
 
 @end

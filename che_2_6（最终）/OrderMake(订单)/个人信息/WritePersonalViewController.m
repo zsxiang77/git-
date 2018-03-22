@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColorHex(#FAFAFA);
-    [self setTopViewWithTitle:@"填入信息" withBackButton:YES];
+    [self setTopViewWithTitle:@"客户信息" withBackButton:YES];
     
     [self setupViews];
     [self setupInfoView];
