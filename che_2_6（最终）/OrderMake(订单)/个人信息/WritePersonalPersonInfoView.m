@@ -99,6 +99,7 @@
                 !self.userInfoChangeCallBack ?: self.userInfoChangeCallBack();
             };
             tf.titleLb.text = @"民族：";
+            tf.textField.placeholder=@"请输入民族";
             self.nation_tf = tf;
         }else if (i == 1) {
             @weakify(self)
@@ -149,6 +150,7 @@
                 !self.userInfoChangeCallBack ?: self.userInfoChangeCallBack();
             };
             tf.titleLb.text = @"电话：";
+            tf.textField.placeholder=@"请输入您的电话号码";
             self.mobile_tf = tf;
             NumberKeyboard *m_keyBoard2;
             m_keyBoard2 = [[NumberKeyboard alloc]init];

@@ -319,13 +319,9 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
 {
     self.shiFouShiJianDao = NO;
     self.yuYingZhuanHStr = @"";
-<<<<<<< Updated upstream
-    
-    NSLog(@"开始录音");
-=======
+
     self.fuCengImageView.hidden = NO;
     NPrintLog(@"开始录音");
->>>>>>> Stashed changes
     [self startRecording];
     [sander setTitle:@"松开 结束" forState:UIControlStateNormal];
     self.shiFouJieShuLuYin = NO;

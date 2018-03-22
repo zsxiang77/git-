@@ -335,11 +335,20 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.shiFouGeRen == YES) {
+    if (tableView == self.mainTabelView) {
         return 2;
     }else{
-        return 3;
+        if (section == 0) {
+            return 3;
+        }else{
+            return 2;
+        }
     }
+//    if (self.shiFouGeRen == YES) {
+//        return 2;
+//    }else{
+//        return 2;
+//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -422,6 +431,13 @@
                 cell.youTextField.text = qiye_mobile;
                 cell.youTextField.placeholder = @"请输入企业电话";
                 cell.youTextField.delegate = self;
+                NumberKeyboard *m_keyBoard2;
+                m_keyBoard2 = [[NumberKeyboard alloc]init];
+                m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
+                m_keyBoard2.maxLength = 11;
+                m_keyBoard2.myDelegate = self;
+                m_keyBoard2.currentField = cell.youTextField;
+                cell.youTextField.inputView = m_keyBoard2;
                 qiye_mobileTextField = cell.youTextField;
                 cell.line.hidden = YES;
             }
@@ -442,12 +458,14 @@
             }else if (indexPath.row == 1) {
                 cell.zuoLabel.text = @"送修人姓名";
                 cell.youTextField.text = sende_name;
+                cell.youTextField.placeholder=@"请输入送修人姓名";
                 cell.youTextField.delegate = self;
                 sende_nameTextField = cell.youTextField;
             }else{
                 cell.zuoLabel.text = @"送修人身份证";
                 cell.youTextField.text = sende_id_card;
                 cell.youTextField.delegate = self;
+                cell.youTextField.placeholder=@"请输入送修人身份证";
                 sende_id_cardTextField = cell.youTextField;
                 cell.line.hidden = YES;
             }

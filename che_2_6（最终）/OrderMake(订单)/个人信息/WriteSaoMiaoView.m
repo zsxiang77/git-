@@ -97,6 +97,7 @@
                 self.send_nation = text;
             };
             tf.titleLb.text = @"民族：";
+            tf.textField.placeholder=@"请输入民族";
             self.send_nation_tf = tf;
         }else if (i == 1) {
             @weakify(self)
@@ -106,7 +107,7 @@
             };
             tf.titleLb.text = @"出生日期：";
             self.send_birth_tf = tf;
-            
+      
             self.send_birth_tf.textField.enabled = NO;
             
             UIButton *bt = [[UIButton alloc]init];
