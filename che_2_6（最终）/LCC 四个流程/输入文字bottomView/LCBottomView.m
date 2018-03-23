@@ -303,11 +303,12 @@ self.superViewController.navigationController.interactivePopGestureRecognizer.de
     if (sender.selected) {
         self.textFiled.hidden = NO;
         self.changanYuyinBtn.hidden=YES;
+        [self.leftBT setImage:[UIImage imageNamed:@"jianpan"] forState:UIControlStateNormal];
         [_textFiled becomeFirstResponder];
     }else{
         self.textFiled.hidden = YES;
         self.changanYuyinBtn.hidden=NO;
-        
+        [self.leftBT setImage:[UIImage imageNamed:@"语音图标"] forState:UIControlStateNormal];
         [_textFiled resignFirstResponder];
     }
     [self bringSubviewToFront:self.changanYuyinBtn];

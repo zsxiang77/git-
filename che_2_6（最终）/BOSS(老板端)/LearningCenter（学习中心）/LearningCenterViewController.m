@@ -9,7 +9,7 @@
 #import "LearningCenterViewController.h"
 #import "MJRefresh.h"
 #import "SGFocusImageFrame.h"
-
+#import "LearningCenterCellTableViewCell.h"
 @interface LearningCenterViewController ()<SGFocusImageFrameDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
@@ -35,13 +35,16 @@
 {
     [_main_tableView.mj_header endRefreshing];
     [self qingQiuLuoBoData];
+    [self postrequest_methodDatawithShuaXin:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTopViewWithTitle:@"学习中心" withBackButton:NO];
     self.adDatas = [[NSMutableArray alloc]init];
+    self.mainListArray = [[NSMutableArray alloc]init];
     [self qingQiuLuoBoData];
+    [self postrequest_methodDatawithShuaXin:YES];
 }
 
 #pragma mark 头部
@@ -100,16 +103,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *Identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    LearningCenterCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+        cell = [[LearningCenterCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
     }
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    kWeakSelf(weakSelf);
+    cell.changePartst = ^(LearningModel *model, NSIndexPath *index) {
+        [weakSelf postdo_article_praise:model withIndex:index];
+    };
+    [cell refleshData:self.mainListArray[indexPath.row] withIndex:indexPath];
     return cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(kWindowW>320){
+        return 140;
+    }else{
+        return 140*0.8;
+    }
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

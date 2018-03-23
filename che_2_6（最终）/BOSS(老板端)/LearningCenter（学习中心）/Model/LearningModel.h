@@ -22,8 +22,8 @@
 @property(nonatomic,strong)NSString      *price;
 @property(nonatomic,strong)NSString      *user_coll;
 @property(nonatomic,strong)NSString      *user_buy;
-
-
+@property(nonatomic,strong)NSString      *is_new;
+@property(nonatomic,assign)BOOL  chuanzhiMain;
 
 -(void)setDatashuJu:(NSDictionary*)dic;
 @end

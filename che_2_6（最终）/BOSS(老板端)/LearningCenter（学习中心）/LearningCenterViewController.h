@@ -22,5 +22,6 @@
 @end
 @interface LearningCenterViewController (Net)
 -(void)qingQiuLuoBoData;
-
+-(void)postrequest_methodDatawithShuaXin:(BOOL)shuaX;
+-(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index;
 @end

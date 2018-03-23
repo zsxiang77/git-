@@ -84,5 +84,31 @@
         
     }];
 }
-
+//收藏
+-(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index;
+{
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:model.video_id forKey:@"video_id"];
+    
+    kWeakSelf(weakSelf)
+    if([model.user_coll boolValue]==YES){
+        [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/study/del_collection" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            model.likenum = [NSString stringWithFormat:@"%ld",[model.likenum integerValue]-1];
+            model.user_coll = @"0";
+            [weakSelf.main_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } failure:^(id error) {
+            
+        }];
+    }else{
+        [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/study/add_collection" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            model.likenum = [NSString stringWithFormat:@"%ld",[model.likenum integerValue]+1];
+            model.user_coll = @"1";
+            model.chuanzhiMain=YES;
+            [weakSelf.main_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } failure:^(id error) {
+            
+        }];
+    }
+   
+}
 @end
