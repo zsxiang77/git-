@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScanDrivingView : UIView<UIGestureRecognizerDelegate>
+@interface ScanDrivingView : UIView<UIGestureRecognizerDelegate,UITextViewDelegate>
 {
     UIView *view;
     UIButton *leftBtn;
     UIButton *rightBtn;
+    UITextView *xiaTextView;
 }
 @property(nonatomic,strong)UILabel*shangLable;
 @property(nonatomic,strong)UILabel*xiaLable;

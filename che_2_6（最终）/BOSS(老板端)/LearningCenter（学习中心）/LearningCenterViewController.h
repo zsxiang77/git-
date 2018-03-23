@@ -7,7 +7,20 @@
 //
 
 #import "BOSSBaseViewController.h"
-#import "UMMobClick/MobClick.h"
+#import "WKWebViewViewController.h"
+#import "LearningModel.h"
 @interface LearningCenterViewController : BOSSBaseViewController
+{
+    NSInteger  page;
+}
+
+@property(nonatomic,strong)NSMutableArray *mainListArray;
+@property(nonatomic,strong)NSMutableArray *adDatas;
+@property(nonatomic,strong)UITableView *main_tableView;
+- (void)buildAdView;
+
+@end
+@interface LearningCenterViewController (Net)
+-(void)qingQiuLuoBoData;
 
 @end

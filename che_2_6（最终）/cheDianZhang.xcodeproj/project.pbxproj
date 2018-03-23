@@ -282,6 +282,9 @@
 		C60ECD0E20578C1300F94EAF /* CustomerInformationYYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD0D20578C1300F94EAF /* CustomerInformationYYueCell.m */; };
 		C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */; };
 		C60ECD16205FC5D500F94EAF /* gif20.gif in Resources */ = {isa = PBXBuildFile; fileRef = C60ECD15205FC5D500F94EAF /* gif20.gif */; };
+		C60ECD192063B5EE00F94EAF /* SGFocusImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD172063B5EE00F94EAF /* SGFocusImageFrame.m */; };
+		C60ECD1C2063B7DD00F94EAF /* LearningCenterViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD1B2063B7DD00F94EAF /* LearningCenterViewController+Net.m */; };
+		C60ECD202063CC5800F94EAF /* LearningModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C60ECD1F2063CC5800F94EAF /* LearningModel.m */; };
 		C61005AB2042CC630045968C /* BOSSAboutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AA2042CC630045968C /* BOSSAboutCell.m */; };
 		C61005AE2043BF2E0045968C /* ViewPerfectInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AD2043BF2E0045968C /* ViewPerfectInformationCell.m */; };
 		C61005B1204530D90045968C /* XiMeiNewOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61005AF204530D80045968C /* XiMeiNewOrdersCell.m */; };
@@ -1430,6 +1433,11 @@
 		C60ECD0F2057C4BD00F94EAF /* CustomerInformationYYueCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerInformationYYueCell2.h; sourceTree = "<group>"; };
 		C60ECD102057C4BD00F94EAF /* CustomerInformationYYueCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerInformationYYueCell2.m; sourceTree = "<group>"; };
 		C60ECD15205FC5D500F94EAF /* gif20.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif20.gif; sourceTree = "<group>"; };
+		C60ECD172063B5EE00F94EAF /* SGFocusImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageFrame.m; sourceTree = "<group>"; };
+		C60ECD182063B5EE00F94EAF /* SGFocusImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusImageFrame.h; sourceTree = "<group>"; };
+		C60ECD1B2063B7DD00F94EAF /* LearningCenterViewController+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LearningCenterViewController+Net.m"; sourceTree = "<group>"; };
+		C60ECD1E2063CC5800F94EAF /* LearningModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearningModel.h; sourceTree = "<group>"; };
+		C60ECD1F2063CC5800F94EAF /* LearningModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearningModel.m; sourceTree = "<group>"; };
 		C61005A92042CC630045968C /* BOSSAboutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSAboutCell.h; sourceTree = "<group>"; };
 		C61005AA2042CC630045968C /* BOSSAboutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BOSSAboutCell.m; sourceTree = "<group>"; };
 		C61005AC2043BF2E0045968C /* ViewPerfectInformationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewPerfectInformationCell.h; sourceTree = "<group>"; };
@@ -3757,6 +3765,15 @@
 			path = M0del;
 			sourceTree = "<group>";
 		};
+		C60ECD1D2063CC5800F94EAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C60ECD1E2063CC5800F94EAF /* LearningModel.h */,
+				C60ECD1F2063CC5800F94EAF /* LearningModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C61005C020453B880045968C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4160,6 +4177,8 @@
 			isa = PBXGroup;
 			children = (
 				C6B5D28C1F60051800C968F5 /* NumberKeyboard */,
+				C60ECD182063B5EE00F94EAF /* SGFocusImageFrame.h */,
+				C60ECD172063B5EE00F94EAF /* SGFocusImageFrame.m */,
 				C6F6C5BA1F58FF1B00ADFED4 /* MJChiBaoZiHeader.h */,
 				C6F6C5BB1F58FF1B00ADFED4 /* MJChiBaoZiHeader.m */,
 				C6F6C4221F58FE1700ADFED4 /* DuplexTableView.h */,
@@ -5934,8 +5953,10 @@
 		C6E57B9120030F6D00E945F3 /* LearningCenter（学习中心） */ = {
 			isa = PBXGroup;
 			children = (
+				C60ECD1D2063CC5800F94EAF /* Model */,
 				C6E57B9320030F6D00E945F3 /* LearningCenterViewController.h */,
 				C6E57B9220030F6D00E945F3 /* LearningCenterViewController.m */,
+				C60ECD1B2063B7DD00F94EAF /* LearningCenterViewController+Net.m */,
 			);
 			path = "LearningCenter（学习中心）";
 			sourceTree = "<group>";
@@ -6848,6 +6869,7 @@
 				BDD4D3FB20270C3B00C433D1 /* PerfectInfoViewController.m in Sources */,
 				C68E91381FA1D9C200975D68 /* ZXRSSDataCharacter.m in Sources */,
 				BDD4D38820270C0D00C433D1 /* IQNSArray+Sort.m in Sources */,
+				C60ECD202063CC5800F94EAF /* LearningModel.m in Sources */,
 				C6BA12B31FBD4765005081A3 /* DCURLRouter.m in Sources */,
 				BDD4D41920270C3B00C433D1 /* UIButton+ImageTitleStyle.m in Sources */,
 				C609402220183F4200530205 /* FoundDetailHeaderView.m in Sources */,
@@ -6879,6 +6901,7 @@
 				BDD4D33520270A1500C433D1 /* UIControl+YYAdd.m in Sources */,
 				C68E90C31FA1D9C200975D68 /* ZXEmailAddressResultParser.m in Sources */,
 				C68E91551FA1D9C200975D68 /* ZXUPCEReader.m in Sources */,
+				C60ECD192063B5EE00F94EAF /* SGFocusImageFrame.m in Sources */,
 				C68E90FA1FA1D9C200975D68 /* ZXByteMatrix.m in Sources */,
 				C625CFF21F53DE4E00CC3E73 /* WKWebViewViewController.m in Sources */,
 				C643F3CB2027291200A2AA57 /* TheNewWorkOrderModel.m in Sources */,
@@ -6948,6 +6971,7 @@
 				C625CFE71F53DE1900CC3E73 /* UIView+WebCache.m in Sources */,
 				C68E915C1FA1D9C200975D68 /* ZXPDF417Codeword.m in Sources */,
 				C68E913C1FA1D9C200975D68 /* ZXCodaBarReader.m in Sources */,
+				C60ECD1C2063B7DD00F94EAF /* LearningCenterViewController+Net.m in Sources */,
 				C6093FF0201384A200530205 /* XJZZViewController.m in Sources */,
 				C6567B162027831B000E42F7 /* NewVehicleVC.m in Sources */,
 				BDD4D34120270A1500C433D1 /* NSString+YYAdd.m in Sources */,

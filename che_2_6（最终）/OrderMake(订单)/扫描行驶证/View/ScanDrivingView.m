@@ -42,6 +42,7 @@
         }];
         
         leftBtn =[[UIButton alloc]init];
+        leftBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [leftBtn addTarget:self action:@selector(leftBtnChcick:) forControlEvents:(UIControlEventTouchUpInside)];
         [leftBtn setTitle:@"左边" forState:UIControlStateNormal];
         [leftBtn setTitleColor:kZhuTiColor forState:UIControlStateNormal];
@@ -53,12 +54,13 @@
         [view addSubview:leftBtn];
         [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(view);
-            make.left.mas_equalTo(40);
-            make.height.mas_equalTo(50);
+            make.left.mas_equalTo((kWindowW-20-200)/3);
+            make.height.mas_equalTo(43);
             make.width.mas_equalTo(100);
         }];
         
         rightBtn =[[UIButton alloc]init];
+        rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [rightBtn addTarget:self action:@selector(rightBtnChcick:) forControlEvents:(UIControlEventTouchUpInside)];
         [rightBtn setTitle:@"左边" forState:UIControlStateNormal];
         [rightBtn setTitleColor:kZhuTiColor forState:UIControlStateNormal];
@@ -69,8 +71,8 @@
         
         [view addSubview:rightBtn];
         [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-40);
-            make.height.mas_equalTo(50);
+            make.right.mas_equalTo(-(kWindowW-20-200)/3);
+            make.height.mas_equalTo(43);
             make.width.mas_equalTo(100);
             make.centerY.mas_equalTo(leftBtn);
         }];
@@ -79,32 +81,64 @@
         line.backgroundColor=kLineBgColor;
         [view addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-45);
+            make.bottom.mas_equalTo(-50);
             make.left.right.mas_equalTo(0);
             make.height.mas_equalTo(1);
         }];
         
-        UIButton *xiaBtn=[[UIButton alloc]init];
-        [xiaBtn addTarget:self action:@selector(shoDongChick:) forControlEvents:(UIControlEventTouchUpInside)];
-        xiaBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
-        [xiaBtn setTitle:@"手动输入"  forState:UIControlStateNormal];
-        [xiaBtn setTitleColor:kZhuTiColor forState:UIControlStateNormal];
-        [view addSubview:xiaBtn];
-        [xiaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(45);
-            make.bottom.mas_equalTo(0);
-            make.width.mas_equalTo(70);
-            make.right.mas_equalTo(-20);
-        }];
         
-        self.xiaLable=[[UILabel alloc]init];
-        self.xiaLable.font = [UIFont boldSystemFontOfSize:11];
-        self.xiaLable.text=@"请点击选择正确车牌，若都不符合，请点击";
-        [view addSubview:self.xiaLable];
-        [self.xiaLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(xiaBtn.mas_left);
-            make.centerY.mas_equalTo(xiaBtn);
+        xiaTextView = [[UITextView alloc]init];
+        xiaTextView.font = [UIFont systemFontOfSize:12];
+        xiaTextView.textColor = kRGBColor(74, 74, 74);
+        xiaTextView.textAlignment = NSTextAlignmentCenter;
+        xiaTextView.delegate = self;
+        xiaTextView.editable = NO;
+        xiaTextView.scrollEnabled = NO;
+        [view addSubview:xiaTextView];
+        [xiaTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(0);
+            make.left.mas_equalTo(10);
+            make.right.mas_equalTo(-10);
+            make.height.mas_equalTo(50);
         }];
+        NSMutableAttributedString* att1;
+//        if (kWindowW>320) {
+//            att1 = [[NSMutableAttributedString alloc] initWithString:@"请点击选择正确车牌，若都不符合，请点击 手动输入"];
+//
+//
+//        }else{
+//            att1 = [[NSMutableAttributedString alloc] initWithString:@"请点击选择正确车牌，若都不符合，请点击\n 手动输入"];
+//        }
+        att1 = [[NSMutableAttributedString alloc] initWithString:@"请点击选择正确车牌，若都不符合，请点击 手动输入"];
+        [att1 addAttribute:NSLinkAttributeName
+                     value:@"Chick://"
+                     range:NSMakeRange(20,4)];
+        
+        [att1 addAttribute:NSForegroundColorAttributeName value:kZhuTiColor range:NSMakeRange(20,4)];
+        [att1 addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:13] range:NSMakeRange(20,4)];
+        xiaTextView.attributedText = att1;
+        
+//        UIButton *xiaBtn=[[UIButton alloc]init];
+//        [xiaBtn addTarget:self action:@selector(shoDongChick:) forControlEvents:(UIControlEventTouchUpInside)];
+//        xiaBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+//        [xiaBtn setTitle:@"手动输入"  forState:UIControlStateNormal];
+//        [xiaBtn setTitleColor:kZhuTiColor forState:UIControlStateNormal];
+//        [view addSubview:xiaBtn];
+//        [xiaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(45);
+//            make.bottom.mas_equalTo(0);
+//            make.width.mas_equalTo(70);
+//            make.right.mas_equalTo(-20);
+//        }];
+//
+//        self.xiaLable=[[UILabel alloc]init];
+//        self.xiaLable.font = [UIFont boldSystemFontOfSize:11];
+//        self.xiaLable.text=@"请点击选择正确车牌，若都不符合，请点击";
+//        [view addSubview:self.xiaLable];
+//        [self.xiaLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.mas_equalTo(xiaBtn.mas_left);
+//            make.centerY.mas_equalTo(xiaBtn);
+//        }];
 
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                         initWithTarget:self
@@ -115,16 +149,32 @@
     return self;
 }
 
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
+    
+    if ([[URL scheme] isEqualToString:@"Chick"]) {
+        
+        [self yingCangViwe];
+        self.shoDongChickBlock(@"");
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
 -(void)leftBtnChcick:(UIButton *)sender
 {
     self.leftBtnChcickBlock(leftBtn.titleLabel.text);
+    [self yingCangViwe];
 }
 -(void)rightBtnChcick:(UIButton *)sender
 {
     self.rightBtnChcickBlock(rightBtn.titleLabel.text);
+    [self yingCangViwe];
 }
 -(void)shoDongChick:(UIButton *)sender
 {
+    [self yingCangViwe];
     self.shoDongChickBlock(@"");
 }
 -(void)yingCangViwe

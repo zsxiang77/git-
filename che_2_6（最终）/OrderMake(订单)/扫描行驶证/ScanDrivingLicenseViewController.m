@@ -327,6 +327,7 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
                 weak_self.model.model.car_number = text;
             };
 
+            self.chePaiTextField = ((ScanDrivingLicenseTFCell *)cell).textField;
         } break;
         case 1:{
             cell = [tableView dequeueReusableCellWithIdentifier:ScanDrivingLicenseTFCellIdf forIndexPath:indexPath];
@@ -440,6 +441,20 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 {
     if (!_scanDrivingView) {
         _scanDrivingView = [[ScanDrivingView alloc]init];
+        kWeakSelf(weakSelf)
+        _scanDrivingView.leftBtnChcickBlock = ^(NSString *leftStr) {
+            weakSelf.model.model.car_number = leftStr;
+            [weakSelf.tableView reloadData];
+            [weakSelf updateHeaderView];
+        };
+        _scanDrivingView.rightBtnChcickBlock = ^(NSString *rightStr) {
+            weakSelf.model.model.car_number = rightStr;
+            [weakSelf.tableView reloadData];
+            [weakSelf updateHeaderView];
+        };
+        _scanDrivingView.shoDongChickBlock = ^(NSString *shoDongStr) {
+            [weakSelf.chePaiTextField becomeFirstResponder];
+        };
         [self.view addSubview:_scanDrivingView];
     }
     return _scanDrivingView;
@@ -459,10 +474,10 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
     cameraVC.saoMiaoXSZHuiBlcok = ^(XinShiZheng_carsModel *model) {
         NSString *puanDuanStr = [NSString stringWithFormat:@"%@",weakSelf.model.model.car_number];
         
-        [self.model.model buildModelWithScanDrivingLicenseDataModel:model];
+        [weakSelf.model.model buildModelWithScanDrivingLicenseDataModel:model];
         
-        [self.tableView reloadData];
-        [self updateHeaderView];
+        [weakSelf.tableView reloadData];
+        [weakSelf updateHeaderView];
         
         
         if (puanDuanStr.length>0) {
@@ -473,7 +488,7 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
         }
         
         if (model.carvin.length != 17) {
-            [self showTipViewWithMessage:@"车辆识别代码（VIN）不是17位\n请重新扫描或手动修改"];
+            [weakSelf showTipViewWithMessage:@"车辆识别代码（VIN）不是17位\n请重新扫描或手动修改"];
         }
     };
 //    [self.navigationController pushViewController:cameraVC animated:YES];

@@ -12,6 +12,8 @@
 
 @interface ScanDrivingLicenseViewController : BaseViewController
 
+@property(nonatomic,strong)UITextField *chePaiTextField;
+
 @property (nonatomic, copy) NSString *ordercode;
 @property (nonatomic, copy) ScanDrivingView *scanDrivingView;//车牌不符合提示View
 
