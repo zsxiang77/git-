@@ -109,7 +109,7 @@
     }
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    kWeakSelf(weakSelf);
+    kWeakSelf(weakSelf)
     cell.changePartst = ^(LearningModel *model, NSIndexPath *index) {
         [weakSelf postdo_article_praise:model withIndex:index];
     };

@@ -659,20 +659,25 @@
             [UserInfo saveUserName];
             
             [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
+            //发送登录成功的通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+            AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [delegate startFirstPage];
             
-            BOOL is_active = [KISDictionaryHaveKey(dataDic, @"is_active")boolValue];
-            if (is_active == YES) {
-                //发送登录成功的通知
-                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
-                AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [delegate startFirstPage];
-            }else{
-                ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
-                vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
-                vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
-                vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+//            BOOL is_active = [KISDictionaryHaveKey(dataDic, @"is_active")boolValue];
+//            if (is_active == YES) {
+//                //发送登录成功的通知
+//                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
+//                AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//                [delegate startFirstPage];
+//            }else{
+//                ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
+//                vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
+//                vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
+//                vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
+//                vc.shiFouXiuGai = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
         }else
         {
             [[UserInfo shareInstance] cleanUserInfor];
@@ -923,6 +928,7 @@
                 vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
                 vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];
                 vc.shiFouBiGai = [KISDictionaryHaveKey(dataDic, @"is_change")integerValue];
+                vc.shiFouXiuGai = YES;
                 [weakSelf presentViewController:vc animated:YES completion:nil];
             }
         }else

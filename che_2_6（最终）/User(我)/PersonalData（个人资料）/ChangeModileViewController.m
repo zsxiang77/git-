@@ -98,7 +98,7 @@
 
 - (void)backButtonClick:(id)sender
 {
-    if (self.chuanZhiModile.length>0) {
+    if (self.shiFouXiuGai == YES) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
@@ -123,7 +123,7 @@
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:self.phoneTextField.text forKey:@"mobile"];
     [mDict setObject:self.yanZhengMaTextField.text forKey:@"code"];
-    if (self.chuanZhiModile.length>0) {
+    if (self.shiFouXiuGai == YES) {
         [mDict setObject:self.staff_id forKey:@"staff_id"];
         kWeakSelf(weakSelf)
         [NetWorkManager requestWithParameters:mDict withUrl:@"store_staff/staff_user/active_user" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
