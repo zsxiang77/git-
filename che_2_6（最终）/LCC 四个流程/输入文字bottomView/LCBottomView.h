@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "kehuXuQiuViewController.h"
+#import <Speech/Speech.h>
 
 @interface LCBottomView : UIView
 {
@@ -29,5 +30,9 @@
 
 @property(nonatomic,strong)kehuXuQiuViewController *superViewController;
 
+@property(nonatomic,assign)BOOL yuYingShiJieJieShu;//语音识别结束
+
 - (void)hidenKeyboard;
+
+
 @end
