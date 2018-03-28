@@ -112,7 +112,7 @@ static BOOL isProduction = FALSE;
     six_nc.tabBarItem = item04;
 
     //TODO: 测试
-    _tabBarController = [[UITabBarController alloc] init];
+    _tabBarController = [[MainTabBarViewController alloc] init];
     [_tabBarController setViewControllers:@[first_nc/*, second_nc*/, third_nc,six_nc]];
     _tabBarController.tabBar.barTintColor = [UIColor whiteColor];
     _tabBarController.tabBar.translucent = NO;//不透明
@@ -201,7 +201,9 @@ static BOOL isProduction = FALSE;
 
 
 
-    [self buildHomeRightBottom];
+    if (!m_homeRightBottomXiaoXi) {
+        [self buildHomeRightBottom];
+    }
     
 //    [self BOSSbuildMainWindowView];
     
@@ -524,5 +526,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     /// 需要禁用的控制器
     [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[LonInViewController class]];
 }
+
+
+
 
 @end

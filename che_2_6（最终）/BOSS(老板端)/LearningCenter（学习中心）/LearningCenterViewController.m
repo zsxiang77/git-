@@ -9,6 +9,7 @@
 #import "LearningCenterViewController.h"
 #import "MJRefresh.h"
 #import "SGFocusImageFrame.h"
+#import "LearningVideoViewController.h"
 #import "LearningCenterCellTableViewCell.h"
 @interface LearningCenterViewController ()<SGFocusImageFrameDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -128,9 +129,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LearningModel *model = self.mainListArray[indexPath.row];
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
+    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    vc.video_id = model.video_id;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+
+//    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.isNoShowNavBar = NO;
+//    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
+
 @end

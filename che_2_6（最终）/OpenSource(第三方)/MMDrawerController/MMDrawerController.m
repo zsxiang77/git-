@@ -24,6 +24,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+
 CGFloat const MMDrawerDefaultWidth = 280.0f;
 CGFloat const MMDrawerDefaultAnimationVelocity = 840.0f;
 
@@ -814,8 +815,22 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     }
 }
 
+
 -(BOOL)shouldAutorotate{
-    return YES;
+    if ([UserInfo  shareInstance].shiFouXuanZhuan) {
+        return YES;
+    }else{
+        return NO;
+    }
+    
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if ([UserInfo  shareInstance].shiFouXuanZhuan) {
+        return UIInterfaceOrientationMaskAll;
+    }else{
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{

@@ -287,6 +287,27 @@
     }
 }
 
+#pragma mark 请求失败view
+- (void)showConnectFailView:(BOOL)isShow mySEL:(SEL)refreshRequest inView:(UIView*)addView startY:(float)startY
+{
+    if([m_notDataView nextResponder] == addView){
+        [m_notDataView removeFromSuperview];
+    }
+    if (isShow) {
+        m_notDataView = [[UIView alloc] initWithFrame:CGRectMake(0, startY, CGRectGetWidth(addView.frame), CGRectGetHeight(addView.frame)-startY)];
+        m_notDataView.backgroundColor = [UIColor clearColor];
+        [addView addSubview:m_notDataView];
+        
+        UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMidX(m_notDataView.frame)-100, CGRectGetMidY(m_notDataView.frame)-100-startY-20, 200, 200)];
+        image.image = DJImageNamed(@"data_fail");
+        [m_notDataView addSubview:image];
+        
+        UIButton* touch = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(m_notDataView.frame), CGRectGetHeight(m_notDataView.frame))];
+        [touch addTarget:self action:refreshRequest forControlEvents:UIControlEventTouchUpInside];
+        [m_notDataView addSubview:touch];
+    }
+}
+
 - (void)showNotDataView:(BOOL)isShow title:(NSString*)showTitle view:(UIView*)addView startY:(float)showY font:(UIFont*)font textColor:(UIColor*)textColor
 {
     if([m_notDataView nextResponder] == addView){

@@ -66,6 +66,9 @@ static float kBOSSNavBarHeight = 64;
 - (void)showNotDataView:(BOOL)isShow title:(NSString*)showTitle view:(UIView*)addView startY:(float)showY;
 - (void)showNotDataView:(BOOL)isShow title:(NSString*)showTitle view:(UIView*)addView startY:(float)showY font:(UIFont*)font textColor:(UIColor*)textColor;
 
+#pragma mark 请求失败view
+- (void)showConnectFailView:(BOOL)isShow mySEL:(SEL)refreshRequest inView:(UIView*)addView startY:(float)startY;
+
 /**
  键盘消失 弹alertView
  */

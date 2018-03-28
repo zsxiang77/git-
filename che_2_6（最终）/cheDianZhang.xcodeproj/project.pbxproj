@@ -213,6 +213,17 @@
 		C60549451FEA272A0020EF9B /* VersionUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60549431FEA272A0020EF9B /* VersionUpdate.m */; };
 		C60549491FEB99380020EF9B /* wtproject.lsc in Resources */ = {isa = PBXBuildFile; fileRef = C60549481FEB99370020EF9B /* wtproject.lsc */; };
 		C605494C1FED0C4B0020EF9B /* DetailAITProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C605494B1FED0C4B0020EF9B /* DetailAITProductsViewController.m */; };
+		C607D8C1206B7019005667BF /* LearningVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C0206B7019005667BF /* LearningVideoViewController.m */; };
+		C607D8C5206B7201005667BF /* UIView+CLSetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C3206B7200005667BF /* UIView+CLSetRect.m */; };
+		C607D8DA206B7274005667BF /* CLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C9206B7274005667BF /* CLSlider.m */; };
+		C607D8DB206B7274005667BF /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8CC206B7274005667BF /* AILoadingView.m */; };
+		C607D8DD206B7274005667BF /* CLPlayerMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8CF206B7274005667BF /* CLPlayerMaskView.m */; };
+		C607D8DF206B7274005667BF /* CLPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8D2206B7274005667BF /* CLPlayerView.m */; };
+		C607D8E0206B7274005667BF /* CLGCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8D3206B7274005667BF /* CLGCDTimerManager.m */; };
+		C607D8E2206B7274005667BF /* CLPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C607D8D9206B7274005667BF /* CLPlayer.bundle */; };
+		C607D8E9206B7CDB005667BF /* LearningVideoViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8E8206B7CDB005667BF /* LearningVideoViewController+Net.m */; };
+		C607D8EC206B7D75005667BF /* LearningVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8EB206B7D75005667BF /* LearningVideoModel.m */; };
+		C607D8EF206B9987005667BF /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8EE206B9987005667BF /* MainTabBarViewController.m */; };
 		C6093FEA2013812800530205 /* YCGDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FE92013812800530205 /* YCGDViewController.m */; };
 		C6093FED2013833A00530205 /* BYDQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FEC2013833A00530205 /* BYDQViewController.m */; };
 		C6093FF0201384A200530205 /* XJZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FEF201384A200530205 /* XJZZViewController.m */; };
@@ -1300,6 +1311,26 @@
 		C60549481FEB99370020EF9B /* wtproject.lsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = wtproject.lsc; sourceTree = "<group>"; };
 		C605494A1FED0C4B0020EF9B /* DetailAITProductsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailAITProductsViewController.h; sourceTree = "<group>"; };
 		C605494B1FED0C4B0020EF9B /* DetailAITProductsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailAITProductsViewController.m; sourceTree = "<group>"; };
+		C607D8BF206B7019005667BF /* LearningVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningVideoViewController.h; sourceTree = "<group>"; };
+		C607D8C0206B7019005667BF /* LearningVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningVideoViewController.m; sourceTree = "<group>"; };
+		C607D8C3206B7200005667BF /* UIView+CLSetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLSetRect.m"; sourceTree = "<group>"; };
+		C607D8C4206B7201005667BF /* UIView+CLSetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLSetRect.h"; sourceTree = "<group>"; };
+		C607D8C8206B7274005667BF /* CLGCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGCDTimerManager.h; sourceTree = "<group>"; };
+		C607D8C9206B7274005667BF /* CLSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSlider.m; sourceTree = "<group>"; };
+		C607D8CA206B7274005667BF /* CLPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPlayerView.h; sourceTree = "<group>"; };
+		C607D8CC206B7274005667BF /* AILoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AILoadingView.m; sourceTree = "<group>"; };
+		C607D8CF206B7274005667BF /* CLPlayerMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlayerMaskView.m; sourceTree = "<group>"; };
+		C607D8D1206B7274005667BF /* CLSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSlider.h; sourceTree = "<group>"; };
+		C607D8D2206B7274005667BF /* CLPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlayerView.m; sourceTree = "<group>"; };
+		C607D8D3206B7274005667BF /* CLGCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGCDTimerManager.m; sourceTree = "<group>"; };
+		C607D8D5206B7274005667BF /* AILoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AILoadingView.h; sourceTree = "<group>"; };
+		C607D8D6206B7274005667BF /* CLPlayerMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPlayerMaskView.h; sourceTree = "<group>"; };
+		C607D8D9206B7274005667BF /* CLPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CLPlayer.bundle; sourceTree = "<group>"; };
+		C607D8E8206B7CDB005667BF /* LearningVideoViewController+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LearningVideoViewController+Net.m"; sourceTree = "<group>"; };
+		C607D8EA206B7D75005667BF /* LearningVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningVideoModel.h; sourceTree = "<group>"; };
+		C607D8EB206B7D75005667BF /* LearningVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningVideoModel.m; sourceTree = "<group>"; };
+		C607D8ED206B9987005667BF /* MainTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		C607D8EE206B9987005667BF /* MainTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		C6093FE82013812800530205 /* YCGDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCGDViewController.h; sourceTree = "<group>"; };
 		C6093FE92013812800530205 /* YCGDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCGDViewController.m; sourceTree = "<group>"; };
 		C6093FEB2013833A00530205 /* BYDQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYDQViewController.h; sourceTree = "<group>"; };
@@ -3466,6 +3497,71 @@
 			path = "VersionUpdate（版本更新）";
 			sourceTree = "<group>";
 		};
+		C607D8BE206B6FC5005667BF /* Video（视频） */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8E6206B7C87005667BF /* Model */,
+				C607D8C7206B7274005667BF /* CLPlayer */,
+				C607D8C6206B7222005667BF /* View */,
+				C607D8C2206B71E4005667BF /* Gategory */,
+				C607D8BF206B7019005667BF /* LearningVideoViewController.h */,
+				C607D8C0206B7019005667BF /* LearningVideoViewController.m */,
+				C607D8E8206B7CDB005667BF /* LearningVideoViewController+Net.m */,
+			);
+			path = "Video（视频）";
+			sourceTree = "<group>";
+		};
+		C607D8C2206B71E4005667BF /* Gategory */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8C4206B7201005667BF /* UIView+CLSetRect.h */,
+				C607D8C3206B7200005667BF /* UIView+CLSetRect.m */,
+			);
+			path = Gategory;
+			sourceTree = "<group>";
+		};
+		C607D8C6206B7222005667BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C607D8C7206B7274005667BF /* CLPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8C8206B7274005667BF /* CLGCDTimerManager.h */,
+				C607D8D3206B7274005667BF /* CLGCDTimerManager.m */,
+				C607D8D1206B7274005667BF /* CLSlider.h */,
+				C607D8C9206B7274005667BF /* CLSlider.m */,
+				C607D8CA206B7274005667BF /* CLPlayerView.h */,
+				C607D8D2206B7274005667BF /* CLPlayerView.m */,
+				C607D8D6206B7274005667BF /* CLPlayerMaskView.h */,
+				C607D8CF206B7274005667BF /* CLPlayerMaskView.m */,
+				C607D8D5206B7274005667BF /* AILoadingView.h */,
+				C607D8CC206B7274005667BF /* AILoadingView.m */,
+				C607D8D8206B7274005667BF /* Resource */,
+			);
+			path = CLPlayer;
+			sourceTree = "<group>";
+		};
+		C607D8D8206B7274005667BF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8D9206B7274005667BF /* CLPlayer.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C607D8E6206B7C87005667BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8EA206B7D75005667BF /* LearningVideoModel.h */,
+				C607D8EB206B7D75005667BF /* LearningVideoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C609400C20173E0600530205 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -4101,6 +4197,8 @@
 				C625CC761F53D29600CC3E73 /* Info.plist */,
 				BDD4D35A20270BD300C433D1 /* PrefixHeader.pch */,
 				C625CC651F53D29600CC3E73 /* Supporting Files */,
+				C607D8ED206B9987005667BF /* MainTabBarViewController.h */,
+				C607D8EE206B9987005667BF /* MainTabBarViewController.m */,
 			);
 			path = cheDianZhang;
 			sourceTree = "<group>";
@@ -5968,6 +6066,7 @@
 		C6E57B9120030F6D00E945F3 /* LearningCenter（学习中心） */ = {
 			isa = PBXGroup;
 			children = (
+				C607D8BE206B6FC5005667BF /* Video（视频） */,
 				18FE48AC2064DF5C0005984F /* Cell */,
 				C60ECD1D2063CC5800F94EAF /* Model */,
 				C6E57B9320030F6D00E945F3 /* LearningCenterViewController.h */,
@@ -6022,16 +6121,16 @@
 		C6E57BAA2003172400E945F3 /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
-				C6E57BAB2003172400E945F3 /* MMDrawerBarButtonItem.m */,
-				C6E57BAC2003172400E945F3 /* UIViewController+MMDrawerController.m */,
-				C6E57BAD2003172400E945F3 /* MMExampleDrawerVisualStateManager.h */,
+				C6E57BB42003172400E945F3 /* MMDrawerController.h */,
 				C6E57BAE2003172400E945F3 /* MMDrawerController.m */,
 				C6E57BAF2003172400E945F3 /* MMDrawerController+Subclass.h */,
-				C6E57BB02003172400E945F3 /* MMDrawerVisualState.h */,
 				C6E57BB12003172400E945F3 /* MMDrawerBarButtonItem.h */,
+				C6E57BAB2003172400E945F3 /* MMDrawerBarButtonItem.m */,
 				C6E57BB22003172400E945F3 /* UIViewController+MMDrawerController.h */,
+				C6E57BAC2003172400E945F3 /* UIViewController+MMDrawerController.m */,
+				C6E57BB02003172400E945F3 /* MMDrawerVisualState.h */,
 				C6E57BB32003172400E945F3 /* MMDrawerVisualState.m */,
-				C6E57BB42003172400E945F3 /* MMDrawerController.h */,
+				C6E57BAD2003172400E945F3 /* MMExampleDrawerVisualStateManager.h */,
 				C6E57BB52003172400E945F3 /* MMExampleDrawerVisualStateManager.m */,
 			);
 			path = MMDrawerController;
@@ -6336,6 +6435,7 @@
 				C6F35FF21F66461A00F2A870 /* IDCARDMS_ABROAD.xml in Resources */,
 				BD99E35520277F6200027D23 /* 耗材信息.png in Resources */,
 				C6F35FF31F66461A00F2A870 /* IDCARDMS.xml in Resources */,
+				C607D8E2206B7274005667BF /* CLPlayer.bundle in Resources */,
 				C6AC05A21F7F53850040B32B /* Info.plist in Resources */,
 				BD99E35020277F6200027D23 /* 重新扫描.png in Resources */,
 				C6F360011F66461A00F2A870 /* THOCR_PDA.lib in Resources */,
@@ -6459,6 +6559,7 @@
 				BDD4D34620270A1500C433D1 /* CALayer+YYAdd.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,
 				C68E91891FA1D9C200975D68 /* ZXMultiFormatReader.m in Sources */,
+				C607D8EC206B7D75005667BF /* LearningVideoModel.m in Sources */,
 				BDD4D33B20270A1500C433D1 /* NSData+YYAdd.m in Sources */,
 				C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */,
 				BDD4D42020270C3B00C433D1 /* KLCPopup.m in Sources */,
@@ -6492,6 +6593,7 @@
 				BD99E36220277F6200027D23 /* LCMessageViewModel.m in Sources */,
 				C643F3712026ACC500A2AA57 /* HPGrowingTextView.m in Sources */,
 				C625CFDA1F53DE1900CC3E73 /* SDImageCacheConfig.m in Sources */,
+				C607D8E0206B7274005667BF /* CLGCDTimerManager.m in Sources */,
 				C60ECD0820577D2900F94EAF /* CustomerInformationYYueModel.m in Sources */,
 				C625CFBA1F53DE1900CC3E73 /* MJFoundation.m in Sources */,
 				C68E91581FA1D9C200975D68 /* ZXPDF417ECErrorCorrection.m in Sources */,
@@ -6530,6 +6632,7 @@
 				BDD4D32B20270A1500C433D1 /* UIColor+YYAdd.m in Sources */,
 				BDD4D30B20270A1500C433D1 /* YYFrameImage.m in Sources */,
 				C60A8D9F200EE9C00026111B /* JobBoardScreeningCell.m in Sources */,
+				C607D8C1206B7019005667BF /* LearningVideoViewController.m in Sources */,
 				C60DBA0C1FB2F03F002B0CC4 /* SWUtilityButtonView.m in Sources */,
 				C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */,
 				C68E91621FA1D9C200975D68 /* ZXPDF417ScanningDecoder.m in Sources */,
@@ -6594,6 +6697,7 @@
 				C68E91151FA1D9C200975D68 /* ZXDataMatrixTextEncoder.m in Sources */,
 				C643F33220246AEF00A2AA57 /* ProjectDetailsADDSanVC.m in Sources */,
 				C68E91201FA1D9C200975D68 /* ZXAI013103decoder.m in Sources */,
+				C607D8DB206B7274005667BF /* AILoadingView.m in Sources */,
 				C68E91491FA1D9C200975D68 /* ZXITFWriter.m in Sources */,
 				C68E91601FA1D9C200975D68 /* ZXPDF417DetectionResultColumn.m in Sources */,
 				C6AB7493201F0A1500F157EB /* BOSSSystemWoDeCell.m in Sources */,
@@ -6610,6 +6714,7 @@
 				C6AC059C1F7F53850040B32B /* ReachState.m in Sources */,
 				1803C801205A57A000F25BB1 /* LCBottomDianJiView.m in Sources */,
 				C60DB9F61FB1CE09002B0CC4 /* AITListViewController.m in Sources */,
+				C607D8DA206B7274005667BF /* CLSlider.m in Sources */,
 				BDD4D38120270C0D00C433D1 /* IQToolbar.m in Sources */,
 				BDD4D42C2027114100C433D1 /* OrderInfoPushManager.m in Sources */,
 				C625CFCC1F53DE1900CC3E73 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -6685,6 +6790,7 @@
 				C643F3512025E2C000A2AA57 /* PaiGongModel.m in Sources */,
 				C68E91591FA1D9C200975D68 /* ZXPDF417BarcodeMetadata.m in Sources */,
 				BD99E36920277F6200027D23 /* OrderAccessoriesCell.m in Sources */,
+				C607D8C5206B7201005667BF /* UIView+CLSetRect.m in Sources */,
 				C68E91051FA1D9C200975D68 /* ZXDataMatrixBitMatrixParser.m in Sources */,
 				C6E57BE0200499BE00E945F3 /* LeftTableViewCell.m in Sources */,
 				C68E90D21FA1D9C200975D68 /* ZXSMTPResultParser.m in Sources */,
@@ -6798,6 +6904,7 @@
 				BDD4D40920270C3B00C433D1 /* CarInfoChooseViewCell.m in Sources */,
 				BDD4D34220270A1500C433D1 /* NSNotificationCenter+YYAdd.m in Sources */,
 				C68E91681FA1D9C200975D68 /* ZXPDF417Dimensions.m in Sources */,
+				C607D8EF206B9987005667BF /* MainTabBarViewController.m in Sources */,
 				BDD4D42220270C3B00C433D1 /* RepairSecondViewController.m in Sources */,
 				C6094017201832A600530205 /* FoundDetailViewController.m in Sources */,
 				C61005E520453E570045968C /* LCXiMieChePaiCell.m in Sources */,
@@ -7119,6 +7226,7 @@
 				C6AC05A41F7F53850040B32B /* PingHelper.m in Sources */,
 				C6AB748A201D9F1E00F157EB /* HistroyLookUItableViewCell.m in Sources */,
 				C617432C1FF38C4000FB7AD8 /* GTVerifyCodeView.m in Sources */,
+				C607D8DD206B7274005667BF /* CLPlayerMaskView.m in Sources */,
 				C61005B1204530D90045968C /* XiMeiNewOrdersCell.m in Sources */,
 				BDD4D30520270A1500C433D1 /* YYMemoryCache.m in Sources */,
 				C68E91881FA1D9C200975D68 /* ZXQRCodeWriter.m in Sources */,
@@ -7145,10 +7253,12 @@
 				C68E91271FA1D9C200975D68 /* ZXAI01decoder.m in Sources */,
 				C68E914B1FA1D9C200975D68 /* ZXMultiFormatUPCEANReader.m in Sources */,
 				C68A903E1F8B77CA0001BDE0 /* EBBannerView.m in Sources */,
+				C607D8DF206B7274005667BF /* CLPlayerView.m in Sources */,
 				BDD4D34820270A1500C433D1 /* YYAsyncLayer.m in Sources */,
 				C685B7D3200891BD00786F7C /* BOSSLoadView.m in Sources */,
 				C68E90E11FA1D9C200975D68 /* ZXImage.m in Sources */,
 				C60ECCEE2052805E00F94EAF /* GDYuYueViewController.m in Sources */,
+				C607D8E9206B7CDB005667BF /* LearningVideoViewController+Net.m in Sources */,
 				C68E90D71FA1D9C200975D68 /* ZXURIResultParser.m in Sources */,
 				C625D02C1F53E55F00CC3E73 /* ViewController+MASAdditions.m in Sources */,
 				C643F3C0202708D800A2AA57 /* SuccessfulOrderViewController.m in Sources */,

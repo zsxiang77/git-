@@ -47,7 +47,7 @@
     five_nc.tabBarItem = item05;
     
     //TODO: 测试
-    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController = [[MainTabBarViewController alloc] init];
     [self.tabBarController setViewControllers:@[one_nc,two_nc,three_nc,four_nc,five_nc]];
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
     self.tabBarController.tabBar.translucent = NO;//不透明

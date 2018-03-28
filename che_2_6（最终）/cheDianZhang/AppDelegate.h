@@ -30,11 +30,13 @@
 
 #define kNewfuctionKey @"newIntroduceVersion"
 
+#import "MainTabBarViewController.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UITabBarController* tabBarController;
+@property (strong, nonatomic) MainTabBarViewController* tabBarController;
 @property (strong, nonatomic) NSString * tiaoZhuanordercode;
 
 /** 引导图后 */

@@ -45,6 +45,8 @@ static NSString* const userPositions = @"userPositions";
 @property(nonatomic,strong)NSArray *userPositions;//1是店长2是销售3是技工
 //=================================
 
+
+
 - (void)cleanUserInfor;
 
 
@@ -75,4 +77,6 @@ static NSString* const userPositions = @"userPositions";
 
 //是否手动或点击扫一扫生成工单
 @property(nonatomic,assign)BOOL shiFouShouDong;//yes是手动
+
+@property(nonatomic,assign)BOOL shiFouXuanZhuan;//是否旋转屏幕
 @end
