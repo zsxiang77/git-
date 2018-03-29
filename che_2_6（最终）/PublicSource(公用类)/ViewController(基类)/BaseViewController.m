@@ -56,6 +56,7 @@
     m_loadView = [[LoadView alloc] init];
     [self.view addSubview:m_loadView];
     m_loadView.hidden = YES;
+    [UserInfo shareInstance].shiFouBOSS = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -449,5 +450,9 @@
     
     return mutStr;
     
+}
+
+- (BOOL)shouldAutorotate{
+    return NO;
 }
 @end

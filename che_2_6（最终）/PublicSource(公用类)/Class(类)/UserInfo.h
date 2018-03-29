@@ -79,4 +79,5 @@ static NSString* const userPositions = @"userPositions";
 @property(nonatomic,assign)BOOL shiFouShouDong;//yes是手动
 
 @property(nonatomic,assign)BOOL shiFouXuanZhuan;//是否旋转屏幕
+@property(nonatomic,assign)BOOL shiFouBOSS;//是否BOSS页面
 @end

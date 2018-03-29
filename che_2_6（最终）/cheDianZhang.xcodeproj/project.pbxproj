@@ -224,6 +224,7 @@
 		C607D8E9206B7CDB005667BF /* LearningVideoViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8E8206B7CDB005667BF /* LearningVideoViewController+Net.m */; };
 		C607D8EC206B7D75005667BF /* LearningVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8EB206B7D75005667BF /* LearningVideoModel.m */; };
 		C607D8EF206B9987005667BF /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8EE206B9987005667BF /* MainTabBarViewController.m */; };
+		C607D8F6206C8EFA005667BF /* FunctionZuoYouBt.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8F5206C8EFA005667BF /* FunctionZuoYouBt.m */; };
 		C6093FEA2013812800530205 /* YCGDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FE92013812800530205 /* YCGDViewController.m */; };
 		C6093FED2013833A00530205 /* BYDQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FEC2013833A00530205 /* BYDQViewController.m */; };
 		C6093FF0201384A200530205 /* XJZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6093FEF201384A200530205 /* XJZZViewController.m */; };
@@ -1331,6 +1332,8 @@
 		C607D8EB206B7D75005667BF /* LearningVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningVideoModel.m; sourceTree = "<group>"; };
 		C607D8ED206B9987005667BF /* MainTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		C607D8EE206B9987005667BF /* MainTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		C607D8F4206C8EFA005667BF /* FunctionZuoYouBt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionZuoYouBt.h; sourceTree = "<group>"; };
+		C607D8F5206C8EFA005667BF /* FunctionZuoYouBt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunctionZuoYouBt.m; sourceTree = "<group>"; };
 		C6093FE82013812800530205 /* YCGDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCGDViewController.h; sourceTree = "<group>"; };
 		C6093FE92013812800530205 /* YCGDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCGDViewController.m; sourceTree = "<group>"; };
 		C6093FEB2013833A00530205 /* BYDQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYDQViewController.h; sourceTree = "<group>"; };
@@ -3562,6 +3565,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C607D8F3206C8EDC005667BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C607D8F4206C8EFA005667BF /* FunctionZuoYouBt.h */,
+				C607D8F5206C8EFA005667BF /* FunctionZuoYouBt.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C609400C20173E0600530205 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -4896,6 +4908,7 @@
 		C643F3802026E79D00A2AA57 /* FunctionalCheck（功能检查） */ = {
 			isa = PBXGroup;
 			children = (
+				C607D8F3206C8EDC005667BF /* View */,
 				C643F3812026E79D00A2AA57 /* FunctionalCheckViewController.h */,
 				C643F3822026E79D00A2AA57 /* FunctionalCheckViewController.m */,
 				C643F3842026E7D900A2AA57 /* FunctionalCheckModel.h */,
@@ -7040,6 +7053,7 @@
 				C68E91861FA1D9C200975D68 /* ZXQRCodeMultiReader.m in Sources */,
 				C6134C39202BF8710099431E /* MaintenanceProjecPartstBackCell.m in Sources */,
 				C68A90431F8B77CA0001BDE0 /* UIImage+ColorAtPoint.m in Sources */,
+				C607D8F6206C8EFA005667BF /* FunctionZuoYouBt.m in Sources */,
 				C68E910F1FA1D9C200975D68 /* ZXDataMatrixEdifactEncoder.m in Sources */,
 				BDD4D33920270A1500C433D1 /* NSBundle+YYAdd.m in Sources */,
 				C68E91161FA1D9C200975D68 /* ZXDataMatrixX12Encoder.m in Sources */,

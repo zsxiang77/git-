@@ -57,6 +57,8 @@
     [self.view addSubview:m_loadView];
     m_loadView.hidden = YES;
     
+    [UserInfo shareInstance].shiFouBOSS = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {

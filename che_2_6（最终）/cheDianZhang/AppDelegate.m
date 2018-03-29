@@ -171,6 +171,11 @@ static BOOL isProduction = FALSE;
         [self buildHomeRightBottom];
     }
     
+    if ([UserInfo shareInstance].shiFouBOSS) {
+        return;
+    }
+    
+    
     BOOL br = [[notification object] boolValue];
     if (br == YES) {
         m_homeRightBottomXiaoXi.hidden = NO;
@@ -201,9 +206,7 @@ static BOOL isProduction = FALSE;
 
 
 
-    if (!m_homeRightBottomXiaoXi) {
-        [self buildHomeRightBottom];
-    }
+    [self buildHomeRightBottom];
     
 //    [self BOSSbuildMainWindowView];
     
