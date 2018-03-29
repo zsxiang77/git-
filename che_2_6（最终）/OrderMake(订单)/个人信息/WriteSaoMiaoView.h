@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "WritePersonalInputTFView.h"
 
+#define kAlphaNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 @interface WriteSaoMiaoView : UIView
 
 @property (nonatomic, strong) WritePersonalInputTFView *send_mobile_tf;

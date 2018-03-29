@@ -8,7 +8,7 @@
 
 #import "ScanDrivingLicenseTFCell.h"
 
-@interface ScanDrivingLicenseTFCell () <QMUITextFieldDelegate>
+@interface ScanDrivingLicenseTFCell () <QMUITextFieldDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UIView *line;
 @end
 

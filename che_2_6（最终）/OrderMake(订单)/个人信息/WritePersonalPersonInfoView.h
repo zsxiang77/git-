@@ -10,7 +10,11 @@
 #import "WritePersonalViewController.h"
 #import "WriteSaoMiaoView.h"
 #import "WritePersonalInputTFView.h"
+
+#define kAlphaNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 @interface WritePersonalPersonInfoView : UIView
+
 @property (nonatomic, strong) NSString *mobile;
 @property (nonatomic, strong) NSString *store_alias;
 @property (nonatomic, strong) NSString *id_car;

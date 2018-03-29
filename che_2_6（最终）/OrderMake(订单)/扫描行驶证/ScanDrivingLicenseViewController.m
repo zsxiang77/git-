@@ -21,7 +21,7 @@
 <
 UITableViewDelegate,
 UITableViewDataSource
->
+,QMUITextFieldDelegate>
 @property (nonatomic, strong) UIButton *chooseBtn;
 @property (nonatomic, strong) UIImageView *licenseIv;
 @property (nonatomic, strong) UIView *paddingLine;
@@ -34,6 +34,7 @@ UITableViewDataSource
 @property (nonatomic, strong) PopTimePickerView *timePickerView;
 @property (nonatomic, strong) ScanDrivingLicenseModel *model;
 
+@property(nonatomic,strong)QMUITextField *vINTextField;
 ///注册时间
 @property (nonatomic, strong) NSDate *registerDate;
 ///发证时间
@@ -347,6 +348,9 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
             ((ScanDrivingLicenseVinCell *)cell).titleLb.textColor = [UIColor colorWithHexString:@"ff383d"];
             ((ScanDrivingLicenseVinCell *)cell).textField.text = _model.model.carvin;
             ((ScanDrivingLicenseVinCell *)cell).textField.maximumTextLength = 17;
+            ((ScanDrivingLicenseVinCell *)cell).textField.delegate = self;
+            self.vINTextField = ((ScanDrivingLicenseVinCell *)cell).textField;
+            ((ScanDrivingLicenseVinCell *)cell).textField.keyboardType = UIKeyboardTypeASCIICapable;
             ((ScanDrivingLicenseVinCell *)cell).isHiddenLine = NO;
             ((ScanDrivingLicenseVinCell *)cell).textFieldTextChangeBlock = ^(NSString *text) {
                 weak_self.model.model.carvin = text;
@@ -652,5 +656,26 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
     
     [popup show];
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.vINTextField) {
+        if (string.length == 0 ){return YES;}
+        char commitChar = [string characterAtIndex:0];
+        if (commitChar > 96 && commitChar < 123){
+            NSString * uppercaseString = string.uppercaseString;
+            NSString * str1 = [textField.text substringToIndex:range.location];
+            NSString * str2 = [textField.text substringFromIndex:range.location];
+            textField.text = [NSString stringWithFormat:@"%@%@%@",str1,uppercaseString,str2].uppercaseString;
+            return NO;
+        }else{
+            NSCharacterSet *cs;
+            cs = [[NSCharacterSet characterSetWithCharactersInString:kAlphaNum] invertedSet];
+            NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""]; //按cs分离出数组,数组按@""分离出字符串
+            BOOL canChange = [string isEqualToString:filtered];
+            return canChange;
+        }
+    }
+    return YES;
+    
+}
 @end

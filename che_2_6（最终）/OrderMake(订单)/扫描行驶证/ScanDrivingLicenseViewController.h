@@ -10,6 +10,7 @@
 #import "TheNewWorkOrderModel.h"
 #import "ScanDrivingView.h"
 
+#define kAlphaNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 @interface ScanDrivingLicenseViewController : BaseViewController
 
 @property(nonatomic,strong)UITextField *chePaiTextField;

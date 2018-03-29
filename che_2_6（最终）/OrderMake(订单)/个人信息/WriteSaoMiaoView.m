@@ -10,7 +10,7 @@
 
 #import "NumberKeyboard.h"
 
-@interface WriteSaoMiaoView()<NumKeyboardDelegate>
+@interface WriteSaoMiaoView()<NumKeyboardDelegate,QMUITextFieldDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) UIButton *saomiao_id_car_bt;
 @end
@@ -136,6 +136,8 @@
             };
             tf.titleLb.text = @"身份证号：";
             tf.textField.maximumTextLength = 18;
+            tf.textField.delegate = self;
+            tf.textField.keyboardType = UIKeyboardTypeASCIICapable;
             tf.textField.placeholder=@"请输入您的身份证号码";
             self.send_id_car_tf = tf;
         }else if (i == 4) {
@@ -267,7 +269,29 @@
     _send_nation = send_nation;
     _send_nation_tf.textField.text = send_nation;
 }
-
+#pragma mark - uitextDele
+//判断是否是数字，不是的话就输入失败
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.send_id_car_tf.textField) {
+        if (string.length == 0 ){return YES;}
+        char commitChar = [string characterAtIndex:0];
+        if (commitChar > 96 && commitChar < 123){
+            NSString * uppercaseString = string.uppercaseString;
+            NSString * str1 = [textField.text substringToIndex:range.location];
+            NSString * str2 = [textField.text substringFromIndex:range.location];
+            textField.text = [NSString stringWithFormat:@"%@%@%@",str1,uppercaseString,str2].uppercaseString;
+            return NO;
+        }else{
+            NSCharacterSet *cs;
+            cs = [[NSCharacterSet characterSetWithCharactersInString:kAlphaNum] invertedSet];
+            NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""]; //按cs分离出数组,数组按@""分离出字符串
+            BOOL canChange = [string isEqualToString:filtered];
+            return canChange;
+        }
+    }
+    return YES;
+}
 
 
 @end
