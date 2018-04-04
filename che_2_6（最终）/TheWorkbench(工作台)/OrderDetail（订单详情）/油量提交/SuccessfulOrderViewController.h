@@ -11,7 +11,8 @@
 @interface SuccessfulOrderViewController : BaseViewController
 
 @property(nonatomic,strong)NSDictionary *chuZhiDict;
-
+@property(nonatomic,strong)UILabel *xiatuLable;
 
 
 @end
+

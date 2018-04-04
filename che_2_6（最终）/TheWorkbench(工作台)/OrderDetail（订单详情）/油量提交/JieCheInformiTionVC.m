@@ -157,10 +157,10 @@
 
     [xiaBaiView addSubview:queDingBt];
     [queDingBt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(140);
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(35);
+        make.bottom.mas_equalTo(-13);
+        make.left.mas_equalTo(16);
+        make.right.mas_equalTo(-16);
+        make.height.mas_equalTo(94/2);
     }];
 
     xiaBaiView.backgroundColor = [UIColor whiteColor];

@@ -14,11 +14,14 @@
     UIView *youBeiView;
     UILabel *zuoBeiLabel;
     UILabel *youBeiLabel;
-
+    
     UIButton *dianDianBt;
 }
-
+-(instancetype)initWithFrame:(CGRect)frame withZuoTitle:(NSString *)zuoStr withYouStr:(NSString *)youStr;
 @property(nonatomic,assign)BOOL dianJiSelect;
+
+@property(nonatomic,strong)void (^dianJiSelectBlock)(BOOL dianSender);
 -(void)setBuJuOrZhuangTai;
 
 @end
+

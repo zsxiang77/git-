@@ -12,6 +12,9 @@
 		18FD6ECD20635CBC000E192C /* ScanDrivingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD6ECC20635CBC000E192C /* ScanDrivingView.m */; };
 		18FE48AF2064DF5C0005984F /* LearningCenterCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48AE2064DF5C0005984F /* LearningCenterCellTableViewCell.m */; };
 		18FE48DD206A19470005984F /* LCBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48DB206A19470005984F /* LCBottomView.m */; };
+		18FE49102071D02B0005984F /* AccessoryEquiSuiCheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE490E2071D02B0005984F /* AccessoryEquiSuiCheCell.m */; };
+		18FE49132071D35F0005984F /* MyQuartz.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49112071D35F0005984F /* MyQuartz.m */; };
+		18FE4917207214ED0005984F /* NewInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE4916207214ED0005984F /* NewInputView.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -926,6 +929,12 @@
 		18FE48AE2064DF5C0005984F /* LearningCenterCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearningCenterCellTableViewCell.m; sourceTree = "<group>"; };
 		18FE48DB206A19470005984F /* LCBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCBottomView.m; sourceTree = "<group>"; };
 		18FE48DC206A19470005984F /* LCBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCBottomView.h; sourceTree = "<group>"; };
+		18FE490E2071D02B0005984F /* AccessoryEquiSuiCheCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryEquiSuiCheCell.m; sourceTree = "<group>"; };
+		18FE490F2071D02B0005984F /* AccessoryEquiSuiCheCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryEquiSuiCheCell.h; sourceTree = "<group>"; };
+		18FE49112071D35F0005984F /* MyQuartz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQuartz.m; sourceTree = "<group>"; };
+		18FE49122071D35F0005984F /* MyQuartz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQuartz.h; sourceTree = "<group>"; };
+		18FE4915207214ED0005984F /* NewInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInputView.h; sourceTree = "<group>"; };
+		18FE4916207214ED0005984F /* NewInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInputView.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -2727,6 +2736,24 @@
 				18FE48AE2064DF5C0005984F /* LearningCenterCellTableViewCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		18FE490D2071D02B0005984F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18FE490E2071D02B0005984F /* AccessoryEquiSuiCheCell.m */,
+				18FE490F2071D02B0005984F /* AccessoryEquiSuiCheCell.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18FE49142072149A0005984F /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				18FE4915207214ED0005984F /* NewInputView.h */,
+				18FE4916207214ED0005984F /* NewInputView.m */,
+			);
+			path = InputView;
 			sourceTree = "<group>";
 		};
 		BD99E2E720277F6200027D23 /* LCC 四个流程 */ = {
@@ -4633,6 +4660,7 @@
 		C625CFF71F53E06200CC3E73 /* Scan（扫一扫） */ = {
 			isa = PBXGroup;
 			children = (
+				18FE49142072149A0005984F /* InputView */,
 				C6567B142027831A000E42F7 /* NewVehicleVC.h */,
 				C6567B152027831A000E42F7 /* NewVehicleVC.m */,
 				C625CFFD1F53E1AA00CC3E73 /* ScanViewController.h */,
@@ -4895,6 +4923,7 @@
 		C643F3762026CB6B00A2AA57 /* AccessoryEquipment(随车装备) */ = {
 			isa = PBXGroup;
 			children = (
+				18FE490D2071D02B0005984F /* Cell */,
 				C643F3772026CB6B00A2AA57 /* AccessoryEquipmentCell.h */,
 				C643F37A2026CB6B00A2AA57 /* AccessoryEquipmentCell.m */,
 				C643F37B2026CB6B00A2AA57 /* AccessoryEquipmentModel.h */,
@@ -4933,6 +4962,8 @@
 		C643F3A62027019600A2AA57 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18FE49122071D35F0005984F /* MyQuartz.h */,
+				18FE49112071D35F0005984F /* MyQuartz.m */,
 				C643F3A72027019600A2AA57 /* STLoopProgressView.h */,
 				C643F3A82027019600A2AA57 /* HuanBackView.m */,
 				C643F3A92027019600A2AA57 /* STLoopProgressView+BaseConfiguration.m */,
@@ -6606,6 +6637,7 @@
 				BD99E36220277F6200027D23 /* LCMessageViewModel.m in Sources */,
 				C643F3712026ACC500A2AA57 /* HPGrowingTextView.m in Sources */,
 				C625CFDA1F53DE1900CC3E73 /* SDImageCacheConfig.m in Sources */,
+				18FE49102071D02B0005984F /* AccessoryEquiSuiCheCell.m in Sources */,
 				C607D8E0206B7274005667BF /* CLGCDTimerManager.m in Sources */,
 				C60ECD0820577D2900F94EAF /* CustomerInformationYYueModel.m in Sources */,
 				C625CFBA1F53DE1900CC3E73 /* MJFoundation.m in Sources */,
@@ -7102,6 +7134,7 @@
 				C643F3052022C02A00A2AA57 /* OrderDetailErWeiView.m in Sources */,
 				C625CFC11F53DE1900CC3E73 /* NSObject+MJProperty.m in Sources */,
 				C68E91281FA1D9C200975D68 /* ZXAI01weightDecoder.m in Sources */,
+				18FE4917207214ED0005984F /* NewInputView.m in Sources */,
 				C643F36C2026AB8500A2AA57 /* CarInspectionViewController.m in Sources */,
 				C68E90CB1FA1D9C200975D68 /* ZXParsedResult.m in Sources */,
 				C60A8DB820109ECC0026111B /* CPHFWeiHeaderView.m in Sources */,
@@ -7259,6 +7292,7 @@
 				C68E90BC1FA1D9C200975D68 /* ZXAddressBookAUResultParser.m in Sources */,
 				C68E90F41FA1D9C200975D68 /* ZXHybridBinarizer.m in Sources */,
 				C61005CB20453BA70045968C /* XiMeiNewOrdersErCell1.m in Sources */,
+				18FE49132071D35F0005984F /* MyQuartz.m in Sources */,
 				C64C994A1FDFD35D007E3E71 /* AITIntroduceViewController.m in Sources */,
 				BDD4D35020270A1500C433D1 /* YYTimer.m in Sources */,
 				C602EF351F8CBB36008359C8 /* ALAsset+mExport.m in Sources */,

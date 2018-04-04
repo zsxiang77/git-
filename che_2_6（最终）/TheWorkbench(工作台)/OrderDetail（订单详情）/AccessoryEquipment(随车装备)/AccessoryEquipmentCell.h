@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CheDianZhangCommon.h"
-
+#import "FunctionZuoYouBt.h"
 @interface AccessoryEquipmentCell : UITableViewCell
+
+@property(nonatomic,strong)FunctionZuoYouBt*zuoYouBt;
 @property(nonatomic,strong)UILabel *zuoTitelLabel;
 @property(nonatomic,strong)UIImageView *xuanZhongImaheView;
 @property(nonatomic,strong)UILabel *youLabel;
 
 @end
+

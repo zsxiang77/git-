@@ -7,11 +7,15 @@
 //
 
 #import "BaseViewController.h"
-
+#import <Speech/Speech.h>
 
 
 @interface FunctionalCheckViewController : BaseViewController
-
+{
+    NSTimer*            m_timer;
+    NSInteger           leftTime;
+    AVAudioSession *audioSession;
+}
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)NSString *functions_remark;
 
@@ -19,4 +23,12 @@
 
 @property(nonatomic,assign)BOOL  shiFouFanHui;
 
+
+@property(nonatomic,strong)UIImageView *fuCengImageView;
+
+@property(nonatomic,strong)UILabel *yuyinTime;
+@property(nonatomic,strong)NSString *yuYingZhuanHStr;
+
+@property(nonatomic,assign)BOOL shiFouJieShuLuYin;
 @end
+

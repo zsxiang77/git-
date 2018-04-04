@@ -27,7 +27,7 @@
     
     drawArc(context, CGPointMake(SELF_WIDTH/2, SELF_HEIGHT/2), kRGBColor(244, 245, 246), SELF_WIDTH / 2);
     
-    drawFan(context, CGPointMake(SELF_WIDTH/2, SELF_HEIGHT/2),2.2*M_PI,0.8*M_PI , [UIColor greenColor], SELF_WIDTH / 2.5+5);
+    //drawFan(context, CGPointMake(SELF_WIDTH/2, SELF_HEIGHT/2),2.2*M_PI,0.8*M_PI , [UIColor greenColor], SELF_WIDTH / 2.5+5);
     drawFan(context, CGPointMake(SELF_WIDTH/2, SELF_HEIGHT/2),2.1*M_PI,0.9*M_PI , kRGBColor(244, 245, 246), SELF_WIDTH / 2.5-15);
     
 }

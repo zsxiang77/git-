@@ -10,7 +10,7 @@
 
 @implementation FunctionZuoYouBt
 
--(instancetype)initWithFrame:(CGRect)frame
+-(instancetype)initWithFrame:(CGRect)frame withZuoTitle:(NSString *)zuoStr withYouStr:(NSString *)youStr
 {
     if (self = [super initWithFrame:frame]) {
         [self.layer setMasksToBounds:YES];
@@ -46,14 +46,14 @@
         zuoBeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 93/2, 30)];
         zuoBeiLabel.font = [UIFont systemFontOfSize:14];
         zuoBeiLabel.textColor = kRGBColor(74, 74, 74);
-        zuoBeiLabel.text = @"异常";
+        zuoBeiLabel.text = zuoStr;
         zuoBeiLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:zuoBeiLabel];
         
         youBeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(39, 0, 93/2, 30)];
         youBeiLabel.font = [UIFont systemFontOfSize:14];
         youBeiLabel.textColor = kRGBColor(74, 74, 74);
-        youBeiLabel.text = @"正常";
+        youBeiLabel.text = youStr;
         youBeiLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:youBeiLabel];
         
@@ -73,8 +73,8 @@
 {
     self.dianJiSelect = !self.dianJiSelect;
     [self setBuJuOrZhuangTai];
+    self.dianJiSelectBlock(self.dianJiSelect);
 }
-
 -(void)setBuJuOrZhuangTai{
     if (self.dianJiSelect) {
         zuoBeiView.hidden = YES;
@@ -89,3 +89,4 @@
     }
 }
 @end
+
