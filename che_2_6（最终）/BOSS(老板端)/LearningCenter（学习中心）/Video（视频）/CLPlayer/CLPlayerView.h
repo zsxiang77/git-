@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KDWaterWaveView.h"
 
 typedef NS_ENUM(NSInteger,VideoFillMode){
     VideoFillModeResize = 0,       //拉伸占满整个播放器，不按原比例拉伸
@@ -60,6 +61,9 @@ typedef void(^EndBolck)(void);
 @property (nonatomic, strong) UIColor                 *progressPlayFinishColor;
 /**转子线条颜色*/
 @property (nonatomic, strong) UIColor                 *strokeColor;
+
+/**音频*/
+@property (nonatomic, strong) KDWaterWaveView         *kDWaterWaveView;
 
 /**播放*/
 - (void)playVideo;

@@ -10,6 +10,7 @@
 #import "LearningVideoModel.h"
 #import "CLPlayerView.h"
 #import "UIView+CLSetRect.h"
+#import "LearningZuoCeShiViewController.h"
 
 @interface LearningVideoViewController : BOSSBaseViewController
 
@@ -18,12 +19,18 @@
 
 @property(nonatomic,strong)NSString *video_id;
 
-@property(nonatomic,strong)LearningVideoModel *mainModel;
+
+@property(nonatomic,strong)NSMutableArray *mainJiShuArray;
+@property(nonatomic,strong)NSMutableArray *mainListArray;
+
+@property(nonatomic,strong)UITableView *mainTableView;
 
 @end
 
 
 @interface LearningVideoViewController (Net)
 -(void)qingQiuLuoBoData;
+//收藏
+-(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index;
 
 @end

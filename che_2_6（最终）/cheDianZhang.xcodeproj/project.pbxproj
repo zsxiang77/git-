@@ -820,6 +820,9 @@
 		C6BA12B31FBD4765005081A3 /* DCURLRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BA12AD1FBD4765005081A3 /* DCURLRouter.m */; };
 		C6BA12B41FBD4765005081A3 /* DCURLRouter.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6BA12AE1FBD4765005081A3 /* DCURLRouter.plist */; };
 		C6BA12B51FBD4765005081A3 /* UIViewController+DCURLRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BA12B01FBD4765005081A3 /* UIViewController+DCURLRouter.m */; };
+		C6BDA5742074DA4A00A19406 /* KDWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5702074DA4600A19406 /* KDWaterWaveView.m */; };
+		C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */; };
+		C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
@@ -2545,6 +2548,12 @@
 		C6BA12AE1FBD4765005081A3 /* DCURLRouter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DCURLRouter.plist; sourceTree = "<group>"; };
 		C6BA12AF1FBD4765005081A3 /* UIViewController+DCURLRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DCURLRouter.h"; sourceTree = "<group>"; };
 		C6BA12B01FBD4765005081A3 /* UIViewController+DCURLRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DCURLRouter.m"; sourceTree = "<group>"; };
+		C6BDA5702074DA4600A19406 /* KDWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDWaterWaveView.m; sourceTree = "<group>"; };
+		C6BDA5722074DA4A00A19406 /* KDWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDWaterWaveView.h; sourceTree = "<group>"; };
+		C6BDA5762079EC1000A19406 /* LearningZuoCeShiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoCeShiViewController.h; sourceTree = "<group>"; };
+		C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiViewController.m; sourceTree = "<group>"; };
+		C6BDA57A2079FA2F00A19406 /* LearningZuoCeShiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoCeShiModel.h; sourceTree = "<group>"; };
+		C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiModel.m; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
@@ -3581,6 +3590,8 @@
 		C607D8BE206B6FC5005667BF /* Video（视频） */ = {
 			isa = PBXGroup;
 			children = (
+				C6BDA56F2074D9D500A19406 /* 做测试 */,
+				C6BDA56E2074D9C600A19406 /* 音屏 */,
 				C607D8E6206B7C87005667BF /* Model */,
 				C607D8C7206B7274005667BF /* CLPlayer */,
 				C607D8C6206B7222005667BF /* View */,
@@ -6074,6 +6085,34 @@
 			path = DCURLRouter;
 			sourceTree = "<group>";
 		};
+		C6BDA56E2074D9C600A19406 /* 音屏 */ = {
+			isa = PBXGroup;
+			children = (
+				C6BDA5722074DA4A00A19406 /* KDWaterWaveView.h */,
+				C6BDA5702074DA4600A19406 /* KDWaterWaveView.m */,
+			);
+			path = "音屏";
+			sourceTree = "<group>";
+		};
+		C6BDA56F2074D9D500A19406 /* 做测试 */ = {
+			isa = PBXGroup;
+			children = (
+				C6BDA5792079FA1900A19406 /* Model */,
+				C6BDA5762079EC1000A19406 /* LearningZuoCeShiViewController.h */,
+				C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */,
+			);
+			path = "做测试";
+			sourceTree = "<group>";
+		};
+		C6BDA5792079FA1900A19406 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6BDA57A2079FA2F00A19406 /* LearningZuoCeShiModel.h */,
+				C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C6C4640E20207D6F00908A28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -6624,6 +6663,7 @@
 				C68E90B51FA1D9C200975D68 /* ZXAztecSimpleToken.m in Sources */,
 				C643F3542025F09500A2AA57 /* OrderDetailProjectPGCell.m in Sources */,
 				C60DBA071FB2F03F002B0CC4 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */,
 				C6E57BC02003175400E945F3 /* AppDelegate+BOSS.m in Sources */,
 				C68E914D1FA1D9C200975D68 /* ZXOneDReader.m in Sources */,
 				C60DB9FA1FB2B7E7002B0CC4 /* AITListCell.m in Sources */,
@@ -6735,6 +6775,7 @@
 				C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */,
 				C68E91621FA1D9C200975D68 /* ZXPDF417ScanningDecoder.m in Sources */,
 				C643F32D2024693900A2AA57 /* ProjectDetailsChooseView.m in Sources */,
+				C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */,
 				C61005BD20453B520045968C /* XiMeiNewOrdersErVC+Net.m in Sources */,
 				BDEFA3CF20293F2A0094A158 /* QMUIConfiguration.m in Sources */,
 				BDD4D41620270C3B00C433D1 /* NSString+Additions.m in Sources */,
@@ -7186,6 +7227,7 @@
 				C68E90E01FA1D9C200975D68 /* ZXCGImageLuminanceSource.m in Sources */,
 				C61005FD204A76CE0045968C /* StoresDateYuanView.m in Sources */,
 				C643F3052022C02A00A2AA57 /* OrderDetailErWeiView.m in Sources */,
+				C6BDA5742074DA4A00A19406 /* KDWaterWaveView.m in Sources */,
 				C625CFC11F53DE1900CC3E73 /* NSObject+MJProperty.m in Sources */,
 				C68E91281FA1D9C200975D68 /* ZXAI01weightDecoder.m in Sources */,
 				18FE4917207214ED0005984F /* NewInputView.m in Sources */,

@@ -83,6 +83,22 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 @implementation CLPlayerView
 
 #pragma mark - 懒加载
+-(KDWaterWaveView *)kDWaterWaveView
+{
+    if (!_kDWaterWaveView) {
+        _kDWaterWaveView = [[KDWaterWaveView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 100)];
+        _kDWaterWaveView.hidden = YES;
+        [self addSubview:_kDWaterWaveView];
+        [self bringSubviewToFront:_kDWaterWaveView];
+        [_kDWaterWaveView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(0);
+            make.centerY.mas_equalTo(self);
+            make.height.mas_equalTo(100);
+        }];
+    }
+    return _kDWaterWaveView;
+}
+
 //遮罩
 - (CLPlayerMaskView *) maskView{
     if (_maskView == nil){

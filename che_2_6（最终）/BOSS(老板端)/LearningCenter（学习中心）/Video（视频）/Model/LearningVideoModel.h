@@ -25,6 +25,8 @@
 @property(nonatomic,strong)NSString      *user_coll;
 @property(nonatomic,strong)NSString      *user_buy;
 
+@property(nonatomic,assign)BOOL           shiFouXuanZhong;
+
 -(void)setDatashuJu:(NSDictionary*)dic;
 
 
