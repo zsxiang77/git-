@@ -10,7 +10,6 @@
 
 @interface NewMaterialCell : UITableViewCell
 
-@property(nonatomic,strong)UIImageView *zhuImageView;
 @property(nonatomic,strong)UIImageView *xuanZhonImageView;
 
 @property(nonatomic,strong)UILabel *titleLabel;

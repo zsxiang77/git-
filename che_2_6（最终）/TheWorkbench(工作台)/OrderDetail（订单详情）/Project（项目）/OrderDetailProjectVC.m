@@ -289,7 +289,6 @@
             multipleView.zuiDaZhiFloat = 999.9;
             multipleView.okClick = ^(NSString* value){
                 model.hour = value;
-                
                 [weakSelf.main_tabelView reloadData];
             };
             [[UIApplication sharedApplication].keyWindow addSubview:multipleView];

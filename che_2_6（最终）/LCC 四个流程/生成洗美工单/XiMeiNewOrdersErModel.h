@@ -29,10 +29,15 @@
 @property(nonatomic,strong)NSString *name;
 @property(nonatomic,strong)NSString *price;
 @property(nonatomic,strong)NSString *sku_properties;
+@property(nonatomic,strong)NSString *unit;
+
 
 @property(nonatomic,assign)BOOL  shiFouKeShan;
 
 @property(nonatomic,assign)BOOL  xuanZhong;
+
+-(void)setDictData:(NSDictionary *)dict;
+
 
 
 @end

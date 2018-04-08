@@ -15,6 +15,10 @@
 		18FE49102071D02B0005984F /* AccessoryEquiSuiCheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE490E2071D02B0005984F /* AccessoryEquiSuiCheCell.m */; };
 		18FE49132071D35F0005984F /* MyQuartz.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49112071D35F0005984F /* MyQuartz.m */; };
 		18FE4917207214ED0005984F /* NewInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE4916207214ED0005984F /* NewInputView.m */; };
+		18FE49212074A7050005984F /* HaoCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49202074A7050005984F /* HaoCaiViewController.m */; };
+		18FE49242074B1E80005984F /* HaoCaiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49232074B1E80005984F /* HaoCaiTableViewCell.m */; };
+		18FE49272074B2070005984F /* HaoCaiTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49262074B2070005984F /* HaoCaiTableViewCell2.m */; };
+		18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE492C2074E6120005984F /* HaoCaiAddViewController.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -935,6 +939,14 @@
 		18FE49122071D35F0005984F /* MyQuartz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQuartz.h; sourceTree = "<group>"; };
 		18FE4915207214ED0005984F /* NewInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInputView.h; sourceTree = "<group>"; };
 		18FE4916207214ED0005984F /* NewInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInputView.m; sourceTree = "<group>"; };
+		18FE491F2074A7050005984F /* HaoCaiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaoCaiViewController.h; sourceTree = "<group>"; };
+		18FE49202074A7050005984F /* HaoCaiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiViewController.m; sourceTree = "<group>"; };
+		18FE49222074B1E80005984F /* HaoCaiTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaoCaiTableViewCell.h; sourceTree = "<group>"; };
+		18FE49232074B1E80005984F /* HaoCaiTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiTableViewCell.m; sourceTree = "<group>"; };
+		18FE49252074B2070005984F /* HaoCaiTableViewCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaoCaiTableViewCell2.h; sourceTree = "<group>"; };
+		18FE49262074B2070005984F /* HaoCaiTableViewCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiTableViewCell2.m; sourceTree = "<group>"; };
+		18FE492B2074E6120005984F /* HaoCaiAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaoCaiAddViewController.h; sourceTree = "<group>"; };
+		18FE492C2074E6120005984F /* HaoCaiAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiAddViewController.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -2756,6 +2768,45 @@
 			path = InputView;
 			sourceTree = "<group>";
 		};
+		18FE49182074A60F0005984F /* 耗材 */ = {
+			isa = PBXGroup;
+			children = (
+				18FE49192074A6500005984F /* Cell */,
+				18FE491A2074A6500005984F /* Model */,
+				18FE491B2074A6510005984F /* View */,
+				18FE491F2074A7050005984F /* HaoCaiViewController.h */,
+				18FE49202074A7050005984F /* HaoCaiViewController.m */,
+				18FE492B2074E6120005984F /* HaoCaiAddViewController.h */,
+				18FE492C2074E6120005984F /* HaoCaiAddViewController.m */,
+			);
+			path = "耗材";
+			sourceTree = "<group>";
+		};
+		18FE49192074A6500005984F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18FE49222074B1E80005984F /* HaoCaiTableViewCell.h */,
+				18FE49232074B1E80005984F /* HaoCaiTableViewCell.m */,
+				18FE49252074B2070005984F /* HaoCaiTableViewCell2.h */,
+				18FE49262074B2070005984F /* HaoCaiTableViewCell2.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18FE491A2074A6500005984F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18FE491B2074A6510005984F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BD99E2E720277F6200027D23 /* LCC 四个流程 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4120,6 +4171,7 @@
 		C613AB981F5D35DB001ABFDE /* OrderDetail（订单详情） */ = {
 			isa = PBXGroup;
 			children = (
+				18FE49182074A60F0005984F /* 耗材 */,
 				C6C4641020207D8500908A28 /* OrderDetailViewController.h */,
 				C6C4641120207D8500908A28 /* OrderDetailViewController.m */,
 				C643F2FE2022B5C100A2AA57 /* OrderDetailViewController+Net.m */,
@@ -6629,6 +6681,7 @@
 				C61005FC204A76CE0045968C /* StoresInforDateViewController.m in Sources */,
 				C6093FF32013858400530205 /* YYGJViewController.m in Sources */,
 				C625CFCD1F53DE1900CC3E73 /* MJRefreshBackStateFooter.m in Sources */,
+				18FE49272074B2070005984F /* HaoCaiTableViewCell2.m in Sources */,
 				C68E91631FA1D9C200975D68 /* ZXPDF417Detector.m in Sources */,
 				C61005BF20453B520045968C /* XiMeiNewOrdersErModel.m in Sources */,
 				C68A902C1F8B21920001BDE0 /* PerformanceViewController.m in Sources */,
@@ -6754,6 +6807,7 @@
 				C64C99431FDE372D007E3E71 /* LogInBaseBt.m in Sources */,
 				C6AB7475201D858600F157EB /* BossJianCeTableViewCell.m in Sources */,
 				C68E91061FA1D9C200975D68 /* ZXDataMatrixDataBlock.m in Sources */,
+				18FE49212074A7050005984F /* HaoCaiViewController.m in Sources */,
 				C63CCA2F202741CA00BD7815 /* ModelCarViewController.m in Sources */,
 				C68A90441F8B77CA0001BDE0 /* UILabel+ContentSize.m in Sources */,
 				C6AC059C1F7F53850040B32B /* ReachState.m in Sources */,
@@ -7187,6 +7241,7 @@
 				C68E90B81FA1D9C200975D68 /* ZXAztecDetectorResult.m in Sources */,
 				C61005AE2043BF2E0045968C /* ViewPerfectInformationCell.m in Sources */,
 				C68E91731FA1D9C200975D68 /* ZXQRCodeDecoder.m in Sources */,
+				18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */,
 				BDD4D31020270A1500C433D1 /* CALayer+YYWebImage.m in Sources */,
 				C68E910C1FA1D9C200975D68 /* ZXDataMatrixBase256Encoder.m in Sources */,
 				C6B5D29B1F6005A800C968F5 /* UIImage+ImageWithColor.m in Sources */,
@@ -7229,6 +7284,7 @@
 				C68E911E1FA1D9C200975D68 /* ZXGenericMultipleBarcodeReader.m in Sources */,
 				C60A8D68200C9C690026111B /* JobBoardCell.m in Sources */,
 				C625D0241F53E55F00CC3E73 /* MASConstraint.m in Sources */,
+				18FE49242074B1E80005984F /* HaoCaiTableViewCell.m in Sources */,
 				BDD4D32420270A1500C433D1 /* NSAttributedString+YYText.m in Sources */,
 				C68E91781FA1D9C200975D68 /* ZXQRCodeVersion.m in Sources */,
 				C625CFD01F53DE1900CC3E73 /* MJRefreshStateHeader.m in Sources */,

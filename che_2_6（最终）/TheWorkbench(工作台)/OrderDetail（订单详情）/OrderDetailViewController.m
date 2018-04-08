@@ -26,6 +26,7 @@
 #import "AccessoriesViewController.h"
 #import "ViewPerfectInformationVC.h"
 
+#import "HaoCaiViewController.h"
 
 @interface OrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -473,7 +474,7 @@
         if (self.mainData.commods.count>0) {
             line.hidden = YES;
         }
-        jianTouIm.hidden = YES;
+        jianTouIm.hidden = NO;
         hejiLabel1.hidden = NO;
         hejiLabel2.hidden = NO;
         hejiLabel2.text = [NSString stringWithFormat:@"¥%.2f",[self jiSuanCommodsZongE]];
@@ -491,7 +492,7 @@
             [UIView animateWithDuration:0.2 animations:^{
                 jianTouIm.transform = CGAffineTransformMakeRotation(0);
             } completion:^(BOOL finished) {
-            }];
+        }];
         }else{
             [UIView animateWithDuration:0.2 animations:^{
                 jianTouIm.transform = CGAffineTransformMakeRotation(M_PI);
@@ -539,6 +540,10 @@
     }else if ([sender.titleLabel.text isEqualToString:@"洗美项目"]) {
         return;
     }else if ([sender.titleLabel.text isEqualToString:@"洗美配件"]) {
+        HaoCaiViewController * vc = [[HaoCaiViewController alloc]init];
+        vc.chuanZhiArray = self.mainData.commods;
+        vc.ordercode = self.mainData.order_info.ordercode;
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
 
