@@ -64,7 +64,7 @@ alpha:alphaValue]//16进制颜色转换
 boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
 attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;//计算字符宽高
 
-//#define DEBUG_MODE//Debug模式 发布前注释掉
+#define DEBUG_MODE//Debug模式 发布前注释掉
 
 #ifdef DEBUG_MODE
 #define NPrintLog(FORMAT, ...) printf("%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);

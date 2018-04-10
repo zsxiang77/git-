@@ -15,7 +15,7 @@
     NSMutableArray *changArray;
     NSMutableArray *fenLeiArray;
 }
-
+@property(nonatomic,strong)UITextField *searchText;
 
 
 @property(nonatomic,strong)BaseViewController *suerViewController;

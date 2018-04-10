@@ -316,6 +316,9 @@
         WritePersonalDataModel *dataModel = [WritePersonalDataModel parseJSON:data];
         weakSelf.model.model = dataModel;
         [weakSelf updateUI];
+        if (weakSelf.model.model.mobile.length>0) {
+            weakSelf.personView.mobile_tf.textField.enabled = NO;
+        }
     } failure:^(id error) {
         
     }];
@@ -332,6 +335,9 @@
         WritePersonalDataModel *dataModel = [WritePersonalDataModel parseJSON:data];
         weakSelf.model.model = dataModel;
         [weakSelf updateUI];
+        if (weakSelf.model.model.mobile.length>0) {
+            weakSelf.personView.mobile_tf.textField.enabled = NO;
+        }
     } failure:^(id error) {
         
     }];

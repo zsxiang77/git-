@@ -30,14 +30,10 @@
     self.mainJiShuArray = [[NSMutableArray alloc]init];
     self.mainListArray = [[NSMutableArray alloc]init];
     
-    
     UIView *shangView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, SHIPINGGAO+38)];
     [self.view addSubview:shangView];
-    
-    
     _playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, self.view.CLwidth, SHIPINGGAO)];
     [shangView addSubview:_playerView];
-    
     //重复播放，默认不播放
     _playerView.repeatPlay = YES;
     //当前控制器是否支持旋转，当前页面支持旋转的时候需要设置，告知播放器
@@ -46,7 +42,6 @@
     _playerView.fullStatusBarHiddenType = FullStatusBarHiddenFollowToolBar;
     //顶部工具条隐藏样式，默认不隐藏
     _playerView.topToolBarHiddenType = TopToolBarHiddenNever;
-
 //    //播放
     [_playerView playVideo];
     //返回按钮点击事件回调,小屏状态才会调用，全屏默认变为小屏
@@ -58,11 +53,9 @@
         NSLog(@"播放完成");
     }];
     [self qingQiuLuoBoData];
-    
     btView = [[UIView alloc]initWithFrame:CGRectMake(0, SHIPINGGAO, kWindowW, 38)];
     btView.backgroundColor = kRGBColor(59, 59, 59);
     [shangView addSubview:btView];
-    
     for (int i = 0; i<3; i++) {
         UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW/3*i, 0, kWindowW/3, 38)];
         bt.titleLabel.font = [UIFont systemFontOfSize:13];
@@ -89,7 +82,6 @@
             [bt setImage:DJImageNamed(@"boss_zuoCeShi") forState:(UIControlStateNormal)];
             bt.imageEdgeInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         }
-        
     }
     
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, SHIPINGGAO+38, kWindowW, kWindowH- (SHIPINGGAO+38)) style:(UITableViewStyleGrouped)];
@@ -106,6 +98,11 @@
     if (sender.selected == YES) {
         return;
     }
+    
+    [UserInfo shareInstance].shiFouXuanZhuan = NO;
+    _playerView.autoRotate = NO;
+    _playerView.strokeColor = [UIColor clearColor];
+    
     for (int i = 0; i<3; i++) {
         UIButton *bt = [btView viewWithTag:3000+i];
         bt.selected = NO;
@@ -120,9 +117,12 @@
         }
     }
     if (sender.tag == 3000) {
+        [UserInfo shareInstance].shiFouXuanZhuan = YES;
+        _playerView.autoRotate = YES;
         sender.selected = !sender.selected;
         self.playerView.url = [NSURL URLWithString:model.video_url];
         self.playerView.kDWaterWaveView.hidden = YES;
+        _playerView.strokeColor = [UIColor whiteColor];
         [self.playerView.kDWaterWaveView stopWave];
     }else if(sender.tag == 3001)
     {

@@ -56,6 +56,10 @@
     self.mainTextField = [[UITextField alloc]init];
     self.mainTextField.delegate  = self;
     self.mainTextField.textAlignment = NSTextAlignmentCenter;
+    self.mainTextField.clearButtonMode =UITextFieldViewModeWhileEditing;
+    UIButton *clean = [self.mainTextField valueForKey:@"_clearButton"]; //key是固定的
+    clean.backgroundColor = [UIColor clearColor];
+    clean.hidden = YES;
     [self.mainTextField.layer setMasksToBounds:YES];
     self.mainTextField.font=[UIFont boldSystemFontOfSize:35];
     self.mainTextField.backgroundColor=kChePaiColor;
@@ -70,6 +74,7 @@
         make.top.mas_equalTo(10);
         make.bottom.mas_equalTo(-10);
     }];
+    
     
     UILabel * titleLable = [[UILabel alloc]init];
     titleLable.text = @"请选择您的车牌号颜色:";
@@ -118,7 +123,7 @@
         make.height.mas_equalTo(94/2);
     }];
     //1.自定义二级键盘
-     _accessView = [[NewInputView alloc] initWithFrame:CGRectMake(0, 0, 1, kWindowH/2-55)];
+     _accessView = [[NewInputView alloc] initWithFrame:CGRectMake(0, 0, 1, kWindowH/2-66)];
     _accessView.myDelegate = self;
     _accessView.backgroundColor = kRGBColor(241, 241, 241);
 
@@ -411,8 +416,8 @@ BOOL validateCarNo(NSString * carNo)
         return;
     }
     if (string.length>0) {
-        if ([self.mainTextField.text length] > 8) { //如果输入框内容大于14则弹出警告
-            self.mainTextField.text = [self.mainTextField.text substringToIndex:8];
+        if ([self.mainTextField.text length] >=7) { //如果输入框内容大于14则弹出警告
+            self.mainTextField.text = [self.mainTextField.text substringToIndex:6];
         }
         self.mainTextField.text = [NSString stringWithFormat:@"%@%@",self.mainTextField.text,string];
         if ([self checkCarID:self.mainTextField.text]==NO) {
@@ -459,4 +464,7 @@ BOOL validateCarNo(NSString * carNo)
         _accessView.hanziView.hidden = YES;
     }
 }
+
+
+
 @end

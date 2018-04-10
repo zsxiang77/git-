@@ -823,6 +823,7 @@
 		C6BDA5742074DA4A00A19406 /* KDWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5702074DA4600A19406 /* KDWaterWaveView.m */; };
 		C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */; };
 		C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */; };
+		C6BDA57F207B5A2000A19406 /* PartsChangYongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
@@ -2554,6 +2555,8 @@
 		C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiViewController.m; sourceTree = "<group>"; };
 		C6BDA57A2079FA2F00A19406 /* LearningZuoCeShiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoCeShiModel.h; sourceTree = "<group>"; };
 		C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiModel.m; sourceTree = "<group>"; };
+		C6BDA57D207B5A2000A19406 /* PartsChangYongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartsChangYongCell.h; sourceTree = "<group>"; };
+		C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartsChangYongCell.m; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
@@ -4153,6 +4156,8 @@
 				C6134C5F202D832D0099431E /* PartsSubsidiaryADDErCell.m */,
 				C6134C5E202D832D0099431E /* PartsSubsidiaryCell.h */,
 				C6134C5C202D832D0099431E /* PartsSubsidiaryCell.m */,
+				C6BDA57D207B5A2000A19406 /* PartsChangYongCell.h */,
+				C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -7222,6 +7227,7 @@
 				C6AC059E1F7F53850040B32B /* ReachStateUnloaded.m in Sources */,
 				C68E91301FA1D9C200975D68 /* ZXRSSExpandedFieldParser.m in Sources */,
 				C6F6C6851F58FF1B00ADFED4 /* MJChiBaoZiHeader.m in Sources */,
+				C6BDA57F207B5A2000A19406 /* PartsChangYongCell.m in Sources */,
 				C68E91221FA1D9C200975D68 /* ZXAI01392xDecoder.m in Sources */,
 				C6B5D2981F60058600C968F5 /* CommonControlOrView.m in Sources */,
 				C68E90E01FA1D9C200975D68 /* ZXCGImageLuminanceSource.m in Sources */,

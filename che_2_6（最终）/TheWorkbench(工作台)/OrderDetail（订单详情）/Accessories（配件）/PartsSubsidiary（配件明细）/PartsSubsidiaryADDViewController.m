@@ -24,10 +24,61 @@
     changArray = [[NSMutableArray alloc]init];
     fenLeiArray = [[NSMutableArray alloc]init];
     
-    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight) style:UITableViewStylePlain];
+    UIView * shangview = [[UIView alloc]init];
+    shangview.layer.masksToBounds = YES;
+    shangview.layer.borderWidth = 1;
+    shangview.layer.cornerRadius = 15;
+    shangview.backgroundColor = kRGBColor(244, 244, 244);
+    shangview.layer.borderColor = kRGBColor(217, 217, 217).CGColor;
+    [self.view addSubview:shangview];
+    [shangview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+        make.right.mas_equalTo(-10);
+        make.top.mas_equalTo(kNavBarHeight+6);
+        make.height.mas_equalTo(63/2);
+        make.centerX.mas_equalTo(self.view);
+    }];
+    
+    UIImageView * imgZuo = [[UIImageView alloc]init];
+    imgZuo.image = [UIImage imageNamed:@"search_blue"];
+    imgZuo.contentMode = UIViewContentModeScaleAspectFit;
+    [shangview addSubview:imgZuo];
+    [imgZuo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(7);
+        make.top.mas_equalTo(7);
+        make.bottom.mas_equalTo(-7);
+    }];
+    
+    
+    
+    self.searchText = [[UITextField alloc]init];
+    self.searchText.placeholder = @"输入项目名称";
+    [shangview addSubview:self.searchText];
+    self.searchText.font = [UIFont systemFontOfSize:12];
+    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(imgZuo.mas_right).mas_equalTo(0);
+        make.centerY.mas_equalTo(imgZuo);
+    }];
+    
+    UIImageView * imgYou = [[UIImageView alloc]init];
+    imgYou.image = [UIImage imageNamed:@"search_blue"];
+    imgYou.contentMode = UIViewContentModeScaleAspectFit;
+    [shangview addSubview:imgYou];
+    [imgYou mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-7);
+        make.top.mas_equalTo(7);
+        make.bottom.mas_equalTo(-7);
+        make.centerY.mas_equalTo(self.searchText);
+    }];
+    
+    
+    
+    
+    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+38, kWindowW, kWindowH-kNavBarHeight-38) style:UITableViewStylePlain];
     [self.main_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     self.main_tableView.delegate = self;
     self.main_tableView.dataSource = self;
+    self.main_tableView.bounces =NO;
     [self.view addSubview:self.main_tableView];
     
     [self huoQuChangYong];
@@ -64,9 +115,7 @@
         if (![dataDic isKindOfClass:[NSArray class]]) {
             return;
         }
-        
         [changArray removeAllObjects];
-        
         for (int i = 0; i<dataDic.count; i++) {
             CGFloat kucun = [KISDictionaryHaveKey(dataDic[i], @"count") floatValue];
             if (kucun>0) {
@@ -127,15 +176,13 @@
         cell.textLabel.text = KISDictionaryHaveKey(dict, @"name");
         cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
-    }else
-    {
+    }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         NSDictionary *dict = fenLeiArray[indexPath.row];
         cell.textLabel.text = KISDictionaryHaveKey(dict, @"classname");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,7 +207,6 @@
         model.parts_num = @"1";
         [vc.tianJiaArray addObject:model];
         [vc.main_tabelView  reloadData];
-
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
