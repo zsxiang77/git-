@@ -99,11 +99,7 @@
         return;
     }
     
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
+
     [UserInfo shareInstance].shiFouXuanZhuan = NO;
     _playerView.autoRotate = NO;
     _playerView.strokeColor = [UIColor clearColor];
@@ -112,7 +108,7 @@
         UIButton *bt = [btView viewWithTag:3000+i];
         bt.selected = NO;
     }
->>>>>>> origin/master
+
     
     
     LearningVideoModel *model;
@@ -123,21 +119,18 @@
         }
     }
     if (sender.tag == 3000) {
-<<<<<<< Updated upstream
         [UserInfo shareInstance].shiFouXuanZhuan = YES;
         _playerView.autoRotate = YES;
-=======
-<<<<<<< HEAD
+
         
         for (int i = 0; i<3; i++) {
             UIButton *bt = [btView viewWithTag:3000+i];
             bt.selected = NO;
         }
-=======
+
         [UserInfo shareInstance].shiFouXuanZhuan = YES;
         _playerView.autoRotate = YES;
->>>>>>> origin/master
->>>>>>> Stashed changes
+
         sender.selected = !sender.selected;
         self.playerView.url = [NSURL URLWithString:model.video_url];
         self.playerView.kDWaterWaveView.hidden = YES;
