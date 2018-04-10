@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1803C801205A57A000F25BB1 /* LCBottomDianJiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C800205A57A000F25BB1 /* LCBottomDianJiView.m */; };
 		1803C803205A811E00F25BB1 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1803C802205A811E00F25BB1 /* Speech.framework */; };
+		18954D86207B06E80093AB2C /* LearningZiCeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D85207B06E80093AB2C /* LearningZiCeViewController.m */; };
+		18954D89207B110B0093AB2C /* LearningDaAnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D88207B110B0093AB2C /* LearningDaAnViewController.m */; };
+		18954D8C207B130B0093AB2C /* LearningCuoTiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D8B207B130B0093AB2C /* LearningCuoTiCell.m */; };
+		18954D8F207B47050093AB2C /* LearningWrongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D8E207B47050093AB2C /* LearningWrongModel.m */; };
+		18954D94207C7E030093AB2C /* LearningVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D93207C7E020093AB2C /* LearningVideoViewController.m */; };
 		18FD6ECD20635CBC000E192C /* ScanDrivingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD6ECC20635CBC000E192C /* ScanDrivingView.m */; };
 		18FE48AF2064DF5C0005984F /* LearningCenterCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48AE2064DF5C0005984F /* LearningCenterCellTableViewCell.m */; };
 		18FE48DD206A19470005984F /* LCBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48DB206A19470005984F /* LCBottomView.m */; };
@@ -19,6 +24,8 @@
 		18FE49242074B1E80005984F /* HaoCaiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49232074B1E80005984F /* HaoCaiTableViewCell.m */; };
 		18FE49272074B2070005984F /* HaoCaiTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE49262074B2070005984F /* HaoCaiTableViewCell2.m */; };
 		18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE492C2074E6120005984F /* HaoCaiAddViewController.m */; };
+		18FE4930207A07D60005984F /* LearningZuoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE492F207A07D60005984F /* LearningZuoViewController.m */; };
+		18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE4932207A2C220005984F /* LearningZuoCell.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -220,7 +227,6 @@
 		C60549451FEA272A0020EF9B /* VersionUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60549431FEA272A0020EF9B /* VersionUpdate.m */; };
 		C60549491FEB99380020EF9B /* wtproject.lsc in Resources */ = {isa = PBXBuildFile; fileRef = C60549481FEB99370020EF9B /* wtproject.lsc */; };
 		C605494C1FED0C4B0020EF9B /* DetailAITProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C605494B1FED0C4B0020EF9B /* DetailAITProductsViewController.m */; };
-		C607D8C1206B7019005667BF /* LearningVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C0206B7019005667BF /* LearningVideoViewController.m */; };
 		C607D8C5206B7201005667BF /* UIView+CLSetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C3206B7200005667BF /* UIView+CLSetRect.m */; };
 		C607D8DA206B7274005667BF /* CLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8C9206B7274005667BF /* CLSlider.m */; };
 		C607D8DB206B7274005667BF /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C607D8CC206B7274005667BF /* AILoadingView.m */; };
@@ -931,6 +937,15 @@
 		1803C7FF205A57A000F25BB1 /* LCBottomDianJiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCBottomDianJiView.h; sourceTree = "<group>"; };
 		1803C800205A57A000F25BB1 /* LCBottomDianJiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCBottomDianJiView.m; sourceTree = "<group>"; };
 		1803C802205A811E00F25BB1 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		18954D84207B06E80093AB2C /* LearningZiCeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZiCeViewController.h; sourceTree = "<group>"; };
+		18954D85207B06E80093AB2C /* LearningZiCeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZiCeViewController.m; sourceTree = "<group>"; };
+		18954D87207B110B0093AB2C /* LearningDaAnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningDaAnViewController.h; sourceTree = "<group>"; };
+		18954D88207B110B0093AB2C /* LearningDaAnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningDaAnViewController.m; sourceTree = "<group>"; };
+		18954D8A207B130B0093AB2C /* LearningCuoTiCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningCuoTiCell.h; sourceTree = "<group>"; };
+		18954D8B207B130B0093AB2C /* LearningCuoTiCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningCuoTiCell.m; sourceTree = "<group>"; };
+		18954D8D207B47050093AB2C /* LearningWrongModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningWrongModel.h; sourceTree = "<group>"; };
+		18954D8E207B47050093AB2C /* LearningWrongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningWrongModel.m; sourceTree = "<group>"; };
+		18954D93207C7E020093AB2C /* LearningVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearningVideoViewController.m; sourceTree = "<group>"; };
 		18FD6ECB20635CBC000E192C /* ScanDrivingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingView.h; sourceTree = "<group>"; };
 		18FD6ECC20635CBC000E192C /* ScanDrivingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingView.m; sourceTree = "<group>"; };
 		18FE48AD2064DF5C0005984F /* LearningCenterCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearningCenterCellTableViewCell.h; sourceTree = "<group>"; };
@@ -951,6 +966,10 @@
 		18FE49262074B2070005984F /* HaoCaiTableViewCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiTableViewCell2.m; sourceTree = "<group>"; };
 		18FE492B2074E6120005984F /* HaoCaiAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaoCaiAddViewController.h; sourceTree = "<group>"; };
 		18FE492C2074E6120005984F /* HaoCaiAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaoCaiAddViewController.m; sourceTree = "<group>"; };
+		18FE492E207A07D60005984F /* LearningZuoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoViewController.h; sourceTree = "<group>"; };
+		18FE492F207A07D60005984F /* LearningZuoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoViewController.m; sourceTree = "<group>"; };
+		18FE4931207A2C220005984F /* LearningZuoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoCell.h; sourceTree = "<group>"; };
+		18FE4932207A2C220005984F /* LearningZuoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCell.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -1338,7 +1357,6 @@
 		C605494A1FED0C4B0020EF9B /* DetailAITProductsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailAITProductsViewController.h; sourceTree = "<group>"; };
 		C605494B1FED0C4B0020EF9B /* DetailAITProductsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailAITProductsViewController.m; sourceTree = "<group>"; };
 		C607D8BF206B7019005667BF /* LearningVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningVideoViewController.h; sourceTree = "<group>"; };
-		C607D8C0206B7019005667BF /* LearningVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningVideoViewController.m; sourceTree = "<group>"; };
 		C607D8C3206B7200005667BF /* UIView+CLSetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLSetRect.m"; sourceTree = "<group>"; };
 		C607D8C4206B7201005667BF /* UIView+CLSetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLSetRect.h"; sourceTree = "<group>"; };
 		C607D8C8206B7274005667BF /* CLGCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGCDTimerManager.h; sourceTree = "<group>"; };
@@ -2744,6 +2762,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18954D95207C85C90093AB2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18954D96207C85C90093AB2C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18954D97207C85C90093AB2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		18FD6ECA20635C5C000E192C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3600,7 +3639,7 @@
 				C607D8C6206B7222005667BF /* View */,
 				C607D8C2206B71E4005667BF /* Gategory */,
 				C607D8BF206B7019005667BF /* LearningVideoViewController.h */,
-				C607D8C0206B7019005667BF /* LearningVideoViewController.m */,
+				18954D93207C7E020093AB2C /* LearningVideoViewController.m */,
 				C607D8E8206B7CDB005667BF /* LearningVideoViewController+Net.m */,
 			);
 			path = "Video（视频）";
@@ -6105,6 +6144,16 @@
 				C6BDA5792079FA1900A19406 /* Model */,
 				C6BDA5762079EC1000A19406 /* LearningZuoCeShiViewController.h */,
 				C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */,
+				18FE492E207A07D60005984F /* LearningZuoViewController.h */,
+				18FE492F207A07D60005984F /* LearningZuoViewController.m */,
+				18954D84207B06E80093AB2C /* LearningZiCeViewController.h */,
+				18954D85207B06E80093AB2C /* LearningZiCeViewController.m */,
+				18954D87207B110B0093AB2C /* LearningDaAnViewController.h */,
+				18954D88207B110B0093AB2C /* LearningDaAnViewController.m */,
+				18FE4931207A2C220005984F /* LearningZuoCell.h */,
+				18FE4932207A2C220005984F /* LearningZuoCell.m */,
+				18954D8A207B130B0093AB2C /* LearningCuoTiCell.h */,
+				18954D8B207B130B0093AB2C /* LearningCuoTiCell.m */,
 			);
 			path = "做测试";
 			sourceTree = "<group>";
@@ -6114,6 +6163,8 @@
 			children = (
 				C6BDA57A2079FA2F00A19406 /* LearningZuoCeShiModel.h */,
 				C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */,
+				18954D8D207B47050093AB2C /* LearningWrongModel.h */,
+				18954D8E207B47050093AB2C /* LearningWrongModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6219,6 +6270,9 @@
 		C6E57B9420030F6D00E945F3 /* StoreTheData（门店数据） */ = {
 			isa = PBXGroup;
 			children = (
+				18954D96207C85C90093AB2C /* Cell */,
+				18954D97207C85C90093AB2C /* Model */,
+				18954D95207C85C90093AB2C /* View */,
 				C6E57B9620030F6D00E945F3 /* StoreTheDataViewController.h */,
 				C6E57B9520030F6D00E945F3 /* StoreTheDataViewController.m */,
 			);
@@ -6753,6 +6807,7 @@
 				C6B5D27B1F5FB11300C968F5 /* PlateIDResultViewController.m in Sources */,
 				C68E90CE1FA1D9C200975D68 /* ZXResultParser.m in Sources */,
 				C643F36D2026AB8500A2AA57 /* CarInspectionErVC.m in Sources */,
+				18954D8F207B47050093AB2C /* LearningWrongModel.m in Sources */,
 				C61743321FF3A33000FB7AD8 /* VINinPutView.m in Sources */,
 				BD99E36420277F6200027D23 /* OrderClassCell.m in Sources */,
 				C68E917B1FA1D9C200975D68 /* ZXQRCodeDetector.m in Sources */,
@@ -6775,7 +6830,6 @@
 				BDD4D32B20270A1500C433D1 /* UIColor+YYAdd.m in Sources */,
 				BDD4D30B20270A1500C433D1 /* YYFrameImage.m in Sources */,
 				C60A8D9F200EE9C00026111B /* JobBoardScreeningCell.m in Sources */,
-				C607D8C1206B7019005667BF /* LearningVideoViewController.m in Sources */,
 				C60DBA0C1FB2F03F002B0CC4 /* SWUtilityButtonView.m in Sources */,
 				C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */,
 				C68E91621FA1D9C200975D68 /* ZXPDF417ScanningDecoder.m in Sources */,
@@ -6886,6 +6940,7 @@
 				BDD4D30620270A1500C433D1 /* YYImageCache.m in Sources */,
 				C625CFE91F53DE1900CC3E73 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				C692D0F51F97360500FECF74 /* PushMessageViewController.m in Sources */,
+				18954D89207B110B0093AB2C /* LearningDaAnViewController.m in Sources */,
 				C68E91211FA1D9C200975D68 /* ZXAI01320xDecoder.m in Sources */,
 				BDEFA3CE20293F2A0094A158 /* QMUIHelper.m in Sources */,
 				C61005CA20453BA70045968C /* XiMeiNewOrdersErCell2.m in Sources */,
@@ -6949,6 +7004,7 @@
 				C68E91611FA1D9C200975D68 /* ZXPDF417DetectionResultRowIndicatorColumn.m in Sources */,
 				BDD4D38020270C0D00C433D1 /* IQTextView.m in Sources */,
 				BDD4D40320270C3B00C433D1 /* CarInfoViewController.m in Sources */,
+				18954D8C207B130B0093AB2C /* LearningCuoTiCell.m in Sources */,
 				C6FAF9E21F553E9800FE1935 /* NetWorkManagerGet.m in Sources */,
 				C60A8D98200DFFC70026111B /* BOSSChangeMildelViewController.m in Sources */,
 				BDD4D3FD20270C3B00C433D1 /* EnvironmentViewController.m in Sources */,
@@ -7200,6 +7256,7 @@
 				C60DBA1B1FB5995F002B0CC4 /* SettingAITSerialNumberView.m in Sources */,
 				BDD4D30420270A1500C433D1 /* YYKVStorage.m in Sources */,
 				C643F3C72027275B00A2AA57 /* IDCardOverView.m in Sources */,
+				18954D94207C7E030093AB2C /* LearningVideoViewController.m in Sources */,
 				C625CFE11F53DE1900CC3E73 /* UIButton+WebCache.m in Sources */,
 				BD99E36820277F6200027D23 /* OrderProjectCell.m in Sources */,
 				C68E90C81FA1D9C200975D68 /* ZXGeoResultParser.m in Sources */,
@@ -7333,6 +7390,7 @@
 				C60A8D68200C9C690026111B /* JobBoardCell.m in Sources */,
 				C625D0241F53E55F00CC3E73 /* MASConstraint.m in Sources */,
 				18FE49242074B1E80005984F /* HaoCaiTableViewCell.m in Sources */,
+				18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */,
 				BDD4D32420270A1500C433D1 /* NSAttributedString+YYText.m in Sources */,
 				C68E91781FA1D9C200975D68 /* ZXQRCodeVersion.m in Sources */,
 				C625CFD01F53DE1900CC3E73 /* MJRefreshStateHeader.m in Sources */,
@@ -7361,6 +7419,7 @@
 				23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */,
 				BDD4D34B20270A1500C433D1 /* YYTransaction.m in Sources */,
 				C68E91181FA1D9C200975D68 /* ZXDataMatrixWriter.m in Sources */,
+				18954D86207B06E80093AB2C /* LearningZiCeViewController.m in Sources */,
 				C625CFD41F53DE1900CC3E73 /* UIScrollView+MJRefresh.m in Sources */,
 				BDD4D3FE20270C3B00C433D1 /* EnvironmentModel.m in Sources */,
 				BDD4D38920270C0D00C433D1 /* IQUIWindow+Hierarchy.m in Sources */,
@@ -7400,6 +7459,7 @@
 				C64C994A1FDFD35D007E3E71 /* AITIntroduceViewController.m in Sources */,
 				BDD4D35020270A1500C433D1 /* YYTimer.m in Sources */,
 				C602EF351F8CBB36008359C8 /* ALAsset+mExport.m in Sources */,
+				18FE4930207A07D60005984F /* LearningZuoViewController.m in Sources */,
 				BDD4D3FA20270C3B00C433D1 /* PerctInfoCell.m in Sources */,
 				C60DBA0A1FB2F03F002B0CC4 /* SWTableViewCell.m in Sources */,
 				C68E91271FA1D9C200975D68 /* ZXAI01decoder.m in Sources */,

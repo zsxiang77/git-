@@ -456,7 +456,7 @@
     
     if (! jsonData)
     {
-        NSLog(@"Got an error: %@", error);
+        NPrintLog(@"Got an error: %@", error);
     }else
     {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

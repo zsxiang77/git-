@@ -433,7 +433,6 @@
     [self.monitor updateMeters];
     // 获得0声道的音量，完全没有声音-160.0，0是最大音量
     float power = [self.monitor peakPowerForChannel:0];
-    NSLog(@"音量测试值%f", power);
     if(power>-10){
         self.fuCengImageView.image=[UIImage imageNamed:@"yuyin-3"];
     }else if(power>-20){

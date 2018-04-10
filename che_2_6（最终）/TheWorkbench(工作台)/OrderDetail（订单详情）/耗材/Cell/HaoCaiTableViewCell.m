@@ -189,7 +189,6 @@
 -(void)gongShiTextBtChick:(UIButton *)sender
 {
         self.shuliangTextBtChickBlock(self.model);
-   
 }
 
 -(void)jianBtChick:(UIButton *)sender

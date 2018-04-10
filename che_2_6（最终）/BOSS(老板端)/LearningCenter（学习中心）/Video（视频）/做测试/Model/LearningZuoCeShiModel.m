@@ -17,6 +17,22 @@
     self.question_types = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"question_types")];
     self.title = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"title")];
     self.option = KISDictionaryHaveKey(dict, @"option");
+    
+    NSMutableArray *xinArray = [[NSMutableArray alloc]init];
+    if (self.option.count>0) {
+        for (int i = 0; i<self.option.count; i++) {
+            LearningZuoCeShiDaAnModel *ximModel = [[LearningZuoCeShiDaAnModel alloc]init];
+            ximModel.tiStr = self.option[i];
+            ximModel.shiFouXuanZhong = NO;
+            [xinArray addObject:ximModel];
+        }
+    }
+    self.daAn = xinArray;
 }
 
 @end
+
+@implementation LearningZuoCeShiDaAnModel
+
+@end
+

@@ -208,7 +208,7 @@
     
     if (!jsonData) {
         
-        NSLog(@"%@",error);
+        NPrintLog(@"%@",error);
         
     }else{
         

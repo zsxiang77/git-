@@ -9,11 +9,13 @@
 #import "BOSSBaseViewController.h"
 #import "LearningVideoModel.h"
 #import "LearningZuoCeShiModel.h"
-
 @interface LearningZuoCeShiViewController : BOSSBaseViewController
 
 @property(nonatomic,strong)LearningVideoModel *chuanZhiModel;
+@property(nonatomic,strong)UILabel *numberLabel2;
 
 @property(nonatomic,strong)NSMutableArray     *mainArray;
 
+@property(nonatomic,strong)BOSSBaseViewController *fatherViewController;
+-(void)qingQiuGet_questionData;
 @end

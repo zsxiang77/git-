@@ -107,4 +107,9 @@ static float kBOSSNavBarHeight = 64;
 -(void)settitleLabelText:(NSString *)title;
 - (BOOL)loginCheck;
 
+// 字典转json字符串方法
+-(NSString *)convertToJsonData:(NSDictionary *)dict;
+// 数组转json字符串方法
+-(NSString *)convertToJsonDataWithArray:(NSArray *)array;
+
 @end

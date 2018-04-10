@@ -118,19 +118,19 @@
         switch (status) {
             case SFSpeechRecognizerAuthorizationStatusAuthorized:
                 isButtonEnabled = true;
-                NSLog(@"可以语音识别");
+                NPrintLog(@"可以语音识别");
                 break;
             case SFSpeechRecognizerAuthorizationStatusDenied:
                 isButtonEnabled = false;
-                NSLog(@"用户被拒绝访问语音识别");
+                NPrintLog(@"用户被拒绝访问语音识别");
                 break;
             case SFSpeechRecognizerAuthorizationStatusRestricted:
                 isButtonEnabled = false;
-                NSLog(@"不能在该设备上进行语音识别");
+                NPrintLog(@"不能在该设备上进行语音识别");
                 break;
             case SFSpeechRecognizerAuthorizationStatusNotDetermined:
                 isButtonEnabled = false;
-                NSLog(@"没有授权语音识别");
+                NPrintLog(@"没有授权语音识别");
                 break;
             default:
                 break;
@@ -403,7 +403,7 @@
     [self.bufferEngine prepare];
     NSError *error = nil;
     if (![self.bufferEngine startAndReturnError:&error]) {
-        NSLog(@"%@",error.userInfo);
+        NPrintLog(@"%@",error.userInfo);
     };
     [self setDaoJiShi];
 }
@@ -475,7 +475,6 @@
     [self.monitor updateMeters];
     // 获得0声道的音量，完全没有声音-160.0，0是最大音量
     float power = [self.monitor peakPowerForChannel:0];
-    NSLog(@"音量测试值%f", power);
     if(power>-10){
         self.fuCengImageView.image=[UIImage imageNamed:@"yuyin-3"];
     }else if(power>-20){

@@ -99,6 +99,11 @@
         return;
     }
     
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
     [UserInfo shareInstance].shiFouXuanZhuan = NO;
     _playerView.autoRotate = NO;
     _playerView.strokeColor = [UIColor clearColor];
@@ -107,6 +112,7 @@
         UIButton *bt = [btView viewWithTag:3000+i];
         bt.selected = NO;
     }
+>>>>>>> origin/master
     
     
     LearningVideoModel *model;
@@ -117,8 +123,21 @@
         }
     }
     if (sender.tag == 3000) {
+<<<<<<< Updated upstream
         [UserInfo shareInstance].shiFouXuanZhuan = YES;
         _playerView.autoRotate = YES;
+=======
+<<<<<<< HEAD
+        
+        for (int i = 0; i<3; i++) {
+            UIButton *bt = [btView viewWithTag:3000+i];
+            bt.selected = NO;
+        }
+=======
+        [UserInfo shareInstance].shiFouXuanZhuan = YES;
+        _playerView.autoRotate = YES;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         sender.selected = !sender.selected;
         self.playerView.url = [NSURL URLWithString:model.video_url];
         self.playerView.kDWaterWaveView.hidden = YES;
@@ -126,6 +145,10 @@
         [self.playerView.kDWaterWaveView stopWave];
     }else if(sender.tag == 3001)
     {
+        for (int i = 0; i<3; i++) {
+            UIButton *bt = [btView viewWithTag:3000+i];
+            bt.selected = NO;
+        }
         sender.selected = !sender.selected;
         self.playerView.url = [NSURL URLWithString:model.auto_url];
         self.playerView.kDWaterWaveView.hidden = NO;
@@ -134,6 +157,7 @@
         LearningZuoCeShiViewController *vc = [[LearningZuoCeShiViewController alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.chuanZhiModel = model;
+        vc.fatherViewController = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -143,8 +167,6 @@
     [super viewWillAppear:animated];
     [UserInfo shareInstance].shiFouXuanZhuan = YES;
 }
-
-
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

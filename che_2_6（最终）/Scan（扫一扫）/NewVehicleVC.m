@@ -214,7 +214,6 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 {
-    NSLog(@"%@",string);
     if ([string isEqualToString:@"\n"])  //按会车可以改变
     {
         [self.mainTextField resignFirstResponder];

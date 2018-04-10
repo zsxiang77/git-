@@ -38,7 +38,6 @@
             }else{
                 weakSelf.renTishilabel.hidden = YES;
             }
-            NSLog(@"%@",code);
         }];
 //        self.codeView.backgroundColor = [UIColor yellowColor];
         [self addSubview:self.codeView];

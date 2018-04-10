@@ -658,23 +658,30 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    
     if (textField == self.vINTextField) {
-        if (string.length == 0 ){return YES;}
+        if (string.length == 0 ){
+            self.model.model.carvin = self.vINTextField.text;
+            return YES;
+        }
         char commitChar = [string characterAtIndex:0];
         if (commitChar > 96 && commitChar < 123){
             NSString * uppercaseString = string.uppercaseString;
             NSString * str1 = [textField.text substringToIndex:range.location];
             NSString * str2 = [textField.text substringFromIndex:range.location];
             textField.text = [NSString stringWithFormat:@"%@%@%@",str1,uppercaseString,str2].uppercaseString;
+            self.model.model.carvin = self.vINTextField.text;
             return NO;
         }else{
             NSCharacterSet *cs;
             cs = [[NSCharacterSet characterSetWithCharactersInString:kAlphaNum] invertedSet];
             NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""]; //按cs分离出数组,数组按@""分离出字符串
             BOOL canChange = [string isEqualToString:filtered];
+            self.model.model.carvin = self.vINTextField.text;
             return canChange;
         }
     }
+    self.model.model.carvin = self.vINTextField.text;
     return YES;
     
 }

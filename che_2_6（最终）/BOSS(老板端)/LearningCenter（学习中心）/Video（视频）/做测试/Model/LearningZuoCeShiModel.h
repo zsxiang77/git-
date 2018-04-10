@@ -15,6 +15,16 @@
 @property(nonatomic,strong)NSString      *title;
 @property(nonatomic,strong)NSArray      *option;
 
+@property(nonatomic,strong)NSArray      *daAn;
+
 -(void)setDictData:(NSDictionary *)dict;
 
 @end
+
+@interface LearningZuoCeShiDaAnModel : NSObject
+
+@property(nonatomic,strong)NSString *tiStr;
+@property(nonatomic,assign)BOOL   shiFouXuanZhong;
+@end
+
+

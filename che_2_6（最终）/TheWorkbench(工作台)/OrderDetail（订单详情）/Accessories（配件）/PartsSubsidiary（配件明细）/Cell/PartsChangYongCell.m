@@ -27,7 +27,14 @@
             make.top.mas_equalTo(8);
         }];
         
+<<<<<<< Updated upstream
         kucunLable
+=======
+<<<<<<< HEAD
+=======
+        kucunLable
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     }
     return self;
 }
