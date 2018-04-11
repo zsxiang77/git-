@@ -10,14 +10,15 @@
 #import "OrderDetailModel.h"
 
 
-@interface PartsSubsidiaryADDViewController : BaseViewController
+@interface PartsSubsidiaryADDViewController : BaseViewController<UITextFieldDelegate,UIGestureRecognizerDelegate>
 {
     NSMutableArray *changArray;
     NSMutableArray *fenLeiArray;
+    
 }
-@property(nonatomic,strong)UITextField *searchText;
-
 
 @property(nonatomic,strong)BaseViewController *suerViewController;
 
+
 @end
+

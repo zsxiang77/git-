@@ -10,8 +10,8 @@
 #import "PartsSubsidiaryADDErViewController.h"
 #import "AccessoriesViewController.h"
 #import "PartsSubsidiaryADDZDYVC.h"
-
-@interface PartsSubsidiaryADDViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "PartsChangYongCell.h"
+@interface PartsSubsidiaryADDViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *main_tableView;
 
 @end
@@ -23,58 +23,54 @@
     [self setTopViewWithTitle:@"添加维修配件" withBackButton:YES];
     changArray = [[NSMutableArray alloc]init];
     fenLeiArray = [[NSMutableArray alloc]init];
-    
-    UIView * shangview = [[UIView alloc]init];
-    shangview.layer.masksToBounds = YES;
-    shangview.layer.borderWidth = 1;
-    shangview.layer.cornerRadius = 15;
-    shangview.backgroundColor = kRGBColor(244, 244, 244);
-    shangview.layer.borderColor = kRGBColor(217, 217, 217).CGColor;
-    [self.view addSubview:shangview];
-    [shangview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-10);
-        make.top.mas_equalTo(kNavBarHeight+6);
-        make.height.mas_equalTo(63/2);
-        make.centerX.mas_equalTo(self.view);
-    }];
-    
-    UIImageView * imgZuo = [[UIImageView alloc]init];
-    imgZuo.image = [UIImage imageNamed:@"search_blue"];
-    imgZuo.contentMode = UIViewContentModeScaleAspectFit;
-    [shangview addSubview:imgZuo];
-    [imgZuo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(7);
-        make.top.mas_equalTo(7);
-        make.bottom.mas_equalTo(-7);
-    }];
-    
-    
-    
-    self.searchText = [[UITextField alloc]init];
-    self.searchText.placeholder = @"输入项目名称";
-    [shangview addSubview:self.searchText];
-    self.searchText.font = [UIFont systemFontOfSize:12];
-    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(imgZuo.mas_right).mas_equalTo(0);
-        make.centerY.mas_equalTo(imgZuo);
-    }];
-    
-    UIImageView * imgYou = [[UIImageView alloc]init];
-    imgYou.image = [UIImage imageNamed:@"search_blue"];
-    imgYou.contentMode = UIViewContentModeScaleAspectFit;
-    [shangview addSubview:imgYou];
-    [imgYou mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-7);
-        make.top.mas_equalTo(7);
-        make.bottom.mas_equalTo(-7);
-        make.centerY.mas_equalTo(self.searchText);
-    }];
-    
-    
-    
-    
-    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+38, kWindowW, kWindowH-kNavBarHeight-38) style:UITableViewStylePlain];
+
+//    UIView * shangview = [[UIView alloc]init];
+//    shangview.layer.masksToBounds = YES;
+//    shangview.layer.borderWidth = 1;
+//    shangview.layer.cornerRadius = 15;
+//    shangview.backgroundColor = kRGBColor(244, 244, 244);
+//    shangview.layer.borderColor = kRGBColor(217, 217, 217).CGColor;
+//    [self.view addSubview:shangview];
+//    [shangview mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(10);
+//        make.right.mas_equalTo(-10);
+//        make.top.mas_equalTo(kNavBarHeight+6);
+//        make.height.mas_equalTo(63/2);
+//        make.centerX.mas_equalTo(self.view);
+//    }];
+//
+//    UIImageView * imgZuo = [[UIImageView alloc]init];
+//    imgZuo.image = [UIImage imageNamed:@"search_blue"];
+//    imgZuo.contentMode = UIViewContentModeScaleAspectFit;
+//    [shangview addSubview:imgZuo];
+//    [imgZuo mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(7);
+//        make.top.mas_equalTo(7);
+//        make.bottom.mas_equalTo(-7);
+//        make.height.width.mas_equalTo(15);
+//    }];
+//    self.searchText = [[UITextField alloc]init];
+//    self.searchText.placeholder = @"输入项目名称";
+//    [shangview addSubview:self.searchText];
+//    self.searchText.font = [UIFont systemFontOfSize:12];
+//    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(imgZuo.mas_right).mas_equalTo(5);
+//        make.right.mas_equalTo(-30);
+//        make.centerY.mas_equalTo(imgZuo);
+//    }];
+//
+//    UIImageView * imgYou = [[UIImageView alloc]init];
+//    imgYou.image = [UIImage imageNamed:@"search_blue"];
+//    imgYou.contentMode = UIViewContentModeScaleAspectFit;
+//    [shangview addSubview:imgYou];
+//    [imgYou mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-7);
+//        make.height.width.mas_equalTo(15);
+//        make.centerY.mas_equalTo(self.searchText);
+//    }];
+//
+
+    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight) style:UITableViewStylePlain];
     [self.main_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     self.main_tableView.delegate = self;
     self.main_tableView.dataSource = self;
@@ -171,9 +167,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        static NSString *identiter = @"identiter";
+        PartsChangYongCell *cell = [tableView dequeueReusableCellWithIdentifier:identiter];
+        if (cell == nil) {
+            cell = [[PartsChangYongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identiter];
+        }
+        
         NSDictionary *dict = changArray[indexPath.row];
-        cell.textLabel.text = KISDictionaryHaveKey(dict, @"name");
+        [cell refelesePeiJianWithModel:dict];
         cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }else{
@@ -236,6 +237,16 @@
 {
     return 35;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 65;
+    }else{
+    
+        return 45;
+    }
+}
+//搜索
 
 
 

@@ -10,6 +10,7 @@
 #import "LearningZuoCeShiModel.h"
 #import "LearningZuoCell.h"
 #import "LearningZiCeViewController.h"
+#import "LearningZuoCeShiViewController.h"
 @interface LearningZuoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *mainTableView;
 
@@ -252,6 +253,23 @@
 {
     return 70;
 }
+- (void)backButtonClick:(id)sender
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:nil message:@"题目还没做完，确认要离开吗" delegate:self cancelButtonTitle:@"离开" otherButtonTitles:@"继续做题", nil];
+    [alertView show];
+    
+}
+//监听点击事件 代理方法
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *btnTitle = [alertView buttonTitleAtIndex:buttonIndex];
+    if ([btnTitle isEqualToString:@"离开"]) {
+        LearningZuoCeShiViewController *vc = (LearningZuoCeShiViewController *)self.backCeshiViewController;
+        [self.navigationController popToViewController:vc animated:YES];
+        [vc qingQiuGet_questionData];
+    }else if ([btnTitle isEqualToString:@"继续做题"]){
 
+    }
+}
 @end
 

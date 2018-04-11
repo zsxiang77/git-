@@ -16,5 +16,6 @@
     UILabel * danweiLable;
     UILabel * danjiaLable;
 }
--(void)refelesePeiJianWithModel:(OrderDetailPartsModel *)model;
+-(void)refelesePeiJianWithModel:(NSDictionary *)model;
+
 @end
