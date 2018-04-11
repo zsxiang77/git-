@@ -29,6 +29,7 @@
     
     
     UILabel *daoLabel;
+    UILabel *line;
 }
 
 @property(nonatomic,strong)void (^nianJianTiXingBlcok)(void);//年检提醒

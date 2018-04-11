@@ -320,6 +320,7 @@
         
         if (weakSelf.model.model.mobile.length>0) {
             weakSelf.personView.mobile_tf.textField.enabled = NO;
+            weakSelf.unitView.mobile_tf.textField.enabled = NO;
         }
         
     } failure:^(id error) {
@@ -340,6 +341,7 @@
         [weakSelf updateUI];
         if (weakSelf.model.model.mobile.length>0) {
             weakSelf.personView.mobile_tf.textField.enabled = NO;
+            weakSelf.unitView.mobile_tf.textField.enabled = NO;
         }
     } failure:^(id error) {
         
@@ -471,8 +473,7 @@
     _unitView.hidden = !isUnit;
     
     _model.model.is_unit = @(row).stringValue;
-    
-//    [self updateUI];
+    [self updateUI];
 }
 
 - (void)saveDataToServerCompletion:(void(^)(void))completon

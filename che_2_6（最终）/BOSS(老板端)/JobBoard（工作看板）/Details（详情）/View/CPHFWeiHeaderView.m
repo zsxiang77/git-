@@ -141,8 +141,9 @@
             make.right.mas_equalTo(m_remainTupianLabel.mas_left);
         }];
         
-        UILabel *line = [[UILabel alloc]init];
+        line = [[UILabel alloc]init];
         line.backgroundColor = kLineBgColor;
+        line.hidden = YES;
         [self addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0);
@@ -219,6 +220,9 @@
         }
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, dict.contents.count*40);
         jisuahei += dict.contents.count*40;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             UILabel *baoZuoLabel = [[UILabel alloc]init];
@@ -270,6 +274,9 @@
         }
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, dict.contents.count*40);
         jisuahei += dict.contents.count*40;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             UILabel *baoZuoLabel = [[UILabel alloc]init];
@@ -328,6 +335,9 @@
         CGFloat baocunheight = jisuahei;
         
         CGFloat zongHeight = 0;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             
@@ -445,6 +455,9 @@
         CGFloat baocunheight = jisuahei;
         
         CGFloat zongHeight = 0;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             
@@ -560,6 +573,9 @@
         }
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, dict.contents.count*40);
         jisuahei += dict.contents.count*40;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             UILabel *baoZuoLabel = [[UILabel alloc]init];
@@ -598,6 +614,9 @@
         }
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, dict.contents.count*40);
         jisuahei += dict.contents.count*40;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++) {
             UILabel *baoZuoLabel = [[UILabel alloc]init];
@@ -637,7 +656,7 @@
                     make.centerY.mas_equalTo(baoYouLabel);
                 }];
                 
-            }else if (i == 1) {
+            }else{
                 NSDictionary *contents = dict.contents[2];
                 baoZuoLabel.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(contents, @"name")];
                 baoYouLabel.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(contents, @"value")];
@@ -660,6 +679,9 @@
         }
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, 0);
         CGFloat dingWeiHeight = 0;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++) {
             NSString *keyStr = KISDictionaryHaveKey(dict.contents[i], @"key");
@@ -746,6 +768,9 @@
         m_pingJieView.frame = CGRectMake(0, jisuahei, kWindowW, 80);
         
         CGFloat dingFloat = 0;
+        if (dict.contents.count>0) {
+            line.hidden = NO;
+        }
         
         for (int i = 0; i<dict.contents.count; i++){
             NSDictionary *neDict = dict.contents[i];
@@ -985,6 +1010,9 @@
         while ([m_pingJieView.subviews lastObject] != nil)
         {
             [(UIView*)[m_pingJieView.subviews lastObject] removeFromSuperview];
+        }
+        if (model.info.contents.count>0) {
+            line.hidden = NO;
         }
         
         if (model.info.contents.count == 1) {
@@ -1403,6 +1431,7 @@
 #pragma mark - 差评回访
 -(void)setWuKeXing:(NSDictionary *)valueDict withNewView:(UIView *)senderView withxiangshangHeght:(CGFloat)hei
 {
+    line.hidden = NO;
     NSInteger stars = [KISDictionaryHaveKey(valueDict, @"com_star") integerValue];
     UIView *headView = [[UIView alloc]init];
     [senderView addSubview:headView];

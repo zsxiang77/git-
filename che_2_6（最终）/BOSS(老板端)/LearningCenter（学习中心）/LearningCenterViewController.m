@@ -11,6 +11,7 @@
 #import "SGFocusImageFrame.h"
 #import "LearningVideoViewController.h"
 #import "LearningCenterCellTableViewCell.h"
+#import "UIViewController+MMDrawerController.h"
 @interface LearningCenterViewController ()<SGFocusImageFrameDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
@@ -46,6 +47,12 @@
     self.mainListArray = [[NSMutableArray alloc]init];
     [self qingQiuLuoBoData];
     [self postrequest_methodDatawithShuaXin:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //设置打开抽屉模式
+    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 }
 
 #pragma mark 头部

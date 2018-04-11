@@ -384,27 +384,29 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView  *foootView = [[UIView alloc]init];
-    
-    UILabel *la = [[UILabel alloc]init];
-    la.textColor = kRGBColor(155, 155, 155);
-    la.font = [UIFont systemFontOfSize:14];
-    [foootView addSubview:la];
-    [la mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(foootView);
-    }];
-    if (self.chuLiZhanHe == YES) {//展开
-        la.text = @"收起历史记录";
-    }else{
-        la.text = @"展开查看历史记录";
+    if (self.maiChuLiArray.count>1  && section == 0) {
+        UILabel *la = [[UILabel alloc]init];
+        la.textColor = kRGBColor(155, 155, 155);
+        la.font = [UIFont systemFontOfSize:14];
+        [foootView addSubview:la];
+        [la mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(foootView);
+        }];
+        if (self.chuLiZhanHe == YES) {//展开
+            la.text = @"收起历史记录";
+        }else{
+            la.text = @"展开查看历史记录";
+        }
+        
+        
+        UIButton *bt = [[UIButton alloc]init];
+        [bt addTarget:self action:@selector(zhanHeChick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [foootView addSubview:bt];
+        [bt mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
     }
     
-    
-    UIButton *bt = [[UIButton alloc]init];
-    [bt addTarget:self action:@selector(zhanHeChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [foootView addSubview:bt];
-    [bt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
     return foootView;
 }
 

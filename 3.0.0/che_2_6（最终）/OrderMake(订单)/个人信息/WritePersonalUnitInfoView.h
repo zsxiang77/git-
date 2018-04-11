@@ -11,6 +11,10 @@
 #import "WriteSaoMiaoView.h"
 
 @interface WritePersonalUnitInfoView : UIView
+
+@property (nonatomic, strong) WritePersonalInputTFView *unit_full_namet_tf;
+@property (nonatomic, strong) WritePersonalInputTFView *store_alias_tf;
+@property (nonatomic, strong) WritePersonalInputTFView *mobile_tf;
 @property (nonatomic, strong) NSString *unit_full_name;
 @property (nonatomic, strong) NSString *store_alias; ///< 企业简称
 @property (nonatomic, strong) NSString *mobile;

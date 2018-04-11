@@ -12,9 +12,7 @@
 #import "SaoMiaoSFZViewController.h"
 
 @interface WritePersonalUnitInfoView ()
-@property (nonatomic, strong) WritePersonalInputTFView *unit_full_namet_tf;
-@property (nonatomic, strong) WritePersonalInputTFView *store_alias_tf;
-@property (nonatomic, strong) WritePersonalInputTFView *mobile_tf;
+
 @end
 
 @implementation WritePersonalUnitInfoView

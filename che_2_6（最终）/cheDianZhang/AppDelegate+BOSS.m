@@ -77,7 +77,7 @@
     [self.tabBarController.tabBar setBackgroundImage:[[UIImage alloc]init]];
     
     UIImageView *im = [[UIImageView alloc]initWithImage:DJImageNamed(@"Combined Shape")];
-    im.frame = CGRectMake(-10, -18, kWindowW+20, 20);
+    im.frame = CGRectMake(-2, -18, kWindowW+4, 20);
     [self.tabBarController.tabBar addSubview:im];
     
     

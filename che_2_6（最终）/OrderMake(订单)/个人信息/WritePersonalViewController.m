@@ -48,7 +48,7 @@
     
     [self configurAction];
     
-    [_segmentedControl setSelectedRow:0];
+//    [_segmentedControl setSelectedRow:0];
     
     
     
@@ -318,6 +318,7 @@
         [weakSelf updateUI];
         if (weakSelf.model.model.mobile.length>0) {
             weakSelf.personView.mobile_tf.textField.enabled = NO;
+            weakSelf.unitView.mobile_tf.textField.enabled = NO;
         }
     } failure:^(id error) {
         
@@ -337,6 +338,7 @@
         [weakSelf updateUI];
         if (weakSelf.model.model.mobile.length>0) {
             weakSelf.personView.mobile_tf.textField.enabled = NO;
+            weakSelf.unitView.mobile_tf.textField.enabled = NO;
         }
     } failure:^(id error) {
         
@@ -365,6 +367,11 @@
         weakSelf.model.model = dataModel;
         weakSelf.model.model.user_id = modelUser_id;
         [weakSelf updateUI];
+        
+        if (weakSelf.model.model.mobile.length>0) {
+            weakSelf.personView.mobile_tf.textField.enabled = NO;
+            weakSelf.unitView.mobile_tf.textField.enabled = NO;
+        }
     } failure:^(id error) {
         
     }];
@@ -399,8 +406,54 @@
         
     }];
 }
+- (void)updateUIBuQieHuan {
+    if (!_model.model) {
+        return;
+    }
+    BOOL isUnit = [_model.model.is_unit isEqualToString:@"1"];
+    _unitView.hidden = YES;
+    _personView.hidden = YES;
+    if (isUnit) {
+        _unitView.hidden = NO;
+        _unitView.unit_full_name = _model.model.unit_full_name;
+        _unitView.store_alias = _model.model.store_alias;
+        _unitView.mobile = _model.model.mobile;
+        
+        _unitView.sendInfoView.send_name = _model.model.send_name;
+        _unitView.sendInfoView.send_mobile = _model.model.send_mobile;
+        _unitView.sendInfoView.send_id_card = _model.model.send_id_card;
+        
+        _unitView.sendInfoView.send_sex = _model.model.send_sex;
+        _unitView.sendInfoView.send_nation = _model.model.send_nation;
+        _unitView.sendInfoView.send_birth = _model.model.send_birth;
+        _unitView.sendInfoView.send_addr = _model.model.send_addr;
+    }
+    else {
+        _personView.hidden = NO;
+        _personView.mobile = _model.model.mobile;
+        _personView.store_alias = _model.model.store_alias;
+        _personView.id_car = _model.model.id_card;
+        _personView.sendInfoView.send_id_card = _model.model.send_id_card;
+        
+        _personView.sex = _model.model.sex;
+        _personView.nation = _model.model.nation;
+        _personView.birth = _model.model.birthday;
+        _personView.addr = _model.model.address;
+        
+        
+        _personView.sendInfoView.send_name = _model.model.send_name;
+        _personView.sendInfoView.send_mobile = _model.model.send_mobile;
+        _personView.sendInfoView.send_sex = _model.model.send_sex;
+        _personView.sendInfoView.send_nation = _model.model.send_nation;
+        _personView.sendInfoView.send_birth = _model.model.send_birth;
+        _personView.sendInfoView.send_addr = _model.model.send_addr;
+    }
+}
 
 - (void)updateUI {
+    if (!_model.model) {
+        return;
+    }
     BOOL isUnit = [_model.model.is_unit isEqualToString:@"1"];
     _unitView.hidden = YES;
     _personView.hidden = YES;
@@ -468,8 +521,11 @@
     _unitView.hidden = !isUnit;
     
     _model.model.is_unit = @(row).stringValue;
+    [self updateUIBuQieHuan];
     
-//    [self updateUI];
+//    if (_model.model) {
+//        [self updateUI];
+//    }
 }
 
 - (void)saveDataToServerCompletion:(void(^)(void))completon
@@ -734,6 +790,9 @@
 {
     if ([WritePersonalViewController LC_CheckTelNumber:textField.text]) {
 //        [textField resignFirstResponder];
+        if (self.model.model.mobile.length>0) {
+            return;
+        }
         [self requestUserInfoWithMobile:textField.text];
     }
 }
