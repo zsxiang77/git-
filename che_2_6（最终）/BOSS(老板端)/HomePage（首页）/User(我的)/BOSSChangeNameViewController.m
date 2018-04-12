@@ -18,11 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTopViewWithTitle:@"姓名" withBackButton:YES];
+    [self setTopViewWithTitle:self.nameStr withBackButton:YES];
     
     self.mainTextField = [[UITextField alloc]initWithFrame:CGRectMake(10,kBOSSNavBarHeight , kWindowW-20, 61)];
     self.mainTextField.placeholder = @"请输入您的姓名";
     self.mainTextField.font = [UIFont systemFontOfSize:17];
+    self.mainTextField.text = self.nameKeHuStr;
     self.mainTextField.delegate = self;
     [self.mainTextField becomeFirstResponder];
     [self.view addSubview:self.mainTextField];

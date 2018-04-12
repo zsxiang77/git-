@@ -22,6 +22,7 @@ self.mainTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, kBOSSNavBarH
 self.mainTextField.placeholder=@"请输入您的门店名称";
 self.mainTextField.font=[UIFont systemFontOfSize:17];
 self.mainTextField.delegate=self;
+self.mainTextField.text = KISDictionaryHaveKey(self.chaunzhiMdisn,@"store_name");
 [self.mainTextField becomeFirstResponder];
 [self.view addSubview:self.mainTextField];
 
@@ -72,9 +73,11 @@ UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(kWindowW-60, 20, 44, 44)
         return NO;
     }
     if (textField == self.mainTextField) {
+        if(string.length>0){
         if (self.mainTextField.text.length>16) {
             [self showMessageWithContent:@"最多16个字" point:self.view.center afterDelay:1];
             return NO;
+         }
         }
     }
     return YES;

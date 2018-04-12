@@ -21,6 +21,7 @@
     self.mainTextFile=[[UITextField alloc]initWithFrame:CGRectMake(10,kBOSSNavBarHeight , kWindowW-20, 61)];
     self.mainTextFile.placeholder=@"请输入门店电话";
     self.mainTextFile.delegate=self;
+    self.mainTextFile.text = KISDictionaryHaveKey(self.chaunzhiMdisn,@"phone");
     [self.mainTextFile becomeFirstResponder];
     self.mainTextFile.font=[UIFont systemFontOfSize:17];
     [self.view addSubview:self.mainTextFile];

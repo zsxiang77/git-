@@ -9,5 +9,5 @@
 #import "BOSSBaseViewController.h"
 
 @interface BOSSChangeMildelViewController : BOSSBaseViewController
-
+@property(nonatomic,strong)NSString * dianhauName;
 @end

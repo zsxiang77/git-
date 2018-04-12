@@ -22,6 +22,7 @@
     self.mainTextFile.placeholder=@"请输入邮箱";
     self.mainTextFile.delegate=self;
     [self.mainTextFile becomeFirstResponder];
+    self.mainTextFile.text = KISDictionaryHaveKey(self.chaunzhiMdisn,@"email");
     self.mainTextFile.font=[UIFont systemFontOfSize:17];
     [self.view addSubview:self.mainTextFile];
     

@@ -9,5 +9,6 @@
 #import "BOSSBaseViewController.h"
 
 @interface BOSSChangeNameViewController : BOSSBaseViewController
-
+@property(nonatomic,strong)NSString * nameStr;
+@property(nonatomic,strong)NSString * nameKeHuStr;
 @end

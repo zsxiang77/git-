@@ -17,10 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTopViewWithTitle:@"手机号" withBackButton:YES];
+    [self setTopViewWithTitle:self.nameStr withBackButton:YES];
     self.mainTextFile=[[UITextField alloc]initWithFrame:CGRectMake(10, kBOSSNavBarHeight, kWindowW-21, 61)];
     self.mainTextFile.placeholder=@"请输入您的电话号码";
     [self.mainTextFile becomeFirstResponder];
+    self.mainTextFile.text = self.chuanZhidict.mobile;
     self.mainTextFile.font=[UIFont systemFontOfSize:17];
     [self.view addSubview:self.mainTextFile];
     

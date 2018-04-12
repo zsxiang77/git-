@@ -133,10 +133,13 @@
     }
     if (indexPath.row == 1) {
         BOSSChangeNameViewController *vc = [[BOSSChangeNameViewController alloc]init];
+        vc.nameStr = @"名字";
+        vc.nameKeHuStr = [UserInfo shareInstance].userReal_name;
         [self.navigationController  pushViewController:vc animated:YES];
     }
     if (indexPath.row == 2) {
         BOSSChangeMildelViewController *vc = [[BOSSChangeMildelViewController alloc]init];
+        vc.dianhauName = [UserInfo shareInstance].userMobile;
         [self.navigationController  pushViewController:vc animated:YES];
     }
 }

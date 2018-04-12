@@ -4067,19 +4067,19 @@
 			isa = PBXGroup;
 			children = (
 				C61005E9204A76CE0045968C /* StoresInforDate(时间修改) */,
-				C61005E7204A76CE0045968C /* BOSSForTochangeaddreeViewController.m */,
 				C61005F4204A76CE0045968C /* BOSSForTochangeaddreeViewController.h */,
+				C61005E7204A76CE0045968C /* BOSSForTochangeaddreeViewController.m */,
 				C61005E8204A76CE0045968C /* BOSSForTochangelianxirenViewController.h */,
+				C61005F7204A76CE0045968C /* BOSSForTochangelianxirenViewController.m */,
 				C61005EF204A76CE0045968C /* StoresInformationViewController.h */,
 				C61005F6204A76CE0045968C /* StoresInformationViewController.m */,
 				C61005F0204A76CE0045968C /* BOSSForTochangeMailViewController.h */,
-				C61005F1204A76CE0045968C /* BOSSForTochangeMildelViewController.m */,
-				C61005F2204A76CE0045968C /* StoresInformationCell.h */,
-				C61005F3204A76CE0045968C /* BOSSForTochangeNameViewController.h */,
 				C61005F5204A76CE0045968C /* BOSSForTochangeMailViewController.m */,
-				C61005F7204A76CE0045968C /* BOSSForTochangelianxirenViewController.m */,
 				C61005F8204A76CE0045968C /* BOSSForTochangeMildelViewController.h */,
+				C61005F1204A76CE0045968C /* BOSSForTochangeMildelViewController.m */,
+				C61005F3204A76CE0045968C /* BOSSForTochangeNameViewController.h */,
 				C61005F9204A76CE0045968C /* BOSSForTochangeNameViewController.m */,
+				C61005F2204A76CE0045968C /* StoresInformationCell.h */,
 				C61005FA204A76CE0045968C /* StoresInformationCell.m */,
 			);
 			path = "StoresInformation（门店信息）";
@@ -4089,8 +4089,8 @@
 			isa = PBXGroup;
 			children = (
 				C61005EB204A76CE0045968C /* View */,
-				C61005EA204A76CE0045968C /* StoresInforDateViewController.m */,
 				C61005EE204A76CE0045968C /* StoresInforDateViewController.h */,
+				C61005EA204A76CE0045968C /* StoresInforDateViewController.m */,
 			);
 			path = "StoresInforDate(时间修改)";
 			sourceTree = "<group>";

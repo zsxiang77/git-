@@ -12,5 +12,6 @@
 @interface BOSSChangeAllNameViewController : BOSSBaseViewController
 
 @property(nonatomic,strong)TheCustomerModel *chuanZhidict;
-
+@property(nonatomic,strong)NSString * allName;
+@property(nonatomic,strong)NSString * qiyeallName;
 @end

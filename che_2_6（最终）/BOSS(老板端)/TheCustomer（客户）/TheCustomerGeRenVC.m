@@ -282,27 +282,32 @@
         if(indexPath.row==0){
             BOSSchangeUserMidelViewController*vc=[[BOSSchangeUserMidelViewController alloc]init];
             vc.chuanZhidict = self.chuanZhiModel;
+            vc.nameStr = @"企业电话";
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.row==1){
             BOSSChangeNameViewController*vc=[[BOSSChangeNameViewController alloc]init];
+            vc.nameStr = @"企业简称";
+            vc.nameKeHuStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDict, @"store_alias")];
             [self.navigationController pushViewController:vc animated:YES];
         }else{
             BOSSChangeAllNameViewController*vc=[[BOSSChangeAllNameViewController alloc]init];
-            
+            vc.allName = @"企业全称";
+            vc.qiyeallName =[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDict, @"unit_full_name")];
             vc.chuanZhidict = self.chuanZhiModel;
             [self.navigationController pushViewController:vc animated:YES];
-            
         }
     }else{
         if(indexPath.row==0){
             BOSSchangeUserMidelViewController*vc=[[BOSSchangeUserMidelViewController alloc]init];
+            vc.nameStr = @"客户手机号";
             vc.chuanZhidict = self.chuanZhiModel;
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.row==1){
             BOSSChangeNameViewController*vc=[[BOSSChangeNameViewController alloc]init];
+            vc.nameStr = @"客户名称";
+            vc.nameKeHuStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDict, @"store_alias")];
             [self.navigationController pushViewController:vc animated:YES];
         }
-        
     }
     
 }

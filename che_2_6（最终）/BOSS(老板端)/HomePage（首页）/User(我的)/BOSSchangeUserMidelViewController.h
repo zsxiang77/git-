@@ -10,4 +10,5 @@
 #import "TheCustomerModel.h"
 @interface BOSSchangeUserMidelViewController : BOSSBaseViewController
 @property(nonatomic,strong)TheCustomerModel *chuanZhidict;
+@property(nonatomic,strong)NSString * nameStr;
 @end

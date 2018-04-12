@@ -16,10 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTopViewWithTitle:@"修改企业名" withBackButton:YES];
+    [self setTopViewWithTitle:self.allName withBackButton:YES];
     self.mainTextfild=[[UITextField alloc]initWithFrame:CGRectMake(10,kBOSSNavBarHeight , kWindowW-20, 61)];
     self.mainTextfild.placeholder=@"请输入修改的企业名称";
     self.mainTextfild.delegate=self;
+    self.mainTextfild.text = self.qiyeallName;
     self.mainTextfild.font=[UIFont systemFontOfSize:14];
     [self.mainTextfild becomeFirstResponder];
     [self.view addSubview:self.mainTextfild];

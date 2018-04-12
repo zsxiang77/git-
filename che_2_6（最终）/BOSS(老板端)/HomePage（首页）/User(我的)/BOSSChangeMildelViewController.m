@@ -117,7 +117,7 @@
         _phoneTextField.placeholder = @"请输入手机号";
         _phoneTextField.font = [UIFont systemFontOfSize:17];
         _phoneTextField.clearButtonMode = UITextFieldViewModeAlways;
-        
+        _phoneTextField.text = self.dianhauName;
         NumberKeyboard *m_keyBoard2;
         m_keyBoard2 = [[NumberKeyboard alloc]init];
         m_keyBoard2.keyboardType = NumberKeyboardType_Normal;
