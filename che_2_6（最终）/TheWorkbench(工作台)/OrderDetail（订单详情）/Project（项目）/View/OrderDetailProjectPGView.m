@@ -193,12 +193,16 @@
         erJiView.hidden = NO;
         [erJiTableView reloadData];
     }else{
-        if (self.queDingArray.count>=4) {
-            UIAlertView *alt = [[UIAlertView alloc]initWithTitle:nil message:@"最多选4人" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alt show];
-            return;
-        }
+        
+        
         PaiGongStaffModel *model = self.xuanZhongArray[indexPath.row];
+        if (model.shiFouXuanZhong == NO) {
+            if (self.queDingArray.count>=4) {
+                UIAlertView *alt = [[UIAlertView alloc]initWithTitle:nil message:@"最多选4人" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alt show];
+                return;
+            }
+        }
         model.shiFouXuanZhong = !model.shiFouXuanZhong;
         [erJiTableView reloadData];
 //        ====================

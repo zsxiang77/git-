@@ -57,7 +57,7 @@ UITableViewDataSource
     }];
     _numberLb.font = [UIFont pf_PingFangSCSemiboldFontOfSize:14];
     _numberLb.textColor = [UIColor colorWithHexString:@"4a4a4a"];
-    _numberLb.text = @"号请选择AIT序列";
+    _numberLb.text = @"请选择AIT序列";
     
     _bottomView = [[UIView alloc] init];
     [self.view addSubview:self.bottomView];

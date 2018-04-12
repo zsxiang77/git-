@@ -65,7 +65,7 @@
     
     
     self.mainTextField = [[UITextField alloc] init];
-    self.mainTextField.placeholder = @"请输入关键词";
+    self.mainTextField.placeholder = @"请输入手机号/姓名";
     self.mainTextField.textColor = kRGBColor(51, 51, 51);
     self.mainTextField.font = DJSystemFont(14);
     self.mainTextField.clearButtonMode = UITextFieldViewModeWhileEditing;

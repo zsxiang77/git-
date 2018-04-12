@@ -227,22 +227,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/TheCustomer&#xff08;&#x5ba2;&#x6237;&#xff09;/Search(&#x641c;&#x7d22;)/TheCustomerSearchVC.m"
-            timestampString = "542777638.1774991"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-postwork_boardwithShuaXin:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/TheCustomer&#xff08;&#x5ba2;&#x6237;&#xff09;/TheCustomerGeRenVC.m"
             timestampString = "542777645.578434"
             startingColumnNumber = "9223372036854775807"

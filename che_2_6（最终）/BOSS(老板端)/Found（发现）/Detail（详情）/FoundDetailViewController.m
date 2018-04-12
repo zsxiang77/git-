@@ -219,12 +219,13 @@
     
     FoundDetailListModel *model = self.mainListArrar[indexPath.row];
     CGFloat height = (146+36+20)/2;
-    CGSize wordSize = DAJIANG_MULTILINE_TEXTSIZE(model.content, DJSystemFont(14), CGSizeMake(kWindowW-20, 100));
+    CGSize wordSize = DAJIANG_MULTILINE_TEXTSIZE(model.content, DJSystemFont(14), CGSizeMake(kWindowW-60, 200));
     height += wordSize.height;
     if (model.original.length>0) {
-        NSString *str = [NSString stringWithFormat:@"@%@:%@",model.to_username,model.original];
-        CGSize wordSize2 = DAJIANG_MULTILINE_TEXTSIZE(str, DJSystemFont(14), CGSizeMake(kWindowW-20, 100));
+        NSString *str = [NSString stringWithFormat:@"@%@：%@",model.to_username,model.original];
+        CGSize wordSize2 = DAJIANG_MULTILINE_TEXTSIZE(str, DJSystemFont(14), CGSizeMake(kWindowW-60, 200));
         height += wordSize2.height;
+        height += 15;
     }
     
     return height;

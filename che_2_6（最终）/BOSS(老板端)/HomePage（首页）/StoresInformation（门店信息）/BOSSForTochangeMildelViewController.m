@@ -73,10 +73,13 @@
         return NO;
     }
     if(textField==self.mainTextFile){
-        if(self.mainTextFile.text.length>16){
-            [self showMessageWithContent:@"最多16个字" point:self.view.center afterDelay:1];
-            return NO;
+        if (string.length>0) {
+            if(self.mainTextFile.text.length>12){
+                [self showMessageWithContent:@"最多16个字" point:self.view.center afterDelay:1];
+                return NO;
+            }
         }
+        
     }
     return YES;
 }

@@ -57,7 +57,7 @@
     UIButton *souSuoBt = [[UIButton alloc]initWithFrame:CGRectMake(19, 6, kWindowW-38, 32)];
     [souSuoBt addTarget:self action:@selector(souSuoBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [souSuoBt.layer setMasksToBounds:YES];
-    [souSuoBt setTitle:@"请输入关键词" forState:(UIControlStateNormal)];
+    [souSuoBt setTitle:@"请输入手机号/姓名" forState:(UIControlStateNormal)];
     [souSuoBt setImage:DJImageNamed(@"BOOss_souSuo") forState:(UIControlStateNormal)];
     souSuoBt.imageEdgeInsets = UIEdgeInsetsMake(5, -5, 5, 5);
     [souSuoBt setTitleColor:kRGBColor(155, 155, 155) forState:(UIControlStateNormal)];

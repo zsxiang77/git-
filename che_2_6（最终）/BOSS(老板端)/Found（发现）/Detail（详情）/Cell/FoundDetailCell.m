@@ -80,6 +80,7 @@
         }];
         
         huiFuLabel = [[UILabel alloc]init];
+        huiFuLabel.numberOfLines = 0;
         huiFuLabel.font = [UIFont systemFontOfSize:14];
         huiFuLabel.textColor = kRGBColor(74, 74, 74);
         [self.contentView addSubview:huiFuLabel];
