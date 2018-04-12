@@ -45,8 +45,9 @@
 //    //播放
     [_playerView playVideo];
     //返回按钮点击事件回调,小屏状态才会调用，全屏默认变为小屏
+    kWeakSelf(weakSelf)
     [_playerView backButton:^(UIButton *button) {
-        NSLog(@"返回按钮被点击");
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     //播放完成回调
     [_playerView endPlay:^{
@@ -104,10 +105,7 @@
     _playerView.autoRotate = NO;
     _playerView.strokeColor = [UIColor clearColor];
     
-    for (int i = 0; i<3; i++) {
-        UIButton *bt = [btView viewWithTag:3000+i];
-        bt.selected = NO;
-    }
+    
 
     
     
@@ -119,6 +117,11 @@
         }
     }
     if (sender.tag == 3000) {
+        
+        for (int i = 0; i<3; i++) {
+            UIButton *bt = [btView viewWithTag:3000+i];
+            bt.selected = NO;
+        }
         [UserInfo shareInstance].shiFouXuanZhuan = YES;
         _playerView.autoRotate = YES;
 
@@ -163,7 +166,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [_playerView destroyPlayer];
+    [_playerView pausePlay];
     [UserInfo shareInstance].shiFouXuanZhuan = NO;
 }
 

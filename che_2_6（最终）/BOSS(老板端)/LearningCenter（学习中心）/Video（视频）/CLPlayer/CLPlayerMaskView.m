@@ -11,7 +11,9 @@
 #import "Masonry.h"
 //间隙
 #define Padding        10
-//顶部底部工具条高度
+//底部工具条高度
+#define ToolBottomBarHeight     40
+//顶部工具条高度
 #define ToolBarHeight     50
 
 @interface CLPlayerMaskView ()
@@ -33,13 +35,14 @@
     [self addSubview:self.activity];
     [self addSubview:self.failButton];
     [self.topToolBar addSubview:self.backButton];
+    [self.topToolBar addSubview:self.guanZhuButton];
     [self.bottomToolBar addSubview:self.playButton];
     [self.bottomToolBar addSubview:self.fullButton];
     [self.bottomToolBar addSubview:self.currentTimeLabel];
     [self.bottomToolBar addSubview:self.totalTimeLabel];
     [self.bottomToolBar addSubview:self.progress];
     [self.bottomToolBar addSubview:self.slider];
-    self.topToolBar.backgroundColor    = [UIColor colorWithRed:0.00000f green:0.00000f blue:0.00000f alpha:0.20000f];
+    self.topToolBar.backgroundColor    = [UIColor clearColor];
     self.bottomToolBar.backgroundColor = [UIColor colorWithRed:0.00000f green:0.00000f blue:0.00000f alpha:0.20000f];
 }
 #pragma mark - 约束
@@ -52,7 +55,7 @@
     //底部工具条
     [self .bottomToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(ToolBarHeight);
+        make.height.mas_equalTo(ToolBottomBarHeight);
     }];
     //转子
     [self.activity mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -64,6 +67,12 @@
         make.top.left.mas_equalTo(Padding);
         make.bottom.mas_equalTo(-Padding);
         make.width.mas_equalTo(self.backButton.mas_height);
+    }];
+    
+    [self.guanZhuButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.bottom.mas_equalTo(-Padding);
+        make.top.mas_equalTo(Padding);
+        make.width.height.mas_equalTo(30);
     }];
     //播放按钮
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,10 +163,23 @@
     }
     return _backButton;
 }
+//关注按钮
+-(UIButton *)guanZhuButton
+{
+    if (_guanZhuButton == nil){
+        _guanZhuButton = [[UIButton alloc] init];
+        _guanZhuButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_guanZhuButton setImage:[self getPictureWithName:@"bushoucang"] forState:UIControlStateNormal];
+        [_guanZhuButton setImage:[self getPictureWithName:@"shoucang"] forState:UIControlStateSelected];
+        [_guanZhuButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _guanZhuButton;
+}
 //播放按钮
 - (UIButton *) playButton{
     if (_playButton == nil){
         _playButton = [[UIButton alloc] init];
+        _playButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_playButton setImage:[self getPictureWithName:@"CLPlayBtn"] forState:UIControlStateNormal];
         [_playButton setImage:[self getPictureWithName:@"CLPauseBtn"] forState:UIControlStateSelected];
         [_playButton addTarget:self action:@selector(playButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -168,6 +190,7 @@
 - (UIButton *) fullButton{
     if (_fullButton == nil){
         _fullButton = [[UIButton alloc] init];
+        _fullButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_fullButton setImage:[self getPictureWithName:@"CLMaxBtn"] forState:UIControlStateNormal];
         [_fullButton setImage:[self getPictureWithName:@"CLMinBtn"] forState:UIControlStateSelected];
         [_fullButton addTarget:self action:@selector(fullButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -178,6 +201,7 @@
 - (UILabel *) currentTimeLabel{
     if (_currentTimeLabel == nil){
         _currentTimeLabel                           = [[UILabel alloc] init];
+        _currentTimeLabel.font                      = [UIFont systemFontOfSize:12];
         _currentTimeLabel.textColor                 = [UIColor whiteColor];
         _currentTimeLabel.adjustsFontSizeToFitWidth = YES;
         _currentTimeLabel.text                      = @"00:00";
@@ -189,6 +213,7 @@
 - (UILabel *) totalTimeLabel{
     if (_totalTimeLabel == nil){
         _totalTimeLabel                           = [[UILabel alloc] init];
+        _totalTimeLabel.font                      = [UIFont systemFontOfSize:12];
         _totalTimeLabel.textColor                 = [UIColor whiteColor];
         _totalTimeLabel.adjustsFontSizeToFitWidth = YES;
         _totalTimeLabel.text                      = @"00:00";

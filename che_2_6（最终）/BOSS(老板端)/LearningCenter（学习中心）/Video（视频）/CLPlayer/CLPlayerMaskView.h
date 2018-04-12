@@ -35,6 +35,8 @@
 @property (nonatomic,strong) AILoadingView *activity;
 /**顶部工具条返回按钮*/
 @property (nonatomic,strong) UIButton *backButton;
+/**顶部工具条关注按钮*/
+@property (nonatomic,strong) UIButton *guanZhuButton;
 /**底部工具条播放按钮*/
 @property (nonatomic,strong) UIButton *playButton;
 /**底部工具条全屏按钮*/

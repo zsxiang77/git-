@@ -69,6 +69,7 @@
         }];
         
         neiRongLabel = [[UILabel alloc]init];
+        neiRongLabel.numberOfLines = 0;
         neiRongLabel.font = [UIFont systemFontOfSize:14];
         neiRongLabel.textColor = kRGBColor(74, 74, 74);
         [self.contentView addSubview:neiRongLabel];
@@ -170,7 +171,7 @@
         huiFuLabel.attributedText = att;
         huiFuView.hidden = NO;
         huiFuLabel.hidden = NO;
-        
+
     }
 }
 @end

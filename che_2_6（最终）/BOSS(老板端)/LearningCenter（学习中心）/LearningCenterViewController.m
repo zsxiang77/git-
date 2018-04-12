@@ -97,6 +97,7 @@
     
     NSDictionary *dict = [self.adDatas objectAtIndex:MAX(item-1, 0)];
     WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
     vc.isNoShowNavBar = NO;
     vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dict, @"url"),KISDictionaryHaveKey(dict, @"video_id")];
     [self.navigationController pushViewController:vc animated:YES];
@@ -142,6 +143,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 //    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.hidesBottomBarWhenPushed = YES;
 //    vc.isNoShowNavBar = NO;
 //    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
 //    [self.navigationController pushViewController:vc animated:YES];

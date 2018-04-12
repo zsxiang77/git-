@@ -85,7 +85,7 @@
     }];
 }
 //收藏
--(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index;
+-(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index
 {
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:model.video_id forKey:@"video_id"];

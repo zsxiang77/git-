@@ -243,7 +243,7 @@
 -(void)refleshData:(LearningModel*)dict withIndex:(NSIndexPath*)index{
     self.zhuModel=dict;
     self.indexPath=index;
-    [leftuImgView sd_setImageWithURL:[NSURL URLWithString:dict.image] placeholderImage:DJImageNamed(@"Boss_fond_beijing")];
+    [leftuImgView sd_setImageWithURL:[NSURL URLWithString:dict.image] placeholderImage:DJImageNamed(@"Boss_fond_beijing_new")];
     if([dict.is_new boolValue]==YES){
         titleUilable.text=[NSString stringWithFormat:@"     %@",dict.title];
         zuixinImgView.hidden=NO;
