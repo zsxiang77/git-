@@ -298,11 +298,12 @@
     NSString * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string]; //得到输入框的内容
     if (self.searchText == textField)  //判断是否时我们想要限定的那个输入框
     {
-        if (asciiLengthOfString(toBeString) > 17) {
-            textField.text = [toBeString substringToIndex:asciiLengthIndexOfString(toBeString, 16)];
-            return NO;
-            
+        if (string.length>0) {
+            if (asciiLengthOfString(toBeString) > 17) {
+                return NO;
+            }
         }
+        
     }
     
     return YES;

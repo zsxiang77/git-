@@ -2,7 +2,9 @@
 //  PlateIDOCR.h
 //  PlateIDOCR
 //
-
+//  Created by chinasafe on 16/3/29.
+//  Copyright © 2016年 chinasafe. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
@@ -27,14 +29,41 @@
  */
 - (void)setPlateFormat: (PlateFormat *)plateFormat;
 
-
-/*
- 扫描识别
+/******************************************新接口************************************************/
+ /*
+ 扫描识别 (此方法，无需根据手机的方向设置对应的视频流方向，只需设置视频流方向为AVCaptureVideoOrientationPortrait即可，然后根据home键的位置传入对应的nRotate值即可)
  参数：buffer：传入的图片帧数据
  count：识别的最大车牌个数，手机应用设置为1
  width：图片帧数据的宽
  height：图片帧数据的高
- rect：为识别的预览框的位置
+ rect：检边区域
+ confidence：置信度，范围为：0--100；设置置信度时，分两种情况：1 平常的车牌，可以设置高一些，错误排除率高，一般设置为80；2 特殊的      车牌，设置低一些，设置的高，会影响识别结果的输出，也会影响识别速度，一般设置为75
+ nRotate:旋转角度 home键盘在下时，nRotate值为0；home键在右时，nRotate值为3；home键在上时，nRotate值为2；home键在左时，nRotate值为1；
+ */
+- (NSArray *) recogImageWithBuffer:(UInt8 *)buffer recogCount: (int)count nWidth: (int)width nHeight: (int) height recogRange:(CGRect) rect confidence:(int)confidence nRotate:(int)nRotate;
+
+/*
+ 拍照识别或选图识别 (此方法，无需根据手机的方向设置对应的视频流方向，只需设置视频流方向为AVCaptureVideoOrientationPortrait即可，然后根据home键的位置传入对应的nRotate值即可)
+ 参数：image：拍照识别时，传入的图片，为帧数据转成的图片；选图识别时，为相册里面的图片
+ count：识别的最大车牌个数，手机应用设置为1
+ nRotate:旋转角度 home键盘在下时，nRotate值为0；home键在右时，nRotate值为3；home键在上时，nRotate值为2；home键在左时，nRotate值为1；
+ */
+- (NSArray *) recogWithImage: (UIImage *)image recogCount: (int)count nRotate:(int)nRotate;
+
+/*
+ 释放核心，识别完成后调用
+ */
+- (int)uninitPlateIDSDK;
+
+
+/******************************************老接口*****************************************/
+ /*
+ 扫描识别 (此方法，需要根据手机的方向设置对应的视频流方向，建议使用上面的方法)
+ 参数：buffer：传入的图片帧数据
+ count：识别的最大车牌个数，手机应用设置为1
+ width：图片帧数据的宽
+ height：图片帧数据的高
+ rect：检边区域
  confidence：置信度，范围为：0--100；设置置信度时，分两种情况：1 平常的车牌，可以设置高一些，错误排除率高，一般设置为80；2 特殊的      车牌，设置低一些，设置的高，会影响识别结果的输出，也会影响识别速度，一般设置为75
  */
 - (NSArray *) recogImageWithBuffer:(UInt8 *)buffer recogCount: (int)count nWidth: (int)width nHeight: (int) height recogRange:(CGRect) rect confidence:(int)confidence;
@@ -42,15 +71,14 @@
 
 
 /*
- 拍照识别或选图识别
+ 拍照识别或选图识别 ((此方法，需要根据手机的方向设置对应的视频流方向，建议使用上面的方法))
  参数：image：拍照识别时，传入的图片，为帧数据转成的图片；选图识别时，为相册里面的图片
  count：识别的最大车牌个数，手机应用设置为1
  */
 - (NSArray *) recogWithImage: (UIImage *)image recogCount: (int)count;
 
-/*
- 释放核心，识别完成后调用
- */
-- (int)uninitPlateIDSDK;
+
+
+
 
 @end
