@@ -8,44 +8,59 @@
 
 #import "PlateIDCameraViewController.h"
 #import "PlateIDOverView.h"
-#import "PlateResult.h"
-#import "PlateFormat.h"
-#import "PlateIDResultViewController.h"
 
 #if TARGET_IPHONE_SIMULATOR//模拟器
 #elif TARGET_OS_IPHONE//真机
 #import "PlateIDOCR.h"
 #endif
 
-#import <CoreMotion/CoreMotion.h>
+#import "PlateResult.h"
+#import "PlateFormat.h"
+#import "PlateIDResultViewController.h"
 
-//屏幕的宽、高
-#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#import <CoreMotion/CoreMotion.h>
+#import "PlateIDSlider.h"
+
+
+#define kFocalScale 1.0
+#define kResolutionWidth 1920
+#define kResolutionHeight 1080
+
+//底部安全高度
+#define KSAFEBOTTOMEHEIGHT ((kScreenHeight==812.0)? 34:20)
+//头部安全高度
+#define KSAFETOPEHEIGHT ((kScreenHeight==812.0)? 44:20)
+
+int nRotate = 1;
+
 
 @interface PlateIDCameraViewController ()<UIAlertViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>{
     AVCaptureSession *_session;
     AVCaptureDeviceInput *_captureInput;
     AVCaptureStillImageOutput *_captureOutput;
-    AVCaptureVideoPreviewLayer *_preview;
     AVCaptureDevice *_device;
     AVCaptureConnection *_videoConnection;
     
     PlateIDOverView *_overView;
     BOOL _on;
-    
 #if TARGET_IPHONE_SIMULATOR//模拟器
 #elif TARGET_OS_IPHONE//真机
     PlateIDOCR *_plateIDRecog;
 #endif
-    
     UIButton *_flashBtn;
+    UIButton *_backButton;
+    UIButton *_photoBtn;
     UILabel *_tipsLabel;
     
     //识别结果
     NSArray *_results;
     //识别帧图像
     UIImage *_image;
+    
+    CAShapeLayer *_maskWithHole;//预览界面覆盖的半透明层
+    
+    
+    
 }
 @property (assign, nonatomic) BOOL adjustingFocus;
 @property (nonatomic, retain) CALayer *customLayer;
@@ -53,6 +68,13 @@
 //动作管理器指针
 @property(nonatomic,strong)CMMotionManager *manager;
 @property(nonatomic,strong)NSTimer *timer;
+@property (nonatomic, assign) CGRect recogArea;//设置识别区域
+
+
+@property(nonatomic,strong)AVCaptureVideoPreviewLayer *preview;
+
+@property(nonatomic,strong)PlateIDSlider *slider;
+@property(nonatomic,strong)UIImageView *panView;
 
 @end
 
@@ -70,13 +92,13 @@
 #if TARGET_IPHONE_SIMULATOR//模拟器
 #elif TARGET_OS_IPHONE//真机
     
+    
     //初始化识别核心
     [self initRecog];
     
     //初始化相机
     [self initialize];
 #endif
-    
 }
 
 #if TARGET_IPHONE_SIMULATOR//模拟器
@@ -91,9 +113,7 @@
     int flags =NSKeyValueObservingOptionNew;
     //注册通知,观察是否聚焦成功
     [camDevice addObserver:self forKeyPath:@"adjustingFocus" options:flags context:nil];
-    
     [_session startRunning];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -107,33 +127,53 @@
         NSLog(@"设备不支持加速计");
     }
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateDisPlay) userInfo:nil repeats:YES];
-    
+    __weak typeof(self) weakSelf = self;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:weakSelf selector:@selector(updateDisPlay) userInfo:nil repeats:YES];
 }
 
 - (void)updateDisPlay{
     if (_manager.accelerometerAvailable == YES) {
         CMAccelerometerData *accelerometerData = _manager.accelerometerData;
         //重力加速度三维分量
-        //        NSLog(@"%f\n,%f\n,%f\n",accelerometerData.acceleration.x,accelerometerData.acceleration.y,accelerometerData.acceleration.z);
-        
-        if (accelerometerData.acceleration.x > 0 && accelerometerData.acceleration.x < 0.2) {
-            _videoConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
+        //                        NSLog(@"%f\n,%f\n,%f\n",accelerometerData.acceleration.x,accelerometerData.acceleration.y,accelerometerData.acceleration.z);
+        if (accelerometerData.acceleration.x > -0.4 && accelerometerData.acceleration.x < 0.4) {
+            nRotate = 1;
+            _overView.nrotate = nRotate;
+            _overView.smallrect = [_overView setRecogAreaWithNrotate:nRotate];
+            [self drawShapeLayerWithSmallrect:_overView.smallrect First:NO];
+            _overView.maxrect = [_overView getMaxrect];
+            [self resetControlFrameWithNrotate:nRotate maxrect:_overView.maxrect];
             _tipsLabel.transform = CGAffineTransformMakeRotation(0);
-            
-        }else if(accelerometerData.acceleration.x > -1 && accelerometerData.acceleration.x <-0.8){
-            _videoConnection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+        }else if(accelerometerData.acceleration.x > -1 && accelerometerData.acceleration.x <-0.6){
+            nRotate = 0;
+            _overView.nrotate = nRotate;
+            _overView.smallrect = [_overView setRecogAreaWithNrotate:nRotate];
+            [self drawShapeLayerWithSmallrect:_overView.smallrect First:NO];
+            _overView.maxrect = [_overView getMaxrect];
+            [self resetControlFrameWithNrotate:nRotate maxrect:_overView.maxrect];
             _tipsLabel.transform = CGAffineTransformMakeRotation(M_PI_2);
-        }else if (accelerometerData.acceleration.x > 0.8 && accelerometerData.acceleration.x < 1){
-            _videoConnection.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+        }else if (accelerometerData.acceleration.x > 0.6 && accelerometerData.acceleration.x < 1){
+            nRotate = 2;
+            _overView.nrotate = nRotate;
+            _overView.smallrect = [_overView setRecogAreaWithNrotate:nRotate];
+            [self drawShapeLayerWithSmallrect:_overView.smallrect First:NO];
+            _overView.maxrect = [_overView getMaxrect];
+            [self resetControlFrameWithNrotate:nRotate maxrect:_overView.maxrect];
             _tipsLabel.transform = CGAffineTransformMakeRotation(-M_PI_2);
             
         }
+
+        
     }
 }
 
 
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+    [_session stopRunning];
+    
+}
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     AVCaptureDevice*camDevice =[AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -145,10 +185,11 @@
     }
     [_device unlockForConfiguration];
     
-    [_session stopRunning];
     [_manager stopAccelerometerUpdates];
-    [self.timer invalidate];
-    self.timer = nil;
+    if ([_timer isValid]) {
+        [_timer invalidate];
+        _timer =nil;
+    }
 }
 
 //初始化识别核心
@@ -161,6 +202,14 @@
     
     //车牌识别设置
     [_plateIDRecog setPlateFormat:[self getPlateFormat]];
+    
+//    _plateIDRecog = [[PlateIDOCR alloc] init];
+//    /*在此填写开发码，初始化识别核心*/
+//    int init = [_plateIDRecog initPalteIDWithDevcode:@"6L2M5PEP572RKOW" RecogType:2];
+//    NSLog(@"\n核心初始化返回值 = %d\n返回值为0成功 其他失败\n\n常见错误：\n-10601 开发码错误\n核心初始化方法- (int) initPalteIDWithDevcode: (NSString *)devcode RecogType:(int) type;参数为开发码\n\n-10602 Bundle identifier错误\n-10605 Bundle display name错误\n-10606 CompanyName错误\n请检查授权文件（wtproject.lsc）绑定的信息与Info.plist中设置是否一致!!!",init);
+//
+//    //车牌识别设置
+//    [_plateIDRecog setPlateFormat:[self getPlateFormat]];
 }
 
 //车牌识别设置
@@ -183,15 +232,16 @@
      newEnergy;// 新能源车牌是否开启：1是；0不是
      */
     
-    plateFormat.nOCR_Th = 5;
-    plateFormat.nPlateLocate_Th = 9;
+    plateFormat.nOCR_Th = 2;
+    plateFormat.nPlateLocate_Th = 5;
     plateFormat.armpolice = 1;
     plateFormat.armpolice2 = 1;
     plateFormat.embassy = 1;
     plateFormat.individual = 1;
     plateFormat.tworowarmy = 1;
     plateFormat.tworowyellow = 1;
-    plateFormat.mtractor = 1;
+    plateFormat.consulate = 1;
+    plateFormat.newEnergy = 1;
     return plateFormat;
 }
 
@@ -217,7 +267,7 @@
     
     //1.创建会话层
     _session = [[AVCaptureSession alloc] init];
-    [_session setSessionPreset:AVCaptureSessionPreset1280x720];
+    [_session setSessionPreset:AVCaptureSessionPreset1920x1080];
     
     //2.创建、配置输入设备
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -262,8 +312,6 @@
         }
         if (_videoConnection) { break; }
     }
-    /*设置视频流方向，默认设置为竖屏*/
-    _videoConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
     
     [_session addOutput:_captureOutput];
     
@@ -276,56 +324,44 @@
     [_session startRunning];
     
     //设置覆盖层
-    CAShapeLayer *maskWithHole = [CAShapeLayer layer];
-    CGRect biggerRect = self.view.bounds;
-    CGFloat offset = 1.0f;
-    if ([[UIScreen mainScreen] scale] >= 2) {
-        offset = 0.5;
-    }
-    
-    //设置检边视图层
-    CGRect smallFrame = _overView.smallrect;
-    CGRect smallerRect = CGRectInset(smallFrame, -offset, -offset) ;
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPath];
-    [maskPath moveToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMaxY(biggerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMaxY(biggerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMinY(biggerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
-    [maskPath moveToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMaxY(smallerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMaxY(smallerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMinY(smallerRect))];
-    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
-    [maskWithHole setPath:[maskPath CGPath]];
-    [maskWithHole setFillRule:kCAFillRuleEvenOdd];
-    [maskWithHole setFillColor:[[UIColor colorWithWhite:0 alpha:0.35] CGColor]];
-    [self.view.layer addSublayer:maskWithHole];
-    [self.view.layer setMasksToBounds:YES];
+    [self drawShapeLayerWithSmallrect:_overView.smallrect First:YES];
     
     _overView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_overView];
-    
+    //
     // 拍照按钮
-    UIButton *photoBtn = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth/2-30,kScreenHeight-80,60, 60)];
-    [photoBtn setImage:[UIImage imageNamed:@"take_pic_btn"] forState:UIControlStateNormal];
-    [photoBtn addTarget:self action:@selector(photoBtn) forControlEvents:UIControlEventTouchUpInside];
-    [photoBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-    photoBtn.hidden = YES;
-    [self.view addSubview:photoBtn];
+    _photoBtn = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth/2-30,kScreenHeight-60-KSAFEBOTTOMEHEIGHT,60, 60)];
+    [_photoBtn setImage:[UIImage imageNamed:@"take_pic_btn.png"] forState:UIControlStateNormal];
+    [_photoBtn addTarget:self action:@selector(photoBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_photoBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.view addSubview:_photoBtn];
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"camera_back.png"] forState:UIControlStateNormal];
-    backButton.frame = CGRectMake(10, 20, 40, 40);
-    [backButton addTarget:self action:@selector(backToMain) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backButton];
+    
+    //9.创建slider
+    _slider = [[PlateIDSlider alloc] init];
+    [self resetControlFrameWithNrotate:1 maxrect:[_overView getMaxrect]];
+    _slider.minimumValue = 1.0;
+    _slider.maximumValue = 9.0;
+    _slider.value = 1.0;
+    _slider.continuous = YES;
+//    _slider.minimumTrackTintColor = [UIColor colorWithRed:80/250.0 green:205/250.0 blue:204/250.0 alpha:1.0];
+    _slider.minimumTrackTintColor = kZhuTiColor;
+    _slider.maximumTrackTintColor = [UIColor colorWithRed:142/250.0 green:142/250.0 blue:142/250.0 alpha:1.0];
+    [_slider setThumbImage:[UIImage imageNamed:@"slider.png"] forState:UIControlStateNormal];
+    [_slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:_slider];
+    
+    _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_backButton setImage:[UIImage imageNamed:@"camera_back.png"] forState:UIControlStateNormal];
+    _backButton.frame = CGRectMake(10, KSAFETOPEHEIGHT, 40, 40);
+    [_backButton addTarget:self action:@selector(backToMain) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_backButton];
     
     //闪光灯按钮
     _flashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_flashBtn setImage:[UIImage imageNamed:@"camera_flash_on.png"] forState:UIControlStateNormal];
     [_flashBtn setImage:[UIImage imageNamed:@"camera_flash_off.png"] forState:UIControlStateSelected];
-    _flashBtn.frame = CGRectMake(kScreenWidth-50, 20, 40, 40);
+    _flashBtn.frame = CGRectMake(kScreenWidth-50, KSAFETOPEHEIGHT, 40, 40);
     [_flashBtn addTarget:self action:@selector(openFlash:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_flashBtn];
     _on = NO;
@@ -345,6 +381,7 @@
     self.isProcessingImage = YES;
     
 }
+
 
 //从摄像头缓冲区获取图像
 #pragma mark -
@@ -370,7 +407,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         return;
     }
-    
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CVPixelBufferLockBaseAddress(imageBuffer,0);
     uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
@@ -378,9 +414,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     size_t height = CVPixelBufferGetHeight(imageBuffer);
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
     
+    self.recogArea = [self setRecogParametersAndCropFrameWithRect:_overView.smallrect];
+    
     //识别车牌图像
-    _results = [_plateIDRecog recogImageWithBuffer:baseAddress recogCount:1 nWidth:(int)width nHeight:(int)height recogRange:_overView.smallrect confidence:75];
+    _results = [_plateIDRecog recogImageWithBuffer:baseAddress recogCount:1 nWidth:(int)width nHeight:(int)height recogRange:self.recogArea confidence:75 nRotate:nRotate nScale:1];
     if (_results.count > 0) {
+        // 停止取景
+        [_session stopRunning];
+        
         //根据当前帧数据生成UIImage图像，保存图像使用
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         
@@ -392,12 +433,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         /*
          该图片用于快速模式，即初始化设置为0时使用。
          */
-        _image = [UIImage imageWithCGImage:quartzImage scale:1.0f orientation:UIImageOrientationRight];
+        UIImage *img = [UIImage imageWithCGImage:quartzImage scale:1.0f orientation:UIImageOrientationUp];
         CGImageRelease(quartzImage);
+        _image = [self getImgByNrotate:nRotate :img];
         //识别完成，展示结果
         [self performSelectorOnMainThread:@selector(showResults) withObject:nil waitUntilDone:NO];
-        // 停止取景
-        [_session stopRunning];
     }
     
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
@@ -485,9 +525,95 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
+-(void)sliderValueChanged:(UISlider *)paramSender{
+    if ([paramSender isEqual:_slider]) {
+        //        NSLog(@"New value=%f",paramSender.value);
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:.1];
+        [_preview setAffineTransform:CGAffineTransformMakeScale(paramSender.value, paramSender.value)];
+        [CATransaction commit];
+        
+    }
+}
+
 - (void) backToMain
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+//重绘覆盖层
+- (void)drawShapeLayerWithSmallrect:(CGRect)samllrect First:(BOOL)isFirst{
+    if (!_maskWithHole) {
+        _maskWithHole = [CAShapeLayer layer];
+    }
+    
+    CGRect biggerRect = self.view.bounds;
+    CGFloat offset = 1.0f;
+    if ([[UIScreen mainScreen] scale] >= 2) {
+        offset = 0.5;
+    }
+    
+    //设置检边视图层
+    CGRect smallFrame = samllrect;
+    CGRect smallerRect = CGRectInset(smallFrame, -offset, -offset) ;
+    UIBezierPath *maskPath = [UIBezierPath bezierPath];
+    [maskPath moveToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMaxY(biggerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMaxY(biggerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(biggerRect), CGRectGetMinY(biggerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(biggerRect), CGRectGetMinY(biggerRect))];
+    [maskPath moveToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMaxY(smallerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMaxY(smallerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMaxX(smallerRect), CGRectGetMinY(smallerRect))];
+    [maskPath addLineToPoint:CGPointMake(CGRectGetMinX(smallerRect), CGRectGetMinY(smallerRect))];
+    [_maskWithHole setPath:[maskPath CGPath]];
+    [_maskWithHole setFillRule:kCAFillRuleEvenOdd];
+    [_maskWithHole setFillColor:[[UIColor colorWithWhite:0 alpha:0.35] CGColor]];
+    if (isFirst) {
+        [self.view.layer addSublayer:_maskWithHole];
+        [self.view.layer setMasksToBounds:YES];
+    }
+    
+}
+
+//重置控件位置
+- (void)resetControlFrameWithNrotate:(int)nrotate maxrect:(CGRect)maxrect {
+    if (nrotate == 1) {
+        _slider.nrotate = nrotate;
+        _slider.frame = CGRectZero;
+        _slider.transform = CGAffineTransformMakeRotation(0);
+        _backButton.transform = CGAffineTransformMakeRotation(0);
+        _flashBtn.transform = CGAffineTransformMakeRotation(0);
+        _photoBtn.transform = CGAffineTransformMakeRotation(0);
+        _slider.frame = CGRectMake(maxrect.origin.x, maxrect.origin.y + maxrect.size.height + 60, maxrect.size.width, 20);
+        
+    }else if (nrotate == 3) {
+        _slider.nrotate = nrotate;
+        _slider.frame = CGRectZero;
+        _slider.transform = CGAffineTransformMakeRotation(-M_PI);
+        _photoBtn.transform = CGAffineTransformMakeRotation(M_PI);
+        _slider.frame = CGRectMake(maxrect.origin.x, maxrect.origin.y - 60, maxrect.size.width, 20);
+        
+    }else if (nrotate == 2) {
+        _slider.nrotate = nrotate;
+        _slider.frame = CGRectZero;
+        
+        _slider.transform = CGAffineTransformMakeRotation(-M_PI_2);
+        _backButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _flashBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _photoBtn.transform = CGAffineTransformMakeRotation(-M_PI_2);
+        _slider.frame = CGRectMake(maxrect.origin.x + maxrect.size.width + 30, maxrect.origin.y, 20, maxrect.size.height);
+        
+    } else {
+        _slider.nrotate = nrotate;
+        _slider.frame = CGRectZero;
+        _slider.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _backButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _flashBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _photoBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _slider.frame = CGRectMake(maxrect.origin.x - 50, maxrect.origin.y, 20, maxrect.size.height);
+    }
 }
 
 //数据帧转图片
@@ -511,7 +637,109 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return (image);
 }
 
-//释放核心
+// 设置识别区域
+- (CGRect)setRecogParametersAndCropFrameWithRect:(CGRect)rect {
+    CGFloat tWidth = (kFocalScale-1)*kScreenWidth*0.5;
+    CGFloat tHeight = (kFocalScale-1)*kScreenHeight*0.5;
+    
+    CGPoint pLTopPoint = CGPointMake((CGRectGetMinX(rect)+tWidth)/kFocalScale, (CGRectGetMinY(rect)+tHeight)/kFocalScale);
+    CGPoint pLDownPoint = CGPointMake((CGRectGetMinX(rect)+tWidth)/kFocalScale, (CGRectGetMaxY(rect)+tHeight)/kFocalScale);
+    CGPoint pRTopPoint = CGPointMake((CGRectGetMaxX(rect)+tWidth)/kFocalScale, (CGRectGetMinY(rect)+tHeight)/kFocalScale);
+    CGPoint pRDownPoint = CGPointMake((CGRectGetMaxX(rect)+tWidth)/kFocalScale, (CGRectGetMaxY(rect)+tHeight)/kFocalScale);
+    
+    
+    CGFloat sTop = 0.0, sBottom = 0.0, sLeft = 0.0, sRight = 0.0;
+    CGPoint iLTopPoint,iLDownPoint,iRTopPoint,iRDownPoint;
+    
+    
+    iLTopPoint = [_preview captureDevicePointOfInterestForPoint:pRTopPoint];
+    iLDownPoint = [_preview captureDevicePointOfInterestForPoint:pLTopPoint];
+    iRTopPoint = [_preview captureDevicePointOfInterestForPoint:pRDownPoint];
+    iRDownPoint = [_preview captureDevicePointOfInterestForPoint:pLDownPoint];
+    
+    CGRect recogArea;
+    if (nRotate == 3 || nRotate == 1) {
+        sTop = iLTopPoint.x*kResolutionWidth;
+        sBottom = iRTopPoint.x*kResolutionWidth;
+        sLeft = (1-iLDownPoint.y)*kResolutionHeight;
+        sRight = (1-iLTopPoint.y)*kResolutionHeight;
+        recogArea = CGRectMake(sLeft, sTop, sRight - sLeft, sBottom - sTop);
+    } else if (nRotate == 0) {
+        sTop = iLTopPoint.y*kResolutionHeight;
+        sBottom = iLDownPoint.y*kResolutionHeight;
+        sLeft = iLTopPoint.x*kResolutionWidth;
+        sRight = iRTopPoint.x*kResolutionWidth;
+        recogArea = CGRectMake(sLeft, sTop, sRight - sLeft, sBottom - sTop);
+    } else if (nRotate == 2){
+        sTop = (1 - iLDownPoint.y)*kResolutionHeight;
+        sBottom = (1-iLTopPoint.y)*kResolutionHeight;
+        sLeft = (1 - iRTopPoint.x)*kResolutionWidth;
+        sRight = (1 - iLTopPoint.x)*kResolutionWidth;
+        recogArea = CGRectMake(sLeft, sTop, sRight - sLeft, sBottom - sTop);
+        
+    }
+    
+    return recogArea;
+    
+}
+
+- (UIImage *)getImgByNrotate:(int)nRotate :(UIImage *)image {
+    
+    long double rotate = 0.0;
+    CGRect rect;
+    float translateX = 0;
+    float translateY = 0;
+    float scaleX = 1.0;
+    float scaleY = 1.0;
+    
+    switch (nRotate) {
+        case 3:
+            rotate = M_PI_2;
+            rect = CGRectMake(0, 0, image.size.height, image.size.width);
+            translateX = 0;
+            translateY = -rect.size.width;
+            scaleY = rect.size.width/rect.size.height;
+            scaleX = rect.size.height/rect.size.width;
+            break;
+        case 1:
+            rotate = 3 * M_PI_2;
+            rect = CGRectMake(0, 0, image.size.height, image.size.width);
+            translateX = -rect.size.height;
+            translateY = 0;
+            scaleY = rect.size.width/rect.size.height;
+            scaleX = rect.size.height/rect.size.width;
+            break;
+        case 2:
+            rotate = M_PI;
+            rect = CGRectMake(0, 0, image.size.width, image.size.height);
+            translateX = -rect.size.width;
+            translateY = -rect.size.height;
+            break;
+        default:
+            rotate = 0.0;
+            rect = CGRectMake(0, 0, image.size.width, image.size.height);
+            translateX = 0;
+            translateY = 0;
+            break;
+    }
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //做CTM变换
+    CGContextTranslateCTM(context, 0.0, rect.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextRotateCTM(context, rotate);
+    CGContextTranslateCTM(context, translateX, translateY);
+    
+    CGContextScaleCTM(context, scaleX, scaleY);
+    //绘制图片
+    CGContextDrawImage(context, CGRectMake(0, 0, rect.size.width, rect.size.height), image.CGImage);
+    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
+    //    CGContextRelease(context);
+    UIGraphicsEndImageContext();
+    return newPic;
+}
+
 - (void)dealloc {
     [_plateIDRecog uninitPlateIDSDK];
 }

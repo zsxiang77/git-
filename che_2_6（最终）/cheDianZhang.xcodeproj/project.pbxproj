@@ -810,8 +810,7 @@
 		C6AC05A51F7F53850040B32B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6AC05961F7F53850040B32B /* README.md */; };
 		C6AC05A61F7F53850040B32B /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AC05981F7F53850040B32B /* RealReachability.m */; };
 		C6B5D26D1F5FAD9C00C968F5 /* WorkOrderTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B5D26C1F5FAD9C00C968F5 /* WorkOrderTypeVC.m */; };
-		C6B5D2751F5FB10100C968F5 /* PlateIDCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.m */; };
-		C6B5D2781F5FB10A00C968F5 /* PlateIDOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B5D2771F5FB10A00C968F5 /* PlateIDOverView.m */; };
+		C6B5D2751F5FB10100C968F5 /* PlateIDCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.mm */; };
 		C6B5D27B1F5FB11300C968F5 /* PlateIDResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B5D27A1F5FB11300C968F5 /* PlateIDResultViewController.m */; };
 		C6B5D27C1F5FBB8A00C968F5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0DB1F5533D000CC3E73 /* CoreMotion.framework */; };
 		C6B5D2801F5FCACD00C968F5 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5D27F1F5FCACD00C968F5 /* libstdc++.tbd */; };
@@ -829,8 +828,10 @@
 		C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */; };
 		C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */; };
 		C6BDA57F207B5A2000A19406 /* PartsChangYongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */; };
-		C6BDA584207F137800A19406 /* libPlateIDOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BDA580207F137700A19406 /* libPlateIDOCR.a */; };
 		C6BDA587207F43A000A19406 /* JobBoardViewController+YinDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */; };
+		C6BDA58C2080968D00A19406 /* libPlateIDOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BDA5882080968C00A19406 /* libPlateIDOCR.a */; };
+		C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA58E20809A9100A19406 /* PlateIDSlider.m */; };
+		C6BDA59220809B3B00A19406 /* PlateIDOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59020809B3A00A19406 /* PlateIDOverView.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
@@ -2538,9 +2539,7 @@
 		C6B5D26B1F5FAD9C00C968F5 /* WorkOrderTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOrderTypeVC.h; sourceTree = "<group>"; };
 		C6B5D26C1F5FAD9C00C968F5 /* WorkOrderTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOrderTypeVC.m; sourceTree = "<group>"; };
 		C6B5D2731F5FB10100C968F5 /* PlateIDCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDCameraViewController.h; sourceTree = "<group>"; };
-		C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDCameraViewController.m; sourceTree = "<group>"; };
-		C6B5D2761F5FB10A00C968F5 /* PlateIDOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOverView.h; sourceTree = "<group>"; };
-		C6B5D2771F5FB10A00C968F5 /* PlateIDOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDOverView.m; sourceTree = "<group>"; };
+		C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlateIDCameraViewController.mm; sourceTree = "<group>"; };
 		C6B5D2791F5FB11300C968F5 /* PlateIDResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDResultViewController.h; sourceTree = "<group>"; };
 		C6B5D27A1F5FB11300C968F5 /* PlateIDResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDResultViewController.m; sourceTree = "<group>"; };
 		C6B5D27F1F5FCACD00C968F5 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -2572,11 +2571,15 @@
 		C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiModel.m; sourceTree = "<group>"; };
 		C6BDA57D207B5A2000A19406 /* PartsChangYongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartsChangYongCell.h; sourceTree = "<group>"; };
 		C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartsChangYongCell.m; sourceTree = "<group>"; };
-		C6BDA580207F137700A19406 /* libPlateIDOCR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPlateIDOCR.a; sourceTree = "<group>"; };
-		C6BDA581207F137700A19406 /* PlateIDOCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOCR.h; sourceTree = "<group>"; };
-		C6BDA582207F137800A19406 /* PlateResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateResult.h; sourceTree = "<group>"; };
-		C6BDA583207F137800A19406 /* PlateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateFormat.h; sourceTree = "<group>"; };
 		C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+YinDao.m"; sourceTree = "<group>"; };
+		C6BDA5882080968C00A19406 /* libPlateIDOCR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPlateIDOCR.a; sourceTree = "<group>"; };
+		C6BDA5892080968C00A19406 /* PlateIDOCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOCR.h; sourceTree = "<group>"; };
+		C6BDA58A2080968C00A19406 /* PlateResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateResult.h; sourceTree = "<group>"; };
+		C6BDA58B2080968C00A19406 /* PlateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateFormat.h; sourceTree = "<group>"; };
+		C6BDA58D20809A9100A19406 /* PlateIDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDSlider.h; sourceTree = "<group>"; };
+		C6BDA58E20809A9100A19406 /* PlateIDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDSlider.m; sourceTree = "<group>"; };
+		C6BDA59020809B3A00A19406 /* PlateIDOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDOverView.m; sourceTree = "<group>"; };
+		C6BDA59120809B3B00A19406 /* PlateIDOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOverView.h; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
@@ -2723,7 +2726,7 @@
 				BDCAFFA620202BFB0009CF1D /* Reveal.framework in Frameworks */,
 				C6FDBB181F5EA91C00360B6F /* AudioToolbox.framework in Frameworks */,
 				C6FDBB161F5EA91200360B6F /* CoreMedia.framework in Frameworks */,
-				C6BDA584207F137800A19406 /* libPlateIDOCR.a in Frameworks */,
+				C6BDA58C2080968D00A19406 /* libPlateIDOCR.a in Frameworks */,
 				C6FDBB151F5EA90800360B6F /* CoreVideo.framework in Frameworks */,
 				C6FDBB131F5EA8FC00360B6F /* libxml2.tbd in Frameworks */,
 				C6FDBB121F5EA8D700360B6F /* libiconv.2.4.0.tbd in Frameworks */,
@@ -6456,10 +6459,10 @@
 		C6FDBACD1F5E9CCC00360B6F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				C6BDA580207F137700A19406 /* libPlateIDOCR.a */,
-				C6BDA583207F137800A19406 /* PlateFormat.h */,
-				C6BDA581207F137700A19406 /* PlateIDOCR.h */,
-				C6BDA582207F137800A19406 /* PlateResult.h */,
+				C6BDA5882080968C00A19406 /* libPlateIDOCR.a */,
+				C6BDA58B2080968C00A19406 /* PlateFormat.h */,
+				C6BDA5892080968C00A19406 /* PlateIDOCR.h */,
+				C6BDA58A2080968C00A19406 /* PlateResult.h */,
 				C6F35FD31F66461A00F2A870 /* Address.txt */,
 				C6F35FD41F66461A00F2A870 /* AdminDiv.txt */,
 				C6F35FD51F66461A00F2A870 /* AdminDivCode.txt */,
@@ -6494,10 +6497,12 @@
 		C6FDBB071F5EA5F400360B6F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				C6BDA59120809B3B00A19406 /* PlateIDOverView.h */,
+				C6BDA59020809B3A00A19406 /* PlateIDOverView.m */,
+				C6BDA58D20809A9100A19406 /* PlateIDSlider.h */,
+				C6BDA58E20809A9100A19406 /* PlateIDSlider.m */,
 				C6B5D2731F5FB10100C968F5 /* PlateIDCameraViewController.h */,
-				C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.m */,
-				C6B5D2761F5FB10A00C968F5 /* PlateIDOverView.h */,
-				C6B5D2771F5FB10A00C968F5 /* PlateIDOverView.m */,
+				C6B5D2741F5FB10100C968F5 /* PlateIDCameraViewController.mm */,
 				C6B5D2791F5FB11300C968F5 /* PlateIDResultViewController.h */,
 				C6B5D27A1F5FB11300C968F5 /* PlateIDResultViewController.m */,
 			);
@@ -6757,6 +6762,7 @@
 				BDD4D34620270A1500C433D1 /* CALayer+YYAdd.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,
 				C68E91891FA1D9C200975D68 /* ZXMultiFormatReader.m in Sources */,
+				C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */,
 				C607D8EC206B7D75005667BF /* LearningVideoModel.m in Sources */,
 				BDD4D33B20270A1500C433D1 /* NSData+YYAdd.m in Sources */,
 				C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */,
@@ -6806,6 +6812,7 @@
 				C625D0291F53E55F00CC3E73 /* NSArray+MASAdditions.m in Sources */,
 				C6AC059B1F7F53850040B32B /* FSMStateUtil.m in Sources */,
 				C68E90FC1FA1D9C200975D68 /* ZXDimension.m in Sources */,
+				C6BDA59220809B3B00A19406 /* PlateIDOverView.m in Sources */,
 				C625CFB81F53DE1900CC3E73 /* iCarousel.m in Sources */,
 				C6B5D27B1F5FB11300C968F5 /* PlateIDResultViewController.m in Sources */,
 				C68E90CE1FA1D9C200975D68 /* ZXResultParser.m in Sources */,
@@ -7165,7 +7172,6 @@
 				BDD4D31220270A1500C433D1 /* YYWebImageOperation.m in Sources */,
 				C68E91241FA1D9C200975D68 /* ZXAI013x0x1xDecoder.m in Sources */,
 				BDD4D34F20270A1500C433D1 /* YYFileHash.m in Sources */,
-				C6B5D2781F5FB10A00C968F5 /* PlateIDOverView.m in Sources */,
 				BDD4D33820270A1500C433D1 /* NSNumber+YYAdd.m in Sources */,
 				C625D02A1F53E55F00CC3E73 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				C625CFB71F53DE1900CC3E73 /* NSTimer+BlocksKit.m in Sources */,
@@ -7180,7 +7186,7 @@
 				C68E91321FA1D9C200975D68 /* ZXBitArrayBuilder.m in Sources */,
 				C68E917E1FA1D9C200975D68 /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				C643F3472025B56100A2AA57 /* OrderDetailProjectPGView.m in Sources */,
-				C6B5D2751F5FB10100C968F5 /* PlateIDCameraViewController.m in Sources */,
+				C6B5D2751F5FB10100C968F5 /* PlateIDCameraViewController.mm in Sources */,
 				C609401B2018378400530205 /* FoundDetailModel.m in Sources */,
 				C61005BE20453B520045968C /* NewJianPanShuView.m in Sources */,
 				C68E91341FA1D9C200975D68 /* ZXRSSExpandedReader.m in Sources */,
