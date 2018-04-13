@@ -38,6 +38,12 @@
     //设置打开抽屉模式
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [m_headerView.touImaage sd_setImageWithURL:[NSURL URLWithString:[UserInfo shareInstance].userAvatar] placeholderImage:DJImageNamed(@"touxiang")];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kFirstOpenQianDaoAddFirstPage] == nil  && [UserInfo shareInstance].isLogined == YES) {
+        [self tianJianYingDaoTu];
+        [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kFirstOpenQianDaoAddFirstPage];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -60,12 +66,19 @@
     
     [self postwork_boardwithShuaXin:YES];
     
+    
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFirstOpenQianDaoAddFirstPage];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 //    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
 //                                                    initWithTarget:self
 //                                                    action:@selector(dissMissView)];
 //    tapGestureRecognizer.delegate = self;
 //    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
+
+
 
 //- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 //{

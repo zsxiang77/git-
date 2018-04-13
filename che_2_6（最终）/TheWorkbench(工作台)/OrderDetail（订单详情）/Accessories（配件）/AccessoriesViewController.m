@@ -176,10 +176,9 @@
         cell.gongShiTextBtChickBlock = ^{
             NewJianPanShuView* multipleView = [[NewJianPanShuView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH) value:model.parts_num];
             multipleView.xiaoShuWeiShu = 1;
-            multipleView.zuiDaZhiFloat = 999.9;
+            multipleView.zuiDaZhiFloat = [model.count floatValue];
             multipleView.okClick = ^(NSString* value){
                 model.parts_num = value;
-                
                 [weakSelf.main_tabelView reloadData];
             };
             [[UIApplication sharedApplication].keyWindow addSubview:multipleView];

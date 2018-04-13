@@ -175,7 +175,6 @@
     self.gongShiTextBtChickBlock();
 }
 
-#warning qvdqb
 //-(void)gongShiTextFieldChange:(UITextField *)sender
 //{
 //    self.model.parts_num = sender.text;

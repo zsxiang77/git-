@@ -13,7 +13,9 @@
 #import "JobBoardModel.h"
 #import "UIImageView+WebCache.h"
 
-@interface JobBoardViewController : BOSSBaseViewController
+static NSString* kFirstOpenQianDaoAddFirstPage = @"kFirstOpenQianDaoAddFirstPageNEW";
+
+@interface JobBoardViewController : BOSSBaseViewController<UIScrollViewDelegate>
 {
     DuplexTableView*        m_moreTable;
     JobBoardHeaderView  *m_headerView;
@@ -28,11 +30,21 @@
 
 @property(nonatomic,strong)NSDictionary  *jiuGongHuiDiaoDict;
 
+@property(nonatomic,strong)UIScrollView   *yingDaoScrollView;
+
 @end
 
 
 @interface JobBoardViewController (Net)
 -(void)postwork_boardwithShuaXin:(BOOL)shuaX;
 -(void)postCuiBan:(JobBoardModel *)model;
+
+@end
+
+
+@interface JobBoardViewController (YinDao)
+
+//添加引导图
+-(void)tianJianYingDaoTu;
 
 @end

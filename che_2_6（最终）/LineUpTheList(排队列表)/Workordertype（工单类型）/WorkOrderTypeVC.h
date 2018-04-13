@@ -12,6 +12,7 @@
 
 @interface WorkOrderTypeVC : BaseViewController
 
+@property(nonatomic,strong)NSString *chePaiColorStr;
 @property(nonatomic,strong)NSString *chePaiStr;
 
 @property(nonatomic,strong)NSArray *chuanZhiArray;

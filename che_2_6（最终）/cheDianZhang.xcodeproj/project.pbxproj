@@ -830,6 +830,7 @@
 		C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */; };
 		C6BDA57F207B5A2000A19406 /* PartsChangYongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */; };
 		C6BDA584207F137800A19406 /* libPlateIDOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BDA580207F137700A19406 /* libPlateIDOCR.a */; };
+		C6BDA587207F43A000A19406 /* JobBoardViewController+YinDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
@@ -2575,6 +2576,7 @@
 		C6BDA581207F137700A19406 /* PlateIDOCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOCR.h; sourceTree = "<group>"; };
 		C6BDA582207F137800A19406 /* PlateResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateResult.h; sourceTree = "<group>"; };
 		C6BDA583207F137800A19406 /* PlateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateFormat.h; sourceTree = "<group>"; };
+		C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+YinDao.m"; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
@@ -6225,6 +6227,7 @@
 				C6E57B8C20030F6C00E945F3 /* JobBoardViewController.h */,
 				C6E57B8B20030F6C00E945F3 /* JobBoardViewController.m */,
 				C60A8D5F200C5AC50026111B /* JobBoardViewController+Net.m */,
+				C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */,
 			);
 			path = "JobBoard（工作看板）";
 			sourceTree = "<group>";
@@ -7393,6 +7396,7 @@
 				18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */,
 				BDD4D32420270A1500C433D1 /* NSAttributedString+YYText.m in Sources */,
 				C68E91781FA1D9C200975D68 /* ZXQRCodeVersion.m in Sources */,
+				C6BDA587207F43A000A19406 /* JobBoardViewController+YinDao.m in Sources */,
 				C625CFD01F53DE1900CC3E73 /* MJRefreshStateHeader.m in Sources */,
 				C625D02B1F53E55F00CC3E73 /* View+MASAdditions.m in Sources */,
 				C68E91531FA1D9C200975D68 /* ZXUPCEANReader.m in Sources */,

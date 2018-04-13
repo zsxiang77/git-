@@ -18,6 +18,11 @@
     UIView *btView;
 }
 
+@property(nonatomic,assign)BOOL  shiFouShiP;//是否视频选项
+
+@property(nonatomic,strong)UIView  *daoHangLanView;//导航栏View
+@property(nonatomic,strong)UILabel *titleLabe;
+
 
 @end
 
@@ -26,6 +31,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     m_mainTopTitle = @"视频详情";
+    
+    self.daoHangLanView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 55)];
+    self.daoHangLanView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.daoHangLanView];
+    
+    UIImageView *backImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"Boss_back_btn")];
+    backImageView.frame = CGRectMake(10, (kBOSSNavBarHeight - 27)/2+10,13,21);
+    [self.daoHangLanView addSubview:backImageView];
+    UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 44, 44)];
+    backButton.backgroundColor = [UIColor clearColor];
+    [backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.daoHangLanView addSubview:backButton];
+    
+    self.titleLabe = [[UILabel alloc]init];
+    
+    
+    self.shiFouShiP = YES;
     
     self.mainJiShuArray = [[NSMutableArray alloc]init];
     self.mainListArray = [[NSMutableArray alloc]init];
@@ -41,9 +63,9 @@
     //全屏是否隐藏状态栏，默认一直不隐藏
     _playerView.fullStatusBarHiddenType = FullStatusBarHiddenFollowToolBar;
     //顶部工具条隐藏样式，默认不隐藏
-    _playerView.topToolBarHiddenType = TopToolBarHiddenNever;
-//    //播放
-    [_playerView playVideo];
+    _playerView.topToolBarHiddenType = TopToolBarHiddenSmall;
+////    //播放
+//    [_playerView playVideo];
     //返回按钮点击事件回调,小屏状态才会调用，全屏默认变为小屏
     kWeakSelf(weakSelf)
     [_playerView backButton:^(UIButton *button) {
@@ -91,7 +113,7 @@
     self.mainTableView.backgroundColor = [UIColor whiteColor];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
-    
+    [self.view bringSubviewToFront:self.daoHangLanView];
 }
 
 -(void)qieHuanDianJChick:(UIButton *)sender
@@ -100,15 +122,12 @@
         return;
     }
     
+    self.shiFouShiP = NO;
 
     [UserInfo shareInstance].shiFouXuanZhuan = NO;
     _playerView.autoRotate = NO;
     _playerView.strokeColor = [UIColor clearColor];
-    
-    
 
-    
-    
     LearningVideoModel *model;
     for (int i = 0; i<self.mainJiShuArray.count; i++) {
         LearningVideoModel *model2 = self.mainJiShuArray[i];
@@ -117,7 +136,7 @@
         }
     }
     if (sender.tag == 3000) {
-        
+        self.shiFouShiP = YES;
         for (int i = 0; i<3; i++) {
             UIButton *bt = [btView viewWithTag:3000+i];
             bt.selected = NO;
@@ -156,12 +175,16 @@
         vc.fatherViewController = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [UserInfo shareInstance].shiFouXuanZhuan = YES;
+    if (self.shiFouShiP == YES) {
+        [UserInfo shareInstance].shiFouXuanZhuan = YES;
+    }
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -290,6 +313,10 @@
     boLine.backgroundColor = kLineBgColor;
     
     return headView;
+}
+-(void)dealloc
+{
+    [_playerView destroyPlayer];
 }
 
 @end

@@ -50,6 +50,7 @@
 
 @interface Car_zongModel : NSObject
 
+@property(nonatomic,strong)NSString *car_Color;
 @property(nonatomic,strong)NSString *car_number;
 @property(nonatomic,strong)NSString *user_id;
 @property(nonatomic,strong)NSString *is_unit;

@@ -86,6 +86,7 @@
     if ([KISDictionaryHaveKey(self.chuanZhiArray[index], @"channel_id") integerValue] == 4) {//维修
         if ([self.userInformetionDict isKindOfClass:[NSDictionary class]]) {
             Car_zongModel *zuiZhongModel = [[Car_zongModel alloc]init];
+            zuiZhongModel.car_Color = self.chePaiColorStr;
             zuiZhongModel.car_number = self.chePaiStr;
             if (self.userInformetionDict) {
                 NSDictionary *users_details = KISDictionaryHaveKey(self.userInformetionDict, @"users_details");
@@ -93,6 +94,8 @@
                     zuiZhongModel.user_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(users_details, @"user_id")];
                     zuiZhongModel.mobile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(users_details, @"mobile")];
                     zuiZhongModel.realname = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(users_details, @"realname")];
+                    
+                    
                 }
             }else{
                 zuiZhongModel.user_id = @"0";
@@ -111,15 +114,13 @@
             TianRuXXViewController *kehuXuQiu = [TianRuXXViewController new];
             kehuXuQiu.shiFouWeiXiu = YES;
             [self.navigationController pushViewController:kehuXuQiu animated:YES];
-            
-//            kehuXuQiuViewController *kehuXuQiu = [kehuXuQiuViewController new];
-//            [self.navigationController pushViewController:kehuXuQiu animated:YES];
         }
     }
     
     if ([KISDictionaryHaveKey(self.chuanZhiArray[index], @"channel_id") integerValue] == 2) {//洗美
         XiMeiXinZengZuiZongModel *zuiZhongModel = [[XiMeiXinZengZuiZongModel alloc]init];
         zuiZhongModel.car_number = self.chePaiStr;
+        zuiZhongModel.plate_color = self.chePaiColorStr;
         if (self.userInformetionDict) {
             NSDictionary *users_details = KISDictionaryHaveKey(self.userInformetionDict, @"users_details");
             if ([users_details isKindOfClass:[NSDictionary class]]) {

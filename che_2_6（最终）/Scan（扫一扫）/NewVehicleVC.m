@@ -20,6 +20,8 @@
 }
 @property(nonatomic,strong)UITextField *mainTextField;
 
+@property(nonatomic,strong)NSString    *chePaiColorStr;
+
 @end
 
 @implementation NewVehicleVC
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTopViewWithTitle:@"新增车辆" withBackButton:YES];
+    self.chePaiColorStr = @"蓝色";
     
 
     UILabel *biaoLabel = [[UILabel alloc]init];
@@ -328,6 +331,7 @@ BOOL validateCarNo(NSString * carNo)
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/order_query/query" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary *adData = kParseData(responseObject);
         WorkOrderTypeVC *vc = [[WorkOrderTypeVC alloc]init];
+        vc.chePaiColorStr = self.chePaiColorStr;
         vc.hidesBottomBarWhenPushed = YES;
         vc.chePaiStr = car_number;
         vc.chuanZhiArray = weakSelf.chuanZhiArray;
@@ -391,7 +395,8 @@ BOOL validateCarNo(NSString * carNo)
         [self.mainTextField setTextColor:kRGBColor(74, 74, 74)];
         [self.mainTextField.layer setBorderColor:kRGBColor(255, 255, 255).CGColor];
     }
-#warning 车颜色赋值
+    
+    self.chePaiColorStr = sender.titleLabel.text;
 }
 
 #pragma mark---NewInputViewDelegate
