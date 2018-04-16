@@ -10,7 +10,7 @@
 #import "MJChiBaoZiHeader.h"
 #import "BossJianCeTableViewCell.h"
 #import "WKWebViewViewController.h"
-
+#import "BossJianCeZiCeViewController.h"
 
 @interface BossJianCeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -128,10 +128,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    BossJianceModel *model = main_dataArry[indexPath.row];
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?a_id=%@&exam_id=1",model.url,model.a_id];
+  //  BossJianceModel *model = main_dataArry[indexPath.row];
+//    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.isNoShowNavBar = NO;
+//    vc.webUrl = [NSString stringWithFormat:@"%@?a_id=%@&exam_id=1",model.url,model.a_id];
+//    [self.navigationController pushViewController:vc animated:YES];
+    BossJianCeZiCeViewController * vc = [[BossJianCeZiCeViewController alloc]init];
+    vc.chuanZhiModel = main_dataArry[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

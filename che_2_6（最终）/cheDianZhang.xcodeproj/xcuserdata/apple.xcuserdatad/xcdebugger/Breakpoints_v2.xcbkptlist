@@ -26,7 +26,7 @@
                   moduleName = "cheDianZhang"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/%E8%BD%A6%E5%BA%97%E9%95%BFGIT/simple_MSICarZoo_IOS/che_2_6%EF%BC%88%E6%9C%80%E7%BB%88%EF%BC%89/LogIn(%E7%99%BB%E9%99%86)/LonInViewController.m"
-                  timestampString = "545207709.3359931"
+                  timestampString = "545538193.637985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "681"
@@ -41,7 +41,7 @@
                   moduleName = "cheDianZhang"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/%E8%BD%A6%E5%BA%97%E9%95%BFGIT/simple_MSICarZoo_IOS/che_2_6%EF%BC%88%E6%9C%80%E7%BB%88%EF%BC%89/LogIn(%E7%99%BB%E9%99%86)/LonInViewController.m"
-                  timestampString = "545207709.338792"
+                  timestampString = "545538193.6404001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "681"
@@ -49,22 +49,6 @@
                   offsetFromSymbolStart = "9848">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheWorkbench(&#x5de5;&#x4f5c;&#x53f0;)/OrderDetail&#xff08;&#x8ba2;&#x5355;&#x8be6;&#x60c5;&#xff09;/Accessories&#xff08;&#x914d;&#x4ef6;&#xff09;/PartsSubsidiary&#xff08;&#x914d;&#x4ef6;&#x660e;&#x7ec6;&#xff09;/PartsSubsidiaryADDViewController+search.m"
-            timestampString = "545104508.535684"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-searchClearBtChick:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

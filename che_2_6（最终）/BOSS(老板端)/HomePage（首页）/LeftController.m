@@ -150,7 +150,6 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     if (indexPath.row == 0) {
         cell.mainImageView.image = DJImageNamed(@"BOOS_user_xiaoxi");
         cell.mainLabl.text = @"消息通知";
