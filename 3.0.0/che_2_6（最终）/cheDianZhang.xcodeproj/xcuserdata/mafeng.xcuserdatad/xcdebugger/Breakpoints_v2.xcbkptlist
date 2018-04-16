@@ -340,38 +340,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/JobBoard&#xff08;&#x5de5;&#x4f5c;&#x770b;&#x677f;&#xff09;/Details&#xff08;&#x8be6;&#x60c5;&#xff09;/&#x672a;&#x5904;&#x7406;/BXDQViewController.m"
-            timestampString = "545038984.193964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-posttask_detail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/JobBoard&#xff08;&#x5de5;&#x4f5c;&#x770b;&#x677f;&#xff09;/Details&#xff08;&#x8be6;&#x60c5;&#xff09;/&#x672a;&#x5904;&#x7406;/BXDQViewController.m"
-            timestampString = "545038992.515345"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-posttask_detail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/JobBoard&#xff08;&#x5de5;&#x4f5c;&#x770b;&#x677f;&#xff09;/Details&#xff08;&#x8be6;&#x60c5;&#xff09;/&#x672a;&#x5904;&#x7406;/BXDQViewController.m"
             timestampString = "545039195.981007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

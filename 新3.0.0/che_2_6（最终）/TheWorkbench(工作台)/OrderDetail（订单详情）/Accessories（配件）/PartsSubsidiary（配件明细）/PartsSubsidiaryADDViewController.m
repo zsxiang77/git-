@@ -1,0 +1,253 @@
+//
+//  PartsSubsidiaryADDViewController.m
+//  cheDianZhang
+//
+//  Created by 马蜂 on 2017/9/26.
+//  Copyright © 2017年 马蜂. All rights reserved.
+//
+
+#import "PartsSubsidiaryADDViewController.h"
+#import "PartsSubsidiaryADDErViewController.h"
+#import "AccessoriesViewController.h"
+#import "PartsSubsidiaryADDZDYVC.h"
+#import "PartsChangYongCell.h"
+@interface PartsSubsidiaryADDViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@property(nonatomic,strong)UITableView *main_tableView;
+
+@end
+
+@implementation PartsSubsidiaryADDViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setTopViewWithTitle:@"添加维修配件" withBackButton:YES];
+    changArray = [[NSMutableArray alloc]init];
+    fenLeiArray = [[NSMutableArray alloc]init];
+
+//    UIView * shangview = [[UIView alloc]init];
+//    shangview.layer.masksToBounds = YES;
+//    shangview.layer.borderWidth = 1;
+//    shangview.layer.cornerRadius = 15;
+//    shangview.backgroundColor = kRGBColor(244, 244, 244);
+//    shangview.layer.borderColor = kRGBColor(217, 217, 217).CGColor;
+//    [self.view addSubview:shangview];
+//    [shangview mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(10);
+//        make.right.mas_equalTo(-10);
+//        make.top.mas_equalTo(kNavBarHeight+6);
+//        make.height.mas_equalTo(63/2);
+//        make.centerX.mas_equalTo(self.view);
+//    }];
+//
+//    UIImageView * imgZuo = [[UIImageView alloc]init];
+//    imgZuo.image = [UIImage imageNamed:@"search_blue"];
+//    imgZuo.contentMode = UIViewContentModeScaleAspectFit;
+//    [shangview addSubview:imgZuo];
+//    [imgZuo mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(7);
+//        make.top.mas_equalTo(7);
+//        make.bottom.mas_equalTo(-7);
+//        make.height.width.mas_equalTo(15);
+//    }];
+//    self.searchText = [[UITextField alloc]init];
+//    self.searchText.placeholder = @"输入项目名称";
+//    [shangview addSubview:self.searchText];
+//    self.searchText.font = [UIFont systemFontOfSize:12];
+//    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(imgZuo.mas_right).mas_equalTo(5);
+//        make.right.mas_equalTo(-30);
+//        make.centerY.mas_equalTo(imgZuo);
+//    }];
+//
+//    UIImageView * imgYou = [[UIImageView alloc]init];
+//    imgYou.image = [UIImage imageNamed:@"search_blue"];
+//    imgYou.contentMode = UIViewContentModeScaleAspectFit;
+//    [shangview addSubview:imgYou];
+//    [imgYou mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-7);
+//        make.height.width.mas_equalTo(15);
+//        make.centerY.mas_equalTo(self.searchText);
+//    }];
+//
+
+    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight) style:UITableViewStylePlain];
+    [self.main_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    self.main_tableView.delegate = self;
+    self.main_tableView.dataSource = self;
+    self.main_tableView.bounces =NO;
+    [self.view addSubview:self.main_tableView];
+    
+    [self huoQuChangYong];
+    
+    UIButton *ziDingYiBt = [[UIButton alloc]init];
+    ziDingYiBt.titleLabel.font = [UIFont systemFontOfSize:14];
+    [ziDingYiBt setTitle:@"自定义" forState:(UIControlStateNormal)];
+    [ziDingYiBt setTitleColor:kZhuTiColor forState:(UIControlStateNormal)];
+    [ziDingYiBt addTarget:self action:@selector(ziDingYiBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [m_baseTopView addSubview:ziDingYiBt];
+    [ziDingYiBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-5);
+        make.bottom.mas_equalTo(-5);
+        make.width.mas_equalTo(60);
+        make.height.mas_equalTo(30);
+    }];
+}
+
+-(void)ziDingYiBtChick:(UIButton *)sender
+{
+    PartsSubsidiaryADDZDYVC *vc = [[PartsSubsidiaryADDZDYVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.superViewController = self.suerViewController;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)huoQuChangYong{
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:@"10" forKey:@"num"];
+    
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/get_usual_parts" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSArray* dataDic = kParseData(responseObject);
+        if (![dataDic isKindOfClass:[NSArray class]]) {
+            return;
+        }
+        [changArray removeAllObjects];
+        for (int i = 0; i<dataDic.count; i++) {
+            CGFloat kucun = [KISDictionaryHaveKey(dataDic[i], @"count") floatValue];
+            if (kucun>0) {
+                [changArray addObject:dataDic[i]]; 
+            }
+            
+        }
+        [weakSelf.main_tableView reloadData];
+        
+        [weakSelf huoQuFenLeiList];
+        
+    } failure:^(id error) {
+        
+    }];
+}
+-(void)huoQuFenLeiList{
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/get_parts_category" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSArray* dataDic = kParseData(responseObject);
+        if (![dataDic isKindOfClass:[NSArray class]]) {
+            return;
+        }
+        
+        [fenLeiArray removeAllObjects];
+        
+        for (int i = 0; i<dataDic.count; i++) {
+            [fenLeiArray addObject:dataDic[i]];
+        }
+        [weakSelf.main_tableView reloadData];
+        
+    } failure:^(id error) {
+        
+    }];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return changArray.count;
+    }else{
+        return fenLeiArray.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        static NSString *identiter = @"identiter";
+        PartsChangYongCell *cell = [tableView dequeueReusableCellWithIdentifier:identiter];
+        if (cell == nil) {
+            cell = [[PartsChangYongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identiter];
+        }
+        
+        NSDictionary *dict = changArray[indexPath.row];
+        [cell refelesePeiJianWithModel:dict];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        NSDictionary *dict = fenLeiArray[indexPath.row];
+        cell.textLabel.text = KISDictionaryHaveKey(dict, @"classname");
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        PartsSubsidiaryADDErViewController *vc = [[PartsSubsidiaryADDErViewController alloc]init];
+        vc.suerViewController = self.suerViewController;
+        vc.chuanRumodel = fenLeiArray[indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.section == 0) {
+        AccessoriesViewController *vc = (AccessoriesViewController *)self.suerViewController;
+        NSDictionary *dict = changArray[indexPath.row];
+        if ([KISDictionaryHaveKey(dict, @"count") integerValue]<=0) {
+            [self showMessageWindowWithTitle:@"无库存" point:self.view.center delay:0.5];
+            return;
+        }
+        OrderDetailPartsModel *model = [[OrderDetailPartsModel alloc]init];
+        [model setdataWithDict:dict];
+        model.parts_num = @"1";
+        [vc.tianJiaArray addObject:model];
+        [vc.main_tabelView  reloadData];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerV = [[UIView alloc]init];
+    headerV.backgroundColor = kRGBColor(240, 240, 240);
+    UILabel *la = [[UILabel alloc]init];
+    la.font = [UIFont systemFontOfSize:14];
+    la.textColor = [UIColor grayColor];
+    [headerV addSubview:la];
+    [la mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+        make.top.bottom.mas_equalTo(0);
+    }];
+    if (section == 0) {
+        la.text = @"常用";
+    }else{
+        la.text = @"分类";
+    }
+    
+    return headerV;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 35;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 65;
+    }else{
+    
+        return 45;
+    }
+}
+//搜索
+
+
+
+@end
