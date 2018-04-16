@@ -167,7 +167,7 @@
     kWeakSelf(weakSelf)
     [self showOrHideLoadView:YES];
     NSString *path = [NSString stringWithFormat:@"%@user/work_board/task_detail",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
+    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress){
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf showOrHideLoadView:NO];
@@ -182,8 +182,7 @@
             [BOSSNetWorkManager loginAgain:weakSelf];
             return;
         }
-        
-        
+
         if (code == 200) {
             NSDictionary* dataDic = kParseData(responseObject);
             weakSelf.mainDataDict = [[JobBoardDetailModel alloc]init];

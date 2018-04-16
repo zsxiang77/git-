@@ -14,6 +14,12 @@
 		18954D8C207B130B0093AB2C /* LearningCuoTiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D8B207B130B0093AB2C /* LearningCuoTiCell.m */; };
 		18954D8F207B47050093AB2C /* LearningWrongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D8E207B47050093AB2C /* LearningWrongModel.m */; };
 		18954D94207C7E030093AB2C /* LearningVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18954D93207C7E020093AB2C /* LearningVideoViewController.m */; };
+		18EE15812081E51F00312AF7 /* BossJianCeListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE15712081E51E00312AF7 /* BossJianCeListTableViewCell.m */; };
+		18EE15822081E51F00312AF7 /* BossJianCeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE15722081E51E00312AF7 /* BossJianCeTableViewCell.m */; };
+		18EE15832081E51F00312AF7 /* BossJianCeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE15762081E51E00312AF7 /* BossJianCeViewController.m */; };
+		18EE15842081E51F00312AF7 /* BossJianceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE15782081E51E00312AF7 /* BossJianceModel.m */; };
+		18EE15862081E51F00312AF7 /* BossJianCeXiangQingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE157A2081E51E00312AF7 /* BossJianCeXiangQingModel.m */; };
+		18EE15872081E51F00312AF7 /* BossJianCeZiCeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE157E2081E51E00312AF7 /* BossJianCeZiCeViewController.m */; };
 		18FD6ECD20635CBC000E192C /* ScanDrivingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD6ECC20635CBC000E192C /* ScanDrivingView.m */; };
 		18FE48AF2064DF5C0005984F /* LearningCenterCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48AE2064DF5C0005984F /* LearningCenterCellTableViewCell.m */; };
 		18FE48DD206A19470005984F /* LCBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE48DB206A19470005984F /* LCBottomView.m */; };
@@ -26,6 +32,8 @@
 		18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE492C2074E6120005984F /* HaoCaiAddViewController.m */; };
 		18FE4930207A07D60005984F /* LearningZuoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE492F207A07D60005984F /* LearningZuoViewController.m */; };
 		18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE4932207A2C220005984F /* LearningZuoCell.m */; };
+		18FF0FC220843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FC120843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m */; };
+		18FF0FC520843F520054D16A /* PartsSearChTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FC420843F520054D16A /* PartsSearChTableViewCell.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -783,9 +791,6 @@
 		C6AB744B201CDD8100F157EB /* BossTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB744A201CDD8100F157EB /* BossTableViewCell.m */; };
 		C6AB744E201CDFF800F157EB /* BossShouCangModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB744D201CDFF800F157EB /* BossShouCangModel.m */; };
 		C6AB745D201D6A4800F157EB /* MykechengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB745C201D6A4800F157EB /* MykechengViewController.m */; };
-		C6AB7475201D858600F157EB /* BossJianCeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB7474201D858600F157EB /* BossJianCeTableViewCell.m */; };
-		C6AB7478201D85DC00F157EB /* BossJianceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB7477201D85DC00F157EB /* BossJianceModel.m */; };
-		C6AB747B201D9C4000F157EB /* BossJianCeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB747A201D9C4000F157EB /* BossJianCeViewController.m */; };
 		C6AB747E201D9DD100F157EB /* MyKechengModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB747D201D9DD100F157EB /* MyKechengModel.m */; };
 		C6AB7481201D9E0700F157EB /* MyKeChengTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB7480201D9E0700F157EB /* MyKeChengTableViewCell.m */; };
 		C6AB7484201D9E9600F157EB /* HistroyLookVController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB7483201D9E9600F157EB /* HistroyLookVController.m */; };
@@ -948,6 +953,18 @@
 		18954D8D207B47050093AB2C /* LearningWrongModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningWrongModel.h; sourceTree = "<group>"; };
 		18954D8E207B47050093AB2C /* LearningWrongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningWrongModel.m; sourceTree = "<group>"; };
 		18954D93207C7E020093AB2C /* LearningVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearningVideoViewController.m; sourceTree = "<group>"; };
+		18EE156C2081E51E00312AF7 /* BossJianCeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianCeViewController.h; sourceTree = "<group>"; };
+		18EE156D2081E51E00312AF7 /* BossJianCeZiCeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianCeZiCeViewController.h; sourceTree = "<group>"; };
+		18EE15712081E51E00312AF7 /* BossJianCeListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianCeListTableViewCell.m; sourceTree = "<group>"; };
+		18EE15722081E51E00312AF7 /* BossJianCeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianCeTableViewCell.m; sourceTree = "<group>"; };
+		18EE15732081E51E00312AF7 /* BossJianCeListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianCeListTableViewCell.h; sourceTree = "<group>"; };
+		18EE15752081E51E00312AF7 /* BossJianCeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianCeTableViewCell.h; sourceTree = "<group>"; };
+		18EE15762081E51E00312AF7 /* BossJianCeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianCeViewController.m; sourceTree = "<group>"; };
+		18EE15782081E51E00312AF7 /* BossJianceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianceModel.m; sourceTree = "<group>"; };
+		18EE157A2081E51E00312AF7 /* BossJianCeXiangQingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianCeXiangQingModel.m; sourceTree = "<group>"; };
+		18EE157B2081E51E00312AF7 /* BossJianceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianceModel.h; sourceTree = "<group>"; };
+		18EE157C2081E51E00312AF7 /* BossJianCeXiangQingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossJianCeXiangQingModel.h; sourceTree = "<group>"; };
+		18EE157E2081E51E00312AF7 /* BossJianCeZiCeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossJianCeZiCeViewController.m; sourceTree = "<group>"; };
 		18FD6ECB20635CBC000E192C /* ScanDrivingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingView.h; sourceTree = "<group>"; };
 		18FD6ECC20635CBC000E192C /* ScanDrivingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingView.m; sourceTree = "<group>"; };
 		18FE48AD2064DF5C0005984F /* LearningCenterCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearningCenterCellTableViewCell.h; sourceTree = "<group>"; };
@@ -972,6 +989,9 @@
 		18FE492F207A07D60005984F /* LearningZuoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoViewController.m; sourceTree = "<group>"; };
 		18FE4931207A2C220005984F /* LearningZuoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningZuoCell.h; sourceTree = "<group>"; };
 		18FE4932207A2C220005984F /* LearningZuoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCell.m; sourceTree = "<group>"; };
+		18FF0FC120843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PartsSubsidiaryADDViewController+search.m"; sourceTree = "<group>"; };
+		18FF0FC320843F520054D16A /* PartsSearChTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartsSearChTableViewCell.h; sourceTree = "<group>"; };
+		18FF0FC420843F520054D16A /* PartsSearChTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartsSearChTableViewCell.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -2485,12 +2505,6 @@
 		C6AB744D201CDFF800F157EB /* BossShouCangModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BossShouCangModel.m; sourceTree = "<group>"; };
 		C6AB745B201D6A4800F157EB /* MykechengViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MykechengViewController.h; sourceTree = "<group>"; };
 		C6AB745C201D6A4800F157EB /* MykechengViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MykechengViewController.m; sourceTree = "<group>"; };
-		C6AB7473201D858600F157EB /* BossJianCeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossJianCeTableViewCell.h; sourceTree = "<group>"; };
-		C6AB7474201D858600F157EB /* BossJianCeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BossJianCeTableViewCell.m; sourceTree = "<group>"; };
-		C6AB7476201D85DC00F157EB /* BossJianceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossJianceModel.h; sourceTree = "<group>"; };
-		C6AB7477201D85DC00F157EB /* BossJianceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BossJianceModel.m; sourceTree = "<group>"; };
-		C6AB7479201D9C4000F157EB /* BossJianCeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BossJianCeViewController.h; sourceTree = "<group>"; };
-		C6AB747A201D9C4000F157EB /* BossJianCeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BossJianCeViewController.m; sourceTree = "<group>"; };
 		C6AB747C201D9DD100F157EB /* MyKechengModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKechengModel.h; sourceTree = "<group>"; };
 		C6AB747D201D9DD100F157EB /* MyKechengModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyKechengModel.m; sourceTree = "<group>"; };
 		C6AB747F201D9E0700F157EB /* MyKeChengTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKeChengTableViewCell.h; sourceTree = "<group>"; };
@@ -2784,6 +2798,41 @@
 		18954D97207C85C90093AB2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18EE156A2081E51E00312AF7 /* Myjiance（我的检测） */ = {
+			isa = PBXGroup;
+			children = (
+				18EE156F2081E51E00312AF7 /* cell */,
+				18EE15772081E51E00312AF7 /* Model */,
+				18EE156C2081E51E00312AF7 /* BossJianCeViewController.h */,
+				18EE15762081E51E00312AF7 /* BossJianCeViewController.m */,
+				18EE156D2081E51E00312AF7 /* BossJianCeZiCeViewController.h */,
+				18EE157E2081E51E00312AF7 /* BossJianCeZiCeViewController.m */,
+			);
+			path = "Myjiance（我的检测）";
+			sourceTree = "<group>";
+		};
+		18EE156F2081E51E00312AF7 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				18EE15732081E51E00312AF7 /* BossJianCeListTableViewCell.h */,
+				18EE15712081E51E00312AF7 /* BossJianCeListTableViewCell.m */,
+				18EE15752081E51E00312AF7 /* BossJianCeTableViewCell.h */,
+				18EE15722081E51E00312AF7 /* BossJianCeTableViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		18EE15772081E51E00312AF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18EE157B2081E51E00312AF7 /* BossJianceModel.h */,
+				18EE15782081E51E00312AF7 /* BossJianceModel.m */,
+				18EE157C2081E51E00312AF7 /* BossJianCeXiangQingModel.h */,
+				18EE157A2081E51E00312AF7 /* BossJianCeXiangQingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4185,6 +4234,7 @@
 				C6134C5B202D832D0099431E /* Cell */,
 				C6134C60202D832D0099431E /* PartsSubsidiaryADDViewController.h */,
 				C6134C58202D832D0099431E /* PartsSubsidiaryADDViewController.m */,
+				18FF0FC120843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m */,
 				C6134C61202D832D0099431E /* PartsSubsidiaryADDErViewController.h */,
 				C6134C5A202D832D0099431E /* PartsSubsidiaryADDErViewController.m */,
 				C6134C68202D9BDA0099431E /* PartsSubsidiaryADDZDYVC.h */,
@@ -4196,6 +4246,8 @@
 		C6134C5B202D832D0099431E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				18FF0FC320843F520054D16A /* PartsSearChTableViewCell.h */,
+				18FF0FC420843F520054D16A /* PartsSearChTableViewCell.m */,
 				C6134C5D202D832D0099431E /* PartsSubsidiaryADDErCell.h */,
 				C6134C5F202D832D0099431E /* PartsSubsidiaryADDErCell.m */,
 				C6134C5E202D832D0099431E /* PartsSubsidiaryCell.h */,
@@ -5926,35 +5978,6 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
-		C6AB744F201CF1B600F157EB /* Myjiance（我的检测） */ = {
-			isa = PBXGroup;
-			children = (
-				C6AB7450201CF1B600F157EB /* cell */,
-				C6AB7451201CF1B600F157EB /* Model */,
-				C6AB7479201D9C4000F157EB /* BossJianCeViewController.h */,
-				C6AB747A201D9C4000F157EB /* BossJianCeViewController.m */,
-			);
-			path = "Myjiance（我的检测）";
-			sourceTree = "<group>";
-		};
-		C6AB7450201CF1B600F157EB /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				C6AB7473201D858600F157EB /* BossJianCeTableViewCell.h */,
-				C6AB7474201D858600F157EB /* BossJianCeTableViewCell.m */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
-		C6AB7451201CF1B600F157EB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C6AB7476201D85DC00F157EB /* BossJianceModel.h */,
-				C6AB7477201D85DC00F157EB /* BossJianceModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C6AB7452201CF26700F157EB /* MyKecheng(我的课程) */ = {
 			isa = PBXGroup;
 			children = (
@@ -6301,12 +6324,12 @@
 		C6E57B9A20030F6D00E945F3 /* HomePage（首页） */ = {
 			isa = PBXGroup;
 			children = (
+				18EE156A2081E51E00312AF7 /* Myjiance（我的检测） */,
 				C61005E6204A76CE0045968C /* StoresInformation（门店信息） */,
 				C6134C49202C55EC0099431E /* SwitchRoles（角色切换） */,
 				C6AB748C201ECCF400F157EB /* BOSSSystemMessage(系统消息) */,
 				C6AB7455201CF26700F157EB /* HistroyLook(历史观看) */,
 				C6AB7452201CF26700F157EB /* MyKecheng(我的课程) */,
-				C6AB744F201CF1B600F157EB /* Myjiance（我的检测） */,
 				C60940272019BD2200530205 /* MyCollection（我的收藏） */,
 				C6E57BE12004B02700E945F3 /* User(我的) */,
 				C6E57BDD2004999D00E945F3 /* Cell */,
@@ -6782,6 +6805,7 @@
 				C625CFBE1F53DE1900CC3E73 /* NSObject+MJClass.m in Sources */,
 				C625CFDE1F53DE1900CC3E73 /* SDWebImageDownloaderOperation.m in Sources */,
 				BDD4D41820270C3B00C433D1 /* UINavigationController+Additions.m in Sources */,
+				18EE15812081E51F00312AF7 /* BossJianCeListTableViewCell.m in Sources */,
 				C625D0051F53E1EE00CC3E73 /* UserViewController.m in Sources */,
 				C68E91261FA1D9C200975D68 /* ZXAI01AndOtherAIs.m in Sources */,
 				C68E913A1FA1D9C200975D68 /* ZXRSSPair.m in Sources */,
@@ -6839,6 +6863,7 @@
 				C60DBA091FB2F03F002B0CC4 /* SWLongPressGestureRecognizer.m in Sources */,
 				BDD4D32B20270A1500C433D1 /* UIColor+YYAdd.m in Sources */,
 				BDD4D30B20270A1500C433D1 /* YYFrameImage.m in Sources */,
+				18FF0FC220843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m in Sources */,
 				C60A8D9F200EE9C00026111B /* JobBoardScreeningCell.m in Sources */,
 				C60DBA0C1FB2F03F002B0CC4 /* SWUtilityButtonView.m in Sources */,
 				C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */,
@@ -6915,7 +6940,6 @@
 				BDD4D32220270A1500C433D1 /* NSParagraphStyle+YYText.m in Sources */,
 				C625CFD51F53DE1900CC3E73 /* UIView+MJExtension.m in Sources */,
 				C64C99431FDE372D007E3E71 /* LogInBaseBt.m in Sources */,
-				C6AB7475201D858600F157EB /* BossJianCeTableViewCell.m in Sources */,
 				C68E91061FA1D9C200975D68 /* ZXDataMatrixDataBlock.m in Sources */,
 				18FE49212074A7050005984F /* HaoCaiViewController.m in Sources */,
 				C63CCA2F202741CA00BD7815 /* ModelCarViewController.m in Sources */,
@@ -6939,6 +6963,7 @@
 				C625CFBD1F53DE1900CC3E73 /* MJPropertyType.m in Sources */,
 				C6134C4F202C5DD70099431E /* SwitchRolesCell.m in Sources */,
 				C68E917D1FA1D9C200975D68 /* ZXQRCodeFinderPatternFinder.m in Sources */,
+				18EE15842081E51F00312AF7 /* BossJianceModel.m in Sources */,
 				C60ECD0E20578C1300F94EAF /* CustomerInformationYYueCell.m in Sources */,
 				C60940262018909600530205 /* FoundDetailCell.m in Sources */,
 				C625CFC61F53DE1900CC3E73 /* MJRefreshFooter.m in Sources */,
@@ -7020,6 +7045,7 @@
 				BDD4D3FD20270C3B00C433D1 /* EnvironmentViewController.m in Sources */,
 				C68E916A1FA1D9C200975D68 /* ZXPDF417HighLevelEncoder.m in Sources */,
 				C60DB9EB1FB1522B002B0CC4 /* SettingAITSerialNumberVC.m in Sources */,
+				18EE15872081E51F00312AF7 /* BossJianCeZiCeViewController.m in Sources */,
 				C6B5D26D1F5FAD9C00C968F5 /* WorkOrderTypeVC.m in Sources */,
 				C61743391FF4F4CA00FB7AD8 /* VINNewAlertView.m in Sources */,
 				C6DC6B702006041800F06DB7 /* JobBoardMenuView.m in Sources */,
@@ -7054,7 +7080,6 @@
 				C6134C41202BFAE90099431E /* MaintenanceHistoryVC.m in Sources */,
 				C68E90DC1FA1D9C200975D68 /* ZXVINResultParser.m in Sources */,
 				18FD6ECD20635CBC000E192C /* ScanDrivingView.m in Sources */,
-				C6AB7478201D85DC00F157EB /* BossJianceModel.m in Sources */,
 				C625CFE01F53DE1900CC3E73 /* SDWebImagePrefetcher.m in Sources */,
 				C6134C3E202BF8710099431E /* MaintenanceProjectPartstModel.m in Sources */,
 				C643F32620245E7F00A2AA57 /* ProjectDetailsADDVC.m in Sources */,
@@ -7222,7 +7247,6 @@
 				C68E90B01FA1D9C200975D68 /* ZXAztecDetector.m in Sources */,
 				C68E912A1FA1D9C200975D68 /* ZXRSSExpandedBlockParsedResult.m in Sources */,
 				C60214DE1FDAAA630059F21F /* TheWorkbenchWeiXiuCell.m in Sources */,
-				C6AB747B201D9C4000F157EB /* BossJianCeViewController.m in Sources */,
 				C60549451FEA272A0020EF9B /* VersionUpdate.m in Sources */,
 				C61005D120453C2E0045968C /* XiMeiXinZengZuiZongModel.m in Sources */,
 				C68E90FB1FA1D9C200975D68 /* ZXDecodeHints.m in Sources */,
@@ -7255,6 +7279,7 @@
 				BDD4D33920270A1500C433D1 /* NSBundle+YYAdd.m in Sources */,
 				C68E91161FA1D9C200975D68 /* ZXDataMatrixX12Encoder.m in Sources */,
 				C625CFDB1F53DE1900CC3E73 /* SDWebImageCompat.m in Sources */,
+				18EE15822081E51F00312AF7 /* BossJianCeTableViewCell.m in Sources */,
 				C68E90C41FA1D9C200975D68 /* ZXEmailDoCoMoResultParser.m in Sources */,
 				C6A473891FB9479F00DA1218 /* SSKeychainQuery.m in Sources */,
 				C68E91721FA1D9C200975D68 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
@@ -7302,6 +7327,7 @@
 				C6BDA5742074DA4A00A19406 /* KDWaterWaveView.m in Sources */,
 				C625CFC11F53DE1900CC3E73 /* NSObject+MJProperty.m in Sources */,
 				C68E91281FA1D9C200975D68 /* ZXAI01weightDecoder.m in Sources */,
+				18FF0FC520843F520054D16A /* PartsSearChTableViewCell.m in Sources */,
 				18FE4917207214ED0005984F /* NewInputView.m in Sources */,
 				C643F36C2026AB8500A2AA57 /* CarInspectionViewController.m in Sources */,
 				C68E90CB1FA1D9C200975D68 /* ZXParsedResult.m in Sources */,
@@ -7358,6 +7384,7 @@
 				18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */,
 				BDD4D31020270A1500C433D1 /* CALayer+YYWebImage.m in Sources */,
 				C68E910C1FA1D9C200975D68 /* ZXDataMatrixBase256Encoder.m in Sources */,
+				18EE15862081E51F00312AF7 /* BossJianCeXiangQingModel.m in Sources */,
 				C6B5D29B1F6005A800C968F5 /* UIImage+ImageWithColor.m in Sources */,
 				C643F33A2024881600A2AA57 /* AITBaoGaoListVC.m in Sources */,
 				BDD4D41720270C3B00C433D1 /* NSObject+Parse.m in Sources */,
@@ -7476,6 +7503,7 @@
 				C68E914B1FA1D9C200975D68 /* ZXMultiFormatUPCEANReader.m in Sources */,
 				C68A903E1F8B77CA0001BDE0 /* EBBannerView.m in Sources */,
 				C607D8DF206B7274005667BF /* CLPlayerView.m in Sources */,
+				18EE15832081E51F00312AF7 /* BossJianCeViewController.m in Sources */,
 				BDD4D34820270A1500C433D1 /* YYAsyncLayer.m in Sources */,
 				C685B7D3200891BD00786F7C /* BOSSLoadView.m in Sources */,
 				C68E90E11FA1D9C200975D68 /* ZXImage.m in Sources */,
