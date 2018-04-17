@@ -50,5 +50,7 @@
 + (void)loginAgain:(BaseViewController*)viewController;
 
 + (void)getReviewVersion;
+//当前网络状态
++ (NSString*)getNetWorkWithWWAN;
 
 @end

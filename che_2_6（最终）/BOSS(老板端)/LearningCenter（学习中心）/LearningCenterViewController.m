@@ -137,16 +137,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LearningModel *model = self.mainListArray[indexPath.row];
-//    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
-//    vc.video_id = model.video_id;
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
-
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    vc.video_id = model.video_id;
     vc.hidesBottomBarWhenPushed = YES;
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
     [self.navigationController pushViewController:vc animated:YES];
+
+//    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    vc.isNoShowNavBar = NO;
+//    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

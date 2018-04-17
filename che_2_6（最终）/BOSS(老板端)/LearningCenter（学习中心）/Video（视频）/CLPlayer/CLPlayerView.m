@@ -311,6 +311,7 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 #pragma mark - 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]){
+        self.shiFouChuangJian    = NO;
         //初始值
         _isFullScreen            = NO;
         _isDisappear             = NO;
@@ -733,6 +734,15 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 }
 #pragma mark - 播放
 - (void)playVideo{
+    if (self.shiFouChuangJian == NO && self.kDWaterWaveView.hidden == NO) {
+        if ([[NetWorkManager getNetWorkWithWWAN] isEqualToString:@"4G"]||[[NetWorkManager getNetWorkWithWWAN] isEqualToString:@"3G"]||[[NetWorkManager getNetWorkWithWWAN] isEqualToString:@"2G"]) {
+            UIAlertView *alctView = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"当前网络状态是%@，确定继续观看吗？",[NetWorkManager getNetWorkWithWWAN]] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"继续观看", nil];
+            alctView.tag = 900;
+            [alctView show];
+            return;
+        }
+    }
+    
     _isUserPlay                       = YES;
     self.maskView.playButton.selected = YES;
     if (_isEnd && self.maskView.slider.value == 1) {
@@ -740,6 +750,18 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
     }else{
         [_player play];
         [[CLGCDTimerManager sharedManager] resumeTimer:CLPlayer_sliderTimer];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 900) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            self.shiFouChuangJian = YES;
+            [self playVideo];
+        }else{
+            [self pausePlay];
+        }
     }
 }
 #pragma mark - 重新开始播放

@@ -12,9 +12,12 @@
 
 @property(nonatomic,assign)NSInteger selectIndex;
 
+@property(nonatomic,assign)BOOL shiFouDiGe;
+
 @property(nonatomic, copy)void (^selectFanHui)(NSInteger index);
 
 - (instancetype)initWithFrame:(CGRect)frame childVcs:(NSArray *)childVcs withhasAppointmentBetShow:(NSInteger)has;
+- (instancetype)initWithFrameNew:(CGRect)frame childVcs:(NSArray *)childVcs withhasAppointmentBetShow:(NSInteger)has;
 
 
 /**

@@ -837,6 +837,7 @@
 		C6BDA58C2080968D00A19406 /* libPlateIDOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BDA5882080968C00A19406 /* libPlateIDOCR.a */; };
 		C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA58E20809A9100A19406 /* PlateIDSlider.m */; };
 		C6BDA59220809B3B00A19406 /* PlateIDOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59020809B3A00A19406 /* PlateIDOverView.m */; };
+		C6BDA59620849A3700A19406 /* TheWorkbenchSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59520849A3700A19406 /* TheWorkbenchSearchViewController.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
@@ -2594,6 +2595,8 @@
 		C6BDA58E20809A9100A19406 /* PlateIDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDSlider.m; sourceTree = "<group>"; };
 		C6BDA59020809B3A00A19406 /* PlateIDOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateIDOverView.m; sourceTree = "<group>"; };
 		C6BDA59120809B3B00A19406 /* PlateIDOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOverView.h; sourceTree = "<group>"; };
+		C6BDA59420849A3700A19406 /* TheWorkbenchSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchSearchViewController.h; sourceTree = "<group>"; };
+		C6BDA59520849A3700A19406 /* TheWorkbenchSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheWorkbenchSearchViewController.m; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
@@ -4839,6 +4842,7 @@
 		C625CFF81F53E06200CC3E73 /* TheWorkbench(工作台) */ = {
 			isa = PBXGroup;
 			children = (
+				C6BDA593208499D400A19406 /* Search(搜索) */,
 				C6B6FB8D2020444F009EE571 /* View */,
 				C613AB981F5D35DB001ABFDE /* OrderDetail（订单详情） */,
 				C6F41CF91F57FA8900E6B5E3 /* Model */,
@@ -6197,6 +6201,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C6BDA593208499D400A19406 /* Search(搜索) */ = {
+			isa = PBXGroup;
+			children = (
+				C6BDA59420849A3700A19406 /* TheWorkbenchSearchViewController.h */,
+				C6BDA59520849A3700A19406 /* TheWorkbenchSearchViewController.m */,
+			);
+			path = "Search(搜索)";
+			sourceTree = "<group>";
+		};
 		C6C4640E20207D6F00908A28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -7349,6 +7362,7 @@
 				C68E915E1FA1D9C200975D68 /* ZXPDF417DecodedBitStreamParser.m in Sources */,
 				BDD4D32120270A1500C433D1 /* YYTextUtilities.m in Sources */,
 				C6FAF9E11F553E9800FE1935 /* NetWorkManager.m in Sources */,
+				C6BDA59620849A3700A19406 /* TheWorkbenchSearchViewController.m in Sources */,
 				C625D0261F53E55F00CC3E73 /* MASLayoutConstraint.m in Sources */,
 				C625CFAE1F53DE1900CC3E73 /* AFAutoPurgingImageCache.m in Sources */,
 				C6134C56202C659E0099431E /* InsuranceViewController.m in Sources */,

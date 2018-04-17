@@ -8,6 +8,7 @@
 
 #import "TheWorkbenchViewController.h"
 #import "PlateIDCameraViewController.h"
+#import "TheWorkbenchSearchViewController.h"
 
 @implementation TheWorkbenchViewController (Search)
 - (void)buildSearchView
@@ -96,7 +97,7 @@
     [myListButton setBackgroundImage:[UIImage imageWithUIColor:kZhuTiColor] forState:(UIControlStateSelected)];
     [qieView2 addSubview:myListButton];
     
-
+    
     allListButton = [[UIButton alloc]initWithFrame:CGRectMake(227/2-117/2, 0, 117/2, 54/2)];
     allListButton.titleLabel.font = [UIFont systemFontOfSize:11];
     [allListButton.layer setMasksToBounds:YES];
@@ -126,10 +127,6 @@
     self.searchImageView.image = DJImageNamed(@"search_gray");
     [self.searchGrayBg addSubview:self.searchImageView];
     
-    self.searchOKbt = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.searchGrayBg.frame)-25, 5, 30, 30)];
-    [self.searchOKbt addTarget:self action:@selector(searchChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.searchGrayBg addSubview:self.searchOKbt];
-    
     UIImageView *searchImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"search_blue")];
     [self.searchGrayBg addSubview:searchImageView];
     [searchImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -138,16 +135,21 @@
         make.width.height.mas_equalTo(32.6/2);
     }];
     
-    self.searchText = [[UITextField alloc] init];
-    self.searchText.placeholder = @"请输入车牌号/手机号/VIN/订单号";
-    self.searchText.textColor = kRGBColor(51, 51, 51);
-    self.searchText.font = DJSystemFont(14);
-    self.searchText.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.searchText.returnKeyType = UIReturnKeySearch;
-    self.searchText.delegate = self;
-    [self.searchText addTarget:self action:@selector(textFieldDidChange:) forControlEvents:(UIControlEventEditingChanged)];
-    [self.searchGrayBg addSubview:self.searchText];
-    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
+    UILabel *biaoShiLabel = [[UILabel alloc]init];
+    biaoShiLabel.textColor = kRGBColor(155, 155, 155);
+    biaoShiLabel.text = @"请输入车牌号/手机号/VIN/订单号";
+    biaoShiLabel.font = DJSystemFont(14);
+    [self.searchGrayBg addSubview:biaoShiLabel];
+    [biaoShiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(34);
+        make.top.bottom.mas_equalTo(0);
+        make.right.mas_equalTo(-38);
+    }];
+    
+    self.searchButton = [[UIButton alloc] init];
+    [self.searchGrayBg addSubview:self.searchButton];
+    [self.searchButton addTarget:self action:@selector(searchButtonTiaoZhuanChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(34);
         make.top.bottom.mas_equalTo(0);
         make.right.mas_equalTo(-38);
@@ -168,14 +170,22 @@
         make.right.bottom.top.mas_equalTo(0);
         make.width.mas_equalTo(40);
     }];
-    
-    self.searchClearBt = [[UIButton alloc]initWithFrame:CGRectMake(kWindowW-45, 10, 40, 30)];
-    [self.searchClearBt setTitle:@"取消" forState:(UIControlStateNormal)];
-    self.searchClearBt.titleLabel.font = [UIFont systemFontOfSize:13];
-    [self.searchClearBt setTitleColor:kRGBColor(51, 51, 51) forState:(UIControlStateNormal)];
-    [self.searchClearBt addTarget:self action:@selector(searchClearBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [searchBg addSubview:self.searchClearBt];
-    self.searchClearBt.hidden = YES;
+}
+
+-(void)searchButtonTiaoZhuanChick:(UIButton *)sender
+{
+    if (self.numberDict) {
+        TheWorkbenchSearchViewController *vc = [[TheWorkbenchSearchViewController alloc]init];
+        vc.numberDict = self.numberDict;
+        vc.channelsArray = self.channelsArray;
+        vc.hidesBottomBarWhenPushed = YES;
+        if (m_segButtonsView.selectIndex == 0) {
+            vc.shiFouWeiXiu = YES;
+        }else{
+            vc.shiFouWeiXiu = NO;
+        }
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 -(void)shaiXuanBtChick:(UIButton *)sender
@@ -196,26 +206,6 @@
     [self.view bringSubviewToFront:self.orderDetailShaiXuanView];
 }
 
--(void)saoButtonChick:(UIButton *)sender
-{
-    
-    
-    PlateIDCameraViewController *vc = [[PlateIDCameraViewController alloc]init];
-    vc.shiFouHuiDiao = YES;
-    kWeakSelf(weakSelf)
-    vc.saoMiaoJieGUo = ^(NSString *jieGuo) {
-        weakSelf.searchGrayBg.frame = CGRectMake(10, 10, kWindowW-20-40, 30);
-        //    self.searchText.frame = CGRectMake(20, 10, kWindowW-40-30, 30);
-        weakSelf.searchClearBt.hidden = NO;
-        weakSelf.searchImageView.hidden = YES;
-        weakSelf.searchOKbt.hidden = YES;
-        [weakSelf resetTableScroll];
-        weakSelf.searchText.text = jieGuo;
-        [weakSelf postSearchrequest_methodDatawithShuaXin:YES];
-    };
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 -(void)myListButtonChick:(UIButton *)sender
 {
     sender.selected =! sender.selected;
@@ -253,105 +243,17 @@
     [self postrequest_methodDataWithIndex:m_segButtonsView.selectIndex withShuaXin:YES];
 }
 
--(void)searchClearBtChick:(UIButton *)sender
+-(void)saoButtonChick:(UIButton *)sender
 {
-    self.seachTableView.hidden = YES;
-    self.searchClearBt.hidden = YES;
-    self.searchImageView.hidden = NO;
-    self.searchOKbt.hidden = NO;
-    self.searchText.text = @"";
-    self.searchGrayBg.frame = CGRectMake(10, 10, kWindowW-20, 30);
-    [self.view endEditing:YES];
-    [self.seachArray removeAllObjects];
-    [self.seachTableView reloadData];
-}
-
--(void)searchChick:(UIButton *)sender
-{
-    if (self.searchText.text.length>0) {
-        self.searchGrayBg.frame = CGRectMake(10, 10, kWindowW-20-40, 30);
-        self.searchClearBt.hidden = NO;
-        self.searchImageView.hidden = YES;
-        self.searchOKbt.hidden = YES;
-        //        self.processType = @"1,2";
-        //        self.lotteryType = @"";
-        [self resetTableScroll];
-    }
-}
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    self.searchGrayBg.frame = CGRectMake(10, 10, kWindowW-20-40, 30);
-//    self.searchText.frame = CGRectMake(20, 10, kWindowW-40-30, 30);
-    self.searchClearBt.hidden = NO;
-    self.searchImageView.hidden = YES;
-    self.searchOKbt.hidden = YES;
-    [self resetTableScroll];
-    return YES;
-}
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
-{
-    if ([string isEqualToString:@"\n"])  //按会车可以改变
-    {
-        return YES;
-    }
     
-    NSString * toBeString = [textField.text stringByReplacingCharactersInRange:range withString:string]; //得到输入框的内容
-    if (self.searchText == textField)  //判断是否时我们想要限定的那个输入框
-    {
-        if (string.length>0) {
-            if (asciiLengthOfString(toBeString) > 17) {
-                return NO;
-            }
-        }
+    
+    PlateIDCameraViewController *vc = [[PlateIDCameraViewController alloc]init];
+    vc.shiFouHuiDiao = YES;
+    kWeakSelf(weakSelf)
+    vc.saoMiaoJieGUo = ^(NSString *jieGuo) {
         
-    }
-    
-    return YES;
-}
-
-- (void)textFieldDidChange:(UITextField *)textField {
-    
-    if (textField == self.searchText) {
-        if (self.searchText.text.length>18) {
-            [self showMessageWindowWithTitle:@"最多18个字" point:self.view.center delay:1];
-            self.searchText.text = [self.searchText.text substringToIndex:self.searchText.text.length-1];
-            return;
-        }
-    }
-    
-    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:@"[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]" options:0 error:nil];
-    
-    NSString *noEmojiStr = [regularExpression stringByReplacingMatchesInString:textField.text options:0 range:NSMakeRange(0, textField.text.length) withTemplate:@""];
-    
-    
-    
-    if (![noEmojiStr isEqualToString:textField.text]) {
-        
-        textField.text = noEmojiStr;
-        
-    }
-    
-    if (self.searchText.text.length>0) {
-        [self postSearchrequest_methodDatawithShuaXin:YES];
-    }
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    
-    if ([textField.text length] == 0) {
-        return YES;
-    }
-    if (self.searchText.text.length>0) {
-        self.searchClearBt.hidden = NO;
-        self.searchImageView.hidden = YES;
-        self.searchOKbt.hidden = YES;
-        //        self.processType = @"1,2";
-        //        self.lotteryType = @"";
-        [self resetTableScroll];
-    }
-    return YES;
+    };
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

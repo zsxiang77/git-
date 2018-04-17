@@ -15,16 +15,16 @@
 
 #define KAgentId @"iOStest" //渠道号
 
-#define HOST_URLHTML @"https://i.chedianzhang.com"/**审核*/
+//#define HOST_URLHTML @"https://i.chedianzhang.com"/**审核*/
 //#define HOST_URLHTML @"http://s.icarzoo.com"/**内测*/
 //#define HOST_URLHTML @"https://s.chedianzhang.com"/**开发*/
-//#define HOST_URLHTML @"http://inflexion.icarzoo.com"/**测试*/
+#define HOST_URLHTML @"http://inflexion.icarzoo.com"/**测试*/
 //#define HOST_URLHTML @"http://beta.icarzoo.com"/**生产*/
 
-#define HOST_URL @"https://i.chedianzhang.com/api/"/**审核*/
+//#define HOST_URL @"https://i.chedianzhang.com/api/"/**审核*/
 //#define HOST_URL @"http://s.icarzoo.com/api/"/**内测*/
 //#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
-//#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
+#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
 //#define HOST_URL @"http://beta.icarzoo.com/api/"/**生产*/
 
 //电话

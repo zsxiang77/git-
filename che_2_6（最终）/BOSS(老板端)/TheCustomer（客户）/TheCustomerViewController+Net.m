@@ -117,14 +117,12 @@
     NSString *D_count = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDataDict, @"D_count")];
     NSString *all_count = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDataDict, @"all_count")];
     NSString *loss_count = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.mainDataDict, @"loss_count")];
-    
     [array addObject:all_count];
     [array addObject:A_count];
     [array addObject:B_count];
     [array addObject:C_count];
     [array addObject:D_count];
     [array addObject:loss_count];
-    
     [m_scrollPageView reloadTitlesWithNewTitles:array];
 }
 

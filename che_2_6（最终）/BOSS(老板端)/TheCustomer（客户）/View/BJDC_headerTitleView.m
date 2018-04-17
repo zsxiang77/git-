@@ -60,14 +60,54 @@
     return self;
 }
 
+
+- (instancetype)initWithFrameNew:(CGRect)frame childVcs:(NSArray *)childVcs withhasAppointmentBetShow:(NSInteger)has
+{
+    if (self = [super initWithFrame:frame]) {
+        self.shiFouDiGe = YES;
+        CGFloat anNIuWight = kWindowW/4;
+        for (int i = 0; i<childVcs.count; i++) {
+            
+            UIView *dingweiView = [[UIView alloc]initWithFrame:CGRectMake(i*anNIuWight, 0, anNIuWight, 40)];
+            dingweiView.tag = 500+i;
+            [self addSubview:dingweiView];
+            UILabel *shangLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, anNIuWight, 40)];
+            shangLabel.font = [UIFont systemFontOfSize:14];
+            shangLabel.textAlignment = NSTextAlignmentCenter;
+            shangLabel.tag = 100;
+            shangLabel.text = childVcs[i];
+            [dingweiView addSubview:shangLabel];
+            
+            
+            UILabel *line = [[UILabel alloc]initWithFrame:CGRectMake(0, 38, anNIuWight, 2)];
+            line.backgroundColor = kZhuTiColor;
+            line.hidden = YES;
+            line.tag = 300;
+            [dingweiView addSubview:line];
+            
+            UIButton *dingweiBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, anNIuWight, 40)];
+            dingweiBt.tag = 600+i;
+            [dingweiBt addTarget:self action:@selector(dingweiBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+            [dingweiView addSubview:dingweiBt];
+            if (i == 0) {
+                shangLabel.textColor = kZhuTiColor;
+                line.hidden = NO;
+            }
+        }
+    }
+    return self;
+}
+
 -(void)dingweiBtChick:(UIButton *)sender
 {
     for (int i = 0; i<6; i++) {
         UIView *dingweiView = [self viewWithTag:500+i];
         UILabel *shangLabel = [dingweiView viewWithTag:100];
         shangLabel.textColor = kRGBColor(74, 74, 74);
-        UILabel *xiaLabel = [dingweiView viewWithTag:200];
-        xiaLabel.textColor = kRGBColor(155, 155, 155);
+        if (self.shiFouDiGe == NO) {
+            UILabel *xiaLabel = [dingweiView viewWithTag:200];
+            xiaLabel.textColor = kRGBColor(155, 155, 155);
+        }
         UILabel *line = [dingweiView viewWithTag:300];
         line.hidden = YES;
     }
@@ -76,8 +116,10 @@
     UIView *dingweiView2 = [self viewWithTag:500+xuanzhong];
     UILabel *shangLabel = [dingweiView2 viewWithTag:100];
     shangLabel.textColor = kZhuTiColor;
-    UILabel *xiaLabel = [dingweiView2 viewWithTag:200];
-    xiaLabel.textColor = kZhuTiColor;
+    if (self.shiFouDiGe == NO) {
+        UILabel *xiaLabel = [dingweiView2 viewWithTag:200];
+        xiaLabel.textColor = kZhuTiColor;
+    }
     UILabel *line = [dingweiView2 viewWithTag:300];
     line.hidden = NO;
     self.selectIndex = xuanzhong;
@@ -90,8 +132,10 @@
         UIView *dingweiView = [self viewWithTag:500+i];
         UILabel *shangLabel = [dingweiView viewWithTag:100];
         shangLabel.textColor = kRGBColor(74, 74, 74);
-        UILabel *xiaLabel = [dingweiView viewWithTag:200];
-        xiaLabel.textColor = kRGBColor(155, 155, 155);
+        if (self.shiFouDiGe == NO) {
+            UILabel *xiaLabel = [dingweiView viewWithTag:200];
+            xiaLabel.textColor = kRGBColor(155, 155, 155);
+        }
         UILabel *line = [dingweiView viewWithTag:300];
         line.hidden = YES;
     }
@@ -99,8 +143,10 @@
     UIView *dingweiView2 = [self viewWithTag:500+xuanzhong];
     UILabel *shangLabel = [dingweiView2 viewWithTag:100];
     shangLabel.textColor = kZhuTiColor;
-    UILabel *xiaLabel = [dingweiView2 viewWithTag:200];
-    xiaLabel.textColor = kZhuTiColor;
+    if (self.shiFouDiGe == NO) {
+        UILabel *xiaLabel = [dingweiView2 viewWithTag:200];
+        xiaLabel.textColor = kZhuTiColor;
+    }
     UILabel *line = [dingweiView2 viewWithTag:300];
     line.hidden = NO;
     self.selectIndex = xuanzhong;
@@ -112,8 +158,11 @@
 {
     for (int i = 0; i<6; i++) {
         UIView *dingweiView = [self viewWithTag:500+i];
-        UILabel *xiaLabel = [dingweiView viewWithTag:200];
-        xiaLabel.text = titles[i];
+        if (self.shiFouDiGe == NO) {
+            UILabel *xiaLabel = [dingweiView viewWithTag:200];
+            xiaLabel.text = titles[i];
+        }
+        
     }
 }
 

@@ -56,9 +56,6 @@
     if ([content_type isEqualToString:@"3"]) {
         if (self.shiFouJiaZai == YES) {
             [self postrequest_methodDataWithIndex:diJiYeIndex withShuaXin:YES];
-            if (self.seachTableView.hidden == NO) {
-                [self postSearchrequest_methodDatawithShuaXin:YES];
-            }
         }
         self.shiFouJiaZai = YES;
     }
@@ -82,37 +79,14 @@
     [m_myTableView[1] reloadData];
     
     [self postrequest_methodDataWithIndex:diJiYeIndex withShuaXin:YES];
-    
-    if (self.seachTableView.hidden == NO) {
-        [self postSearchrequest_methodDatawithShuaXin:YES];
-    }
 }
 #pragma mark 搜索
 -(void)resetTableScroll
 {
-    self.seachTableView.hidden = NO;
-    [self.view bringSubviewToFront:self.seachTableView];
     self.myListSearchButton.selected = NO;
     self.allListSearchButton.selected  = YES;
-//    [self postQingQiuSearch:self.searchText.text];
 }
--(UITableView *)seachTableView
-{
-    if (!_seachTableView) {
-        self.seachArray = [[NSMutableArray alloc]init];
-        _seachTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+63/2+10, kWindowW, kWindowH-(kNavBarHeight+(63/2+10))-[self getTabBarHeight]) style:(UITableViewStylePlain)];
-        _seachTableView.backgroundColor = [UIColor whiteColor];
-        _seachTableView.delegate = self;
-        _seachTableView.dataSource = self;
-        _seachTableView.hidden = YES;
-        _seachTableView.tableFooterView = [[UIView alloc] init];
-        _seachTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        [self.view addSubview:_seachTableView];
-        [self.view bringSubviewToFront:_seachTableView];
-    }
-    return _seachTableView;
-}
+
 #pragma mark 分栏
 - (void)buildMainViewWitharray:(NSArray *)array
 {
@@ -279,10 +253,6 @@
     [m_moreTable setFatherScrollToIndex:tag];
     
     [self tableChangedToIndex:tag];
-    
-    if (self.seachTableView.hidden == NO) {
-        [self postSearchrequest_methodDatawithShuaXin:YES];
-    }
 }
 - (void)tableChangedToIndex:(NSInteger)index
 {
@@ -344,7 +314,7 @@
     {
         return main_dataArry[1].count;
     }else{
-        return self.seachArray.count;
+        return 0;
     }
 }
 
@@ -360,8 +330,6 @@
     }else if (tableView == m_myTableView[1])
     {
         model = main_dataArry[1][indexPath.row];
-    }else{
-        model = self.seachArray[indexPath.row];
     }
     
     [cell refeleseWithModel:model];
@@ -374,9 +342,6 @@
     TheWorkModel *model;
     if (tableView == m_myTableView[0]) {
         model = main_dataArry[0][indexPath.row];
-    }else if(tableView == self.seachTableView)
-    {
-        model = self.seachArray[indexPath.row];
     }else
     {
         model = main_dataArry[1][indexPath.row];
@@ -404,8 +369,6 @@
     }else if (tableView == m_myTableView[1])
     {
         model = main_dataArry[1][indexPath.row];
-    }else{
-        model = self.seachArray[indexPath.row];
     }
     vc.hidesBottomBarWhenPushed = YES;
     vc.chuanZhiModel = model;
@@ -455,7 +418,6 @@
     }else{
         self.allListSearchButton.selected = YES;
     }
-    [self postSearchrequest_methodDatawithShuaXin:YES];
 }
 -(void)allListSearchButtonChick:(UIButton *)sender
 {
@@ -465,53 +427,10 @@
     }else{
         self.myListSearchButton.selected = YES;
     }
-    [self postSearchrequest_methodDatawithShuaXin:YES];
 }
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (tableView == self.seachTableView) {
-        
-        UIView *headerView = [[UIView alloc]init];
-        headerView.backgroundColor = [UIColor whiteColor];
-        
-        UILabel *seaLabel = [[UILabel alloc]init];
-        seaLabel.font = [UIFont systemFontOfSize:14];
-        seaLabel.textColor = kRGBColor(51, 51, 51);
-        seaLabel.text = @"搜索结果";
-        [headerView addSubview:seaLabel];
-        [seaLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(10);
-            make.centerY.mas_equalTo(headerView);
-        }];
-        
-        UIView *qieView2 = [[UIView alloc]init];
-        qieView2.backgroundColor = kRGBColor(244, 244, 244);
-        [qieView2.layer setMasksToBounds:YES];
-        [qieView2.layer setBorderWidth:0.5];
-        [qieView2.layer setCornerRadius:54/4];
-        [qieView2.layer setBorderColor:kLineBgColor.CGColor];
-        [headerView addSubview:qieView2];
-        [qieView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-10);
-            make.centerY.mas_equalTo(headerView);
-            make.width.mas_equalTo(227/2);
-            make.height.mas_equalTo(54/2);
-        }];
-        
-        [qieView2 addSubview:self.myListSearchButton];
-        [qieView2 addSubview:self.allListSearchButton];
-        
-        return headerView;
-    }else
-        return nil;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (tableView == self.seachTableView) {
-        return 40;
-    }else{
-        return 0;
-    }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
 }
 
 @end

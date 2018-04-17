@@ -64,6 +64,8 @@ typedef void(^EndBolck)(void);
 
 /**音频*/
 @property (nonatomic, strong) KDWaterWaveView         *kDWaterWaveView;
+/**是否创建*/
+@property(nonatomic,assign)BOOL                     shiFouChuangJian;
 
 /**播放*/
 - (void)playVideo;
