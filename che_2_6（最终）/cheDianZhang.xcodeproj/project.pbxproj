@@ -34,6 +34,13 @@
 		18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE4932207A2C220005984F /* LearningZuoCell.m */; };
 		18FF0FC220843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FC120843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m */; };
 		18FF0FC520843F520054D16A /* PartsSearChTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FC420843F520054D16A /* PartsSearChTableViewCell.m */; };
+		18FF0FD7208493E40054D16A /* ProjectDetailsAddListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FD6208493E40054D16A /* ProjectDetailsAddListTableViewCell.m */; };
+		18FF0FDA20849A760054D16A /* ProjectModeChangYong.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FD920849A760054D16A /* ProjectModeChangYong.m */; };
+		18FF0FDD2084A2060054D16A /* ProjectDetailsADDVC+search.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FDC2084A2060054D16A /* ProjectDetailsADDVC+search.m */; };
+		18FF0FE02084A5D70054D16A /* ProjectDetailSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FDF2084A5D70054D16A /* ProjectDetailSearchCell.m */; };
+		18FF0FE32085A36D0054D16A /* JXCircleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FE12085A36D0054D16A /* JXCircleSlider.m */; };
+		18FF0FE9208607530054D16A /* ProjecAddProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FE8208607530054D16A /* ProjecAddProjectView.m */; };
+		18FF0FEC208744B30054D16A /* ProjecAddProjectSanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FEB208744B30054D16A /* ProjecAddProjectSanModel.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -993,6 +1000,19 @@
 		18FF0FC120843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PartsSubsidiaryADDViewController+search.m"; sourceTree = "<group>"; };
 		18FF0FC320843F520054D16A /* PartsSearChTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartsSearChTableViewCell.h; sourceTree = "<group>"; };
 		18FF0FC420843F520054D16A /* PartsSearChTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartsSearChTableViewCell.m; sourceTree = "<group>"; };
+		18FF0FD5208493E40054D16A /* ProjectDetailsAddListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailsAddListTableViewCell.h; sourceTree = "<group>"; };
+		18FF0FD6208493E40054D16A /* ProjectDetailsAddListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailsAddListTableViewCell.m; sourceTree = "<group>"; };
+		18FF0FD820849A760054D16A /* ProjectModeChangYong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectModeChangYong.h; sourceTree = "<group>"; };
+		18FF0FD920849A760054D16A /* ProjectModeChangYong.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectModeChangYong.m; sourceTree = "<group>"; };
+		18FF0FDC2084A2060054D16A /* ProjectDetailsADDVC+search.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ProjectDetailsADDVC+search.m"; sourceTree = "<group>"; };
+		18FF0FDE2084A5D70054D16A /* ProjectDetailSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectDetailSearchCell.h; sourceTree = "<group>"; };
+		18FF0FDF2084A5D70054D16A /* ProjectDetailSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailSearchCell.m; sourceTree = "<group>"; };
+		18FF0FE12085A36D0054D16A /* JXCircleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCircleSlider.m; sourceTree = "<group>"; };
+		18FF0FE22085A36D0054D16A /* JXCircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCircleSlider.h; sourceTree = "<group>"; };
+		18FF0FE7208607530054D16A /* ProjecAddProjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjecAddProjectView.h; sourceTree = "<group>"; };
+		18FF0FE8208607530054D16A /* ProjecAddProjectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjecAddProjectView.m; sourceTree = "<group>"; };
+		18FF0FEA208744B30054D16A /* ProjecAddProjectSanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjecAddProjectSanModel.h; sourceTree = "<group>"; };
+		18FF0FEB208744B30054D16A /* ProjecAddProjectSanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjecAddProjectSanModel.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -5005,6 +5025,7 @@
 				C643F328202467CF00A2AA57 /* ProjectDetailsADDZDYVC.m */,
 				C643F32520245E7F00A2AA57 /* ProjectDetailsADDVC.h */,
 				C643F32420245E7F00A2AA57 /* ProjectDetailsADDVC.m */,
+				18FF0FDC2084A2060054D16A /* ProjectDetailsADDVC+search.m */,
 				C643F31A2024483C00A2AA57 /* OrderDetailProjectVC.h */,
 				C643F31B2024483C00A2AA57 /* OrderDetailProjectVC.m */,
 				C643F34C2025E1BE00A2AA57 /* OrderDetailProjectVC+PaiG.m */,
@@ -5023,6 +5044,10 @@
 				C643F32220244E9D00A2AA57 /* OrderDetailProjectCell2.m */,
 				C643F3522025F09500A2AA57 /* OrderDetailProjectPGCell.h */,
 				C643F3532025F09500A2AA57 /* OrderDetailProjectPGCell.m */,
+				18FF0FD5208493E40054D16A /* ProjectDetailsAddListTableViewCell.h */,
+				18FF0FD6208493E40054D16A /* ProjectDetailsAddListTableViewCell.m */,
+				18FF0FDE2084A5D70054D16A /* ProjectDetailSearchCell.h */,
+				18FF0FDF2084A5D70054D16A /* ProjectDetailSearchCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -5034,6 +5059,8 @@
 				C643F32C2024693800A2AA57 /* ProjectDetailsChooseView.m */,
 				C643F3452025B56100A2AA57 /* OrderDetailProjectPGView.h */,
 				C643F3462025B56100A2AA57 /* OrderDetailProjectPGView.m */,
+				18FF0FE7208607530054D16A /* ProjecAddProjectView.h */,
+				18FF0FE8208607530054D16A /* ProjecAddProjectView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5065,6 +5092,10 @@
 			children = (
 				C643F34F2025E2C000A2AA57 /* PaiGongModel.h */,
 				C643F3502025E2C000A2AA57 /* PaiGongModel.m */,
+				18FF0FD820849A760054D16A /* ProjectModeChangYong.h */,
+				18FF0FD920849A760054D16A /* ProjectModeChangYong.m */,
+				18FF0FEA208744B30054D16A /* ProjecAddProjectSanModel.h */,
+				18FF0FEB208744B30054D16A /* ProjecAddProjectSanModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5130,15 +5161,17 @@
 		C643F3A62027019600A2AA57 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18FF0FE22085A36D0054D16A /* JXCircleSlider.h */,
+				18FF0FE12085A36D0054D16A /* JXCircleSlider.m */,
 				18FE49122071D35F0005984F /* MyQuartz.h */,
 				18FE49112071D35F0005984F /* MyQuartz.m */,
 				C643F3A72027019600A2AA57 /* STLoopProgressView.h */,
+				C643F3AD2027019600A2AA57 /* HuanBackView.h */,
 				C643F3A82027019600A2AA57 /* HuanBackView.m */,
 				C643F3A92027019600A2AA57 /* STLoopProgressView+BaseConfiguration.m */,
 				C643F3AA2027019600A2AA57 /* AITDetectView.h */,
 				C643F3AB2027019600A2AA57 /* AITDetectView.m */,
 				C643F3AC2027019600A2AA57 /* STLoopProgressView+BaseConfiguration.h */,
-				C643F3AD2027019600A2AA57 /* HuanBackView.h */,
 				C643F3AE2027019600A2AA57 /* STLoopProgressView.m */,
 			);
 			path = view;
@@ -6841,6 +6874,7 @@
 				C625CFBA1F53DE1900CC3E73 /* MJFoundation.m in Sources */,
 				C68E91581FA1D9C200975D68 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				BDD4D31D20270A1500C433D1 /* YYTextKeyboardManager.m in Sources */,
+				18FF0FDD2084A2060054D16A /* ProjectDetailsADDVC+search.m in Sources */,
 				C6AC059D1F7F53850040B32B /* ReachStateLoading.m in Sources */,
 				C6E57BA520030F6D00E945F3 /* PushController.m in Sources */,
 				BDD4D32720270A1500C433D1 /* YYTextArchiver.m in Sources */,
@@ -6875,6 +6909,7 @@
 				C6AC059A1F7F53850040B32B /* FSMEngine.m in Sources */,
 				C60DBA091FB2F03F002B0CC4 /* SWLongPressGestureRecognizer.m in Sources */,
 				BDD4D32B20270A1500C433D1 /* UIColor+YYAdd.m in Sources */,
+				18FF0FE32085A36D0054D16A /* JXCircleSlider.m in Sources */,
 				BDD4D30B20270A1500C433D1 /* YYFrameImage.m in Sources */,
 				18FF0FC220843F3F0054D16A /* PartsSubsidiaryADDViewController+search.m in Sources */,
 				C60A8D9F200EE9C00026111B /* JobBoardScreeningCell.m in Sources */,
@@ -7191,6 +7226,7 @@
 				C68E90F61FA1D9C200975D68 /* ZXPerspectiveTransform.m in Sources */,
 				C685B7D62008935100786F7C /* BOSSNetWorkManager.m in Sources */,
 				C68E91311FA1D9C200975D68 /* ZXRSSExpandedGeneralAppIdDecoder.m in Sources */,
+				18FF0FEC208744B30054D16A /* ProjecAddProjectSanModel.m in Sources */,
 				C6134C66202D832D0099431E /* PartsSubsidiaryADDErCell.m in Sources */,
 				C68E91671FA1D9C200975D68 /* ZXPDF417BarcodeRow.m in Sources */,
 				C6100606204A99F80045968C /* BOSSchangeUserMidelViewController.m in Sources */,
@@ -7461,6 +7497,7 @@
 				C6AB748F201ECD1400F157EB /* BOSSSystemMessageVC.m in Sources */,
 				C68E914C1FA1D9C200975D68 /* ZXOneDimensionalCodeWriter.m in Sources */,
 				C6134C29202AD70C0099431E /* WriteSaoMiaoView.m in Sources */,
+				18FF0FDA20849A760054D16A /* ProjectModeChangYong.m in Sources */,
 				C6100609204F8CD10045968C /* SaoMiaoSFZViewController.mm in Sources */,
 				C625CFE21F53DE1900CC3E73 /* UIImage+GIF.m in Sources */,
 				C68E91711FA1D9C200975D68 /* ZXQRCodeDataMask.m in Sources */,
@@ -7522,6 +7559,7 @@
 				C685B7D3200891BD00786F7C /* BOSSLoadView.m in Sources */,
 				C68E90E11FA1D9C200975D68 /* ZXImage.m in Sources */,
 				C60ECCEE2052805E00F94EAF /* GDYuYueViewController.m in Sources */,
+				18FF0FE02084A5D70054D16A /* ProjectDetailSearchCell.m in Sources */,
 				C607D8E9206B7CDB005667BF /* LearningVideoViewController+Net.m in Sources */,
 				C68E90D71FA1D9C200975D68 /* ZXURIResultParser.m in Sources */,
 				C625D02C1F53E55F00CC3E73 /* ViewController+MASAdditions.m in Sources */,
@@ -7553,12 +7591,14 @@
 				C6E57BA120030F6D00E945F3 /* LearningCenterViewController.m in Sources */,
 				C68E90F31FA1D9C200975D68 /* ZXGridSampler.m in Sources */,
 				BDD4D32920270A1500C433D1 /* UITextField+YYAdd.m in Sources */,
+				18FF0FD7208493E40054D16A /* ProjectDetailsAddListTableViewCell.m in Sources */,
 				C68E916B1FA1D9C200975D68 /* ZXPDF417Common.m in Sources */,
 				BDD4D33620270A1500C433D1 /* UIFont+YYAdd.m in Sources */,
 				C68E91511FA1D9C200975D68 /* ZXUPCEANExtension5Support.m in Sources */,
 				C63CCA33202741CA00BD7815 /* ModelCarZiVC.m in Sources */,
 				C68E91121FA1D9C200975D68 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				C6AC05A11F7F53850040B32B /* ReachStateWWAN.m in Sources */,
+				18FF0FE9208607530054D16A /* ProjecAddProjectView.m in Sources */,
 				C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

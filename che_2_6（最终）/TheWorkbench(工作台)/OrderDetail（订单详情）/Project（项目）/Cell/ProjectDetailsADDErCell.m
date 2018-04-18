@@ -28,8 +28,26 @@
         [self.contentView addSubview:self.mainLabel];
         [self.mainLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.zuoImageView.mas_right).mas_equalTo(10);
-            make.centerY.mas_equalTo(self.contentView);
+            make.top.mas_equalTo(10);
             make.right.mas_equalTo(-10);
+        }];
+        
+        self.gongshiLable = [[UILabel alloc]init];
+        self.gongshiLable.textColor = kRGBColor(132, 132, 132);
+        self.gongshiLable.font = [UIFont systemFontOfSize:12];
+        [self.contentView addSubview:self.gongshiLable];
+        [self.gongshiLable mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.zuoImageView.mas_right).mas_equalTo(10);
+            make.bottom.mas_equalTo(-10);
+        }];
+        
+        self.gongshifeiLable = [[UILabel alloc]init];
+        self.gongshifeiLable.textColor = kRGBColor(132, 132, 132);
+        self.gongshifeiLable.font = [UIFont systemFontOfSize:12];
+        [self.contentView addSubview:self.gongshifeiLable];
+        [self.gongshifeiLable mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.gongshiLable.mas_right).mas_equalTo(10);
+            make.centerY.mas_equalTo(self.gongshiLable);
         }];
         
         self.sanJiBt = [[UIButton alloc]init];

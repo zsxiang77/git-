@@ -128,7 +128,6 @@
     }else{
         return self.searchArray.count;
     }
-   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,8 +167,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if(tableView == self.seachTableView){
         if (indexPath.section == 1) {
             PartsSubsidiaryADDErViewController *vc = [[PartsSubsidiaryADDErViewController alloc]init];
             vc.suerViewController = self.suerViewController;
@@ -190,20 +187,7 @@
             [vc.main_tabelView  reloadData];
             [self.navigationController popViewControllerAnimated:YES];
         }
-    }else{
-        AccessoriesViewController *vc = (AccessoriesViewController *)self.suerViewController;
-        NSDictionary *dict = changArray[indexPath.row];
-        if ([KISDictionaryHaveKey(dict, @"count") integerValue]<=0) {
-            [self showMessageWindowWithTitle:@"无库存" point:self.view.center delay:0.5];
-            return;
-        }
-        OrderDetailPartsModel *model = [[OrderDetailPartsModel alloc]init];
-        [model setdataWithDict:dict];
-        model.parts_num = @"1";
-        [vc.tianJiaArray addObject:model];
-        [vc.main_tabelView  reloadData];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+  
     
 }
 

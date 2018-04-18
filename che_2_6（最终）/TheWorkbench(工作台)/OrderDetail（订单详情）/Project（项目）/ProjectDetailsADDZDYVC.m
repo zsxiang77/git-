@@ -30,7 +30,7 @@
     [self setTopViewWithTitle:@"添加项目" withBackButton:YES];
     
     for (int i = 0; i<4; i++) {
-        UIView *bujView = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+i*40, kWindowW, 40)];
+        UIView *bujView = [[UIView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+i*55, kWindowW, 55)];
         [self.view addSubview:bujView];
         
         UILabel *line = [[UILabel alloc]init];
@@ -46,10 +46,11 @@
         la.font = [UIFont systemFontOfSize:14];
         [bujView addSubview:la];
         if (i == 0) {
-            la.frame = CGRectMake(10, 0, 80, 40);
+            la.frame = CGRectMake(10, 0, 80, 55);
             la.text = @"项目名称：";
             nameTextField = [[UITextField alloc]init];
             nameTextField.font = [UIFont systemFontOfSize:14];
+            nameTextField.textAlignment = NSTextAlignmentRight;
             nameTextField.placeholder = @"请输入项目名称...";
             nameTextField.returnKeyType = UIReturnKeyDone;
             nameTextField.delegate = self;
@@ -63,13 +64,14 @@
             
             
         }else if (i == 1) {
-            la.frame = CGRectMake(10, 0, 50, 40);
+            la.frame = CGRectMake(10, 0, 50, 55);
             la.text = @"工时：";
             
             gongShiTextField = [[UITextField alloc]init];
             gongShiTextField.font = [UIFont systemFontOfSize:14];
             gongShiTextField.placeholder = @"请输入工时...";
             gongShiTextField.returnKeyType = UIReturnKeyDone;
+            gongShiTextField.textAlignment = NSTextAlignmentRight;
             [gongShiTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
             gongShiTextField.delegate = self;
             [bujView addSubview:gongShiTextField];
@@ -81,13 +83,14 @@
             
             gongShiTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         }else if (i == 2) {
-            la.frame = CGRectMake(10, 0, 130, 40);
+            la.frame = CGRectMake(10, 0, 130, 55);
             la.text = @"工时费(元／小时)：";
             
             gongShiFeiTextField = [[UITextField alloc]init];
             gongShiFeiTextField.font = [UIFont systemFontOfSize:14];
             gongShiFeiTextField.placeholder = @"请输入工时费...";
             gongShiFeiTextField.returnKeyType = UIReturnKeyDone;
+            gongShiFeiTextField.textAlignment = NSTextAlignmentRight;
             [gongShiFeiTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
             gongShiFeiTextField.delegate = self;
             [bujView addSubview:gongShiFeiTextField];
@@ -99,7 +102,7 @@
             
             gongShiFeiTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         }else if (i == 3) {
-            la.frame = CGRectMake(10, 0, 80, 40);
+            la.frame = CGRectMake(10, 0, 80, 55);
             la.text = @"项目分类：";
             
             UIImageView *dianJImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"hall_jiantou-1")];
@@ -113,6 +116,7 @@
             fenLeiLabel = [[UILabel alloc]init];
             fenLeiLabel.font = [UIFont systemFontOfSize:14];
             fenLeiLabel.textColor = [UIColor orangeColor];
+            fenLeiLabel.textAlignment = NSTextAlignmentRight;
             fenLeiLabel.text = @"请选择一个分类...";
             [bujView addSubview:fenLeiLabel];
             [fenLeiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -142,9 +146,9 @@
     [self.view addSubview:queDingBt];
     [queDingBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
-        make.top.mas_equalTo(250+kNavBarHeight);
+        make.bottom.mas_equalTo(-10);
         make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(94/2);
     }];
     
 }

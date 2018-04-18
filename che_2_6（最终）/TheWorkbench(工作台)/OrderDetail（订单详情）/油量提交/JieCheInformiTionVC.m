@@ -10,7 +10,7 @@
 #import "STLoopProgressView.h"
 #import "HuanBackView.h"
 #import "NumberKeyboard.h"
-
+#import "JXCircleSlider.h"
 @interface JieCheInformiTionVC ()<UITextFieldDelegate,NumKeyboardDelegate,UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong)STLoopProgressView *sTLoopProgressView;
@@ -109,43 +109,53 @@
     shangView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:shangView];
 
-    HuanBackView *backView = [[HuanBackView alloc]initWithFrame:CGRectMake((kWindowW-190)/2, 10, 190, 190)];
-    [shangView addSubview:backView];
+//    HuanBackView *backView = [[HuanBackView alloc]initWithFrame:CGRectMake((kWindowW-190)/2, 10, 190, 190)];
+    
+    JXCircleSlider *slider = [[JXCircleSlider alloc] initWithFrame:CGRectMake((kWindowW-270)/2,50, 270, 270)];
+    [slider addTarget:self action:@selector(newValue:) forControlEvents:UIControlEventValueChanged];
+    [slider changeAngle:180];
+    [shangView addSubview:slider];
 
-    self.sTLoopProgressView = [[STLoopProgressView alloc]initWithFrame:CGRectMake(5, 5, 180, 180)];
-    self.sTLoopProgressView.persentage = 0;
-    [backView addSubview:self.sTLoopProgressView];
-
-    self.jinduSlider = [[UISlider alloc] initWithFrame:CGRectMake(30, 200, kWindowW-60, 20)];
-    self.jinduSlider.minimumValue = 0;// 设置最小值
-    self.jinduSlider.maximumValue = 100;// 设置最大值
-    self.jinduSlider.value = 0;// 设置初始值
-    self.jinduSlider.continuous = YES;// 设置可连续变化
-    [self.jinduSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];// 针对值变化添加响应方法
-    [self.jinduSlider addTarget:self action:@selector(sliderTouchDown:) forControlEvents:UIControlEventTouchDown];
-    [self.jinduSlider addTarget:self action:@selector(sliderTouchUp:) forControlEvents:UIControlEventTouchUpInside];
-    [shangView addSubview:self.jinduSlider];
-
-    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTapGesture:)];
-    _tapGesture.delegate = self;
-    [self.jinduSlider addGestureRecognizer:_tapGesture];
-
+    
+    
     self.zhanShiLabel = [[UILabel alloc]init];
-    self.zhanShiLabel.text = @"0 %油量";
+    self.zhanShiLabel.text = [NSString stringWithFormat:@"0%%"];
+    self.zhanShiLabel.font = [UIFont boldSystemFontOfSize:63/2];
     self.zhanShiLabel.textColor = [UIColor greenColor];
-    [backView addSubview:self.zhanShiLabel];
+    [slider addSubview:self.zhanShiLabel];
     [self.zhanShiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(backView);
+        make.center.mas_equalTo(slider);
     }];
-
-
+    UILabel * titleLable = [[UILabel alloc]init];
+    titleLable.text = @"油量";
+    titleLable.textColor = kRGBColor(74, 74, 74);
+    titleLable.font = [UIFont systemFontOfSize:14];
+    [slider addSubview:titleLable];
+    [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(slider);
+        make.bottom.mas_equalTo(self.zhanShiLabel.mas_top).mas_equalTo(-12);
+    }];
+    
+   
+    
+    
     UIView *xiaBaiView = [[UIView alloc]init];
     [self.view addSubview:xiaBaiView];
     [xiaBaiView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(0);
         make.top.mas_equalTo(shangView.mas_bottom).mas_equalTo(0);
     }];
-
+    
+    UILabel * lineSender = [[UILabel alloc]init];
+    lineSender.backgroundColor = kRGBColor(250, 250, 250);
+    [xiaBaiView addSubview:lineSender];
+    [lineSender mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(10);
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+    }];
+    
 
     UIButton *queDingBt = [[UIButton alloc]init];
     [queDingBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
@@ -164,49 +174,35 @@
     }];
 
     xiaBaiView.backgroundColor = [UIColor whiteColor];
-
     self.tiShiView = [[UIView alloc]initWithFrame:CGRectMake(30, 0, kWindowW-100, 50)];
     self.tiShiView.backgroundColor = [UIColor clearColor];
     [xiaBaiView addSubview:self.tiShiView];
 
-    UIImageView *saoJiaoImageView = [[UIImageView alloc]initWithImage:DJImageNamed(@"xiangshanghuangsanjiao")];
-    saoJiaoImageView.frame = CGRectMake(3, 0, 10*109/59, 10);
-    [self.tiShiView addSubview:saoJiaoImageView];
-
-    UILabel *shuoMingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, 140, 25)];
-    shuoMingLabel.font = [UIFont systemFontOfSize:14];
-    [shuoMingLabel.layer setMasksToBounds:YES];
-    [shuoMingLabel.layer setCornerRadius:3];
-    shuoMingLabel.text = @"拖动来设置油量信息";
-    shuoMingLabel.textColor = [UIColor whiteColor];
-    shuoMingLabel.textAlignment = NSTextAlignmentCenter;
-    shuoMingLabel.backgroundColor = kRGBColor(253, 143, 16);
-    [self.tiShiView addSubview:shuoMingLabel];
 
     UILabel *lichengLa = [[UILabel alloc]init];
     lichengLa.text = @"里程数：";
     [xiaBaiView addSubview:lichengLa];
     [lichengLa mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(15);
         make.left.mas_equalTo(10);
         make.width.mas_equalTo(70);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(45);
     }];
 
     UILabel *lichengLa2 = [[UILabel alloc]init];
     lichengLa2.text = @"KM";
     [xiaBaiView addSubview:lichengLa2];
     [lichengLa2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(15);
         make.right.mas_equalTo(-10);
         make.width.mas_equalTo(30);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(45);
     }];
 
-    UILabel *line = [[UILabel alloc]init];
-    line.backgroundColor = kLineBgColor;
-    [xiaBaiView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+    UILabel * lineLable = [[UILabel alloc]init];
+    lineLable.backgroundColor = kLineBgColor;
+    [xiaBaiView addSubview:lineLable];
+    [lineLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(lichengLa2.mas_bottom);
         make.left.mas_equalTo(lichengLa.mas_right);
         make.right.mas_equalTo(lichengLa2.mas_left);
@@ -235,58 +231,7 @@
 
     [self.view bringSubviewToFront:shangView];
     
-    [self postHuoQuYouLiangLiCheng];
 }
-
--(void)postHuoQuYouLiangLiCheng
-{
-    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    [mDict setObject:self.chuaOrdercode forKey:@"ordercode"];
-    kWeakSelf(weakSelf)
-    [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/get_gas" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
-        NSDictionary* dataDic = kParseData(responseObject);
-        weakSelf.liChengTextField.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"repairmile")];
-        CGFloat value = [KISDictionaryHaveKey(dataDic, @"gas") floatValue];
-        [weakSelf.jinduSlider setValue:value animated:YES];
-        
-        weakSelf.sTLoopProgressView.persentage = (self.jinduSlider.value)/100.0;
-        weakSelf.zhanShiLabel.text = [NSString stringWithFormat:@"%.0f %%油量",self.jinduSlider.value];
-        weakSelf.gas = [[NSString stringWithFormat:@"%.0f",self.jinduSlider.value] integerValue];
-        
-    } failure:^(id error) {
-        
-    }];
-}
-
-- (void)sliderTouchDown:(UISlider *)sender {
-    _tapGesture.enabled = NO;
-    self.tiShiView.hidden = YES;
-}
-
-- (void)sliderTouchUp:(UISlider *)sender {
-    _tapGesture.enabled = YES;
-    self.tiShiView.hidden = YES;
-}
-- (void)actionTapGesture:(UITapGestureRecognizer *)sender {
-    CGPoint touchPoint = [sender locationInView:self.jinduSlider];
-    CGFloat value = (self.jinduSlider.maximumValue - self.jinduSlider.minimumValue) * (touchPoint.x / self.jinduSlider.frame.size.width );
-    [self.jinduSlider setValue:value animated:YES];
-    
-    self.sTLoopProgressView.persentage = (self.jinduSlider.value)/100.0;
-    self.zhanShiLabel.text = [NSString stringWithFormat:@"%.0f %%油量",self.jinduSlider.value];
-    self.gas = [[NSString stringWithFormat:@"%.0f",self.jinduSlider.value] integerValue];
-    self.tiShiView.hidden = YES;
-}
-
--(void)sliderValueChanged:(UISlider *)sender
-{
-    self.sTLoopProgressView.persentage = (sender.value)/100.0;
-    self.zhanShiLabel.text = [NSString stringWithFormat:@"%.0f %%油量",sender.value];
-    self.gas = [[NSString stringWithFormat:@"%.0f",sender.value] integerValue];
-    self.tiShiView.hidden = YES;
-}
-
-
 -(void)queDingBtChick:(UIButton *)sender
 {
     
@@ -330,5 +275,22 @@
     }];
 }
 
-
+-(void)newValue:(JXCircleSlider*)slider{
+    NSInteger contter=0;
+    if(slider.angle >=170)
+    {
+        contter = (slider.angle-180)/1.8;
+        if (contter<0) {
+            contter = 0;
+        }
+        if (contter>100) {
+            contter = 100;
+        }
+        self.zhanShiLabel.text = [NSString stringWithFormat:@"%ld %%",contter];
+    }
+    if (slider.angle >= 0 &&slider.angle < 10) {
+        contter = 100;
+        self.zhanShiLabel.text = [NSString stringWithFormat:@"%ld %%",contter];
+    }
+}
 @end

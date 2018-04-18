@@ -12,7 +12,6 @@
 #import "UserInfo.h"
 #import "CommonRecordStatus.h"
 
-
 #define KAgentId @"iOStest" //渠道号
 
 //#define HOST_URLHTML @"https://i.chedianzhang.com"/**审核*/
