@@ -33,6 +33,9 @@
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:m_mainTopTitle];
+    
+    //还原为竖屏
+    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -45,8 +48,7 @@
 {
     [super viewDidLoad];
     
-    //还原为竖屏
-    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+    
     
     self.view.backgroundColor = UIColorFromRGBA(0XF5F5F5, 1);
     
