@@ -89,10 +89,6 @@ static BOOL isProduction = FALSE;
     first_nc.navigationBar.hidden = YES;
 
 
-    //TODO: 测试
-    _userViewController = [[UserViewController alloc] init];
-    UINavigationController* fourth_nc = [[UINavigationController alloc] initWithRootViewController:_userViewController];
-    fourth_nc.navigationBar.hidden = YES;
     
     //TODO: 测试
     _sixViewController = [[UserPersonalDataVC alloc] init];
@@ -126,7 +122,27 @@ static BOOL isProduction = FALSE;
 
     [_tabBarController.tabBar setShadowImage:[[UIImage alloc]init]];
     [_tabBarController.tabBar setBackgroundImage:[[UIImage alloc]init]];
-    self.window.rootViewController = self.tabBarController;
+//    self.window.rootViewController = self.tabBarController;
+    
+    TheSidebarViewController * leftVC = [[TheSidebarViewController alloc]init];
+    
+    self.drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.tabBarController leftDrawerViewController:leftVC];
+    [self.drawerController setShowsShadow:YES];
+    [self.drawerController setMaximumLeftDrawerWidth:kWindowW-100];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+        
+        MMDrawerControllerDrawerVisualStateBlock block;
+        block = [[MMExampleDrawerVisualStateManager sharedManager]
+                 drawerVisualStateBlockForDrawerSide:drawerSide];
+        if(block){
+            block(drawerController, drawerSide, percentVisible);
+        }
+    }];//侧滑效果
+    
+    [self.window setRootViewController:self.drawerController];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
 }

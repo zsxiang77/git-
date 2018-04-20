@@ -9,12 +9,14 @@
 #import "TheWorkbenchViewController.h"
 #import "WorkOrderTypeVC.h"
 #import "OrderDetailViewController.h"
+#import "UIViewController+MMDrawerController.h"
 
 
 @interface TheWorkbenchViewController ()<DuplexTableDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     
     BOOL                 isUserPush;
+    UIImageView          *touImaageView;
 }
 
 @property(nonatomic,assign)BOOL shiFouJiaZai;
@@ -38,9 +40,31 @@
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessageBenDI) name:kShuaXinGuoZuoTai object:nil];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJieShouXiaoXi object:nil];
     
+    touImaageView = [[UIImageView alloc]init];
+    [touImaageView.layer setMasksToBounds:YES];
+    [touImaageView.layer setCornerRadius:15];
+    [m_baseTopView addSubview:touImaageView];
+    [touImaageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+        make.bottom.mas_equalTo(-10);
+        make.width.height.mas_equalTo(30);
+    }];
+    
+    
+    UIButton *touImageButton = [[UIButton alloc]init];
+    [m_baseTopView addSubview:touImageButton];
+    [touImageButton addTarget:self action:@selector(touImageButtonChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [touImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(20);
+        make.width.mas_equalTo(40);
+    }];
 }
 
-
+-(void)touImageButtonChick:(UIButton *)sender
+{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 
 -(void)viewDidDisappear:(BOOL)animated
 {
@@ -67,10 +91,21 @@
 {
     [super viewWillAppear:animated];
     
+    //设置打开抽屉模式
+    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+
+    [touImaageView sd_setImageWithURL:[NSURL URLWithString:[UserInfo shareInstance].userAvatar] placeholderImage:DJImageNamed(@"touxiang")];
+    
     if (!self.channelsArray) {
         [self rREQUEST_METHODNetwork];
     }
     
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //设置打开抽屉模式
+    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
 }
 -(void)networkDidReceiveMessageBenDI{
     [main_dataArry[0] removeAllObjects];

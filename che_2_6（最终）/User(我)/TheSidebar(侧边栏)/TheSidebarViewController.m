@@ -1,34 +1,22 @@
 //
-//  LeftController.m
-//  LeftMenu
+//  TheSidebarViewController.m
+//  cheDianZhang
 //
-//  Created by iMac on 17/4/24.
-//  Copyright © 2017年 zws. All rights reserved.
+//  Created by 马蜂 on 2018/4/19.
+//  Copyright © 2018年 马蜂. All rights reserved.
 //
 
-#import "LeftController.h"
+#import "TheSidebarViewController.h"
 #import "UIViewController+MMDrawerController.h"
-#import "BossUserMeViewController.h"
-#import "LeftTableViewCell.h"
-#import "BossUserSetViewController.h"
-#import "PushController.h"
-#import "StoresInformationViewController.h"
+#import "AITProductInformationVC.h"
 
-#import "MyCollectionViewController.h"
-#import "BossJianCeViewController.h"
-#import "MykechengViewController.h"
-#import "HistroyLookVController.h"
-#import "BOSSSystemMessageVC.h"
-#import "SwitchRolesViewController.h"
-
-@interface LeftController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TheSidebarViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UITableView *tableview;
 
-
 @end
 
-@implementation LeftController
+@implementation TheSidebarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +31,7 @@
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageview.image = [UIImage imageNamed:@"leftbackiamge"];
     [self.view addSubview:imageview];
-
+    
     
     self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, kWindowW-100, kWindowH-80) style:UITableViewStyleGrouped];
     self.tableview.dataSource = self;
@@ -80,35 +68,6 @@
         make.height.mas_equalTo(40);
         make.centerY.mas_equalTo(setImage);
     }];
-//    
-//    
-//    UIImageView *setFanKui = [[UIImageView alloc]initWithImage:DJImageNamed(@"BOOS_user_fanKui")];
-//    setFanKui.contentMode = UIViewContentModeScaleAspectFit;
-//    [self.view addSubview:setFanKui];
-//    [setFanKui mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(setLabel.mas_right).mas_equalTo(30);
-//        make.bottom.mas_equalTo(-26);
-//        make.height.with.mas_equalTo(20);
-//    }];
-//    UILabel *fanKuiLabel = [[UILabel alloc]init];
-//    fanKuiLabel.font = [UIFont systemFontOfSize:17];
-//    fanKuiLabel.text = @"意见反馈";
-//    fanKuiLabel.textColor = [UIColor whiteColor];
-//    [self.view addSubview:fanKuiLabel];
-//    [fanKuiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(setFanKui.mas_right).mas_equalTo(5);
-//        make.centerY.mas_equalTo(setFanKui);
-//    }];
-//    
-//    UIButton *fanKuiBt = [[UIButton alloc]init];
-//    [fanKuiBt addTarget:self action:@selector(fanKuiBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
-//    [self.view addSubview:fanKuiBt];
-//    [fanKuiBt mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(setFanKui);
-//        make.right.mas_equalTo(fanKuiLabel);
-//        make.height.mas_equalTo(40);
-//        make.centerY.mas_equalTo(setFanKui);
-//    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -119,14 +78,13 @@
 
 -(void)setBtChick:(UIButton *)sender
 {
-    BossUserSetViewController *vc = [[BossUserSetViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
     
-    //拿到我们的LitterLCenterViewController，让它去push
-    UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
+    SetingViewController *pushVc = [[SetingViewController alloc]init];
+    UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
     UINavigationController *newNav = nav.selectedViewController;
-    [newNav pushViewController:vc animated:YES];
-    
+    pushVc.hidesBottomBarWhenPushed  = YES;
+    [newNav pushViewController:pushVc animated:YES];
+    //    当我们push成功之后，关闭我们的抽屉
     [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
         //设置打开抽屉模式为MMOpenDrawerGestureModeNone，也就是没有任何效果。
         [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
@@ -138,7 +96,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,26 +109,14 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 0) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_xiaoxi");
-        cell.mainLabl.text = @"消息通知";
+        cell.mainImageView.image = DJImageNamed(@"user_ait");
+        cell.mainLabl.text = @"AIT";
     } else if (indexPath.row == 1) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_keCheng");
-        cell.mainLabl.text = @"我的课程";
-    } else if (indexPath.row == 2) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_lishi");
-        cell.mainLabl.text = @"历史观看";
-    } else if (indexPath.row == 3) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_jiance");
-        cell.mainLabl.text = @"我的测验";
-    } else if (indexPath.row == 4) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_shouCang");
-        cell.mainLabl.text = @"我的收藏";
-    } else if (indexPath.row == 5) {
-        cell.mainImageView.image = DJImageNamed(@"BOOS_user_menDian");
-        cell.mainLabl.text = @"门店信息";
-    } else if (indexPath.row == 6) {
         cell.mainImageView.image = DJImageNamed(@"BOOS_user_qieHuan");
         cell.mainLabl.text = @"角色切换";
+    } else if (indexPath.row == 2) {
+        cell.mainImageView.image = DJImageNamed(@"user_XiaoXi");
+        cell.mainLabl.text = @"消息";
     }
     return cell;
 }
@@ -178,65 +124,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row==0){
-        BOSSSystemMessageVC *pushVc=[[BOSSSystemMessageVC alloc]init];
+        
+        AITProductInformationVC *pushVc=[[AITProductInformationVC alloc]init];
         UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
         UINavigationController *newNav = nav.selectedViewController;
         pushVc.hidesBottomBarWhenPushed  = YES;
         [newNav pushViewController:pushVc animated:YES];
         
     }else if(indexPath.row==1){
-        MykechengViewController*pushVc=[[MykechengViewController alloc]init];
+        
+        SwitchRolesViewController *pushVc = [[SwitchRolesViewController alloc]init];
         UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
         UINavigationController *newNav = nav.selectedViewController;
         pushVc.hidesBottomBarWhenPushed  = YES;
         [newNav pushViewController:pushVc animated:YES];
     }else if(indexPath.row==2){
-        HistroyLookVController*pushVc=[[HistroyLookVController alloc]init];
+        PushMessageViewController *pushVc = [[PushMessageViewController alloc]init];
         UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
         UINavigationController *newNav = nav.selectedViewController;
         pushVc.hidesBottomBarWhenPushed  = YES;
         [newNav pushViewController:pushVc animated:YES];
-    }else if(indexPath.row==3){
-        BossJianCeViewController*pushVc=[[BossJianCeViewController alloc]init];
-        UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
-        UINavigationController *newNav = nav.selectedViewController;
-        pushVc.hidesBottomBarWhenPushed  = YES;
-        [newNav pushViewController:pushVc animated:YES];
-    }else if (indexPath.row == 4) {
-        MyCollectionViewController *pushVC = [[MyCollectionViewController alloc]init];
-        UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
-        UINavigationController *newNav = nav.selectedViewController;
-        pushVC.hidesBottomBarWhenPushed  = YES;
-        [newNav pushViewController:pushVC animated:YES];
-    }else if (indexPath.row == 5) {
-        
-        StoresInformationViewController *pushVC = [[StoresInformationViewController alloc] init];
-        
-        //拿到我们的LitterLCenterViewController，让它去push
-        UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
-        UINavigationController *newNav = nav.selectedViewController;
-        pushVC.hidesBottomBarWhenPushed  = YES;
-        [newNav pushViewController:pushVC animated:YES];
-    } else if (indexPath.row == 6) {
-        SwitchRolesViewController *pushVC = [[SwitchRolesViewController alloc]init];
-        UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
-        UINavigationController *newNav = nav.selectedViewController;
-        pushVC.hidesBottomBarWhenPushed  = YES;
-        [newNav pushViewController:pushVC animated:YES];
-    }else{
-        PushController *pushVC = [[PushController alloc] init];
-        pushVC.titleString = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-        
-        //拿到我们的LitterLCenterViewController，让它去push
-        UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
-        UINavigationController *newNav = nav.selectedViewController;
-        pushVC.hidesBottomBarWhenPushed  = YES;
-        [newNav pushViewController:pushVC animated:YES];
     }
     
     
     
-//    当我们push成功之后，关闭我们的抽屉
+    //    当我们push成功之后，关闭我们的抽屉
     [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
         //设置打开抽屉模式为MMOpenDrawerGestureModeNone，也就是没有任何效果。
         [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
@@ -325,21 +237,18 @@
 
 - (void)imgButtonAction {
     
-    BossUserMeViewController *pushVC = [[BossUserMeViewController alloc] init];
-    pushVC.hidesBottomBarWhenPushed = YES;
-    
-    //拿到我们的LitterLCenterViewController，让它去push
-    UITabBarController* nav = (UITabBarController*)self.mm_drawerController.centerViewController;
+    UserMeViewController *pushVc = [[UserMeViewController alloc]init];
+    UITabBarController *nav=(UITabBarController*)self.mm_drawerController.centerViewController;
     UINavigationController *newNav = nav.selectedViewController;
-    newNav.hidesBottomBarWhenPushed  = YES;
-    [newNav pushViewController:pushVC animated:YES];
-    
+    pushVc.hidesBottomBarWhenPushed  = YES;
+    [newNav pushViewController:pushVc animated:YES];
     //    当我们push成功之后，关闭我们的抽屉
     [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
         //设置打开抽屉模式为MMOpenDrawerGestureModeNone，也就是没有任何效果。
         [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
     }];
 }
+
 
 
 @end

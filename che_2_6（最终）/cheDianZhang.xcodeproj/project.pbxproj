@@ -488,7 +488,6 @@
 		C625CFF21F53DE4E00CC3E73 /* WKWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CFF01F53DE4E00CC3E73 /* WKWebViewViewController.m */; };
 		C625CFFF1F53E1AA00CC3E73 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CFFE1F53E1AA00CC3E73 /* ScanViewController.m */; };
 		C625D0021F53E1C800CC3E73 /* TheWorkbenchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625D0011F53E1C800CC3E73 /* TheWorkbenchViewController.m */; };
-		C625D0051F53E1EE00CC3E73 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625D0041F53E1EE00CC3E73 /* UserViewController.m */; };
 		C625D0231F53E55F00CC3E73 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C625D00B1F53E55F00CC3E73 /* MASCompositeConstraint.m */; };
 		C625D0241F53E55F00CC3E73 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C625D00E1F53E55F00CC3E73 /* MASConstraint.m */; };
 		C625D0251F53E55F00CC3E73 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = C625D0101F53E55F00CC3E73 /* MASConstraintMaker.m */; };
@@ -558,6 +557,10 @@
 		C64C994A1FDFD35D007E3E71 /* AITIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C99491FDFD35D007E3E71 /* AITIntroduceViewController.m */; };
 		C64C994D1FDFD852007E3E71 /* HomeRightBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C994C1FDFD852007E3E71 /* HomeRightBottomButton.m */; };
 		C6567B162027831B000E42F7 /* NewVehicleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C6567B152027831A000E42F7 /* NewVehicleVC.m */; };
+		C66D15FF2089950700155A2D /* UserMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D15FE2089950700155A2D /* UserMeViewController.m */; };
+		C66D160220899E7200155A2D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D160120899E7200155A2D /* ChangeNameViewController.m */; };
+		C66D16052089C68D00155A2D /* ChangeMildelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D16042089C68D00155A2D /* ChangeMildelViewController.m */; };
+		C66D16082089C89600155A2D /* UserPersonalDataVC+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */; };
 		C685B7D3200891BD00786F7C /* BOSSLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C685B7D2200891BD00786F7C /* BOSSLoadView.m */; };
 		C685B7D62008935100786F7C /* BOSSNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C685B7D52008935100786F7C /* BOSSNetWorkManager.m */; };
 		C68A902C1F8B21920001BDE0 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C68A902B1F8B21920001BDE0 /* PerformanceViewController.m */; };
@@ -845,8 +848,10 @@
 		C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA58E20809A9100A19406 /* PlateIDSlider.m */; };
 		C6BDA59220809B3B00A19406 /* PlateIDOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59020809B3A00A19406 /* PlateIDOverView.m */; };
 		C6BDA59620849A3700A19406 /* TheWorkbenchSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59520849A3700A19406 /* TheWorkbenchSearchViewController.m */; };
+		C6BDA59A208885B600A19406 /* TheSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA599208885B600A19406 /* TheSidebarViewController.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
+		C6D1C4922089916500619C15 /* SetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1C4912089916500619C15 /* SetingViewController.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
 		C6DC6B672005F20100F06DB7 /* BossUserMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B662005F20100F06DB7 /* BossUserMeViewController.m */; };
 		C6DC6B6A2005F33000F06DB7 /* BossUserMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B692005F33000F06DB7 /* BossUserMeCell.m */; };
@@ -928,7 +933,6 @@
 		C6FDBB161F5EA91200360B6F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0EF1F5534AE00CC3E73 /* CoreMedia.framework */; };
 		C6FDBB181F5EA91C00360B6F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FDBB171F5EA91C00360B6F /* AudioToolbox.framework */; };
 		C6FDBB191F5EA93700360B6F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0EB1F55347E00CC3E73 /* ImageIO.framework */; };
-		C6FDBB1C1F5EB47500360B6F /* UserMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FDBB1B1F5EB47500360B6F /* UserMainCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1862,8 +1866,6 @@
 		C625CFFE1F53E1AA00CC3E73 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		C625D0001F53E1C800CC3E73 /* TheWorkbenchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchViewController.h; sourceTree = "<group>"; };
 		C625D0011F53E1C800CC3E73 /* TheWorkbenchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheWorkbenchViewController.m; sourceTree = "<group>"; };
-		C625D0031F53E1EE00CC3E73 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
-		C625D0041F53E1EE00CC3E73 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		C625D00A1F53E55F00CC3E73 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		C625D00B1F53E55F00CC3E73 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		C625D00C1F53E55F00CC3E73 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -2029,6 +2031,13 @@
 		C64C994C1FDFD852007E3E71 /* HomeRightBottomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRightBottomButton.m; sourceTree = "<group>"; };
 		C6567B142027831A000E42F7 /* NewVehicleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewVehicleVC.h; sourceTree = "<group>"; };
 		C6567B152027831A000E42F7 /* NewVehicleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewVehicleVC.m; sourceTree = "<group>"; };
+		C66D15FD2089950700155A2D /* UserMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMeViewController.h; sourceTree = "<group>"; };
+		C66D15FE2089950700155A2D /* UserMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserMeViewController.m; sourceTree = "<group>"; };
+		C66D160020899E7200155A2D /* ChangeNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
+		C66D160120899E7200155A2D /* ChangeNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
+		C66D16032089C68D00155A2D /* ChangeMildelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeMildelViewController.h; sourceTree = "<group>"; };
+		C66D16042089C68D00155A2D /* ChangeMildelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeMildelViewController.m; sourceTree = "<group>"; };
+		C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UserPersonalDataVC+Net.m"; sourceTree = "<group>"; };
 		C685B7D1200891BD00786F7C /* BOSSLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSLoadView.h; sourceTree = "<group>"; };
 		C685B7D2200891BD00786F7C /* BOSSLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BOSSLoadView.m; sourceTree = "<group>"; };
 		C685B7D42008935100786F7C /* BOSSNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSNetWorkManager.h; sourceTree = "<group>"; };
@@ -2617,10 +2626,14 @@
 		C6BDA59120809B3B00A19406 /* PlateIDOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOverView.h; sourceTree = "<group>"; };
 		C6BDA59420849A3700A19406 /* TheWorkbenchSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchSearchViewController.h; sourceTree = "<group>"; };
 		C6BDA59520849A3700A19406 /* TheWorkbenchSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheWorkbenchSearchViewController.m; sourceTree = "<group>"; };
+		C6BDA598208885B600A19406 /* TheSidebarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheSidebarViewController.h; sourceTree = "<group>"; };
+		C6BDA599208885B600A19406 /* TheSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheSidebarViewController.m; sourceTree = "<group>"; };
 		C6C4641020207D8500908A28 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
 		C6C46414202086C300908A28 /* OrderDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailHeaderView.m; sourceTree = "<group>"; };
+		C6D1C4902089916500619C15 /* SetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetingViewController.h; sourceTree = "<group>"; };
+		C6D1C4912089916500619C15 /* SetingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetingViewController.m; sourceTree = "<group>"; };
 		C6D2C6C31F7A260300752430 /* TheWorkbenchNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchNewCell.h; sourceTree = "<group>"; };
 		C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheWorkbenchNewCell.m; sourceTree = "<group>"; };
 		C6D2C6E61F7CEA7700752430 /* cheDianZhang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cheDianZhang.entitlements; sourceTree = "<group>"; };
@@ -2738,8 +2751,6 @@
 		C6FDBB111F5EA8D700360B6F /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		C6FDBB141F5EA90800360B6F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		C6FDBB171F5EA91C00360B6F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C6FDBB1A1F5EB47500360B6F /* UserMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMainCell.h; sourceTree = "<group>"; };
-		C6FDBB1B1F5EB47500360B6F /* UserMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMainCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3681,6 +3692,7 @@
 				C64C99401FDE372D007E3E71 /* Class */,
 				C600B58C1F7221A700DD84E3 /* UserPersonalDataVC.h */,
 				C600B58D1F7221A700DD84E3 /* UserPersonalDataVC.m */,
+				C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */,
 				C68E8EC21FA0735400975D68 /* AboutUsViewController.h */,
 				C68E8EC31FA0735400975D68 /* AboutUsViewController.m */,
 				C64C99371FDE2190007E3E71 /* ChangeModileViewController.h */,
@@ -4878,12 +4890,9 @@
 		C625CFF91F53E06200CC3E73 /* User(我) */ = {
 			isa = PBXGroup;
 			children = (
+				C6BDA5972088857B00A19406 /* TheSidebar(侧边栏) */,
 				C68A90291F8B21730001BDE0 /* Performance（绩效） */,
 				C600B58B1F72217200DD84E3 /* PersonalData（个人资料） */,
-				C625D0031F53E1EE00CC3E73 /* UserViewController.h */,
-				C625D0041F53E1EE00CC3E73 /* UserViewController.m */,
-				C6FDBB1A1F5EB47500360B6F /* UserMainCell.h */,
-				C6FDBB1B1F5EB47500360B6F /* UserMainCell.m */,
 			);
 			path = "User(我)";
 			sourceTree = "<group>";
@@ -6243,6 +6252,22 @@
 			path = "Search(搜索)";
 			sourceTree = "<group>";
 		};
+		C6BDA5972088857B00A19406 /* TheSidebar(侧边栏) */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1C493208991B300619C15 /* Seting（设置） */,
+				C6BDA598208885B600A19406 /* TheSidebarViewController.h */,
+				C6BDA599208885B600A19406 /* TheSidebarViewController.m */,
+				C66D15FD2089950700155A2D /* UserMeViewController.h */,
+				C66D15FE2089950700155A2D /* UserMeViewController.m */,
+				C66D160020899E7200155A2D /* ChangeNameViewController.h */,
+				C66D160120899E7200155A2D /* ChangeNameViewController.m */,
+				C66D16032089C68D00155A2D /* ChangeMildelViewController.h */,
+				C66D16042089C68D00155A2D /* ChangeMildelViewController.m */,
+			);
+			path = "TheSidebar(侧边栏)";
+			sourceTree = "<group>";
+		};
 		C6C4640E20207D6F00908A28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -6262,6 +6287,15 @@
 				C643F3042022C02A00A2AA57 /* OrderDetailErWeiView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C6D1C493208991B300619C15 /* Seting（设置） */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1C4902089916500619C15 /* SetingViewController.h */,
+				C6D1C4912089916500619C15 /* SetingViewController.m */,
+			);
+			path = "Seting（设置）";
 			sourceTree = "<group>";
 		};
 		C6E57B8820030C9600E945F3 /* BOSS(老板端) */ = {
@@ -6829,6 +6863,7 @@
 				C63CCA30202741CA00BD7815 /* ModelCarViewController+Net.m in Sources */,
 				C60DBA0B1FB2F03F002B0CC4 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				BDD4D34620270A1500C433D1 /* CALayer+YYAdd.m in Sources */,
+				C66D16082089C89600155A2D /* UserPersonalDataVC+Net.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,
 				C68E91891FA1D9C200975D68 /* ZXMultiFormatReader.m in Sources */,
 				C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */,
@@ -6838,12 +6873,12 @@
 				BDD4D42020270C3B00C433D1 /* KLCPopup.m in Sources */,
 				C625CFE51F53DE1900CC3E73 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BDD4D40620270C3B00C433D1 /* CarInfoColorView.m in Sources */,
+				C6BDA59A208885B600A19406 /* TheSidebarViewController.m in Sources */,
 				C60A8DBE201188090026111B /* JobBoardDeltailJiBenCell.m in Sources */,
 				C692D0FF1F99B1EA00FECF74 /* OrderMessageCell.m in Sources */,
 				C6100602204A76CE0045968C /* BOSSForTochangeNameViewController.m in Sources */,
 				C68E91451FA1D9C200975D68 /* ZXEAN8Reader.m in Sources */,
 				C68E911F1FA1D9C200975D68 /* ZXAbstractExpandedDecoder.m in Sources */,
-				C6FDBB1C1F5EB47500360B6F /* UserMainCell.m in Sources */,
 				C68E91771FA1D9C200975D68 /* ZXQRCodeMode.m in Sources */,
 				C6AB747E201D9DD100F157EB /* MyKechengModel.m in Sources */,
 				C6134C71202DB7940099431E /* ViewPerfectInformationVC+Net.m in Sources */,
@@ -6852,7 +6887,6 @@
 				C625CFDE1F53DE1900CC3E73 /* SDWebImageDownloaderOperation.m in Sources */,
 				BDD4D41820270C3B00C433D1 /* UINavigationController+Additions.m in Sources */,
 				18EE15812081E51F00312AF7 /* BossJianCeListTableViewCell.m in Sources */,
-				C625D0051F53E1EE00CC3E73 /* UserViewController.m in Sources */,
 				C68E91261FA1D9C200975D68 /* ZXAI01AndOtherAIs.m in Sources */,
 				C68E913A1FA1D9C200975D68 /* ZXRSSPair.m in Sources */,
 				C68E90BF1FA1D9C200975D68 /* ZXBizcardResultParser.m in Sources */,
@@ -6931,6 +6965,7 @@
 				BDD4D33020270A1500C433D1 /* UIScreen+YYAdd.m in Sources */,
 				C68E90D41FA1D9C200975D68 /* ZXTelResultParser.m in Sources */,
 				C60A8DA9200F67900026111B /* TheCustomerGeRenVC.m in Sources */,
+				C66D16052089C68D00155A2D /* ChangeMildelViewController.m in Sources */,
 				C6E57BD9200327DE00E945F3 /* JobBoardHeaderView.m in Sources */,
 				BDD4D33720270A1500C433D1 /* NSArray+YYAdd.m in Sources */,
 				C68E90FF1FA1D9C200975D68 /* ZXInvertedLuminanceSource.m in Sources */,
@@ -6979,6 +7014,7 @@
 				C643F33220246AEF00A2AA57 /* ProjectDetailsADDSanVC.m in Sources */,
 				C68E91201FA1D9C200975D68 /* ZXAI013103decoder.m in Sources */,
 				C607D8DB206B7274005667BF /* AILoadingView.m in Sources */,
+				C66D15FF2089950700155A2D /* UserMeViewController.m in Sources */,
 				C68E91491FA1D9C200975D68 /* ZXITFWriter.m in Sources */,
 				C68E91601FA1D9C200975D68 /* ZXPDF417DetectionResultColumn.m in Sources */,
 				C6AB7493201F0A1500F157EB /* BOSSSystemWoDeCell.m in Sources */,
@@ -7289,6 +7325,7 @@
 				BDD4D35120270A1500C433D1 /* YYThreadSafeArray.m in Sources */,
 				C643F37D2026CB6B00A2AA57 /* AccessoryEquipmentModel.m in Sources */,
 				BD99E36B20277F6200027D23 /* TopDanXuanCollectionView.m in Sources */,
+				C66D160220899E7200155A2D /* ChangeNameViewController.m in Sources */,
 				C6E57BB82003172400E945F3 /* MMDrawerController.m in Sources */,
 				C61743291FF38C3600FB7AD8 /* UIColor+Extend.m in Sources */,
 				C6134C18202AA72E0099431E /* OrderDetailAccessoriesCell1.m in Sources */,
@@ -7534,6 +7571,7 @@
 				C609400520138AC800530205 /* SRGHViewController.m in Sources */,
 				C68E90C11FA1D9C200975D68 /* ZXCalendarParsedResult.m in Sources */,
 				C643F3B52027019700A2AA57 /* STLoopProgressView+BaseConfiguration.m in Sources */,
+				C6D1C4922089916500619C15 /* SetingViewController.m in Sources */,
 				C68E91111FA1D9C200975D68 /* ZXDataMatrixErrorCorrection.m in Sources */,
 				C64C99391FDE2190007E3E71 /* ChangeModileViewController.m in Sources */,
 				C625CFA81F53DE1900CC3E73 /* AFHTTPSessionManager.m in Sources */,
