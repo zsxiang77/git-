@@ -77,15 +77,15 @@
 }
 -(void)setBuJuOrZhuangTai{
     if (self.dianJiSelect) {
-        zuoBeiView.hidden = YES;
-        youBeiView.hidden = NO;
-        zuoBeiLabel.textColor = kRGBColor(74, 74, 74);
-        youBeiLabel.textColor = [UIColor whiteColor];
-    }else{
         zuoBeiView.hidden = NO;
         youBeiView.hidden = YES;
         zuoBeiLabel.textColor = [UIColor whiteColor];
         youBeiLabel.textColor = kRGBColor(74, 74, 74);
+    }else{
+        zuoBeiView.hidden = YES;
+        youBeiView.hidden = NO;
+        zuoBeiLabel.textColor = kRGBColor(74, 74, 74);
+        youBeiLabel.textColor = [UIColor whiteColor];
     }
 }
 @end

@@ -12,7 +12,9 @@
 #import "NumberKeyboard.h"
 #import "JXCircleSlider.h"
 @interface JieCheInformiTionVC ()<UITextFieldDelegate,NumKeyboardDelegate,UIGestureRecognizerDelegate>
-
+{
+    JXCircleSlider *slider;
+}
 @property(nonatomic,strong)STLoopProgressView *sTLoopProgressView;
 @property(nonatomic,strong)UITapGestureRecognizer *tapGesture;
 @property(nonatomic,strong)UISlider *jinduSlider;
@@ -111,8 +113,9 @@
 
 //    HuanBackView *backView = [[HuanBackView alloc]initWithFrame:CGRectMake((kWindowW-190)/2, 10, 190, 190)];
     
-    JXCircleSlider *slider = [[JXCircleSlider alloc] initWithFrame:CGRectMake((kWindowW-270)/2,50, 270, 270)];
+    slider = [[JXCircleSlider alloc] initWithFrame:CGRectMake((kWindowW-270)/2,50, 270, 270)];
     [slider addTarget:self action:@selector(newValue:) forControlEvents:UIControlEventValueChanged];
+    
     [slider changeAngle:180];
     [shangView addSubview:slider];
 
@@ -121,10 +124,11 @@
     self.zhanShiLabel = [[UILabel alloc]init];
     self.zhanShiLabel.text = [NSString stringWithFormat:@"0%%"];
     self.zhanShiLabel.font = [UIFont boldSystemFontOfSize:63/2];
-    self.zhanShiLabel.textColor = [UIColor greenColor];
+    self.zhanShiLabel.textColor =kRGBColor(245,166,35);
     [slider addSubview:self.zhanShiLabel];
     [self.zhanShiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(slider);
+        make.centerX.mas_equalTo(slider);
+        make.top.mas_equalTo(270/2-30);
     }];
     UILabel * titleLable = [[UILabel alloc]init];
     titleLable.text = @"油量";
@@ -230,11 +234,11 @@
     }];
 
     [self.view bringSubviewToFront:shangView];
-    
+    [self postHuoQuYouLiangLiCheng];
 }
 -(void)queDingBtChick:(UIButton *)sender
 {
-    
+    self.gas = [self.zhanShiLabel.text integerValue];
     [self.liChengTextField resignFirstResponder];
     if (self.gas<=0) {
         [self showMessageWithContent:@"请选择油量" point:self.view.center afterDelay:2.0];
@@ -248,7 +252,7 @@
 
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:self.chuaOrdercode forKey:@"ordercode"];
-    [mDict setObject:[NSString stringWithFormat:@"%.0f",self.jinduSlider.value] forKey:@"gas"];
+    [mDict setObject:[NSString stringWithFormat:@"%ld",self.gas] forKey:@"gas"];
     [mDict setObject:self.liChengTextField.text forKey:@"repairmile"];
     
 
@@ -292,5 +296,26 @@
         contter = 100;
         self.zhanShiLabel.text = [NSString stringWithFormat:@"%ld %%",contter];
     }
+}
+-(void)postHuoQuYouLiangLiCheng
+{
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:self.chuaOrdercode forKey:@"ordercode"];
+    kWeakSelf(weakSelf)
+    [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/get_gas" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        
+        weakSelf.liChengTextField.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"repairmile")];
+        CGFloat value = [KISDictionaryHaveKey(dataDic, @"gas") integerValue];
+        [slider changeAngle:1.8*value+180];
+        if(value == 100){
+            [slider changeAngle:360];
+        }
+        weakSelf.zhanShiLabel.text = [NSString stringWithFormat:@"%.0f %%",value];
+        weakSelf.gas = [[NSString stringWithFormat:@"%.0f",value] integerValue];
+        
+    } failure:^(id error) {
+        
+    }];
 }
 @end
