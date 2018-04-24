@@ -92,6 +92,9 @@
         [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/find/do_replay_comment" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             NSInteger codel = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
             if (codel == 200) {
+                weakSelf.faBuTextField.text = @"";
+                [weakSelf.faBuTextField  resignFirstResponder];
+                [weakSelf showMessageWindowWithTitle:@"发布成功" point:weakSelf.view.center delay:1];
                 [weakSelf postpingLunLIst:YES];
             }else{
                 [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
@@ -111,6 +114,9 @@
         [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/find/do_article_comment" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             NSInteger codel = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
             if (codel == 200) {
+                weakSelf.faBuTextField.text = @"";
+                [weakSelf.faBuTextField  resignFirstResponder];
+                [weakSelf showMessageWindowWithTitle:@"发布成功" point:weakSelf.view.center delay:1];
                 [weakSelf postpingLunLIst:YES];
             }else{
                 [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];

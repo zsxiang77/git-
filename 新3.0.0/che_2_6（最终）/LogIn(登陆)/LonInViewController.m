@@ -577,6 +577,8 @@
 #pragma mark -手机登陆
 -(void)shoujilogInBtChick:(UIButton*)sender
 {
+    [_phoneTextField resignFirstResponder];
+    [self.yanZhengMaTextField resignFirstResponder];
     if (_phoneTextField.text.length<10) {
         [self showMessageWindowWithTitle:@"请输入正确的手机号" point:self.view.center delay:1];
         return;

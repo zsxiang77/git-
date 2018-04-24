@@ -63,6 +63,11 @@
     if (shuaX == YES) {
         page[index] = 1;
     }
+    
+    if ([UserInfo shareInstance].isLogined == NO) {
+        return;
+    }
+    
     [[m_myTableView[index] viewWithTag:kALLTAG + index] removeFromSuperview];
     
     NSArray *array = KISDictionaryHaveKey(self.numberDict, @"channels");

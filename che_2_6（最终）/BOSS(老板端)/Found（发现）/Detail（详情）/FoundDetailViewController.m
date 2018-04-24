@@ -42,25 +42,24 @@
 {
 
     
-//    CGRect keyboardFrameBeginRect = [[[noti userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect keyboardFrameBeginRect = [[[noti userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     
-//    kWeakSelf(weakSelf)
-//    [UIView animateWithDuration:0.3 animations:^{
-//        [weakSelf.view bringSubviewToFront:weakSelf.faBuView];
-//        weakSelf.faBuView.frame = CGRectMake(0, kWindowH-keyboardFrameBeginRect.size.height, kWindowW, 53);
-//    }];
+    kWeakSelf(weakSelf)
+    [UIView animateWithDuration:0.3 animations:^{
+        [weakSelf.view bringSubviewToFront:weakSelf.faBuView];
+        weakSelf.faBuView.frame = CGRectMake(0, kWindowH-keyboardFrameBeginRect.size.height-53, kWindowW, 53);
+    }];
 }
 
 - (void) keyboardWillHidden:(NSNotification*)noti
 {
-//    NPrintLog(@"%@",self.huiFuModel);
-//    self.huiFuModel = nil;
-//    kWeakSelf(weakSelf)
-//    [UIView animateWithDuration:0.3 animations:^{
-//        [weakSelf.view bringSubviewToFront:weakSelf.faBuView];
-//        weakSelf.faBuView.frame = CGRectMake(0, kWindowH-53, kWindowW, 53);
-//    }];
+    self.huiFuModel = nil;
+    kWeakSelf(weakSelf)
+    [UIView animateWithDuration:0.3 animations:^{
+        [weakSelf.view bringSubviewToFront:weakSelf.faBuView];
+        weakSelf.faBuView.frame = CGRectMake(0, kWindowH-53, kWindowW, 53);
+    }];
     
 }
 

@@ -259,6 +259,9 @@
           [dianzanCount setTextColor:kRGBColor(155, 155, 155)];
     }
     zhujiangUilable.text=[NSString stringWithFormat:@"主讲人:%@",dict.teacher];
+//    if ([dict.playnum integerValue]>=10000) {
+//        <#statements#>
+//    }
     redioshuUilable.text=[NSString stringWithFormat:@"%@万",dict.playnum];
     dianzanCount.text=dict.likenum;
     jiageLable.text=[NSString stringWithFormat:@"¥%@",dict.price];

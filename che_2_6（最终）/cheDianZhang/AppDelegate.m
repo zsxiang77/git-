@@ -29,6 +29,8 @@
 
 #import "IQKeyboardManager.h"
 
+#import "FoundDetailViewController.h"
+
 #define kAPPKEY  @"bde8e49072393efd31ff1028"
 static NSString *channel = @"APP Store";
 static BOOL isProduction = FALSE;
@@ -100,7 +102,7 @@ static BOOL isProduction = FALSE;
     //UIImageRenderingModeAlwaysOriginal 使用系统色（灰色）
     UITabBarItem* item01 = [[UITabBarItem alloc] initWithTitle:@"工作台" image:[DJImageNamed(@"tablebar_GZT") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_GZT_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     UITabBarItem* item03 = [[UITabBarItem alloc] initWithTitle:@"开单" image:[DJImageNamed(@"tablebar_SYS") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_SYS_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    UITabBarItem* item04 = [[UITabBarItem alloc] initWithTitle:@"我的" image:[DJImageNamed(@"tablebar_ME") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_ME_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    UITabBarItem* item04 = [[UITabBarItem alloc] initWithTitle:@"客户" image:[DJImageNamed(@"tablebar_ME") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_ME_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     first_nc.tabBarItem = item01;
     third_nc.tabBarItem = item03;
@@ -544,6 +546,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     IQKeyboardManager.sharedManager.shouldResignOnTouchOutside = YES;
     /// 需要禁用的控制器
     [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[LonInViewController class]];
+    [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[FoundDetailViewController class]];
 }
 
 
