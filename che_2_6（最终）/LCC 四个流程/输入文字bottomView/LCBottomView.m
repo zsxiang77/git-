@@ -278,9 +278,10 @@
     leftTime = 15;
     self.shiFouShiJianDao = NO;
     self.yuYingZhuanHStr = @"";
-    self.fuCengImageView.hidden = NO;
     NPrintLog(@"开始录音");
     [sander setTitle:@"松开 结束" forState:UIControlStateNormal];
+    self.yuyinTime.text=[NSString stringWithFormat:@"倒计时:%lds",leftTime];
+    self.fuCengImageView.hidden = NO;
     self.shiFouJieShuLuYin = NO;
     [self setDaoJiShi];
     [self setupTimer];
@@ -376,6 +377,7 @@
 }
 - (void)refreshLeftTime
 {
+    
     if (leftTime > 0)
     {
         if (self.shiFouJieShuLuYin) {

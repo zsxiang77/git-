@@ -8,9 +8,12 @@
 
 #import "BOSSBaseViewController.h"
 #import "UMMobClick/MobClick.h"
-
+#import "StoreTheDataModel.h"
+#import "StoreRiLiView.h"
 @interface StoreTheDataViewController : BOSSBaseViewController
+@property(nonatomic,strong)NSString * timeStr;
+@property(nonatomic,strong)NSString * dateStr;
 
-
-
+@property(nonatomic,strong)StoreTheDataModel *mainModel;
+@property(nonatomic,strong)StoreRiLiView * storeViews;
 @end

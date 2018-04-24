@@ -9,62 +9,26 @@
 #import "StoreTheDataViewController.h"
 #import "MJRefresh.h"
 #import<WebKit/WebKit.h>
-
-@interface StoreTheDataViewController ()<WKUIDelegate,WKNavigationDelegate>
+#import "StoreDataHeaderView.h"
+#import "StoreShouRuView.h"
+#import "StoreRenWuView.h"
+#import "StorePeiJianView.h"
+#import "StoreRenYuanView.h"
+#import "StoreHeaderView.h"
+@interface StoreTheDataViewController ()
 {
-    UILabel*      m_myTitleLabel;//title 获取html的title
-    WKWebView*    m_webView;
+    
+    UILabel * lineLable;
+    CGFloat widths;
+    StoreRenWuView * renwuView;  //任务
+    StoreRenYuanView * renyuanView;//人员
+    StorePeiJianView * peijianView;//配件
+    StoreShouRuView * shouruView; //收入
 }
-
-@property (strong, nonatomic) UIProgressView *progressView;
 
 @end
 
 @implementation StoreTheDataViewController
-
-- (UIProgressView *)progressView
-{
-    if(!_progressView)
-    {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, 2)];
-        self.progressView.tintColor = [UIColor orangeColor];
-        self.progressView.trackTintColor = [UIColor whiteColor];
-        [self.view addSubview:self.progressView];
-        [self.view bringSubviewToFront:self.progressView];
-    }
-    return _progressView;
-    
-}
-
-// 计算wkWebView进度条
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    NSLog(@" %s,change = %@",__FUNCTION__,change);
-    if ([keyPath isEqual: @"estimatedProgress"] && object == m_webView) {
-        [self.view bringSubviewToFront:self.progressView];
-        [self.progressView setAlpha:1.0f];
-        [self.progressView setProgress:m_webView.estimatedProgress animated:YES];
-        if(m_webView.estimatedProgress >= 1.0f)
-        {
-            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                [self.progressView setAlpha:0.0f];
-            } completion:^(BOOL finished) {
-                [self.progressView setProgress:0.0f animated:NO];
-            }];
-        }
-    }
-    else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
-// 记得取消监听
-- (void)dealloc {
-    [m_webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    
-    // if you have set either WKWebView delegate also set these to nil here
-    [m_webView setNavigationDelegate:nil];
-    [m_webView setUIDelegate:nil];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -79,60 +43,86 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    [[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];//防止键盘弹不出来（掉完系统短信后 web的键盘无法弹出）
-    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-//    config.mediaPlaybackRequiresUserAction = NO;//把手动播放设置NO ios(8.0, 9.0)
-    config.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
-    config.mediaPlaybackAllowsAirPlay = YES;//允许播放，ios(8.0, 9.0)
-    
-    m_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH-[self getTabBarHeight]) configuration:config];
-    m_webView.UIDelegate = self;
-    m_webView.navigationDelegate = self;
-    //    [m_webView sizeToFit];
-    [m_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew| NSKeyValueObservingOptionOld context:nil];
-    [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/sa/data_center/index",HOST_URLHTML]]]];
-//    [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://inflexion.icarzoo.com/sa/data_center/index"]]];
-//    [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://sv.baidu.com/videoui/page/videoland?context=%7B%22nid%22%3A%22sv_13427224545953515741%22%7D&pd=feedtab_h5&pagepdSid="]]];
-    
-    if (@available(iOS 11.0, *)) {
-        m_webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    NSArray * titleArray =@[@"任务",@"人员",@"配件",@"收入"];
+    NSArray * imgArray =@[@"renWu1",@"renYuan1",@"peiJian1",@"liRun1"];
+    NSArray * selectArray =@[@"renWu2",@"renYuan2",@"peiJian2",@"liRun2"];
+    StoreDataHeaderView * viewsTine = [[StoreDataHeaderView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kBOSSNavBarHeight) titleArray:titleArray imgArray:imgArray selectArray:selectArray];
+    [self.view addSubview:viewsTine];
+ 
+    renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+    kWeakSelf(weakSelf)
+    renwuView.headerView.showRiLiBlock = ^{
+        weakSelf.storeViews.hidden= NO;
+    };
+    [self.view addSubview:renwuView];
+    shouruView = [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+     [self.view addSubview:shouruView];
+    peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+     [self.view addSubview:peijianView];
+    renyuanView = [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+     [self.view addSubview:renyuanView];
+    renwuView.hidden = NO;
+    shouruView.hidden = YES;
+    peijianView.hidden = YES;
+    renyuanView.hidden = YES;
+    viewsTine.viewQieHuan = ^(NSUInteger shifouxuanzhong) {
+        renwuView.hidden = YES;
+        shouruView.hidden = YES;
+        peijianView.hidden = YES;
+        renyuanView.hidden = YES;
+        if(shifouxuanzhong ==400){
+            NPrintLog(@"任务--1----%ld",shifouxuanzhong);
+            renwuView.hidden = NO;
+            
+        }
+        if(shifouxuanzhong ==401){
+            NPrintLog(@"人员--2----%ld",shifouxuanzhong);
+              renyuanView.hidden = NO;
+        }
+        if(shifouxuanzhong ==402){
+            NPrintLog(@"配件--3----%ld",shifouxuanzhong);
+              peijianView.hidden = NO;
+        }
+        if(shifouxuanzhong ==403){
+            NPrintLog(@"收入--4----%ld",shifouxuanzhong);
+             shouruView.hidden = NO;
+        }
+    };
+       [self getTask_status];
+     
+}
+-(StoreTheDataModel *)mainModel
+{
+    if (!_mainModel) {
+        _mainModel = [[StoreTheDataModel alloc]init];
     }
-
-    m_webView.scrollView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:m_webView];
-    m_webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [m_webView.scrollView.mj_header endRefreshing];
-        [m_webView reload];
+    return _mainModel;
+}
+//数据
+-(void)getTask_status
+{
+    self.timeStr = [NSString stringWithFormat:@"%@",@""];
+    self.timeStr = [NSString stringWithFormat:@"%@",@"2"];
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:self.timeStr forKey:@"time"];
+    [mDict setObject:self.timeStr forKey:@"date"];
+    kWeakSelf(weakSelf)
+    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/task_status" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        [weakSelf.mainModel setdataDict:dataDic];
+        renwuView.zhauModel = weakSelf.mainModel;
+        
+    } failure:^(id error) {
+        
     }];
-    
 }
-
-
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    
-    NSMutableURLRequest *mutableRequest = [navigationAction.request mutableCopy];
-    NSDictionary *requestHeaders = navigationAction.request.allHTTPHeaderFields;
-    //我们项目使用的token同步的，cookie的话类似
-    if (requestHeaders[@"Set-Cookie"]) {
-        [mutableRequest setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
-        decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
-        
-    } else {
-        //这里添加请求头，把需要的都添加进来
-//        [manager.requestSerializer setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
-//        [mutableRequest setValue:[Global Datatoken]forHTTPHeaderField:@"token"];
-        [mutableRequest setValue:KISDictionaryHaveKey([UserInfo shareInstance].userNameDict, @"Set-Cookie") forHTTPHeaderField:@"Set-Cookie"];
-        //这个我发现不能使用，于是我就直接不写了，但是下边的换了一种写法，结果都能达到同步
-        //        navigationAction.request=[mutableRequest copy];
-        
-        [webView loadRequest:mutableRequest];
-        
-        decisionHandler(WKNavigationActionPolicyAllow);//允许跳转
+-(StoreRiLiView *)storeViews
+{
+    if(!_storeViews){
+        _storeViews =[[StoreRiLiView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
+        [self.view addSubview:_storeViews];
     }
-    
+    return _storeViews;
 }
-
-
 @end
+

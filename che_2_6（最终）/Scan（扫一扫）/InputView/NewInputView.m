@@ -99,7 +99,7 @@
         NSArray *array1 = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0", nil];
         CGFloat heightCount = (self.shuziView.frame.size.height-40)/4;
         for (int i = 0; i<array1.count; i++) {
-            UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(10+((kWindowW-38)/10+2)*i, 5, (kWindowW-38)/10, heightCount)];
+            UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(10+((kWindowW-38)/10+2)*i, 10, (kWindowW-38)/10, heightCount)];
             bt.tag = 100+i;
             [self setCornerWithRadius:10 borderWidth:0.5 borderColor:kLineBgColor button:bt withTitle:array1[i]];
             [self.shuziView addSubview:bt];
@@ -117,7 +117,7 @@
         NSArray *array3 = [NSArray arrayWithObjects:@"A",@"S",@"D",@"F",@"G",@"H",@"J",@"K",@"L", nil];
         
         for (int i = 0; i<array3.count; i++) {
-            UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(20+((kWindowW-56)/9+2)*i, heightCount*2+25, (kWindowW-56)/9, heightCount)];
+            UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(20+((kWindowW-56)/9+2)*i, heightCount*2+20, (kWindowW-56)/9, heightCount)];
             bt.tag = 300+i;
             [self setCornerWithRadius:10 borderWidth:0.5 borderColor:kLineBgColor button:bt withTitle:array3[i]];
             [self.shuziView addSubview:bt];
@@ -128,13 +128,13 @@
             UIButton *bt = [[UIButton alloc]init];
             bt.tag = 400+i;
             if (i == array4.count) {
-                bt.frame = CGRectMake(30+((kWindowW-145)/7+5)*i, heightCount*3+35, 50, heightCount);
+                bt.frame = CGRectMake(30+((kWindowW-145)/7+5)*i, heightCount*3+25, 50, heightCount);
                 [self setCornerWithRadius:10 borderWidth:0.5 borderColor:kLineBgColor button:bt withTitle:@""];
                 [bt setImage:DJImageNamed(@"new_tuiGe") forState:(UIControlStateNormal)];
                 bt.imageView.contentMode = UIViewContentModeScaleAspectFit;
                 bt.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
             }else{
-                bt.frame = CGRectMake(30+((kWindowW-145)/7+5)*i, heightCount*3+35, (kWindowW-145)/7+3, heightCount);
+                bt.frame = CGRectMake(30+((kWindowW-145)/7+5)*i, heightCount*3+25, (kWindowW-145)/7+3, heightCount);
                 [self setCornerWithRadius:10 borderWidth:0.5 borderColor:kLineBgColor button:bt withTitle:array4[i]];
             }
             [self.shuziView addSubview:bt];

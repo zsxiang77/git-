@@ -41,6 +41,18 @@
 		18FF0FE32085A36D0054D16A /* JXCircleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FE12085A36D0054D16A /* JXCircleSlider.m */; };
 		18FF0FE9208607530054D16A /* ProjecAddProjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FE8208607530054D16A /* ProjecAddProjectView.m */; };
 		18FF0FEC208744B30054D16A /* ProjecAddProjectSanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FEB208744B30054D16A /* ProjecAddProjectSanModel.m */; };
+		18FF0FFA2089DBA70054D16A /* StoreRenYuanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FEE2089DBA60054D16A /* StoreRenYuanView.m */; };
+		18FF0FFB2089DBA70054D16A /* StoreShouRuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FEF2089DBA60054D16A /* StoreShouRuView.m */; };
+		18FF0FFC2089DBA70054D16A /* StoreDataHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FF22089DBA60054D16A /* StoreDataHeaderView.m */; };
+		18FF0FFD2089DBA70054D16A /* StoreRenWuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FF52089DBA60054D16A /* StoreRenWuView.m */; };
+		18FF0FFE2089DBA70054D16A /* StorePeiJianView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF0FF72089DBA60054D16A /* StorePeiJianView.m */; };
+		18FF1001208B36920054D16A /* StoreRenWuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1000208B36920054D16A /* StoreRenWuCell.m */; };
+		18FF1004208B45510054D16A /* StoreTheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1003208B45510054D16A /* StoreTheDataModel.m */; };
+		18FF1007208C812D0054D16A /* StoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1006208C812D0054D16A /* StoreHeaderView.m */; };
+		18FF100A208C86D40054D16A /* StoreRenWuRenYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */; };
+		18FF100D208C9B310054D16A /* StoreRiLiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF100C208C9B310054D16A /* StoreRiLiView.m */; };
+		18FF1012208CD5330054D16A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF100E208CD5320054D16A /* CalenderView.m */; };
+		18FF1013208CD5330054D16A /* UIColor+ZXLazy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1011208CD5330054D16A /* UIColor+ZXLazy.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -1017,6 +1029,30 @@
 		18FF0FE8208607530054D16A /* ProjecAddProjectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjecAddProjectView.m; sourceTree = "<group>"; };
 		18FF0FEA208744B30054D16A /* ProjecAddProjectSanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjecAddProjectSanModel.h; sourceTree = "<group>"; };
 		18FF0FEB208744B30054D16A /* ProjecAddProjectSanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjecAddProjectSanModel.m; sourceTree = "<group>"; };
+		18FF0FEE2089DBA60054D16A /* StoreRenYuanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreRenYuanView.m; sourceTree = "<group>"; };
+		18FF0FEF2089DBA60054D16A /* StoreShouRuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreShouRuView.m; sourceTree = "<group>"; };
+		18FF0FF02089DBA60054D16A /* StoreRenWuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreRenWuView.h; sourceTree = "<group>"; };
+		18FF0FF12089DBA60054D16A /* StorePeiJianView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePeiJianView.h; sourceTree = "<group>"; };
+		18FF0FF22089DBA60054D16A /* StoreDataHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDataHeaderView.m; sourceTree = "<group>"; };
+		18FF0FF32089DBA60054D16A /* StoreShouRuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreShouRuView.h; sourceTree = "<group>"; };
+		18FF0FF42089DBA60054D16A /* StoreRenYuanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreRenYuanView.h; sourceTree = "<group>"; };
+		18FF0FF52089DBA60054D16A /* StoreRenWuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreRenWuView.m; sourceTree = "<group>"; };
+		18FF0FF62089DBA60054D16A /* StoreDataHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDataHeaderView.h; sourceTree = "<group>"; };
+		18FF0FF72089DBA60054D16A /* StorePeiJianView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorePeiJianView.m; sourceTree = "<group>"; };
+		18FF0FFF208B36920054D16A /* StoreRenWuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenWuCell.h; path = "BOSS(老板端)/StoreTheData（门店数据）/StoreRenWuCell.h"; sourceTree = SOURCE_ROOT; };
+		18FF1000208B36920054D16A /* StoreRenWuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenWuCell.m; path = "BOSS(老板端)/StoreTheData（门店数据）/StoreRenWuCell.m"; sourceTree = SOURCE_ROOT; };
+		18FF1002208B45510054D16A /* StoreTheDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreTheDataModel.h; path = "BOSS(老板端)/StoreTheData（门店数据）/StoreTheDataModel.h"; sourceTree = SOURCE_ROOT; };
+		18FF1003208B45510054D16A /* StoreTheDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreTheDataModel.m; path = "BOSS(老板端)/StoreTheData（门店数据）/StoreTheDataModel.m"; sourceTree = SOURCE_ROOT; };
+		18FF1005208C812D0054D16A /* StoreHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreHeaderView.h; sourceTree = "<group>"; };
+		18FF1006208C812D0054D16A /* StoreHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreHeaderView.m; sourceTree = "<group>"; };
+		18FF1008208C86D40054D16A /* StoreRenWuRenYuanCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenWuRenYuanCell.h; path = "BOSS(老板端)/StoreTheData（门店数据）/View/StoreRenWuRenYuanCell.h"; sourceTree = SOURCE_ROOT; };
+		18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenWuRenYuanCell.m; path = "BOSS(老板端)/StoreTheData（门店数据）/View/StoreRenWuRenYuanCell.m"; sourceTree = SOURCE_ROOT; };
+		18FF100B208C9B310054D16A /* StoreRiLiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreRiLiView.h; sourceTree = "<group>"; };
+		18FF100C208C9B310054D16A /* StoreRiLiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreRiLiView.m; sourceTree = "<group>"; };
+		18FF100E208CD5320054D16A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
+		18FF100F208CD5320054D16A /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
+		18FF1010208CD5320054D16A /* UIColor+ZXLazy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZXLazy.h"; sourceTree = "<group>"; };
+		18FF1011208CD5330054D16A /* UIColor+ZXLazy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZXLazy.m"; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -2815,27 +2851,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18954D95207C85C90093AB2C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		18954D96207C85C90093AB2C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		18954D97207C85C90093AB2C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		18EE156A2081E51E00312AF7 /* Myjiance（我的检测） */ = {
 			isa = PBXGroup;
 			children = (
@@ -2944,6 +2959,51 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18FF0FED2089DBA60054D16A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18FF100F208CD5320054D16A /* CalenderView.h */,
+				18FF100E208CD5320054D16A /* CalenderView.m */,
+				18FF1010208CD5320054D16A /* UIColor+ZXLazy.h */,
+				18FF1011208CD5330054D16A /* UIColor+ZXLazy.m */,
+				18FF0FF32089DBA60054D16A /* StoreShouRuView.h */,
+				18FF0FEF2089DBA60054D16A /* StoreShouRuView.m */,
+				18FF0FF12089DBA60054D16A /* StorePeiJianView.h */,
+				18FF0FF72089DBA60054D16A /* StorePeiJianView.m */,
+				18FF0FF42089DBA60054D16A /* StoreRenYuanView.h */,
+				18FF0FEE2089DBA60054D16A /* StoreRenYuanView.m */,
+				18FF0FF02089DBA60054D16A /* StoreRenWuView.h */,
+				18FF0FF52089DBA60054D16A /* StoreRenWuView.m */,
+				18FF0FF62089DBA60054D16A /* StoreDataHeaderView.h */,
+				18FF0FF22089DBA60054D16A /* StoreDataHeaderView.m */,
+				18FF1005208C812D0054D16A /* StoreHeaderView.h */,
+				18FF1006208C812D0054D16A /* StoreHeaderView.m */,
+				18FF100B208C9B310054D16A /* StoreRiLiView.h */,
+				18FF100C208C9B310054D16A /* StoreRiLiView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18FF0FF82089DBA60054D16A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18FF0FFF208B36920054D16A /* StoreRenWuCell.h */,
+				18FF1000208B36920054D16A /* StoreRenWuCell.m */,
+				18FF1008208C86D40054D16A /* StoreRenWuRenYuanCell.h */,
+				18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18FF0FF92089DBA70054D16A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18FF1002208B45510054D16A /* StoreTheDataModel.h */,
+				18FF1003208B45510054D16A /* StoreTheDataModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BD99E2E720277F6200027D23 /* LCC 四个流程 */ = {
@@ -6379,9 +6439,9 @@
 		C6E57B9420030F6D00E945F3 /* StoreTheData（门店数据） */ = {
 			isa = PBXGroup;
 			children = (
-				18954D96207C85C90093AB2C /* Cell */,
-				18954D97207C85C90093AB2C /* Model */,
-				18954D95207C85C90093AB2C /* View */,
+				18FF0FF82089DBA60054D16A /* Cell */,
+				18FF0FF92089DBA70054D16A /* Model */,
+				18FF0FED2089DBA60054D16A /* View */,
 				C6E57B9620030F6D00E945F3 /* StoreTheDataViewController.h */,
 				C6E57B9520030F6D00E945F3 /* StoreTheDataViewController.m */,
 			);
@@ -6871,6 +6931,7 @@
 				BDD4D33B20270A1500C433D1 /* NSData+YYAdd.m in Sources */,
 				C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */,
 				BDD4D42020270C3B00C433D1 /* KLCPopup.m in Sources */,
+				18FF1007208C812D0054D16A /* StoreHeaderView.m in Sources */,
 				C625CFE51F53DE1900CC3E73 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BDD4D40620270C3B00C433D1 /* CarInfoColorView.m in Sources */,
 				C6BDA59A208885B600A19406 /* TheSidebarViewController.m in Sources */,
@@ -6937,6 +6998,7 @@
 				C68E91741FA1D9C200975D68 /* ZXQRCodeDecoderMetaData.m in Sources */,
 				C68E90EE1FA1D9C200975D68 /* ZXCharacterSetECI.m in Sources */,
 				C6B5D2951F60051800C968F5 /* NumberKeyboard.m in Sources */,
+				18FF1001208B36920054D16A /* StoreRenWuCell.m in Sources */,
 				C68E91751FA1D9C200975D68 /* ZXQRCodeErrorCorrectionLevel.m in Sources */,
 				C60ECCE42050F08900F94EAF /* TianRuXXViewController.m in Sources */,
 				C61005E020453DA30045968C /* NewMaterialCell.m in Sources */,
@@ -7027,6 +7089,7 @@
 				C68E91061FA1D9C200975D68 /* ZXDataMatrixDataBlock.m in Sources */,
 				18FE49212074A7050005984F /* HaoCaiViewController.m in Sources */,
 				C63CCA2F202741CA00BD7815 /* ModelCarViewController.m in Sources */,
+				18FF1013208CD5330054D16A /* UIColor+ZXLazy.m in Sources */,
 				C68A90441F8B77CA0001BDE0 /* UILabel+ContentSize.m in Sources */,
 				C6AC059C1F7F53850040B32B /* ReachState.m in Sources */,
 				1803C801205A57A000F25BB1 /* LCBottomDianJiView.m in Sources */,
@@ -7162,6 +7225,7 @@
 				C68E90E91FA1D9C200975D68 /* ZXBitArray.m in Sources */,
 				C61743281FF38C3600FB7AD8 /* UIView+MBLayout.m in Sources */,
 				C6134C41202BFAE90099431E /* MaintenanceHistoryVC.m in Sources */,
+				18FF0FFB2089DBA70054D16A /* StoreShouRuView.m in Sources */,
 				C68E90DC1FA1D9C200975D68 /* ZXVINResultParser.m in Sources */,
 				18FD6ECD20635CBC000E192C /* ScanDrivingView.m in Sources */,
 				C625CFE01F53DE1900CC3E73 /* SDWebImagePrefetcher.m in Sources */,
@@ -7176,6 +7240,7 @@
 				C68E912D1FA1D9C200975D68 /* ZXRSSExpandedDecodedInformation.m in Sources */,
 				C609402A2019BD3E00530205 /* MyCollectionViewController.m in Sources */,
 				C68E91481FA1D9C200975D68 /* ZXITFReader.m in Sources */,
+				18FF100A208C86D40054D16A /* StoreRenWuRenYuanCell.m in Sources */,
 				C60A8D92200DB5EA0026111B /* BOSSAboutUsViewController.m in Sources */,
 				C625CFE61F53DE1900CC3E73 /* UIImageView+WebCache.m in Sources */,
 				C6FAF9E01F553E9800FE1935 /* LoadView.m in Sources */,
@@ -7218,6 +7283,7 @@
 				BD99E36720277F6200027D23 /* OrderSectionHeaderView.m in Sources */,
 				C68E917F1FA1D9C200975D68 /* ZXQRCode.m in Sources */,
 				C625CFD91F53DE1900CC3E73 /* SDImageCache.m in Sources */,
+				18FF1004208B45510054D16A /* StoreTheDataModel.m in Sources */,
 				C6AC05A31F7F53850040B32B /* PingFoundation.m in Sources */,
 				C60A8D84200CC0DD0026111B /* ZJSegmentStyle.m in Sources */,
 				C609400F20173E8100530205 /* FoundModel.m in Sources */,
@@ -7302,6 +7368,7 @@
 				C68E91341FA1D9C200975D68 /* ZXRSSExpandedReader.m in Sources */,
 				C68E90CF1FA1D9C200975D68 /* ZXSMSMMSResultParser.m in Sources */,
 				BDD4D32D20270A1500C433D1 /* UIApplication+YYAdd.m in Sources */,
+				18FF100D208C9B310054D16A /* StoreRiLiView.m in Sources */,
 				BDD4D31920270A1500C433D1 /* YYTextInput.m in Sources */,
 				C6BA12B11FBD4765005081A3 /* DCErrorViewController.m in Sources */,
 				BD99E36320277F6200027D23 /* LCMessageListView.m in Sources */,
@@ -7317,6 +7384,7 @@
 				BDD4D38820270C0D00C433D1 /* IQNSArray+Sort.m in Sources */,
 				C60ECD202063CC5800F94EAF /* LearningModel.m in Sources */,
 				C6BA12B31FBD4765005081A3 /* DCURLRouter.m in Sources */,
+				18FF1012208CD5330054D16A /* CalenderView.m in Sources */,
 				BDD4D41920270C3B00C433D1 /* UIButton+ImageTitleStyle.m in Sources */,
 				C609402220183F4200530205 /* FoundDetailHeaderView.m in Sources */,
 				C68E917C1FA1D9C200975D68 /* ZXQRCodeFinderPattern.m in Sources */,
@@ -7347,6 +7415,7 @@
 				BDD4D33520270A1500C433D1 /* UIControl+YYAdd.m in Sources */,
 				C68E90C31FA1D9C200975D68 /* ZXEmailAddressResultParser.m in Sources */,
 				C68E91551FA1D9C200975D68 /* ZXUPCEReader.m in Sources */,
+				18FF0FFC2089DBA70054D16A /* StoreDataHeaderView.m in Sources */,
 				C60ECD192063B5EE00F94EAF /* SGFocusImageFrame.m in Sources */,
 				C68E90FA1FA1D9C200975D68 /* ZXByteMatrix.m in Sources */,
 				C625CFF21F53DE4E00CC3E73 /* WKWebViewViewController.m in Sources */,
@@ -7372,6 +7441,7 @@
 				C68E90DD1FA1D9C200975D68 /* ZXWifiParsedResult.m in Sources */,
 				C68E91081FA1D9C200975D68 /* ZXDataMatrixDecoder.m in Sources */,
 				C60DBA131FB400AC002B0CC4 /* AITProductInformationVC.m in Sources */,
+				18FF0FFE2089DBA70054D16A /* StorePeiJianView.m in Sources */,
 				C625CFC81F53DE1900CC3E73 /* MJRefreshAutoGifFooter.m in Sources */,
 				C60DBA1B1FB5995F002B0CC4 /* SettingAITSerialNumberView.m in Sources */,
 				BDD4D30420270A1500C433D1 /* YYKVStorage.m in Sources */,
@@ -7428,6 +7498,7 @@
 				C6093FF0201384A200530205 /* XJZZViewController.m in Sources */,
 				C6567B162027831B000E42F7 /* NewVehicleVC.m in Sources */,
 				BDD4D34120270A1500C433D1 /* NSString+YYAdd.m in Sources */,
+				18FF0FFA2089DBA70054D16A /* StoreRenYuanView.m in Sources */,
 				C60A8D83200CC0DD0026111B /* ZJCustomLabel.m in Sources */,
 				C68E91171FA1D9C200975D68 /* ZXDataMatrixReader.m in Sources */,
 				BD99E36A20277F6200027D23 /* OrderSectionModel.m in Sources */,
@@ -7498,6 +7569,7 @@
 				BDD4D32620270A1500C433D1 /* YYTextAttribute.m in Sources */,
 				BDD4D40F20270C3B00C433D1 /* CarCheckModel.m in Sources */,
 				C61005CE20453BEA0045968C /* AddXiMeiViewController.m in Sources */,
+				18FF0FFD2089DBA70054D16A /* StoreRenWuView.m in Sources */,
 				C643F3742026B49200A2AA57 /* HPTextViewInternal.m in Sources */,
 				C6AC05A01F7F53850040B32B /* ReachStateWIFI.m in Sources */,
 				BDD4D31320270A1500C433D1 /* NSObject+YYModel.m in Sources */,
