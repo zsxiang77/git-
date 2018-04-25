@@ -88,7 +88,7 @@
             }];
         }
         
-        UIImageView *reimg=[[UIImageView alloc]init];
+        reimg=[[UIImageView alloc]init];
         reimg.image=[UIImage imageNamed:@"remen"];
         [self.contentView addSubview:reimg];
         if(kWindowW>320){
@@ -259,9 +259,46 @@
           [dianzanCount setTextColor:kRGBColor(155, 155, 155)];
     }
     zhujiangUilable.text=[NSString stringWithFormat:@"主讲人:%@",dict.teacher];
-    redioshuUilable.text=[NSString stringWithFormat:@"%@万",dict.playnum];
+    if ([dict.playnum integerValue]>=1000 || [dict.likenum integerValue]>=1000|| [dict.buynum integerValue]>=1000) {
+        reimg.hidden = NO;
+        if(kWindowW>320){
+            [redioshuUilable mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(reimg.mas_right).mas_equalTo(5);
+                make.centerY.mas_equalTo(reimg);
+            }];
+        }else{
+            [redioshuUilable mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(reimg.mas_right).mas_equalTo(5*0.8);
+                make.centerY.mas_equalTo(reimg);
+            }];
+        }
+    }else{
+        reimg.hidden = YES;
+        if(kWindowW>320){
+            [redioshuUilable mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(reimg.mas_right).mas_equalTo(-15);
+                make.centerY.mas_equalTo(reimg);
+            }];
+        }else{
+            [redioshuUilable mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(reimg.mas_right).mas_equalTo(-15);
+                make.centerY.mas_equalTo(reimg);
+            }];
+        }
+    }
+    if ([dict.playnum integerValue]>= 10000) {
+        NSInteger newww = [dict.playnum integerValue]/10000;
+        redioshuUilable.text=[NSString stringWithFormat:@"%ld万",(long)newww];
+    }else{
+        redioshuUilable.text=[NSString stringWithFormat:@"%@",dict.playnum];
+    }
     dianzanCount.text=dict.likenum;
     jiageLable.text=[NSString stringWithFormat:@"¥%@",dict.price];
+    if([dict.is_buy integerValue] ==0 ){
+        jiageLable.hidden =YES;
+    }else{
+        jiageLable.hidden = NO;
+    }
     if(dict.chuanzhiMain==YES){
         shoucangImgView.hidden=NO;
         dict.chuanzhiMain=NO;

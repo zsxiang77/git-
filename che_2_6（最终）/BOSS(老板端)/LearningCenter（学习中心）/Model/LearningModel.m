@@ -23,6 +23,7 @@
     self.user_coll=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"user_coll")];
     self.user_buy=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"user_buy")];
     self.is_new=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"is_new")];
+    self.buynum=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"buynum")];
     self.chuanzhiMain=NO;
     
 }
