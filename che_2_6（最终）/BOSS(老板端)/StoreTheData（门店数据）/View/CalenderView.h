@@ -14,4 +14,5 @@
 }
 @property(nonatomic,strong)UILabel * yearLable;
 @property(nonatomic,strong)void (^rilianHidenBlock)(void);
++ (NSDate *)dateFromString:(NSString *)timeStr format:(NSString *)format;
 @end

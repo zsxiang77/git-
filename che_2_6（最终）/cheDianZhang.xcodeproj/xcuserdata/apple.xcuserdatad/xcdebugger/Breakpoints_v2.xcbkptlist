@@ -17,38 +17,6 @@
             endingLineNumber = "667"
             landmarkName = "-shoujilogInBtChick:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42-[LonInViewController shoujilogInBtChick:]_block_invoke"
-                  moduleName = "cheDianZhang"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/%E8%BD%A6%E5%BA%97%E9%95%BFGIT/simple_MSICarZoo_IOS/che_2_6%EF%BC%88%E6%9C%80%E7%BB%88%EF%BC%89/LogIn(%E7%99%BB%E9%99%86)/LonInViewController.m"
-                  timestampString = "546315767.970178"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "681"
-                  endingLineNumber = "681"
-                  offsetFromSymbolStart = "9680">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42-[LonInViewController shoujilogInBtChick:]_block_invoke"
-                  moduleName = "cheDianZhang"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/%E8%BD%A6%E5%BA%97%E9%95%BFGIT/simple_MSICarZoo_IOS/che_2_6%EF%BC%88%E6%9C%80%E7%BB%88%EF%BC%89/LogIn(%E7%99%BB%E9%99%86)/LonInViewController.m"
-                  timestampString = "546315767.975242"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "681"
-                  endingLineNumber = "681"
-                  offsetFromSymbolStart = "9848">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
