@@ -51,7 +51,7 @@
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.bottom.mas_equalTo(-13);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(94/2);
     }];
     
     self.tianJiaArray = [[NSMutableArray alloc]init];
@@ -117,8 +117,6 @@
                 OrderDetailSubjectsModel *model = weakSelf.tianJiaArray[i];
                 model.shiFouBianJi = NO;
             }
-            
-            
             NSString *operation = @"";
             NSString *operation_name = @"";
             for (int i = 0; i<weakSelf.paiGongArray.count; i++) {
@@ -250,7 +248,7 @@
 -(UITableView *)main_tabelView
 {
     if (!_main_tabelView) {
-        _main_tabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight-48) style:UITableViewStylePlain];
+        _main_tabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight-48-15) style:UITableViewStylePlain];
         _main_tabelView.backgroundColor = [UIColor clearColor];
         _main_tabelView.delegate = self;
         _main_tabelView.dataSource = self;

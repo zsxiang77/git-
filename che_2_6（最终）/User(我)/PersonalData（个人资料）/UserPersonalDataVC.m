@@ -12,7 +12,8 @@
 #import "MJChiBaoZiHeader.h"
 #import "UIImageView+WebCache.h"
 #import "TheCustomerCell.h"
-#import "TheCustomerSearchVC.h"
+
+#import "SATheCustomerSearchVC.h"
 #import "TheCustomerGeRenVC.h"
 
 
@@ -67,7 +68,7 @@
 
 -(void)souSuoBtChick:(UIButton *)sender
 {
-    TheCustomerSearchVC *vc = [[TheCustomerSearchVC alloc]init];
+    SATheCustomerSearchVC *vc = [[SATheCustomerSearchVC alloc]init];
     vc.selelctIndex = m_scrollPageView.selectIndex;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

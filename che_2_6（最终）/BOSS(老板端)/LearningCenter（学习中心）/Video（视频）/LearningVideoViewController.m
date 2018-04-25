@@ -288,6 +288,16 @@
         make.top.mas_equalTo(66);
     }];
     
+    zuoYouScrollView = [[UIScrollView alloc]init];
+    [headView addSubview:zuoYouScrollView];
+    [zuoYouScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(60);
+        make.top.mas_equalTo(jiShuL.mas_bottom);
+        make.left.right.mas_equalTo(0);
+    }];
+    
+    [self zuoYouScrollView:zuoYouScrollView];
+    
     
     UILabel *zuoLine = [[UILabel alloc]init];
     zuoLine.backgroundColor = kZhuTiColor;
@@ -311,6 +321,11 @@
     
     UILabel *boLine = [[UILabel alloc]init];
     boLine.backgroundColor = kLineBgColor;
+    [headView addSubview:boLine];
+    [boLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.mas_equalTo(0);
+        make.height.mas_equalTo(0.5);
+    }];
     
     return headView;
 }
@@ -319,4 +334,66 @@
     [_playerView destroyPlayer];
 }
 
+
+-(void)zuoYouScrollView:(UIScrollView *)scrollView
+{
+    //删除的所有子视图
+    while ([scrollView.subviews lastObject] != nil)
+    {
+        [[scrollView.subviews lastObject] removeFromSuperview];
+    }
+    if (self.mainJiShuArray.count>0) {
+        scrollView.contentSize = CGSizeMake(74*self.mainJiShuArray.count, 60);
+        
+        
+        
+        for (int i = 0; i<self.mainJiShuArray.count; i++) {
+            LearningVideoModel *model2 = self.mainJiShuArray[i];
+            
+            UIButton *zuoYuoBt = [[UIButton alloc]initWithFrame:CGRectMake(10+74*i, (60-38)/2, 64, 38)];
+            if (i+1>9) {
+                [zuoYuoBt setTitle:[NSString stringWithFormat:@"%d",i+1] forState:(UIControlStateNormal)];
+            }else{
+                [zuoYuoBt setTitle:[NSString stringWithFormat:@"0%d",i+1] forState:(UIControlStateNormal)];
+            }
+            
+            zuoYuoBt.titleLabel.font = [UIFont systemFontOfSize:14];
+            zuoYuoBt.tag = i;
+            [zuoYuoBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateSelected)];
+            [zuoYuoBt setTitleColor:kZhuTiColor forState:(UIControlStateNormal)];
+            [zuoYuoBt addTarget:self action:@selector(zuoYuoBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+            [zuoYuoBt.layer setMasksToBounds:YES];
+            [zuoYuoBt.layer setCornerRadius:8];
+            [zuoYuoBt setBackgroundImage:[UIImage imageWithColor:kZhuTiColor] forState:(UIControlStateSelected)];
+            [zuoYuoBt setBackgroundImage:[UIImage imageWithColor:kRGBColor(240, 240, 240)] forState:(UIControlStateNormal)];
+            if (model2.shiFouXuanZhong == YES) {
+                zuoYuoBt.selected = YES;
+            }else{
+                zuoYuoBt.selected = NO;
+            }
+            [scrollView addSubview:zuoYuoBt];
+            
+        }
+    }
+}
+
+-(void)zuoYuoBtChick:(UIButton *)sender
+{
+    if (sender.selected == YES) {
+        return;
+    }
+    for (int i = 0; i<self.mainJiShuArray.count; i++) {
+        LearningVideoModel *model = self.mainJiShuArray[i];
+        model.shiFouXuanZhong = NO;
+    }
+    
+    LearningVideoModel *model2 = self.mainJiShuArray[sender.tag];
+    model2.shiFouXuanZhong = YES;
+    if (self.shiFouShiP == YES) {
+        self.playerView.url = [NSURL URLWithString:model2.video_url];
+    }else{
+        self.playerView.url = [NSURL URLWithString:model2.auto_url];
+    }
+    [self.mainTableView reloadData];
+}
 @end

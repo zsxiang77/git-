@@ -11,6 +11,7 @@
 #import "AccessoriesViewController.h"
 #import "PartsSubsidiaryADDZDYVC.h"
 #import "PartsChangYongCell.h"
+#import "PartsSearChTableViewCell.h"
 @interface PartsSubsidiaryADDViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *main_tableView;
 
@@ -21,56 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTopViewWithTitle:@"添加维修配件" withBackButton:YES];
+
     changArray = [[NSMutableArray alloc]init];
     fenLeiArray = [[NSMutableArray alloc]init];
+     [self buildSearchView];
 
-//    UIView * shangview = [[UIView alloc]init];
-//    shangview.layer.masksToBounds = YES;
-//    shangview.layer.borderWidth = 1;
-//    shangview.layer.cornerRadius = 15;
-//    shangview.backgroundColor = kRGBColor(244, 244, 244);
-//    shangview.layer.borderColor = kRGBColor(217, 217, 217).CGColor;
-//    [self.view addSubview:shangview];
-//    [shangview mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(10);
-//        make.right.mas_equalTo(-10);
-//        make.top.mas_equalTo(kNavBarHeight+6);
-//        make.height.mas_equalTo(63/2);
-//        make.centerX.mas_equalTo(self.view);
-//    }];
-//
-//    UIImageView * imgZuo = [[UIImageView alloc]init];
-//    imgZuo.image = [UIImage imageNamed:@"search_blue"];
-//    imgZuo.contentMode = UIViewContentModeScaleAspectFit;
-//    [shangview addSubview:imgZuo];
-//    [imgZuo mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(7);
-//        make.top.mas_equalTo(7);
-//        make.bottom.mas_equalTo(-7);
-//        make.height.width.mas_equalTo(15);
-//    }];
-//    self.searchText = [[UITextField alloc]init];
-//    self.searchText.placeholder = @"输入项目名称";
-//    [shangview addSubview:self.searchText];
-//    self.searchText.font = [UIFont systemFontOfSize:12];
-//    [self.searchText mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(imgZuo.mas_right).mas_equalTo(5);
-//        make.right.mas_equalTo(-30);
-//        make.centerY.mas_equalTo(imgZuo);
-//    }];
-//
-//    UIImageView * imgYou = [[UIImageView alloc]init];
-//    imgYou.image = [UIImage imageNamed:@"search_blue"];
-//    imgYou.contentMode = UIViewContentModeScaleAspectFit;
-//    [shangview addSubview:imgYou];
-//    [imgYou mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.mas_equalTo(-7);
-//        make.height.width.mas_equalTo(15);
-//        make.centerY.mas_equalTo(self.searchText);
-//    }];
-//
-
-    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, kWindowW, kWindowH-kNavBarHeight) style:UITableViewStylePlain];
+    self.main_tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+63/2+10, kWindowW, kWindowH-kNavBarHeight-63/2-10) style:UITableViewStylePlain];
     [self.main_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     self.main_tableView.delegate = self;
     self.main_tableView.dataSource = self;
@@ -152,36 +109,57 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    if(tableView == self.main_tableView){
+        return 2;
+    }else{
+         return 1;
+    }
+  
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return changArray.count;
+    if(tableView ==self.main_tableView){
+        if (section == 0) {
+            return changArray.count;
+        }else{
+            return fenLeiArray.count;
+        }
     }else{
-        return fenLeiArray.count;
+        return self.searchArray.count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        static NSString *identiter = @"identiter";
-        PartsChangYongCell *cell = [tableView dequeueReusableCellWithIdentifier:identiter];
-        if (cell == nil) {
-            cell = [[PartsChangYongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identiter];
+    if(tableView ==self.main_tableView){
+        if (indexPath.section == 0) {
+            static NSString *identiter = @"identiter";
+            PartsChangYongCell *cell = [tableView dequeueReusableCellWithIdentifier:identiter];
+            if (cell == nil) {
+                cell = [[PartsChangYongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identiter];
+            }
+            NSDictionary *dict = changArray[indexPath.row];
+            [cell refelesePeiJianWithModel:dict];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            return cell;
+        }else{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+            NSDictionary *dict = fenLeiArray[indexPath.row];
+            cell.textLabel.text = KISDictionaryHaveKey(dict, @"classname");
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            return cell;
         }
-        
-        NSDictionary *dict = changArray[indexPath.row];
-        [cell refelesePeiJianWithModel:dict];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        NSDictionary *dict = fenLeiArray[indexPath.row];
-        cell.textLabel.text = KISDictionaryHaveKey(dict, @"classname");
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        static NSString *identiter = @"identiter";
+        PartsSearChTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identiter];
+        if (cell == nil) {
+            cell = [[PartsSearChTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identiter];
+        }
+        NSDictionary *dict = self.searchArray[indexPath.row];
+        
+        [cell refelesePeiJianWithModel:dict];
+        //cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }
 }
@@ -189,65 +167,101 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == 1) {
-        PartsSubsidiaryADDErViewController *vc = [[PartsSubsidiaryADDErViewController alloc]init];
-        vc.suerViewController = self.suerViewController;
-        vc.chuanRumodel = fenLeiArray[indexPath.row];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.section == 0) {
-        AccessoriesViewController *vc = (AccessoriesViewController *)self.suerViewController;
-        NSDictionary *dict = changArray[indexPath.row];
-        if ([KISDictionaryHaveKey(dict, @"count") integerValue]<=0) {
-            [self showMessageWindowWithTitle:@"无库存" point:self.view.center delay:0.5];
-            return;
+        if (indexPath.section == 1) {
+            PartsSubsidiaryADDErViewController *vc = [[PartsSubsidiaryADDErViewController alloc]init];
+            vc.suerViewController = self.suerViewController;
+            vc.chuanRumodel = fenLeiArray[indexPath.row];
+            [self.navigationController pushViewController:vc animated:YES];
         }
-        OrderDetailPartsModel *model = [[OrderDetailPartsModel alloc]init];
-        [model setdataWithDict:dict];
-        model.parts_num = @"1";
-        [vc.tianJiaArray addObject:model];
-        [vc.main_tabelView  reloadData];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        if (indexPath.section == 0) {
+            AccessoriesViewController *vc = (AccessoriesViewController *)self.suerViewController;
+            NSDictionary *dict = changArray[indexPath.row];
+            if ([KISDictionaryHaveKey(dict, @"count") integerValue]<=0) {
+                [self showMessageWindowWithTitle:@"无库存" point:self.view.center delay:0.5];
+                return;
+            }
+            OrderDetailPartsModel *model = [[OrderDetailPartsModel alloc]init];
+            [model setdataWithDict:dict];
+            model.parts_num = @"1";
+            [vc.tianJiaArray addObject:model];
+            [vc.main_tabelView  reloadData];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+  
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerV = [[UIView alloc]init];
-    headerV.backgroundColor = kRGBColor(240, 240, 240);
-    UILabel *la = [[UILabel alloc]init];
-    la.font = [UIFont systemFontOfSize:14];
-    la.textColor = [UIColor grayColor];
-    [headerV addSubview:la];
-    [la mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.top.bottom.mas_equalTo(0);
-    }];
-    if (section == 0) {
-        la.text = @"常用";
+    if(tableView == self.main_tableView){
+        UIView *headerV = [[UIView alloc]init];
+        headerV.backgroundColor = kRGBColor(240, 240, 240);
+        UILabel *la = [[UILabel alloc]init];
+        la.font = [UIFont systemFontOfSize:14];
+        la.textColor = [UIColor grayColor];
+        [headerV addSubview:la];
+        [la mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(10);
+            make.top.bottom.mas_equalTo(0);
+        }];
+        if (section == 0) {
+            la.text = @"常用";
+        }else{
+            la.text = @"分类";
+        }
+        return headerV;
     }else{
-        la.text = @"分类";
+        UIView *headerV = [[UIView alloc]init];
+        UILabel *seaLabel = [[UILabel alloc]init];
+        seaLabel.font = [UIFont systemFontOfSize:14];
+        seaLabel.textColor = kRGBColor(51, 51, 51);
+        seaLabel.text = @"搜索结果";
+        [headerV addSubview:seaLabel];
+        [seaLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(10);
+            make.centerY.mas_equalTo(headerV);
+        }];
+         return headerV;
     }
-    
-    return headerV;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 35;
+    if(tableView == self.main_tableView){
+        return 35;
+    }else{
+    return 40;
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 65;
+    if(tableView == self.main_tableView){
+        if (indexPath.section == 0) {
+            return 65;
+        }else{
+            
+            return 45;
+        }
     }else{
-    
-        return 45;
+            return 65;
     }
 }
 //搜索
-
-
+-(UITableView *)seachTableView
+{
+    if (!_seachTableView) {
+        self.searchArray = [[NSMutableArray alloc]init];
+        _seachTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+63/2+10, kWindowW, kWindowH-(kNavBarHeight+(63/2+10))) style:(UITableViewStylePlain)];
+        _seachTableView.backgroundColor = [UIColor whiteColor];
+        _seachTableView.delegate = self;
+        _seachTableView.dataSource = self;
+        _seachTableView.hidden = YES;
+        _seachTableView.bounces =NO;
+        _seachTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:_seachTableView];
+        [self.view bringSubviewToFront:_seachTableView];
+    }
+    return _seachTableView;
+}
 
 @end

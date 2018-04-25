@@ -14,6 +14,9 @@
 #import "SettingAITSerialNumberVC.h"
 #import "UIImage+Video.h"
 #import "MyQuartz.h"
+
+
+#define ZHONXINWEIZHI ((kWindowH*704)/(1293+41))
 @interface SuccessfulOrderViewController ()
 
 @end
@@ -106,58 +109,42 @@
     [xiaLableText setTextColor:kRGBColor(74, 74, 74)];
     xiaLableText.text = @"关于AIT检测设备";
     [view addSubview:xiaLableText];
-    if(kWindowW>320){
-        [xiaLableText mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-362/2);
-            make.centerX.mas_equalTo(view);
-        }];
-    }else{
-        [xiaLableText mas_makeConstraints:^(MASConstraintMaker *make) {
-            //  make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(87/2*0.8);
-            make.bottom.mas_equalTo(-362/2*0.8);
-            make.centerX.mas_equalTo(view);
-        }];
-    }
-    
-    
-    UIImageView * xiaoTuBiao = [[UIImageView alloc]init];
-    xiaoTuBiao.image = [UIImage imageNamed:@"jishiTubiao"];
-    [view addSubview:xiaoTuBiao];
-    if(kWindowW>320){
-        [xiaoTuBiao mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(71/2);
-            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(178/2);
-            make.height.mas_equalTo(25/2);
-            make.width.mas_equalTo(25/2);
-        }];
-    }else{
-        [xiaoTuBiao mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(71/2*0.8);
-            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(178/2*0.8);
-            make.height.mas_equalTo(25/2*0.8);
-            make.width.mas_equalTo(25/2*0.8);
-        }];
-        
-    }
-    
+    [xiaLableText mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (kWindowW>320) {
+            make.top.mas_equalTo(ZHONXINWEIZHI+30);
+        }else{
+            make.top.mas_equalTo(ZHONXINWEIZHI+20);
+        }
+        make.centerX.mas_equalTo(view);
+    }];
     
     self.xiatuLable = [[UILabel alloc]init];
     self.xiatuLable.font = [UIFont systemFontOfSize:12];
     [self.xiatuLable setTextColor:kRGBColor(245, 166, 35)];
     self.xiatuLable.numberOfLines=0;
+    self.xiatuLable.textAlignment = NSTextAlignmentCenter;
     self.xiatuLable.text = @"该设备可使用AIT设备，请插入设备进行检测";
     [view addSubview:self.xiatuLable];
-    if(kWindowW>320){
-        [self.xiatuLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(xiaoTuBiao.mas_right).mas_equalTo(3);
-            make.centerY.mas_equalTo(xiaoTuBiao);
-        }];
-    }else{
-        [self.xiatuLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(xiaoTuBiao.mas_right).mas_equalTo(3*0.8);
-            make.centerY.mas_equalTo(xiaoTuBiao);
-        }];
-    }
+    [self.xiatuLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(xiaLableText.mas_bottom).mas_equalTo(15);
+        make.centerX.mas_equalTo(xiaLableText);
+        make.left.mas_greaterThanOrEqualTo(30);
+        make.right.mas_lessThanOrEqualTo(-30);
+    }];
+    
+    
+    UIImageView * xiaoTuBiao = [[UIImageView alloc]init];
+    xiaoTuBiao.image = [UIImage imageNamed:@"jishiTubiao"];
+    [view addSubview:xiaoTuBiao];
+    [xiaoTuBiao mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.xiatuLable);
+        make.right.mas_equalTo(self.xiatuLable.mas_left).mas_equalTo(-3);
+        make.height.mas_equalTo(25/2);
+        make.width.mas_equalTo(25/2);
+    }];
+    
+    
+    
     
     
     UILabel * buyLablezuoShan = [[UILabel alloc]init];
@@ -166,19 +153,19 @@
     buyLablezuoShan.font = [UIFont systemFontOfSize:12];
     buyLablezuoShan.numberOfLines=0;
     [view addSubview:buyLablezuoShan];
-    if(kWindowW>320){
-        [buyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(19);
-            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(274/2);
+    [buyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        if (kWindowW<=320) {
+            make.width.mas_equalTo(342/2-30);
+            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(274/2-20);
+        }else{
             make.width.mas_equalTo(342/2);
-        }];
-    }else{
-        [buyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(19*0.8);
-            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(274/2*0.8);
-            make.width.mas_equalTo(342/2*0.8);
-        }];
-    }
+            make.top.mas_equalTo(fanHuiBt.mas_bottom).mas_equalTo(274/2);
+        }
+        make.left.mas_equalTo(19);
+        
+        
+    }];
     
     
     UIView * topView = [[UIView alloc]init];
@@ -186,83 +173,44 @@
     [topView.layer setBorderWidth:0.5];
     [topView.layer setBorderColor:UIColorFromRGBA(0x858488, 1.0).CGColor];
     [view addSubview:topView];
-    if(kWindowW>320){
-        [topView.layer setCornerRadius:83/4];
-        [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(buyLablezuoShan);
-            make.width.mas_equalTo(246/2);
-            make.right.mas_equalTo(-39/2);
-            make.height.mas_equalTo(83/2);
-        }];
-    }else{
-        [topView.layer setCornerRadius:83/4*0.8];
-        [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(buyLablezuoShan);
-            make.width.mas_equalTo(246/2*0.8);
-            make.right.mas_equalTo(-39/2*0.8);
-            make.height.mas_equalTo(83/2*0.8);
-        }];
-    }
+    [topView.layer setCornerRadius:83/4];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(buyLablezuoShan);
+        make.width.mas_equalTo(246/2);
+        make.right.mas_equalTo(-39/2);
+        make.height.mas_equalTo(83/2);
+    }];
     
     UILabel * topLable = [[UILabel alloc]init];
     topLable.text = @"购买AIT产品";
     [topLable setTextColor:UIColorFromRGBA(0xf5a723, 1.0)];
     [topView addSubview:topLable];
-    if(kWindowW>320){
-        topLable.font=[UIFont systemFontOfSize:12];
-        [topLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(7.5);
-            make.centerY.mas_equalTo(topView);
-        }];
-    }else{
-        topLable.font=[UIFont systemFontOfSize:12*0.8];
-        [topLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(7.5*0.8);
-            make.centerY.mas_equalTo(topView);
-        }];
-    }
+    topLable.font=[UIFont systemFontOfSize:12];
+    [topLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(7.5);
+        make.centerY.mas_equalTo(topView);
+    }];
     
     
     UIImageView * topImg = [[UIImageView alloc]init];
     topImg.image = [UIImage imageNamed:@"AIT_buy"];
     topImg.contentMode = UIViewContentModeScaleAspectFit;
     [topView addSubview:topImg];
-    if(kWindowW>320){
-        [topImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5);
-            make.height.mas_equalTo(28);
-            make.width.mas_equalTo(28);
-            make.centerY.mas_equalTo(topLable);
-        }];
-    }else{
-        [topImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5*0.8);
-            make.height.mas_equalTo(28*0.8);
-            make.width.mas_equalTo(28*0.8);
-            make.centerY.mas_equalTo(topLable);
-        }];
-    }
+    [topImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5);
+        make.height.mas_equalTo(28);
+        make.width.mas_equalTo(28);
+        make.centerY.mas_equalTo(topLable);
+    }];
     
     
     UIButton *buyAitBt = [[UIButton alloc]init];
     buyAitBt.titleLabel.font = [UIFont systemFontOfSize:12];
     [buyAitBt addTarget:self action:@selector(buyAitBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [topView addSubview:buyAitBt];
-    if(kWindowW>320){
-        [buyAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(buyLablezuoShan);
-            make.width.mas_equalTo(246/2);
-            make.right.mas_equalTo(-39/2);
-            make.height.mas_equalTo(83/2);
-        }];
-    }else{
-        [buyAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(buyLablezuoShan);
-            make.width.mas_equalTo(246/2*0.8);
-            make.right.mas_equalTo(-39/2*0.8);
-            make.height.mas_equalTo(83/2*0.8);
-        }];
-    }
+    [buyAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
     
     UILabel * NobuyLablezuoShan = [[UILabel alloc]init];
@@ -271,19 +219,18 @@
     NobuyLablezuoShan.font = [UIFont systemFontOfSize:12];
     NobuyLablezuoShan.numberOfLines=0;
     [view addSubview:NobuyLablezuoShan];
-    if(kWindowW>320){
-        [NobuyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(19);
-            make.bottom.mas_equalTo(-63/2);
+    [NobuyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(19);
+        if (kWindowW<=320) {
+            make.top.mas_equalTo(topView.mas_bottom).mas_equalTo(10);
+            make.width.mas_equalTo(342/2-30);
+        }else{
+            make.top.mas_equalTo(topView.mas_bottom).mas_equalTo(50);
             make.width.mas_equalTo(342/2);
-        }];
-    }else{
-        [NobuyLablezuoShan mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(19*0.8);
-            make.bottom.mas_equalTo(-63/2*0.8);
-            make.width.mas_equalTo(342/2*0.8);
-        }];
-    }
+        }
+        
+        
+    }];
     
     
     UIView * bomView = [[UIView alloc]init];
@@ -291,82 +238,43 @@
     [bomView.layer setBorderWidth:0.5];
     [bomView.layer setBorderColor:UIColorFromRGBA(0x858488, 1.0).CGColor];
     [view addSubview:bomView];
-    if(kWindowW>320){
-        [bomView.layer setCornerRadius:83/4];
-        [bomView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(NobuyLablezuoShan);
-            make.width.mas_equalTo(246/2);
-            make.right.mas_equalTo(-39/2);
-            make.height.mas_equalTo(83/2);
-        }];
-    }else{
-        [bomView.layer setCornerRadius:83/4*0.8];
-        [bomView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(NobuyLablezuoShan);
-            make.width.mas_equalTo(246/2*0.8);
-            make.right.mas_equalTo(-39/2*0.8);
-            make.height.mas_equalTo(83/2*0.8);
-        }];
-    }
+    [bomView.layer setCornerRadius:83/4];
+    [bomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(NobuyLablezuoShan);
+        make.width.mas_equalTo(246/2);
+        make.right.mas_equalTo(-39/2);
+        make.height.mas_equalTo(83/2);
+    }];
     
     UILabel * bomLable = [[UILabel alloc]init];
     bomLable.text = @"设置序列号";
     [bomLable setTextColor:UIColorFromRGBA(0x4A90E2, 1.0)];
     [bomView addSubview:bomLable];
-    if(kWindowW>320){
-        bomLable.font=[UIFont systemFontOfSize:12];
-        [bomLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(7.5);
-            make.centerY.mas_equalTo(bomView);
-        }];
-    }else{
-        bomLable.font=[UIFont systemFontOfSize:12*0.8];
-        [bomLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(7.5*0.8);
-            make.centerY.mas_equalTo(bomView);
-        }];
-    }
+    bomLable.font=[UIFont systemFontOfSize:12];
+    [bomLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(7.5);
+        make.centerY.mas_equalTo(bomView);
+    }];
     
     
     UIImageView * bomImg = [[UIImageView alloc]init];
     bomImg.image = [UIImage imageNamed:@"AIT_set"];
     bomImg.contentMode = UIViewContentModeScaleAspectFit;
     [bomView addSubview:bomImg];
-    if(kWindowW>320){
-        [bomImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5);
-            make.height.mas_equalTo(28);
-            make.width.mas_equalTo(28);
-            make.centerY.mas_equalTo(bomLable);
-        }];
-    }else{
-        [bomImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5*0.8);
-            make.height.mas_equalTo(28*0.8);
-            make.width.mas_equalTo(28*0.8);
-            make.centerY.mas_equalTo(bomLable);
-        }];
-    }
+    [bomImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(topLable.mas_right).mas_equalTo(4.5);
+        make.height.mas_equalTo(28);
+        make.width.mas_equalTo(28);
+        make.centerY.mas_equalTo(bomLable);
+    }];
     
     
     UIButton *settingAitBt = [[UIButton alloc]init];
     [settingAitBt addTarget:self action:@selector(settingAitBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [view addSubview:settingAitBt];
-    if(kWindowW>320){
-        [settingAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(NobuyLablezuoShan);
-            make.width.mas_equalTo(246/2);
-            make.right.mas_equalTo(-39/2);
-            make.height.mas_equalTo(83/2);
-        }];
-    }else{
-        [settingAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(NobuyLablezuoShan);
-            make.width.mas_equalTo(246/2*0.8);
-            make.right.mas_equalTo(-39/2*0.8);
-            make.height.mas_equalTo(83/2*0.8);
-        }];
-    }
+    [bomView addSubview:settingAitBt];
+    [settingAitBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
     
     
@@ -414,6 +322,7 @@
 }
 -(void)setYeMianYangShiWith:(BOOL)sender
 {
+//    self.xiatuLable.text = @"该车型可使用AIT设备，请插入设备进行检测";
     if (sender == YES) {
         self.xiatuLable.text = @"该车型可使用AIT设备，请插入设备进行检测";
     }else{

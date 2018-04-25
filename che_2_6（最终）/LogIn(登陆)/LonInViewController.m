@@ -53,6 +53,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     
     [super viewWillAppear:animated];
+    //还原为竖屏
+    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+    [[UserInfo shareInstance] cleanUserInfor];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
 }
 
 - (void)viewWillDisappear:(BOOL)animated

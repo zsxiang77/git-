@@ -20,9 +20,12 @@
 #import "MMExampleDrawerVisualStateManager.h"
 #import "ScanViewController.h"
 #import "TheWorkbenchViewController.h"
-#import "UserViewController.h"
 #import "LonInViewController.h"
 #import "UserPersonalDataVC.h"
+
+
+#import "TheSidebarViewController.h"
+
 // iOS10 及以上需导入 UserNotifications.framework
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 #import <UserNotifications/UserNotifications.h>
@@ -48,7 +51,6 @@
 
 @property(nonatomic,strong)ScanViewController *scanViewController;
 @property(nonatomic,strong)TheWorkbenchViewController *theWorkbenchViewController;
-@property(nonatomic,strong)UserViewController *userViewController;
 @property(nonatomic,strong)UserPersonalDataVC *sixViewController;
 //老板端
 @property(nonatomic,strong)FoundViewController *foundViewController;

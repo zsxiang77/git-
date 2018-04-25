@@ -15,15 +15,15 @@
 
 #define KAgentId @"iOStest" //渠道号
 
-#define HOST_URLHTML @"https://i.chedianzhang.com"/**审核*/
+//#define HOST_URLHTML @"https://i.chedianzhang.com"/**审核*/
 //#define HOST_URLHTML @"http://s.icarzoo.com"/**内测*/
-//#define HOST_URLHTML @"https://s.chedianzhang.com"/**开发*/
+#define HOST_URLHTML @"https://s.chedianzhang.com"/**开发*/
 //#define HOST_URLHTML @"http://inflexion.icarzoo.com"/**测试*/
 //#define HOST_URLHTML @"http://beta.icarzoo.com"/**生产*/
 
-#define HOST_URL @"https://i.chedianzhang.com/api/"/**审核*/
+//#define HOST_URL @"https://i.chedianzhang.com/api/"/**审核*/
 //#define HOST_URL @"http://s.icarzoo.com/api/"/**内测*/
-//#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
+#define HOST_URL @"https://s.chedianzhang.com/api/"/**开发*/
 //#define HOST_URL @"http://inflexion.icarzoo.com/api/"/**测试*/
 //#define HOST_URL @"http://beta.icarzoo.com/api/"/**生产*/
 
@@ -82,7 +82,7 @@ alpha:alphaValue]//16进制颜色转换
 boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
 attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;//计算字符宽高
 
-#define DEBUG_MODE//Debug模式 发布前注释掉
+//#define DEBUG_MODE//Debug模式 发布前注释掉
 
 #ifdef DEBUG_MODE
 #define NPrintLog(FORMAT, ...) printf("%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);

@@ -19,6 +19,7 @@
     UILabel*dianzanCount;
     UILabel*jiageLable;
     UIImageView *shoucangImgView;
+    UIImageView *reimg;
 }
 @property (nonatomic, strong) void (^changePartst)(LearningModel *model,NSIndexPath*index);
 @property(nonatomic,strong)LearningModel *zhuModel;

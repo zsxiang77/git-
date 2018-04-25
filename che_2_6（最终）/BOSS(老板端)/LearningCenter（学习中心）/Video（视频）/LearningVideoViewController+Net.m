@@ -20,19 +20,19 @@
         [weakSelf showConnectFailView:NO mySEL:nil inView:weakSelf.view startY:0];
         NSDictionary *adData = kParseData(responseObject);/*dataDic[@"data"];*/
         NSArray *adDataArray = KISDictionaryHaveKey(adData, @"list");
+        NSString *v_idStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(adData, @"v_id")];
         if([adData isKindOfClass:[NSDictionary class]]){
             [weakSelf.mainJiShuArray removeAllObjects];
             for (int i = 0; i<adDataArray.count; i++) {
                 LearningVideoModel *model = [[LearningVideoModel alloc]init];
                 [model setDatashuJu:adDataArray[i]];
+                if ([v_idStr isEqualToString:model.video_id]) {
+                    model.shiFouXuanZhong = YES;
+                    weakSelf.playerView.url = [NSURL URLWithString:model.video_url];
+                }
+                
                 [weakSelf.mainJiShuArray addObject:model];
             }
-        }
-        //视频地址
-        if (weakSelf.mainJiShuArray.count>0) {
-            LearningVideoModel *model = weakSelf.mainJiShuArray[0];
-            model.shiFouXuanZhong = YES;
-            weakSelf.playerView.url = [NSURL URLWithString:model.video_url];
         }
         
         [weakSelf qingQiuLuoListBoData];

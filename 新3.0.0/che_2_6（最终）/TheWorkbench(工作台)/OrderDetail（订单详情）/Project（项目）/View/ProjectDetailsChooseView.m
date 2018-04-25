@@ -22,18 +22,18 @@
         [xuanView.layer setCornerRadius:3];
         [self addSubview:xuanView];
         [xuanView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(20);
-            make.right.mas_equalTo(-20);
-            make.top.mas_equalTo(100);
-            make.bottom.mas_equalTo(-50);
+            make.left.mas_equalTo(100);
+            make.right.mas_equalTo(0);
+            make.top.mas_equalTo(0);
+            make.bottom.mas_equalTo(0);
         }];
         
         UILabel *la = [[UILabel alloc]init];
         la.text = @"项目分类";
         [xuanView addSubview:la];
         [la mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(xuanView);
-            make.top.mas_equalTo(0);
+            make.left.mas_equalTo(20);
+            make.top.mas_equalTo(100);
             make.height.mas_equalTo(40);
         }];
         
@@ -41,11 +41,11 @@
         [self.main_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
         self.main_tableView.delegate = self;
         self.main_tableView.dataSource = self;
-        self.main_tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
+        //self.main_tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
         [xuanView addSubview:self.main_tableView];
         [self.main_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.left.right.mas_equalTo(0);
-            make.top.mas_equalTo(40);
+            make.top.mas_equalTo(150);
         }];
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
@@ -86,7 +86,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 55;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

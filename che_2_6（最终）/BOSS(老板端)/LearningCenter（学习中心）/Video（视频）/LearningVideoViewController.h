@@ -13,6 +13,9 @@
 #import "LearningZuoCeShiViewController.h"
 
 @interface LearningVideoViewController : BOSSBaseViewController
+{
+    UIScrollView *zuoYouScrollView;
+}
 
 /**CLplayer*/
 @property (nonatomic,strong) CLPlayerView *playerView;
@@ -24,6 +27,8 @@
 @property(nonatomic,strong)NSMutableArray *mainListArray;
 
 @property(nonatomic,strong)UITableView *mainTableView;
+
+//@property(nonatomic,strong)NSString    * 
 
 @end
 

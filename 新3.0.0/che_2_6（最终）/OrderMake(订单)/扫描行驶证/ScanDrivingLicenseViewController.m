@@ -347,9 +347,10 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
             ((ScanDrivingLicenseVinCell *)cell).titleLb.text = @"*车辆识别代码：";
             ((ScanDrivingLicenseVinCell *)cell).titleLb.textColor = [UIColor colorWithHexString:@"ff383d"];
             ((ScanDrivingLicenseVinCell *)cell).textField.text = _model.model.carvin;
-            ((ScanDrivingLicenseVinCell *)cell).textField.maximumTextLength = 17;
+            ((ScanDrivingLicenseVinCell *)cell).textField.maximumTextLength = 18;
             ((ScanDrivingLicenseVinCell *)cell).textField.delegate = self;
             self.vINTextField = ((ScanDrivingLicenseVinCell *)cell).textField;
+            self.vINTextField.returnKeyType = UIReturnKeyDone;
             ((ScanDrivingLicenseVinCell *)cell).textField.keyboardType = UIKeyboardTypeASCIICapable;
             ((ScanDrivingLicenseVinCell *)cell).isHiddenLine = NO;
             ((ScanDrivingLicenseVinCell *)cell).textFieldTextChangeBlock = ^(NSString *text) {
@@ -503,6 +504,7 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 /// 确定
 - (void)clickCommitButton:(UIButton *)btn
 {
+    _model.model.carvin = self.vINTextField.text;
     [self.view endEditing:YES];
     if (_model.model.carvin.length > 17) {
         [self showTipViewWithMessage:@"车牌识别代码（VIN）超过17位\n请重新输入"];
@@ -660,6 +662,18 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 {
     
     if (textField == self.vINTextField) {
+        
+        if ([string isEqualToString:@"\n"]) {
+            [self.vINTextField resignFirstResponder];
+            return NO;
+        }else{
+            if (string.length>0) {
+                if (self.vINTextField.text.length == 17) {
+                    [self.vINTextField resignFirstResponder];
+                    return NO;
+                }
+            }
+        }
         if (string.length == 0 ){
             self.model.model.carvin = self.vINTextField.text;
             return YES;

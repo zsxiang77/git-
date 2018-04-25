@@ -12,10 +12,10 @@
 
 -(void)postfind_article_detail
 {
-
+    
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:self.chuanZhiModel.articleid forKey:@"articleid"];
-
+    
     kWeakSelf(weakSelf)
     [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/find/find_article_detail" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
@@ -24,7 +24,7 @@
         weakSelf.mainTableView.tableHeaderView = weakSelf.headerView;
         
     } failure:^(id error) {
-
+        
     }];
 }
 
@@ -92,6 +92,9 @@
         [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/find/do_replay_comment" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             NSInteger codel = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
             if (codel == 200) {
+                weakSelf.faBuTextField.text = @"";
+                [weakSelf.faBuTextField  resignFirstResponder];
+                [weakSelf showMessageWindowWithTitle:@"发布成功" point:weakSelf.view.center delay:1];
                 [weakSelf postpingLunLIst:YES];
             }else{
                 [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
@@ -111,6 +114,9 @@
         [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/find/do_article_comment" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
             NSInteger codel = [KISDictionaryHaveKey(responseObject, @"code") integerValue];
             if (codel == 200) {
+                weakSelf.faBuTextField.text = @"";
+                [weakSelf.faBuTextField  resignFirstResponder];
+                [weakSelf showMessageWindowWithTitle:@"发布成功" point:weakSelf.view.center delay:1];
                 [weakSelf postpingLunLIst:YES];
             }else{
                 [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(responseObject, @"msg") buttonTitle:@"确定"];
@@ -136,10 +142,10 @@
     if (shaiXuanQieHuan == YES) {
         [mDict setObject:@"1" forKey:@"type"];
     }else{
-       [mDict setObject:@"2" forKey:@"type"];
+        [mDict setObject:@"2" forKey:@"type"];
     }
     [mDict setObject:self.chuanZhiModel.articleid forKey:@"articleid"];
- 
+    
     [self.mainTableView.mj_footer endRefreshing];
     
     
@@ -175,3 +181,4 @@
 }
 
 @end
+

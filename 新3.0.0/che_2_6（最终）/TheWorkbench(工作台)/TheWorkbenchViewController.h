@@ -18,6 +18,7 @@
 #import "DuplexTableView.h"
 #import "SegmentButtonsView.h"
 #import "OrderDetailShaiXuanView.h"
+#import "TheWorkbenchSearchViewController.h"
 
 @interface TheWorkbenchViewController : BaseViewController<UITextFieldDelegate,UIGestureRecognizerDelegate>
 {
@@ -28,12 +29,6 @@
     NSInteger      page[11];
     
     NSInteger      diJiYeIndex;
-    
-    
-    
-    UIView               *m_searchView;//搜索窗口
-    UIView               *m_searchShadowView;//搜索的阴影背景
-    UITextField          *m_searchTextField;
     
     
     UIButton             *myListButton;
@@ -59,12 +54,9 @@
 
 @property(nonatomic, retain)UIView* searchGrayBg;
 @property(nonatomic, retain)UIImageView* searchImageView;
-@property(nonatomic, retain)UITextField* searchText;//搜索内容
-@property(nonatomic,strong)UIButton *searchOKbt;
-@property(nonatomic,strong)UIButton *searchClearBt;
-@property(nonatomic,strong)NSMutableArray *seachArray;
-@property(nonatomic,strong)UITableView *seachTableView;
-@property(nonatomic,assign)NSInteger   searchIndex;
+@property(nonatomic, retain)UIButton* searchButton;
+
+
 
 @property(nonatomic,strong)OrderDetailShaiXuanView *orderDetailShaiXuanView;//筛选View
 
@@ -85,7 +77,6 @@
 
 -(void)rREQUEST_METHODNetwork;
 -(void)postrequest_methodDataWithIndex:(NSInteger )index withShuaXin:(BOOL)shuaX;
--(void)postSearchrequest_methodDatawithShuaXin:(BOOL)shuaX;
 @end
 
 

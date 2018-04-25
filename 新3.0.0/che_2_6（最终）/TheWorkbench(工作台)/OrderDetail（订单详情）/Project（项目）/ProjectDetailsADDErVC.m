@@ -32,7 +32,6 @@
     la.textColor = [UIColor grayColor];
     [self.view addSubview:la];
     
-    
     self.mainArrary = [[NSMutableArray alloc]init];
     [self huoQuFengLeiDataWithShuaX:YES];
     
@@ -45,11 +44,10 @@
     UIButton *queDingBt = [[UIButton alloc]init];
     [queDingBt.layer setMasksToBounds:YES];//设置按钮的圆角半径不会被遮挡
     [queDingBt.layer setCornerRadius:3];
-    queDingBt.backgroundColor = kZhuTiColor;
+     queDingBt.backgroundColor = kZhuTiColor;
     [queDingBt setTitle:@"确定" forState:(UIControlStateNormal)];
     [queDingBt addTarget:self action:@selector(queDingBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
     [queDingBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    
     [self.view addSubview:queDingBt];
     [queDingBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
@@ -77,11 +75,9 @@
 -(void)queDingBtChick:(UIButton *)sender
 {
     OrderDetailProjectVC *vc = (OrderDetailProjectVC *)self.suerViewController;
-    
     for (int i = 0; i<self.mainArrary.count; i++) {
         NSMutableDictionary *dict = self.mainArrary[i];
         NSDictionary *duct2 = KISDictionaryHaveKey(dict, @"data");
-        
         
         if ([KISDictionaryHaveKey(dict, @"xuanZhong") isEqualToString:@"1"]) {
             if ([KISDictionaryHaveKey(duct2, @"have_next") integerValue] == 1) {
@@ -93,7 +89,6 @@
                     model2.reality_fee = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(duct3, @"fee")];
                     [vc.tianJiaArray addObject:model2];
                 }
-                
             }else
             {
                 OrderDetailSubjectsModel *model2 = [[OrderDetailSubjectsModel alloc]init];
@@ -103,7 +98,6 @@
             }
         }
     }
-
     [vc.main_tabelView  reloadData];
     [self.navigationController popToViewController:vc animated:YES];
 }
@@ -113,13 +107,10 @@
     [self huoQuFengLeiDataWithShuaX:YES];
 }
 
-
-
 -(void)huoQuFengLeiDataWithShuaX:(BOOL)shuaXin{
     if (shuaXin == YES) {
         self.page = 0;
     }
-    
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:self.mainClass forKey:@"class"];
     [mDict setObject:[NSString stringWithFormat:@"%ld",(long)self.page] forKey:@"page"];
@@ -148,8 +139,6 @@
                 [weakSelf huoQuFengLeiDataWithShuaX:NO];
             }];
         }
-        
-        
         
         for (int i = 0; i<arrary.count; i++) {
             NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
@@ -183,13 +172,11 @@
     NSDictionary *model = KISDictionaryHaveKey(dict, @"data");
     
     cell.model = model;
-    
     if ([KISDictionaryHaveKey(dict, @"xuanZhong") isEqualToString:@"0"]) {
         cell.zuoImageView.image = DJImageNamed(@"cell_noselect");
     }else{
         cell.zuoImageView.image = DJImageNamed(@"cell_select");
     }
-    
     if ([KISDictionaryHaveKey(model, @"have_next") integerValue] == 1) {
         cell.mainLabel.text = [NSString stringWithFormat:@"%@(共%@个小项目)",KISDictionaryHaveKey(model, @"name"),KISDictionaryHaveKey(model, @"next_num")];
         cell.sanJiBt.hidden = NO;
@@ -197,7 +184,6 @@
         cell.tiaoZhanSanJiBlock = ^(NSDictionary *dict) {
             [weakSelf huoQuSanChangYongWithDict:dict withShiFouTiaoZhuan:YES withXiuGaiDict:nil];
         };
-        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     }else
@@ -220,7 +206,6 @@
         if ([KISDictionaryHaveKey(model, @"have_next") integerValue] == 1) {
             [self huoQuSanChangYongWithDict:model withShiFouTiaoZhuan:NO withXiuGaiDict:dict];
         }
-        
     }else{
         [dict setObject:@"0" forKey:@"xuanZhong"];
     }
@@ -232,19 +217,16 @@
     [mDict setObject:KISDictionaryHaveKey(dict, @"subject_id") forKey:@"subject_id"];
     [mDict setObject:@"1" forKey:@"page"];
     [mDict setObject:KISDictionaryHaveKey(dict, @"next_num") forKey:@"pagesize"];
-    
     kWeakSelf(weakSelf)
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/get_package_subjects" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
         if (![dataDic isKindOfClass:[NSDictionary class]]) {
             return;
         }
-        
         NSArray *array = KISDictionaryHaveKey(dataDic, @"list");
         if (![array isKindOfClass:[NSArray class]]) {
             return;
         }
-        
         if (tiaoZhan == YES) {
             ProjectDetailsADDSanVC *vc = [[ProjectDetailsADDSanVC alloc]init];
             vc.chuZhiModel = dict;

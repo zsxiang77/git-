@@ -40,7 +40,7 @@
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.bottom.mas_equalTo(-13);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(94/2);
     }];
     
     UIButton *tianJianBt = [[UIButton alloc]init];

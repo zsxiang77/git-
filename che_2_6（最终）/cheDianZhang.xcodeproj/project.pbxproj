@@ -244,7 +244,6 @@
 		BDEFA3C520293EFD0094A158 /* NSString+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEFA3C320293EFC0094A158 /* NSString+QMUI.m */; };
 		BDEFA3CE20293F2A0094A158 /* QMUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEFA3CB20293F2A0094A158 /* QMUIHelper.m */; };
 		BDEFA3CF20293F2A0094A158 /* QMUIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEFA3CD20293F2A0094A158 /* QMUIConfiguration.m */; };
-		C600B58E1F7221A700DD84E3 /* UserPersonalDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C600B58D1F7221A700DD84E3 /* UserPersonalDataVC.m */; };
 		C60214D81FDAA0160059F21F /* TheWorkbenchViewController+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = C60214D71FDAA0160059F21F /* TheWorkbenchViewController+Search.m */; };
 		C60214DB1FDAAA510059F21F /* TheWorkbenchXiMeiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60214DA1FDAAA510059F21F /* TheWorkbenchXiMeiCell.m */; };
 		C60214DE1FDAAA630059F21F /* TheWorkbenchWeiXiuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60214DD1FDAAA630059F21F /* TheWorkbenchWeiXiuCell.m */; };
@@ -563,8 +562,6 @@
 		C643F3C72027275B00A2AA57 /* IDCardOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C643F3C32027275A00A2AA57 /* IDCardOverView.m */; };
 		C643F3C82027275B00A2AA57 /* IDCardCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C643F3C62027275A00A2AA57 /* IDCardCameraViewController.mm */; };
 		C643F3CB2027291200A2AA57 /* TheNewWorkOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C643F3C92027291200A2AA57 /* TheNewWorkOrderModel.m */; };
-		C64C99391FDE2190007E3E71 /* ChangeModileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C99381FDE2190007E3E71 /* ChangeModileViewController.m */; };
-		C64C99431FDE372D007E3E71 /* LogInBaseBt.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C99411FDE372D007E3E71 /* LogInBaseBt.m */; };
 		C64C99471FDFCB16007E3E71 /* AITBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C99461FDFCB16007E3E71 /* AITBuyView.m */; };
 		C64C994A1FDFD35D007E3E71 /* AITIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C99491FDFD35D007E3E71 /* AITIntroduceViewController.m */; };
 		C64C994D1FDFD852007E3E71 /* HomeRightBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C64C994C1FDFD852007E3E71 /* HomeRightBottomButton.m */; };
@@ -572,7 +569,6 @@
 		C66D15FF2089950700155A2D /* UserMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D15FE2089950700155A2D /* UserMeViewController.m */; };
 		C66D160220899E7200155A2D /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D160120899E7200155A2D /* ChangeNameViewController.m */; };
 		C66D16052089C68D00155A2D /* ChangeMildelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D16042089C68D00155A2D /* ChangeMildelViewController.m */; };
-		C66D16082089C89600155A2D /* UserPersonalDataVC+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */; };
 		C685B7D3200891BD00786F7C /* BOSSLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C685B7D2200891BD00786F7C /* BOSSLoadView.m */; };
 		C685B7D62008935100786F7C /* BOSSNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C685B7D52008935100786F7C /* BOSSNetWorkManager.m */; };
 		C68A902C1F8B21920001BDE0 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C68A902B1F8B21920001BDE0 /* PerformanceViewController.m */; };
@@ -583,7 +579,6 @@
 		C68A90411F8B77CA0001BDE0 /* EBMute.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C68A90371F8B77C90001BDE0 /* EBMute.mp3 */; };
 		C68A90431F8B77CA0001BDE0 /* UIImage+ColorAtPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C68A903B1F8B77C90001BDE0 /* UIImage+ColorAtPoint.m */; };
 		C68A90441F8B77CA0001BDE0 /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C68A903D1F8B77C90001BDE0 /* UILabel+ContentSize.m */; };
-		C68E8EC41FA0735400975D68 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C68E8EC31FA0735400975D68 /* AboutUsViewController.m */; };
 		C68E90AF1FA1D9C200975D68 /* ZXAztecDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C68E8EC91FA1D9C100975D68 /* ZXAztecDecoder.m */; };
 		C68E90B01FA1D9C200975D68 /* ZXAztecDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C68E8ECC1FA1D9C100975D68 /* ZXAztecDetector.m */; };
 		C68E90B11FA1D9C200975D68 /* ZXAztecBinaryShiftToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C68E8ECF1FA1D9C100975D68 /* ZXAztecBinaryShiftToken.m */; };
@@ -863,6 +858,12 @@
 		C6BDA59A208885B600A19406 /* TheSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA599208885B600A19406 /* TheSidebarViewController.m */; };
 		C6C4641220207D8500908A28 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4641120207D8500908A28 /* OrderDetailViewController.m */; };
 		C6C46415202086C300908A28 /* OrderDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C46414202086C300908A28 /* OrderDetailHeaderView.m */; };
+		C6C4A9C4208EDAB000FA8338 /* SATheCustomerSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BA208EDAB000FA8338 /* SATheCustomerSearchVC.m */; };
+		C6C4A9C5208EDAB000FA8338 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BB208EDAB000FA8338 /* AboutUsViewController.m */; };
+		C6C4A9C6208EDAB000FA8338 /* UserPersonalDataVC+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BC208EDAB000FA8338 /* UserPersonalDataVC+Net.m */; };
+		C6C4A9C7208EDAB000FA8338 /* UserPersonalDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BD208EDAB000FA8338 /* UserPersonalDataVC.m */; };
+		C6C4A9C8208EDAB000FA8338 /* LogInBaseBt.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BF208EDAB000FA8338 /* LogInBaseBt.m */; };
+		C6C4A9C9208EDAB000FA8338 /* ChangeModileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9C1208EDAB000FA8338 /* ChangeModileViewController.m */; };
 		C6D1C4922089916500619C15 /* SetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1C4912089916500619C15 /* SetingViewController.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
 		C6DC6B672005F20100F06DB7 /* BossUserMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B662005F20100F06DB7 /* BossUserMeViewController.m */; };
@@ -1421,8 +1422,6 @@
 		BDEFA3CB20293F2A0094A158 /* QMUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIHelper.m; sourceTree = "<group>"; };
 		BDEFA3CC20293F2A0094A158 /* QMUICore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUICore.h; sourceTree = "<group>"; };
 		BDEFA3CD20293F2A0094A158 /* QMUIConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfiguration.m; sourceTree = "<group>"; };
-		C600B58C1F7221A700DD84E3 /* UserPersonalDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPersonalDataVC.h; sourceTree = "<group>"; };
-		C600B58D1F7221A700DD84E3 /* UserPersonalDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPersonalDataVC.m; sourceTree = "<group>"; };
 		C60214D71FDAA0160059F21F /* TheWorkbenchViewController+Search.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TheWorkbenchViewController+Search.m"; sourceTree = "<group>"; };
 		C60214D91FDAAA510059F21F /* TheWorkbenchXiMeiCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchXiMeiCell.h; sourceTree = "<group>"; };
 		C60214DA1FDAAA510059F21F /* TheWorkbenchXiMeiCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheWorkbenchXiMeiCell.m; sourceTree = "<group>"; };
@@ -2055,10 +2054,6 @@
 		C643F3C62027275A00A2AA57 /* IDCardCameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IDCardCameraViewController.mm; sourceTree = "<group>"; };
 		C643F3C92027291200A2AA57 /* TheNewWorkOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheNewWorkOrderModel.m; sourceTree = "<group>"; };
 		C643F3CA2027291200A2AA57 /* TheNewWorkOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheNewWorkOrderModel.h; sourceTree = "<group>"; };
-		C64C99371FDE2190007E3E71 /* ChangeModileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeModileViewController.h; sourceTree = "<group>"; };
-		C64C99381FDE2190007E3E71 /* ChangeModileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeModileViewController.m; sourceTree = "<group>"; };
-		C64C99411FDE372D007E3E71 /* LogInBaseBt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInBaseBt.m; sourceTree = "<group>"; };
-		C64C99421FDE372D007E3E71 /* LogInBaseBt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInBaseBt.h; sourceTree = "<group>"; };
 		C64C99451FDFCB16007E3E71 /* AITBuyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AITBuyView.h; sourceTree = "<group>"; };
 		C64C99461FDFCB16007E3E71 /* AITBuyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AITBuyView.m; sourceTree = "<group>"; };
 		C64C99481FDFD35D007E3E71 /* AITIntroduceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AITIntroduceViewController.h; sourceTree = "<group>"; };
@@ -2073,7 +2068,6 @@
 		C66D160120899E7200155A2D /* ChangeNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
 		C66D16032089C68D00155A2D /* ChangeMildelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeMildelViewController.h; sourceTree = "<group>"; };
 		C66D16042089C68D00155A2D /* ChangeMildelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeMildelViewController.m; sourceTree = "<group>"; };
-		C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UserPersonalDataVC+Net.m"; sourceTree = "<group>"; };
 		C685B7D1200891BD00786F7C /* BOSSLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSLoadView.h; sourceTree = "<group>"; };
 		C685B7D2200891BD00786F7C /* BOSSLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BOSSLoadView.m; sourceTree = "<group>"; };
 		C685B7D42008935100786F7C /* BOSSNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOSSNetWorkManager.h; sourceTree = "<group>"; };
@@ -2094,8 +2088,6 @@
 		C68A903B1F8B77C90001BDE0 /* UIImage+ColorAtPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPoint.m"; sourceTree = "<group>"; };
 		C68A903C1F8B77C90001BDE0 /* UILabel+ContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
 		C68A903D1F8B77C90001BDE0 /* UILabel+ContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
-		C68E8EC21FA0735400975D68 /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
-		C68E8EC31FA0735400975D68 /* AboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		C68E8EC81FA1D9C100975D68 /* ZXAztecDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXAztecDecoder.h; sourceTree = "<group>"; };
 		C68E8EC91FA1D9C100975D68 /* ZXAztecDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXAztecDecoder.m; sourceTree = "<group>"; };
 		C68E8ECB1FA1D9C100975D68 /* ZXAztecDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXAztecDetector.h; sourceTree = "<group>"; };
@@ -2668,6 +2660,17 @@
 		C6C4641120207D8500908A28 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		C6C46413202086C300908A28 /* OrderDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailHeaderView.h; sourceTree = "<group>"; };
 		C6C46414202086C300908A28 /* OrderDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailHeaderView.m; sourceTree = "<group>"; };
+		C6C4A9B8208EDAB000FA8338 /* UserPersonalDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPersonalDataVC.h; sourceTree = "<group>"; };
+		C6C4A9B9208EDAB000FA8338 /* ChangeModileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeModileViewController.h; sourceTree = "<group>"; };
+		C6C4A9BA208EDAB000FA8338 /* SATheCustomerSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SATheCustomerSearchVC.m; sourceTree = "<group>"; };
+		C6C4A9BB208EDAB000FA8338 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		C6C4A9BC208EDAB000FA8338 /* UserPersonalDataVC+Net.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserPersonalDataVC+Net.m"; sourceTree = "<group>"; };
+		C6C4A9BD208EDAB000FA8338 /* UserPersonalDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPersonalDataVC.m; sourceTree = "<group>"; };
+		C6C4A9BF208EDAB000FA8338 /* LogInBaseBt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInBaseBt.m; sourceTree = "<group>"; };
+		C6C4A9C0208EDAB000FA8338 /* LogInBaseBt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInBaseBt.h; sourceTree = "<group>"; };
+		C6C4A9C1208EDAB000FA8338 /* ChangeModileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeModileViewController.m; sourceTree = "<group>"; };
+		C6C4A9C2208EDAB000FA8338 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		C6C4A9C3208EDAB000FA8338 /* SATheCustomerSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SATheCustomerSearchVC.h; sourceTree = "<group>"; };
 		C6D1C4902089916500619C15 /* SetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetingViewController.h; sourceTree = "<group>"; };
 		C6D1C4912089916500619C15 /* SetingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetingViewController.m; sourceTree = "<group>"; };
 		C6D2C6C31F7A260300752430 /* TheWorkbenchNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchNewCell.h; sourceTree = "<group>"; };
@@ -3744,21 +3747,6 @@
 				BDEFA3CD20293F2A0094A158 /* QMUIConfiguration.m */,
 			);
 			path = QMUICore;
-			sourceTree = "<group>";
-		};
-		C600B58B1F72217200DD84E3 /* PersonalData（个人资料） */ = {
-			isa = PBXGroup;
-			children = (
-				C64C99401FDE372D007E3E71 /* Class */,
-				C600B58C1F7221A700DD84E3 /* UserPersonalDataVC.h */,
-				C600B58D1F7221A700DD84E3 /* UserPersonalDataVC.m */,
-				C66D16072089C89600155A2D /* UserPersonalDataVC+Net.m */,
-				C68E8EC21FA0735400975D68 /* AboutUsViewController.h */,
-				C68E8EC31FA0735400975D68 /* AboutUsViewController.m */,
-				C64C99371FDE2190007E3E71 /* ChangeModileViewController.h */,
-				C64C99381FDE2190007E3E71 /* ChangeModileViewController.m */,
-			);
-			path = "PersonalData（个人资料）";
 			sourceTree = "<group>";
 		};
 		C602EF3D1F8F5670008359C8 /* Word文案 */ = {
@@ -4950,9 +4938,9 @@
 		C625CFF91F53E06200CC3E73 /* User(我) */ = {
 			isa = PBXGroup;
 			children = (
+				C6C4A9B7208EDAB000FA8338 /* PersonalData（个人资料） */,
 				C6BDA5972088857B00A19406 /* TheSidebar(侧边栏) */,
 				C68A90291F8B21730001BDE0 /* Performance（绩效） */,
-				C600B58B1F72217200DD84E3 /* PersonalData（个人资料） */,
 			);
 			path = "User(我)";
 			sourceTree = "<group>";
@@ -5257,15 +5245,6 @@
 				C643F3C62027275A00A2AA57 /* IDCardCameraViewController.mm */,
 			);
 			path = "扫描集成";
-			sourceTree = "<group>";
-		};
-		C64C99401FDE372D007E3E71 /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				C64C99411FDE372D007E3E71 /* LogInBaseBt.m */,
-				C64C99421FDE372D007E3E71 /* LogInBaseBt.h */,
-			);
-			path = Class;
 			sourceTree = "<group>";
 		};
 		C64C99441FDFCA74007E3E71 /* View */ = {
@@ -6349,6 +6328,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C6C4A9B7208EDAB000FA8338 /* PersonalData（个人资料） */ = {
+			isa = PBXGroup;
+			children = (
+				C6C4A9B8208EDAB000FA8338 /* UserPersonalDataVC.h */,
+				C6C4A9B9208EDAB000FA8338 /* ChangeModileViewController.h */,
+				C6C4A9BA208EDAB000FA8338 /* SATheCustomerSearchVC.m */,
+				C6C4A9BB208EDAB000FA8338 /* AboutUsViewController.m */,
+				C6C4A9BC208EDAB000FA8338 /* UserPersonalDataVC+Net.m */,
+				C6C4A9BD208EDAB000FA8338 /* UserPersonalDataVC.m */,
+				C6C4A9BE208EDAB000FA8338 /* Class */,
+				C6C4A9C1208EDAB000FA8338 /* ChangeModileViewController.m */,
+				C6C4A9C2208EDAB000FA8338 /* AboutUsViewController.h */,
+				C6C4A9C3208EDAB000FA8338 /* SATheCustomerSearchVC.h */,
+			);
+			path = "PersonalData（个人资料）";
+			sourceTree = "<group>";
+		};
+		C6C4A9BE208EDAB000FA8338 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				C6C4A9BF208EDAB000FA8338 /* LogInBaseBt.m */,
+				C6C4A9C0208EDAB000FA8338 /* LogInBaseBt.h */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		C6D1C493208991B300619C15 /* Seting（设置） */ = {
 			isa = PBXGroup;
 			children = (
@@ -6923,7 +6928,6 @@
 				C63CCA30202741CA00BD7815 /* ModelCarViewController+Net.m in Sources */,
 				C60DBA0B1FB2F03F002B0CC4 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				BDD4D34620270A1500C433D1 /* CALayer+YYAdd.m in Sources */,
-				C66D16082089C89600155A2D /* UserPersonalDataVC+Net.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,
 				C68E91891FA1D9C200975D68 /* ZXMultiFormatReader.m in Sources */,
 				C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */,
@@ -7045,6 +7049,7 @@
 				C68E90D81FA1D9C200975D68 /* ZXURLTOResultParser.m in Sources */,
 				C68E915D1FA1D9C200975D68 /* ZXPDF417CodewordDecoder.m in Sources */,
 				C68E90B91FA1D9C200975D68 /* ZXAztecReader.m in Sources */,
+				C6C4A9C4208EDAB000FA8338 /* SATheCustomerSearchVC.m in Sources */,
 				BDD4D41F20270C3B00C433D1 /* PopTimePickerView.m in Sources */,
 				BDD4D41B20270C3B00C433D1 /* BorderColorButton.m in Sources */,
 				C643F329202467D000A2AA57 /* ProjectDetailsADDZDYVC.m in Sources */,
@@ -7054,7 +7059,6 @@
 				BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */,
 				C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */,
 				BD99E36620277F6200027D23 /* OrderChePaiCell.m in Sources */,
-				C68E8EC41FA0735400975D68 /* AboutUsViewController.m in Sources */,
 				C68E90C71FA1D9C200975D68 /* ZXGeoParsedResult.m in Sources */,
 				C68E91421FA1D9C200975D68 /* ZXCode93Reader.m in Sources */,
 				C6134C63202D832D0099431E /* PartsSubsidiaryADDViewController.m in Sources */,
@@ -7084,8 +7088,8 @@
 				C60A8D95200DF5B80026111B /* BOSSChangeNameViewController.m in Sources */,
 				C61005FE204A76CE0045968C /* BOSSForTochangeMildelViewController.m in Sources */,
 				BDD4D32220270A1500C433D1 /* NSParagraphStyle+YYText.m in Sources */,
+				C6C4A9C5208EDAB000FA8338 /* AboutUsViewController.m in Sources */,
 				C625CFD51F53DE1900CC3E73 /* UIView+MJExtension.m in Sources */,
-				C64C99431FDE372D007E3E71 /* LogInBaseBt.m in Sources */,
 				C68E91061FA1D9C200975D68 /* ZXDataMatrixDataBlock.m in Sources */,
 				18FE49212074A7050005984F /* HaoCaiViewController.m in Sources */,
 				C63CCA2F202741CA00BD7815 /* ModelCarViewController.m in Sources */,
@@ -7179,7 +7183,6 @@
 				C61005C920453BA70045968C /* XiMeiNewOrdersErCell3.m in Sources */,
 				C6E57BA020030F6D00E945F3 /* TheCustomerViewController.m in Sources */,
 				C68E91091FA1D9C200975D68 /* ZXDataMatrixVersion.m in Sources */,
-				C600B58E1F7221A700DD84E3 /* UserPersonalDataVC.m in Sources */,
 				C625CC6D1F53D29600CC3E73 /* ViewController.m in Sources */,
 				BDD4D40420270C3B00C433D1 /* CarInfoTitleView.m in Sources */,
 				C625CFDF1F53DE1900CC3E73 /* SDWebImageManager.m in Sources */,
@@ -7375,6 +7378,7 @@
 				C692D0F81F973C5900FECF74 /* PushMessageCell.m in Sources */,
 				C625CFCB1F53DE1900CC3E73 /* MJRefreshBackGifFooter.m in Sources */,
 				BDD4D31A20270A1500C433D1 /* YYTextLayout.m in Sources */,
+				C6C4A9C9208EDAB000FA8338 /* ChangeModileViewController.m in Sources */,
 				C60A8DA3200F305F0026111B /* TheCustomerModel.m in Sources */,
 				C68E914E1FA1D9C200975D68 /* ZXUPCAReader.m in Sources */,
 				C60214D81FDAA0160059F21F /* TheWorkbenchViewController+Search.m in Sources */,
@@ -7394,6 +7398,7 @@
 				C643F37D2026CB6B00A2AA57 /* AccessoryEquipmentModel.m in Sources */,
 				BD99E36B20277F6200027D23 /* TopDanXuanCollectionView.m in Sources */,
 				C66D160220899E7200155A2D /* ChangeNameViewController.m in Sources */,
+				C6C4A9C6208EDAB000FA8338 /* UserPersonalDataVC+Net.m in Sources */,
 				C6E57BB82003172400E945F3 /* MMDrawerController.m in Sources */,
 				C61743291FF38C3600FB7AD8 /* UIColor+Extend.m in Sources */,
 				C6134C18202AA72E0099431E /* OrderDetailAccessoriesCell1.m in Sources */,
@@ -7579,6 +7584,7 @@
 				C643F3B62027019700A2AA57 /* AITDetectView.m in Sources */,
 				C6134C27202AD6E20099431E /* WritePersonalPersonInfoView.m in Sources */,
 				C625CFC41F53DE1900CC3E73 /* MJRefreshBackFooter.m in Sources */,
+				C6C4A9C7208EDAB000FA8338 /* UserPersonalDataVC.m in Sources */,
 				C68E91461FA1D9C200975D68 /* ZXEAN8Writer.m in Sources */,
 				C609401E2018391E00530205 /* FoundDetailViewController+Net.m in Sources */,
 				C68E911E1FA1D9C200975D68 /* ZXGenericMultipleBarcodeReader.m in Sources */,
@@ -7596,6 +7602,7 @@
 				C68E90AF1FA1D9C200975D68 /* ZXAztecDecoder.m in Sources */,
 				C625CFBB1F53DE1900CC3E73 /* MJProperty.m in Sources */,
 				BD99E34920277F6200027D23 /* SubmitXiMieViewController.m in Sources */,
+				C6C4A9C8208EDAB000FA8338 /* LogInBaseBt.m in Sources */,
 				C625CFB91F53DE1900CC3E73 /* MJExtensionConst.m in Sources */,
 				C68E91811FA1D9C200975D68 /* ZXQRCodeEncoder.m in Sources */,
 				C68E90C91FA1D9C200975D68 /* ZXISBNParsedResult.m in Sources */,
@@ -7645,7 +7652,6 @@
 				C643F3B52027019700A2AA57 /* STLoopProgressView+BaseConfiguration.m in Sources */,
 				C6D1C4922089916500619C15 /* SetingViewController.m in Sources */,
 				C68E91111FA1D9C200975D68 /* ZXDataMatrixErrorCorrection.m in Sources */,
-				C64C99391FDE2190007E3E71 /* ChangeModileViewController.m in Sources */,
 				C625CFA81F53DE1900CC3E73 /* AFHTTPSessionManager.m in Sources */,
 				BDD4D33F20270A1500C433D1 /* NSObject+YYAddForARC.m in Sources */,
 				C625CFCA1F53DE1900CC3E73 /* MJRefreshAutoStateFooter.m in Sources */,

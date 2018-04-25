@@ -51,7 +51,7 @@
     [queDingBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(94/2);
         make.bottom.mas_equalTo(-15);
     }];
 }

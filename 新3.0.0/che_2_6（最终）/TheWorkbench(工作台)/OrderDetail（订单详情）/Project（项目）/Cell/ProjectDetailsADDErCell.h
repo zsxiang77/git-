@@ -12,6 +12,11 @@
 
 @property(nonatomic,strong)UIImageView *zuoImageView;
 @property(nonatomic,strong)UILabel *mainLabel;
+@property(nonatomic,strong)UILabel *gongshiLable;
+@property(nonatomic,strong)UILabel *gongshifeiLable;
+
+
+
 
 @property(nonatomic,strong)UIButton *sanJiBt;
 @property(nonatomic,strong)NSDictionary *model;

@@ -10,6 +10,8 @@
 
 @interface LearningModel : NSObject
 
+
+@property(nonatomic,strong)NSString      *buynum;
 @property(nonatomic,strong)NSString      *url;
 @property(nonatomic,strong)NSString      *title;
 @property(nonatomic,strong)NSString      *video_id;

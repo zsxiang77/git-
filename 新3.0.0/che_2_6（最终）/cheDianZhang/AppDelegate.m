@@ -29,6 +29,8 @@
 
 #import "IQKeyboardManager.h"
 
+#import "FoundDetailViewController.h"
+
 #define kAPPKEY  @"bde8e49072393efd31ff1028"
 static NSString *channel = @"APP Store";
 static BOOL isProduction = FALSE;
@@ -74,43 +76,39 @@ static BOOL isProduction = FALSE;
         LonInViewController* viewController = [[LonInViewController alloc] init];
         self.window.rootViewController = viewController;
     }
-   
+    
 }
 
 - (void)buildMainWindowView
 {
-
+    
     _scanViewController = [[ScanViewController alloc] init];
     UINavigationController* third_nc = [[UINavigationController alloc] initWithRootViewController:_scanViewController];
     third_nc.navigationBar.hidden = YES;
-
+    
     _theWorkbenchViewController = [[TheWorkbenchViewController alloc] init];
     UINavigationController* first_nc = [[UINavigationController alloc] initWithRootViewController:_theWorkbenchViewController];
     first_nc.navigationBar.hidden = YES;
-
-
-    //TODO: 测试
-    _userViewController = [[UserViewController alloc] init];
-    UINavigationController* fourth_nc = [[UINavigationController alloc] initWithRootViewController:_userViewController];
-    fourth_nc.navigationBar.hidden = YES;
+    
+    
     
     //TODO: 测试
     _sixViewController = [[UserPersonalDataVC alloc] init];
     UINavigationController* six_nc = [[UINavigationController alloc] initWithRootViewController:_sixViewController];
     six_nc.navigationBar.hidden = YES;
-
-
-
+    
+    
+    
     //UIImageRenderingModeAlwaysOriginal 使用系统色（灰色）
     UITabBarItem* item01 = [[UITabBarItem alloc] initWithTitle:@"工作台" image:[DJImageNamed(@"tablebar_GZT") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_GZT_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     UITabBarItem* item03 = [[UITabBarItem alloc] initWithTitle:@"开单" image:[DJImageNamed(@"tablebar_SYS") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_SYS_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    UITabBarItem* item04 = [[UITabBarItem alloc] initWithTitle:@"我的" image:[DJImageNamed(@"tablebar_ME") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_ME_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-
+    UITabBarItem* item04 = [[UITabBarItem alloc] initWithTitle:@"客户" image:[DJImageNamed(@"tablebar_ME") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[DJImageNamed(@"tablebar_ME_select") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
     first_nc.tabBarItem = item01;
     third_nc.tabBarItem = item03;
     //TODO: 测试
     six_nc.tabBarItem = item04;
-
+    
     //TODO: 测试
     _tabBarController = [[MainTabBarViewController alloc] init];
     [_tabBarController setViewControllers:@[first_nc/*, second_nc*/, third_nc,six_nc]];
@@ -123,10 +121,30 @@ static BOOL isProduction = FALSE;
     _tabBarController.tabBar.layer.shadowRadius = 2;//阴影半径，默认3
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13],} forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13],} forState:UIControlStateSelected];
-
+    
     [_tabBarController.tabBar setShadowImage:[[UIImage alloc]init]];
     [_tabBarController.tabBar setBackgroundImage:[[UIImage alloc]init]];
-    self.window.rootViewController = self.tabBarController;
+    //    self.window.rootViewController = self.tabBarController;
+    
+    TheSidebarViewController * leftVC = [[TheSidebarViewController alloc]init];
+    
+    self.drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.tabBarController leftDrawerViewController:leftVC];
+    [self.drawerController setShowsShadow:YES];
+    [self.drawerController setMaximumLeftDrawerWidth:kWindowW-100];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+        
+        MMDrawerControllerDrawerVisualStateBlock block;
+        block = [[MMExampleDrawerVisualStateManager sharedManager]
+                 drawerVisualStateBlockForDrawerSide:drawerSide];
+        if(block){
+            block(drawerController, drawerSide, percentVisible);
+        }
+    }];//侧滑效果
+    
+    [self.window setRootViewController:self.drawerController];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
 }
@@ -145,9 +163,9 @@ static BOOL isProduction = FALSE;
     [m_homeRightBottomXiaoXi addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.window addSubview:m_homeRightBottomXiaoXi];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [m_homeRightBottomXiaoXi animationWithRotation0_10];
-//    });
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //        [m_homeRightBottomXiaoXi animationWithRotation0_10];
+    //    });
 }
 
 -(void)rightButtonClick:(UIButton *)sender
@@ -183,32 +201,32 @@ static BOOL isProduction = FALSE;
         m_homeRightBottomXiaoXi.hidden = YES;
     }
     [self.window bringSubviewToFront:m_homeRightBottomXiaoXi];
-
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self.window makeKeyAndVisible];
-
+    
     [self configureKeyboardManager];
-
+    
     [self umengTrack];
-
+    
     [NetWorkManager getReviewVersion];
-
+    
     if ([UserInfo shareInstance].isLogined == NO) {
         LonInViewController* viewController = [[LonInViewController alloc] init];
         self.window.rootViewController = viewController;
     }else
     {
-//        [self buildMainWindowView];
+        //        [self buildMainWindowView];
         [self startFirstPage];
     }
-
-
-
+    
+    
+    
     [self buildHomeRightBottom];
     
-//    [self BOSSbuildMainWindowView];
+    //    [self BOSSbuildMainWindowView];
     
     
     //获取自定义消息
@@ -220,8 +238,8 @@ static BOOL isProduction = FALSE;
         [defaultCenter postNotificationName:kTiaoZhuanVinYe object:@"1"];
     }
     
-
-
+    
+    
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -232,12 +250,12 @@ static BOOL isProduction = FALSE;
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-
+    
     // Optional
     // 获取IDFA
     // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-
+    
     // Required
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
@@ -246,15 +264,15 @@ static BOOL isProduction = FALSE;
                           channel:channel
                  apsForProduction:isProduction
             advertisingIdentifier:advertisingId];
-
+    
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-
+    
     [JPUSHService registerForRemoteNotificationTypes:(
-
+                                                      
                                                       UIUserNotificationTypeBadge |
-
+                                                      
                                                       UIUserNotificationTypeSound |
-
+                                                      
                                                       UIUserNotificationTypeAlert) categories:nil];
     
     return YES;
@@ -290,7 +308,7 @@ static BOOL isProduction = FALSE;
         [[NSUserDefaults standardUserDefaults] setObject:self.xiaoXiVINDict forKey:kTiaoZhuanVinYe];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-//        [self.window removeFromSuperview];
+        //        [self.window removeFromSuperview];
         
         UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
         if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO ||[[self currentViewController] isKindOfClass:[BOSSBaseViewController class]]) {
@@ -321,7 +339,7 @@ static BOOL isProduction = FALSE;
             [navigationController pushViewController:vc animated:YES];
         };
         [self.window addSubview:self.aitAlert];
-//        [self.window bringSubviewToFront:alert];
+        //        [self.window bringSubviewToFront:alert];
         [self.aitAlert daoJiShi];
     }
     
@@ -344,20 +362,20 @@ static BOOL isProduction = FALSE;
     alert2.hidden = YES;
     [self.window removeFromSuperview];
     alert2 = nil;
-
+    
     UINavigationController *navigationController = [DCURLNavgation sharedDCURLNavgation].currentNavigationViewController;
     if ([[self currentViewController] isKindOfClass:[FillVINCodeViewController class]] ||[UserInfo shareInstance].isLogined == NO) {
         return;
     }
     m_homeRightBottomXiaoXi.hidden = NO;
     self.xiaoXiVINDict = KISDictionaryHaveKey(dict, @"extras");
-
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kTiaoZhuanVinYe];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    
     [[NSUserDefaults standardUserDefaults] setObject:self.xiaoXiVINDict forKey:kTiaoZhuanVinYe];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    
     [defaultCenter postNotificationName:kTiaoZhuanVinYe object:@"1"];
     VINNewAlertView* alert = [[VINNewAlertView alloc]initWithTitleWithmessage:[NSString stringWithFormat:@"VIN:%@未能检测出当前车辆的VIN码，请您手动输入VIN码",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")] cancelButtonTitle:@"取消" otherButtonTitle:@"输入VIN码"];
     alert.tag = 4000;
@@ -367,8 +385,8 @@ static BOOL isProduction = FALSE;
         FillVINCodeViewController *vc = [[FillVINCodeViewController alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.touStr = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(self.xiaoXiVINDict, @"serial_number")];
-
-
+        
+        
         [navigationController pushViewController:vc animated:YES];
     };
     [self.window addSubview:alert];
@@ -430,7 +448,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
-     NPrintLog(@"%@",userInfo);
+    NPrintLog(@"%@",userInfo);
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
@@ -528,9 +546,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     IQKeyboardManager.sharedManager.shouldResignOnTouchOutside = YES;
     /// 需要禁用的控制器
     [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[LonInViewController class]];
+    [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[FoundDetailViewController class]];
 }
 
 
 
 
 @end
+

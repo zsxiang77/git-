@@ -7,11 +7,23 @@
 //
 
 #import "BaseViewController.h"
-#import "AboutUsViewController.h"
+#import "TheCustomerModel.h"
+#import "BJDC_headerTitleView.h"
 
 @interface UserPersonalDataVC : BaseViewController
-@property(nonatomic,strong)UILabel *aITLabel;
-@property(nonatomic,strong)NSDictionary *chiZhiDict;
-@property(nonatomic,strong)UILabel *xiaoXilabel;
+{
+    NSInteger          fenYeIndex;
+    BJDC_headerTitleView          *m_scrollPageView;
+}
 
+@property(nonatomic,strong)NSDictionary *mainDataDict;
+@property(nonatomic,strong)UITableView *mainTableView;
+@property(nonatomic,strong)NSMutableArray  *mainDataArray;
+
+
+@end
+
+
+@interface UserPersonalDataVC (Net)
+-(void)postwork_boardwithShuaXin:(BOOL)shuaX;
 @end

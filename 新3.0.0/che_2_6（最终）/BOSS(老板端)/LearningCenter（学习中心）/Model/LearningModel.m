@@ -10,6 +10,7 @@
 
 @implementation LearningModel
 -(void)setDatashuJu:(NSDictionary *)dic{
+    self.buynum = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"buynum")];
     self.url=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"url")];
     self.title=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"title")];
     self.video_id=[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dic, @"video_id")];

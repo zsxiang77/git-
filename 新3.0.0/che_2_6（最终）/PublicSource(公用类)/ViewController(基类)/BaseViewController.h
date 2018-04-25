@@ -116,3 +116,4 @@ static float kNavBarHeight = 64;
 // 数组转json字符串方法
 -(NSString *)convertToJsonDataWithArray:(NSArray *)array;
 @end
+

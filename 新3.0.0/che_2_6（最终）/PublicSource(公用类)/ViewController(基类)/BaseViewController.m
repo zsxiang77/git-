@@ -13,7 +13,7 @@
 #import "FillVINCodeViewController.h"
 
 @interface BaseViewController ()
-{    
+{
     UILabel* showLabel;//黑底白字 提示文字
     UIView* m_showWindowView;//图片 window
 }
@@ -33,6 +33,9 @@
 {
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:m_mainTopTitle];
+    
+    //还原为竖屏
+    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -45,11 +48,10 @@
 {
     [super viewDidLoad];
     
-    //还原为竖屏
-    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+    
     
     self.view.backgroundColor = UIColorFromRGBA(0XF5F5F5, 1);
-
+    
     self.automaticallyAdjustsScrollViewInsets = NO;//scrollView 20px的差
     // 解决内容超出frame显示
     self.edgesForExtendedLayout = UIRectEdgeNone;               //视图控制器，四条边不指定
@@ -61,6 +63,7 @@
     m_loadView.hidden = YES;
     [UserInfo shareInstance].shiFouBOSS = NO;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -93,8 +96,8 @@
         [m_baseTopView addSubview:backImageView];
         
         UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 44, 44)];
-//        [backButton setBackgroundImage:DJImageNamed(@"") forState:UIControlStateNormal];
-//        backButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        //        [backButton setBackgroundImage:DJImageNamed(@"") forState:UIControlStateNormal];
+        //        backButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         backButton.backgroundColor = [UIColor clearColor];
         [backButton addTarget:self action:@selector(backRootButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [m_baseTopView addSubview:backButton];
@@ -127,8 +130,8 @@
         backImageView.frame = CGRectMake(10, (kNavBarHeight - 27)/2+10,15*0.8,25*0.8);
         [m_baseTopView addSubview:backImageView];
         UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 44, 44)];
-//        backButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//        [backButton setBackgroundImage:DJImageNamed(@"back_btn") forState:UIControlStateNormal];
+        //        backButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        //        [backButton setBackgroundImage:DJImageNamed(@"back_btn") forState:UIControlStateNormal];
         backButton.backgroundColor = [UIColor clearColor];
         [backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [m_baseTopView addSubview:backButton];
@@ -312,7 +315,7 @@
         }];
     }
     else{
-       
+        
     }
 }
 
@@ -459,3 +462,4 @@
     return NO;
 }
 @end
+

@@ -115,8 +115,8 @@
 {
     NSDictionary * userInfo = [notification userInfo];
     NSString *content_type = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(userInfo, @"content_type")];
-
-//    发送课程通知—msg_type：12
+    
+    //    发送课程通知—msg_type：12
     if ([content_type isEqualToString:@"12"]) {
         NSMutableArray *keChengArray = [[NSMutableArray alloc]init];
         if ([[NSUserDefaults standardUserDefaults] objectForKey:kKeChengXiaoXi] != nil) {
@@ -144,9 +144,9 @@
         NSArray *cunarray = keChengArray;
         [[NSUserDefaults standardUserDefaults] setObject:cunarray forKey:kKeChengXiaoXi];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
     }
-//    发送系统通知—msg_type：13
+    //    发送系统通知—msg_type：13
     if ([content_type isEqualToString:@"13"]) {
         NSMutableArray *keChengArray = [[NSMutableArray alloc]init];
         if ([[NSUserDefaults standardUserDefaults] objectForKey:kXiTongTongZhi] != nil) {
@@ -156,7 +156,7 @@
                 [keChengArray addObject:dict];
             }
         }
-
+        
         BOOL shiFouC = NO;
         NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
         for (int i = 0; i<keChengArray.count; i++) {
@@ -167,18 +167,18 @@
         if (shiFouC == NO) {
             [keChengArray addObject:extras];
         }
-
-
+        
+        
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kXiTongTongZhi];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
         NSArray *cunarray = keChengArray;
         [[NSUserDefaults standardUserDefaults] setObject:cunarray forKey:kXiTongTongZhi];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
-
+        
+        
     }
-//    发送点赞—msg_type：14
+    //    发送点赞—msg_type：14
     if ([content_type isEqualToString:@"14"]) {
         NSMutableArray *keChengArray = [[NSMutableArray alloc]init];
         if ([[NSUserDefaults standardUserDefaults] objectForKey:kDianZanTongZhi] != nil) {
@@ -188,7 +188,7 @@
                 [keChengArray addObject:dict];
             }
         }
-
+        
         BOOL shiFouC = NO;
         NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
         for (int i = 0; i<keChengArray.count; i++) {
@@ -199,16 +199,16 @@
         if (shiFouC == NO) {
             [keChengArray addObject:extras];
         }
-
-
+        
+        
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kXiTongTongZhi];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
         [[NSUserDefaults standardUserDefaults] setObject:keChengArray forKey:kXiTongTongZhi];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
     }
-//    发送回复消息—msg_type：14
+    //    发送回复消息—msg_type：14
     NSDictionary *extras = KISDictionaryHaveKey(userInfo, @"extras");
     if ([content_type isEqualToString:@"14"] && [KISDictionaryHaveKey(extras, @"is_praise")boolValue] == NO) {
         NSMutableArray *keChengArray = [[NSMutableArray alloc]init];
@@ -219,7 +219,7 @@
                 [keChengArray addObject:dict];
             }
         }
-
+        
         BOOL shiFouC = NO;
         for (int i = 0; i<keChengArray.count; i++) {
             if ([[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(extras, @"article_id")] isEqualToString:[NSString stringWithFormat:@"%@",KISDictionaryHaveKey(keChengArray[i], @"article_id")]]) {
@@ -229,8 +229,8 @@
         if (shiFouC == NO) {
             [keChengArray addObject:extras];
         }
-
-
+        
+        
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kWoDeXiaoXi];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSArray *cunarray = keChengArray;
@@ -240,3 +240,4 @@
 }
 
 @end
+

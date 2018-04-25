@@ -504,6 +504,7 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
 /// 确定
 - (void)clickCommitButton:(UIButton *)btn
 {
+    _model.model.carvin = self.vINTextField.text;
     [self.view endEditing:YES];
     if (_model.model.carvin.length > 17) {
         [self showTipViewWithMessage:@"车牌识别代码（VIN）超过17位\n请重新输入"];
@@ -518,10 +519,10 @@ static NSString *const ScanDrivingLicenseVinCellIdf = @"ScanDrivingLicenseVinCel
         return;
     }
     
-//    if ([_model.model.car_number isEmptyOrWhitespace]) {
-//        [self showMessageWindowWithTitle:@"请输入车牌号" point:self.view.center delay:1];
-//        return;
-//    }
+    //    if ([_model.model.car_number isEmptyOrWhitespace]) {
+    //        [self showMessageWindowWithTitle:@"请输入车牌号" point:self.view.center delay:1];
+    //        return;
+    //    }
     
     CarInfoViewController *vc = [[CarInfoViewController alloc] init];
     vc.ordercode = _ordercode;
