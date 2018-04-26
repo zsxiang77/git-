@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "StoreRenyuanModel.h"
 @interface StoreRenYuanView : UIView<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *mainTable;
 @property(nonatomic,strong)UILabel * timeDateLable;
 @property(nonatomic,strong)UIView * headerView;
 @property(nonatomic,strong)NSMutableArray * zhuanzhiModel;
 @property(nonatomic,strong)void  (^showRiLiBlock)(void);
-@property(nonatomic,strong)void  (^xuanzhonRowBlock)(NSMutableArray *zhi,NSString* year,NSString*month);
+@property(nonatomic,strong)void  (^xuanzhonRowBlock)(listModel *mode);
 @end

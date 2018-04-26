@@ -7,7 +7,7 @@
 //
 
 #import "StoreTheDataViewController.h"
-
+#import "StoreRenYuanDeileVC.h"
 @interface StoreTheDataViewController ()
 {
     
@@ -103,6 +103,13 @@
         _renyuanView.showRiLiBlock = ^{
             [weakSelf.view bringSubviewToFront:weakSelf.calendar];
             [weakSelf.calendar show];
+        };
+        _renyuanView.xuanzhonRowBlock = ^(listModel *mode) {
+            StoreRenYuanDeileVC *vc = [[StoreRenYuanDeileVC alloc]init];
+            vc.chaunzhiStr = mode;
+            vc.yearStrzhi =  weakSelf.yearStr;
+            vc.monthStrzhi = weakSelf.mouchStr;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         };
         _renyuanView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
         

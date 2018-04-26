@@ -54,6 +54,7 @@
 		18FF1019208F31D20054D16A /* StoreRenyuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1018208F31D20054D16A /* StoreRenyuanModel.m */; };
 		18FF102F209179180054D16A /* StoreYuanXingtuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF102E209179180054D16A /* StoreYuanXingtuView.m */; };
 		18FF10322091AD5E0054D16A /* StoreRenYuanDeileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10312091AD5E0054D16A /* StoreRenYuanDeileVC.m */; };
+		18FF10352091BEA50054D16A /* StoreDetliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10342091BEA50054D16A /* StoreDetliModel.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -1067,6 +1068,8 @@
 		18FF102E209179180054D16A /* StoreYuanXingtuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreYuanXingtuView.m; sourceTree = "<group>"; };
 		18FF10302091AD5E0054D16A /* StoreRenYuanDeileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreRenYuanDeileVC.h; sourceTree = "<group>"; };
 		18FF10312091AD5E0054D16A /* StoreRenYuanDeileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreRenYuanDeileVC.m; sourceTree = "<group>"; };
+		18FF10332091BEA50054D16A /* StoreDetliModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreDetliModel.h; sourceTree = "<group>"; };
+		18FF10342091BEA50054D16A /* StoreDetliModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreDetliModel.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -3082,6 +3085,8 @@
 			children = (
 				18FF1017208F31D20054D16A /* StoreRenyuanModel.h */,
 				18FF1018208F31D20054D16A /* StoreRenyuanModel.m */,
+				18FF10332091BEA50054D16A /* StoreDetliModel.h */,
+				18FF10342091BEA50054D16A /* StoreDetliModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7365,6 +7370,7 @@
 				C625CC6D1F53D29600CC3E73 /* ViewController.m in Sources */,
 				BDD4D40420270C3B00C433D1 /* CarInfoTitleView.m in Sources */,
 				C625CFDF1F53DE1900CC3E73 /* SDWebImageManager.m in Sources */,
+				18FF10352091BEA50054D16A /* StoreDetliModel.m in Sources */,
 				C68E91611FA1D9C200975D68 /* ZXPDF417DetectionResultRowIndicatorColumn.m in Sources */,
 				BDD4D38020270C0D00C433D1 /* IQTextView.m in Sources */,
 				BDD4D40320270C3B00C433D1 /* CarInfoViewController.m in Sources */,
