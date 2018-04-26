@@ -7,26 +7,12 @@
 //
 
 #import "StoreTheDataViewController.h"
-#import "MJRefresh.h"
-#import<WebKit/WebKit.h>
-#import "StoreDataHeaderView.h"
-#import "StoreShouRuView.h"
-#import "StoreRenWuView.h"
-#import "StorePeiJianView.h"
-#import "StoreRenYuanView.h"
-#import "StoreHeaderView.h"
-#import "MJRefresh.h"
-#import "StoreRenyuanModel.h"
+
 @interface StoreTheDataViewController ()
 {
     
-    UILabel * lineLable;
-    CGFloat widths;
 }
-@property(nonatomic,strong) StoreRenWuView * renwuView;  //任务
-@property(nonatomic,strong)  StoreRenYuanView * renyuanView;//人员
-@property(nonatomic,strong) StorePeiJianView * peijianView;//配件
-@property(nonatomic,strong) StoreShouRuView * shouruView; //收入
+
 @end
 
 @implementation StoreTheDataViewController
@@ -53,7 +39,8 @@
     self.renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
     kWeakSelf(weakSelf)
     self.renwuView.headerView.showRiLiBlock = ^{
-        weakSelf.storeViews.hidden= NO;
+        [weakSelf.view bringSubviewToFront:weakSelf.calendar];
+        [weakSelf.calendar show];
     };
     [self.view addSubview:self.renwuView];
     self.shouruView = [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
@@ -62,7 +49,8 @@
      [self.view addSubview:self.peijianView];
     self.renyuanView= [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
     self.renyuanView.showRiLiBlock = ^{
-        weakSelf.storeViews.hidden= NO;
+        [weakSelf.view bringSubviewToFront:weakSelf.calendar];
+        [weakSelf.calendar show];
     };
     self.renyuanView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
     
@@ -96,6 +84,15 @@
         }
     };
        [self getTask_status];
+    
+    
+    
+    //日历
+    HWCalendar *calendar = [[HWCalendar alloc] initWithFrame:CGRectMake(0, kWindowH, kWindowW, kWindowH)];
+    calendar.delegate = self;
+    calendar.showTimePicker = YES;
+    [self.view addSubview:calendar];
+    self.calendar = calendar;
      
 }
 -(StoreTheDataModel *)mainModel
@@ -123,61 +120,15 @@
         
     }];
 }
--(StoreRiLiView *)storeViews
-{
-    if(!_storeViews){
-        _storeViews =[[StoreRiLiView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
-        [self.view addSubview:_storeViews];
-    }
-    return _storeViews;
-}
-//人员数据
--(void)getrenyuan_list:(BOOL)shuaX
-{
-    if (shuaX == YES) {
-        page = 1;
-    }
-    self.yearStr = [NSString stringWithFormat:@"%@",@""];
-    self.mouchStr = [NSString stringWithFormat:@"%@",@""];
-    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    [mDict setObject:@"20" forKey:@"pagesize"];
-    [mDict setObject:[NSString stringWithFormat:@"%ld",page] forKey:@"page"];
-    [mDict setObject:self.yearStr forKey:@"y"];
-    [mDict setObject:self.mouchStr forKey:@"m"];
-    [self.renyuanView.mainTable.mj_header endRefreshing];
-    [self.renyuanView.mainTable.mj_footer endRefreshing];
-    kWeakSelf(weakSelf)
-    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/staff_list" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
-        if (shuaX == YES) {
-            [weakSelf.renyuanView.zhuanzhiModel removeAllObjects];
-        }
-        NSDictionary* dataDic = kParseData(responseObject);
-        
-        
-        NSArray *order_list = KISDictionaryHaveKey(dataDic, @"list");
-        
-        if (order_list.count>=20) {
-            weakSelf.renyuanView.mainTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                page ++;
-                [weakSelf getrenyuan_list:NO];
-            }];
-        }else{
-            weakSelf.renyuanView.mainTable.mj_footer = nil;
-        }
-        
-        for (int i = 0; i<order_list.count; i++) {
-            listModel *model = [[listModel alloc]init];
-            [model setdataDict:order_list[i]];
-            [weakSelf.renyuanView.zhuanzhiModel addObject:model];
-        }
-        [weakSelf.renyuanView.mainTable reloadData];
-    } failure:^(id error) {
-        
-    }];
-}
 //下拉刷新
 -(void)loadNewData0{
     [self getrenyuan_list:YES];
+}
+
+#pragma mark - HWCalendarDelegate
+- (void)calendar:(HWCalendar *)calendar didClickSureButtonWithDate:(NSString *)date
+{
+    
 }
 @end
 

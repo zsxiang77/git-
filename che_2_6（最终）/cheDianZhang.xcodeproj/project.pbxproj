@@ -50,8 +50,6 @@
 		18FF1004208B45510054D16A /* StoreTheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1003208B45510054D16A /* StoreTheDataModel.m */; };
 		18FF1007208C812D0054D16A /* StoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1006208C812D0054D16A /* StoreHeaderView.m */; };
 		18FF100A208C86D40054D16A /* StoreRenWuRenYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */; };
-		18FF100D208C9B310054D16A /* StoreRiLiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF100C208C9B310054D16A /* StoreRiLiView.m */; };
-		18FF1012208CD5330054D16A /* CalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF100E208CD5320054D16A /* CalenderView.m */; };
 		18FF1016208F2FC20054D16A /* StoreRenYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1015208F2FC20054D16A /* StoreRenYuanCell.m */; };
 		18FF1019208F31D20054D16A /* StoreRenyuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1018208F31D20054D16A /* StoreRenyuanModel.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
@@ -865,6 +863,16 @@
 		C6C4A9C7208EDAB000FA8338 /* UserPersonalDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BD208EDAB000FA8338 /* UserPersonalDataVC.m */; };
 		C6C4A9C8208EDAB000FA8338 /* LogInBaseBt.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9BF208EDAB000FA8338 /* LogInBaseBt.m */; };
 		C6C4A9C9208EDAB000FA8338 /* ChangeModileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9C1208EDAB000FA8338 /* ChangeModileViewController.m */; };
+		C6C4A9D62090311100FA8338 /* left@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9CC2090311000FA8338 /* left@3x.png */; };
+		C6C4A9D72090311100FA8338 /* left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9CD2090311000FA8338 /* left@2x.png */; };
+		C6C4A9D82090311100FA8338 /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9CE2090311000FA8338 /* right@2x.png */; };
+		C6C4A9D92090311100FA8338 /* right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9CF2090311000FA8338 /* right@3x.png */; };
+		C6C4A9DA2090311100FA8338 /* bottom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9D02090311000FA8338 /* bottom@3x.png */; };
+		C6C4A9DB2090311100FA8338 /* bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6C4A9D12090311000FA8338 /* bottom@2x.png */; };
+		C6C4A9DC2090311100FA8338 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9D32090311000FA8338 /* HWCalendar.m */; };
+		C6C4A9DD2090311100FA8338 /* HWOptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9D52090311100FA8338 /* HWOptionButton.m */; };
+		C6C4A9E0209031B300FA8338 /* StoreTheDataViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9DF209031B300FA8338 /* StoreTheDataViewController+Net.m */; };
+		C6C4A9E320907A5F00FA8338 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C4A9E220907A5F00FA8338 /* YQNumberSlideView.m */; };
 		C6D1C4922089916500619C15 /* SetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1C4912089916500619C15 /* SetingViewController.m */; };
 		C6D2C6C51F7A260300752430 /* TheWorkbenchNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C6C41F7A260300752430 /* TheWorkbenchNewCell.m */; };
 		C6DC6B672005F20100F06DB7 /* BossUserMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B662005F20100F06DB7 /* BossUserMeViewController.m */; };
@@ -1049,10 +1057,6 @@
 		18FF1006208C812D0054D16A /* StoreHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreHeaderView.m; sourceTree = "<group>"; };
 		18FF1008208C86D40054D16A /* StoreRenWuRenYuanCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenWuRenYuanCell.h; path = "BOSS(老板端)/StoreTheData（门店数据）/Task(任务)/Cell/StoreRenWuRenYuanCell.h"; sourceTree = SOURCE_ROOT; };
 		18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenWuRenYuanCell.m; path = "BOSS(老板端)/StoreTheData（门店数据）/Task(任务)/Cell/StoreRenWuRenYuanCell.m"; sourceTree = SOURCE_ROOT; };
-		18FF100B208C9B310054D16A /* StoreRiLiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreRiLiView.h; sourceTree = "<group>"; };
-		18FF100C208C9B310054D16A /* StoreRiLiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreRiLiView.m; sourceTree = "<group>"; };
-		18FF100E208CD5320054D16A /* CalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderView.m; sourceTree = "<group>"; };
-		18FF100F208CD5320054D16A /* CalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderView.h; sourceTree = "<group>"; };
 		18FF1014208F2FC20054D16A /* StoreRenYuanCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenYuanCell.h; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Cell/StoreRenYuanCell.h"; sourceTree = SOURCE_ROOT; };
 		18FF1015208F2FC20054D16A /* StoreRenYuanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenYuanCell.m; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Cell/StoreRenYuanCell.m"; sourceTree = SOURCE_ROOT; };
 		18FF1017208F31D20054D16A /* StoreRenyuanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenyuanModel.h; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Model/StoreRenyuanModel.h"; sourceTree = SOURCE_ROOT; };
@@ -2674,6 +2678,19 @@
 		C6C4A9C1208EDAB000FA8338 /* ChangeModileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeModileViewController.m; sourceTree = "<group>"; };
 		C6C4A9C2208EDAB000FA8338 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		C6C4A9C3208EDAB000FA8338 /* SATheCustomerSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SATheCustomerSearchVC.h; sourceTree = "<group>"; };
+		C6C4A9CC2090311000FA8338 /* left@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left@3x.png"; sourceTree = "<group>"; };
+		C6C4A9CD2090311000FA8338 /* left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left@2x.png"; sourceTree = "<group>"; };
+		C6C4A9CE2090311000FA8338 /* right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right@2x.png"; sourceTree = "<group>"; };
+		C6C4A9CF2090311000FA8338 /* right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right@3x.png"; sourceTree = "<group>"; };
+		C6C4A9D02090311000FA8338 /* bottom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom@3x.png"; sourceTree = "<group>"; };
+		C6C4A9D12090311000FA8338 /* bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom@2x.png"; sourceTree = "<group>"; };
+		C6C4A9D22090311000FA8338 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
+		C6C4A9D32090311000FA8338 /* HWCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCalendar.m; sourceTree = "<group>"; };
+		C6C4A9D42090311000FA8338 /* HWOptionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWOptionButton.h; sourceTree = "<group>"; };
+		C6C4A9D52090311100FA8338 /* HWOptionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWOptionButton.m; sourceTree = "<group>"; };
+		C6C4A9DF209031B300FA8338 /* StoreTheDataViewController+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StoreTheDataViewController+Net.m"; sourceTree = "<group>"; };
+		C6C4A9E120907A5F00FA8338 /* YQNumberSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNumberSlideView.h; sourceTree = "<group>"; };
+		C6C4A9E220907A5F00FA8338 /* YQNumberSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNumberSlideView.m; sourceTree = "<group>"; };
 		C6D1C4902089916500619C15 /* SetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetingViewController.h; sourceTree = "<group>"; };
 		C6D1C4912089916500619C15 /* SetingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetingViewController.m; sourceTree = "<group>"; };
 		C6D2C6C31F7A260300752430 /* TheWorkbenchNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWorkbenchNewCell.h; sourceTree = "<group>"; };
@@ -2970,14 +2987,10 @@
 		18FF0FED2089DBA60054D16A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18FF100F208CD5320054D16A /* CalenderView.h */,
-				18FF100E208CD5320054D16A /* CalenderView.m */,
 				18FF0FF62089DBA60054D16A /* StoreDataHeaderView.h */,
 				18FF0FF22089DBA60054D16A /* StoreDataHeaderView.m */,
 				18FF1005208C812D0054D16A /* StoreHeaderView.h */,
 				18FF1006208C812D0054D16A /* StoreHeaderView.m */,
-				18FF100B208C9B310054D16A /* StoreRiLiView.h */,
-				18FF100C208C9B310054D16A /* StoreRiLiView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6469,6 +6482,33 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		C6C4A9CA209030CA00FA8338 /* TheCalendar(日历) */ = {
+			isa = PBXGroup;
+			children = (
+				C6C4A9E120907A5F00FA8338 /* YQNumberSlideView.h */,
+				C6C4A9E220907A5F00FA8338 /* YQNumberSlideView.m */,
+				C6C4A9CB2090311000FA8338 /* Image */,
+				C6C4A9D22090311000FA8338 /* HWCalendar.h */,
+				C6C4A9D32090311000FA8338 /* HWCalendar.m */,
+				C6C4A9D42090311000FA8338 /* HWOptionButton.h */,
+				C6C4A9D52090311100FA8338 /* HWOptionButton.m */,
+			);
+			path = "TheCalendar(日历)";
+			sourceTree = "<group>";
+		};
+		C6C4A9CB2090311000FA8338 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				C6C4A9CC2090311000FA8338 /* left@3x.png */,
+				C6C4A9CD2090311000FA8338 /* left@2x.png */,
+				C6C4A9CE2090311000FA8338 /* right@2x.png */,
+				C6C4A9CF2090311000FA8338 /* right@3x.png */,
+				C6C4A9D02090311000FA8338 /* bottom@3x.png */,
+				C6C4A9D12090311000FA8338 /* bottom@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		C6D1C493208991B300619C15 /* Seting（设置） */ = {
 			isa = PBXGroup;
 			children = (
@@ -6559,6 +6599,7 @@
 		C6E57B9420030F6D00E945F3 /* StoreTheData（门店数据） */ = {
 			isa = PBXGroup;
 			children = (
+				C6C4A9CA209030CA00FA8338 /* TheCalendar(日历) */,
 				18FF101A209027A70054D16A /* accessories(配件) */,
 				18FF101D209027A80054D16A /* personnel(人员) */,
 				18FF101C209027A80054D16A /* profits(利润) */,
@@ -6566,6 +6607,7 @@
 				18FF0FED2089DBA60054D16A /* View */,
 				C6E57B9620030F6D00E945F3 /* StoreTheDataViewController.h */,
 				C6E57B9520030F6D00E945F3 /* StoreTheDataViewController.m */,
+				C6C4A9DF209031B300FA8338 /* StoreTheDataViewController+Net.m */,
 			);
 			path = "StoreTheData（门店数据）";
 			sourceTree = "<group>";
@@ -6915,6 +6957,7 @@
 				C6F35FFC1F66461A00F2A870 /* SidIssueAuthority.txt in Resources */,
 				C6F35FFD1F66461A00F2A870 /* Special.txt in Resources */,
 				BD99E34C20277F6200027D23 /* meassge_background@2x.png in Resources */,
+				C6C4A9DA2090311100FA8338 /* bottom@3x.png in Resources */,
 				BD99E34A20277F6200027D23 /* 配件.png in Resources */,
 				C625CC751F53D29600CC3E73 /* LaunchScreen.storyboard in Resources */,
 				C68A903F1F8B77CA0001BDE0 /* EBBannerView.xib in Resources */,
@@ -6937,12 +6980,14 @@
 				C6F360061F66461A00F2A870 /* thocr_vl_province.lib in Resources */,
 				BD99E35420277F6200027D23 /* 故障描述.png in Resources */,
 				BD99E35820277F6200027D23 /* 二级维护.png in Resources */,
+				C6C4A9D82090311100FA8338 /* right@2x.png in Resources */,
 				BD99E35220277F6200027D23 /* 语音图标.png in Resources */,
 				C6F35FF41F66461A00F2A870 /* IDCLASSIFIERANDROID.xml in Resources */,
 				BD99E35720277F6200027D23 /* xiangmu_4.png in Resources */,
 				C6F35FF51F66461A00F2A870 /* IDKDevice.dat in Resources */,
 				BD99E35B20277F6200027D23 /* xiangmu_2.png in Resources */,
 				C68A90411F8B77CA0001BDE0 /* EBMute.mp3 in Resources */,
+				C6C4A9D62090311100FA8338 /* left@3x.png in Resources */,
 				C6F360051F66461A00F2A870 /* thocr_vl_digit_capitals.lib in Resources */,
 				C6F35FEF1F66461A00F2A870 /* AdminDiv.txt in Resources */,
 				BD99E35120277F6200027D23 /* 人民币图标.png in Resources */,
@@ -6955,6 +7000,7 @@
 				BD99E35C20277F6200027D23 /* xiangmu_3.png in Resources */,
 				BDD4D38620270C0D00C433D1 /* IQKeyboardManager.bundle in Resources */,
 				C6F35FF01F66461A00F2A870 /* AdminDivCode.txt in Resources */,
+				C6C4A9D72090311100FA8338 /* left@2x.png in Resources */,
 				C60ECD16205FC5D500F94EAF /* gif20.gif in Resources */,
 				BD99E35920277F6200027D23 /* xiangmu_1.png in Resources */,
 				C6F35FFE1F66461A00F2A870 /* thocr_Driver_License.lib in Resources */,
@@ -6962,11 +7008,13 @@
 				C6AC05A51F7F53850040B32B /* README.md in Resources */,
 				C6F360001F66461A00F2A870 /* THOCR_Num_Char.lib in Resources */,
 				C60ECD222065121800F94EAF /* jianpan.png in Resources */,
+				C6C4A9D92090311100FA8338 /* right@3x.png in Resources */,
 				C6F35FF11F66461A00F2A870 /* BrandModel.txt in Resources */,
 				C6F360041F66461A00F2A870 /* thocr_vl_all.lib in Resources */,
 				BD99E34B20277F6200027D23 /* 暂无故障描述.png in Resources */,
 				C625CFD11F53DE1900CC3E73 /* MJRefresh.bundle in Resources */,
 				C625CC701F53D29600CC3E73 /* Main.storyboard in Resources */,
+				C6C4A9DB2090311100FA8338 /* bottom@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7155,6 +7203,7 @@
 				C68E916E1FA1D9C200975D68 /* ZXPDF417Writer.m in Sources */,
 				C68E90C61FA1D9C200975D68 /* ZXExpandedProductResultParser.m in Sources */,
 				C6E57BDC200327DE00E945F3 /* DuplexTableHeardView.m in Sources */,
+				C6C4A9E0209031B300FA8338 /* StoreTheDataViewController+Net.m in Sources */,
 				C643F3BD202708A500A2AA57 /* JieCheInformiTionVC.m in Sources */,
 				C6BA12B51FBD4765005081A3 /* UIViewController+DCURLRouter.m in Sources */,
 				BDD4D41C20270C3B00C433D1 /* DWSegmentedControl.m in Sources */,
@@ -7203,6 +7252,7 @@
 				C6AB7493201F0A1500F157EB /* BOSSSystemWoDeCell.m in Sources */,
 				C60DB9EF1FB15D81002B0CC4 /* BuyAITProductsViewController.m in Sources */,
 				C60A8D95200DF5B80026111B /* BOSSChangeNameViewController.m in Sources */,
+				C6C4A9E320907A5F00FA8338 /* YQNumberSlideView.m in Sources */,
 				C61005FE204A76CE0045968C /* BOSSForTochangeMildelViewController.m in Sources */,
 				BDD4D32220270A1500C433D1 /* NSParagraphStyle+YYText.m in Sources */,
 				C6C4A9C5208EDAB000FA8338 /* AboutUsViewController.m in Sources */,
@@ -7213,6 +7263,7 @@
 				C68A90441F8B77CA0001BDE0 /* UILabel+ContentSize.m in Sources */,
 				C6AC059C1F7F53850040B32B /* ReachState.m in Sources */,
 				1803C801205A57A000F25BB1 /* LCBottomDianJiView.m in Sources */,
+				C6C4A9DC2090311100FA8338 /* HWCalendar.m in Sources */,
 				C60DB9F61FB1CE09002B0CC4 /* AITListViewController.m in Sources */,
 				C607D8DA206B7274005667BF /* CLSlider.m in Sources */,
 				BDD4D38120270C0D00C433D1 /* IQToolbar.m in Sources */,
@@ -7389,6 +7440,7 @@
 				C643F2FC2021BFDD00A2AA57 /* CustomerInformationVC.m in Sources */,
 				C68E910D1FA1D9C200975D68 /* ZXDataMatrixC40Encoder.m in Sources */,
 				C68E91361FA1D9C200975D68 /* ZXAbstractRSSReader.m in Sources */,
+				C6C4A9DD2090311100FA8338 /* HWOptionButton.m in Sources */,
 				C60A8DC8201316C30026111B /* JobBoardDeltailChuLICell.m in Sources */,
 				BDD4D31E20270A1500C433D1 /* YYTextDebugOption.m in Sources */,
 				C6BA12B21FBD4765005081A3 /* DCURLNavgation.m in Sources */,
@@ -7487,7 +7539,6 @@
 				C68E91341FA1D9C200975D68 /* ZXRSSExpandedReader.m in Sources */,
 				C68E90CF1FA1D9C200975D68 /* ZXSMSMMSResultParser.m in Sources */,
 				BDD4D32D20270A1500C433D1 /* UIApplication+YYAdd.m in Sources */,
-				18FF100D208C9B310054D16A /* StoreRiLiView.m in Sources */,
 				BDD4D31920270A1500C433D1 /* YYTextInput.m in Sources */,
 				C6BA12B11FBD4765005081A3 /* DCErrorViewController.m in Sources */,
 				BD99E36320277F6200027D23 /* LCMessageListView.m in Sources */,
@@ -7504,7 +7555,6 @@
 				BDD4D38820270C0D00C433D1 /* IQNSArray+Sort.m in Sources */,
 				C60ECD202063CC5800F94EAF /* LearningModel.m in Sources */,
 				C6BA12B31FBD4765005081A3 /* DCURLRouter.m in Sources */,
-				18FF1012208CD5330054D16A /* CalenderView.m in Sources */,
 				BDD4D41920270C3B00C433D1 /* UIButton+ImageTitleStyle.m in Sources */,
 				C609402220183F4200530205 /* FoundDetailHeaderView.m in Sources */,
 				C68E917C1FA1D9C200975D68 /* ZXQRCodeFinderPattern.m in Sources */,
