@@ -50,6 +50,6 @@
 
 
 -(void)getrenyuan_list:(BOOL)shuaX;
-
+-(void)getTask_status;
 @end
 

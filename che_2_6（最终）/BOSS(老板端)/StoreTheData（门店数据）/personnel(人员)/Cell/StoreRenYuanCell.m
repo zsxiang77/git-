@@ -13,12 +13,13 @@
 {
     if(self == [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
+        self.contentView.backgroundColor = [UIColor whiteColor];
         UIView *zuoview = [[UIView alloc]init];
         [self.contentView addSubview:zuoview];
         [zuoview mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(0);
             make.centerY.mas_equalTo(self);
-            make.right.mas_equalTo(252*kWindowW/750);
+            make.width.mas_equalTo(252*kWindowW/750);
             make.height.mas_equalTo(152/2);
         }];
         
@@ -48,9 +49,9 @@
         UIView *centerview = [[UIView alloc]init];
         [self.contentView addSubview:centerview];
         [centerview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(zuoview.mas_left).mas_equalTo(0);
+            make.left.mas_equalTo(zuoview.mas_right).mas_equalTo(0);
             make.centerY.mas_equalTo(self);
-            make.right.mas_equalTo(550*kWindowW/750);
+            make.width.mas_equalTo((570-252)*kWindowW/750);
             make.height.mas_equalTo(152/2);
         }];
         
@@ -79,7 +80,7 @@
         UIView *rightview = [[UIView alloc]init];
         [self.contentView addSubview:rightview];
         [rightview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(centerview.mas_left).mas_equalTo(0);
+            make.left.mas_equalTo(centerview.mas_right).mas_equalTo(0);
             make.right.mas_equalTo(0);
             make.centerY.mas_equalTo(self.contentView);
             make.height.mas_equalTo(152/2);
@@ -87,7 +88,7 @@
         
         yejiLable = [[UILabel alloc]init];
         yejiLable.font =[UIFont systemFontOfSize:16];
-        [yejiLable setTextColor:kRGBColor(132, 148, 165)];
+       
         [rightview addSubview:yejiLable];
         [yejiLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(0);
@@ -99,22 +100,26 @@
 
 -(void)refleshData:(listModel *)dict dieIndex:(NSIndexPath*)index{
     if (index.row ==0) {
-        touImgview.image = [UIImage imageNamed:@""];
+        touImgview.image = [UIImage imageNamed:@"huangGuan1"];
+         [yejiLable setTextColor:kRGBColor(228,84,71)];
         shunxuLable.hidden = YES;
     }else if(index.row == 1)
     {
-         touImgview.image = [UIImage imageNamed:@""];
+         touImgview.image = [UIImage imageNamed:@"huangGuan2"];
+         [yejiLable setTextColor:kRGBColor(228,84,71)];
          shunxuLable.hidden = YES;
     }else if(index.row == 2)
     {
-         touImgview.image = [UIImage imageNamed:@""];
+         touImgview.image = [UIImage imageNamed:@"huangGuan3"];
+         [yejiLable setTextColor:kRGBColor(228,84,71)];
          shunxuLable.hidden = YES;
     }else{
-        shunxuLable.text = [NSString stringWithFormat:@"%ld",index.row];
+        shunxuLable.text = [NSString stringWithFormat:@"%ld",index.row+1];
+         [yejiLable setTextColor:kRGBColor(74, 74, 74)];
         shunxuLable.hidden = NO;
         
     }
-    yejiLable.text = dict.total_price;
+    yejiLable.text = [CommonRecordStatus getAvaildNumberWithDoubleStr:[NSString stringWithFormat:@"%@",dict.total_price]];
     nameLable.text = dict.real_name;
     [renYuanimgview sd_setImageWithURL:[NSURL URLWithString:dict.avatar] placeholderImage:DJImageNamed(@"Boss_fond_beijing_new")];
 }

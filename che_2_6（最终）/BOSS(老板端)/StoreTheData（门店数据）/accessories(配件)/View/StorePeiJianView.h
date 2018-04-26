@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoreYuanXingtuView.h"
+@interface StorePeiJianView : UIView<UITableViewDataSource,UITableViewDelegate>
 
-@interface StorePeiJianView : UIView
-
+{
+    UIView * anNniuView;
+}
+@property(nonatomic,strong)StoreYuanXingtuView * headerView;
+@property(nonatomic,strong)UITableView * mainTable;
+@property(nonatomic,strong)UILabel* timeDateLable;
+@property(nonatomic,strong)void  (^showRiLiBlock)(void);
 @end

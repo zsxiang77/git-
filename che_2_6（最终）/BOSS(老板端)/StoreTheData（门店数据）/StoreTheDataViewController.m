@@ -35,30 +35,8 @@
     NSArray * selectArray =@[@"renWu2",@"renYuan2",@"peiJian2",@"liRun2"];
     StoreDataHeaderView * viewsTine = [[StoreDataHeaderView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kBOSSNavBarHeight) titleArray:titleArray imgArray:imgArray selectArray:selectArray];
     [self.view addSubview:viewsTine];
- 
-    self.renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
-    kWeakSelf(weakSelf)
-    self.renwuView.headerView.showRiLiBlock = ^{
-        [weakSelf.view bringSubviewToFront:weakSelf.calendar];
-        [weakSelf.calendar show];
-    };
-    [self.view addSubview:self.renwuView];
-    self.shouruView = [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
-     [self.view addSubview: self.shouruView];
-    self.peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
-     [self.view addSubview:self.peijianView];
-    self.renyuanView= [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
-    self.renyuanView.showRiLiBlock = ^{
-        [weakSelf.view bringSubviewToFront:weakSelf.calendar];
-        [weakSelf.calendar show];
-    };
-    self.renyuanView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
-    
-     [self.view addSubview:self.renyuanView];
+
     self.renwuView.hidden = NO;
-    self.shouruView.hidden = YES;
-    self.peijianView.hidden = YES;
-    self.renyuanView.hidden = YES;
     viewsTine.viewQieHuan = ^(NSUInteger shifouxuanzhong) {
         self.renwuView.hidden = YES;
         self.shouruView.hidden = YES;
@@ -71,7 +49,7 @@
         }
         if(shifouxuanzhong ==401){
             NPrintLog(@"人员--2----%ld",shifouxuanzhong);
-              self.renyuanView.hidden = NO;
+             self.renyuanView.hidden = NO;
              [self getrenyuan_list:YES];
         }
         if(shifouxuanzhong ==402){
@@ -102,24 +80,56 @@
     }
     return _mainModel;
 }
-//任务数据
--(void)getTask_status
+//任务
+-(StoreRenWuView *)renwuView
 {
-    self.timeStr = [NSString stringWithFormat:@"%@",@""];
-    self.dateStr = [NSString stringWithFormat:@"%@",@"2"];
-    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    [mDict setObject:self.timeStr forKey:@"time"];
-    [mDict setObject:self.dateStr forKey:@"date"];
-    kWeakSelf(weakSelf)
-    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/task_status" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
-        NSDictionary* dataDic = kParseData(responseObject);
-        [weakSelf.mainModel setdataDict:dataDic];
-        self.renwuView.zhauModel = weakSelf.mainModel;
-        
-    } failure:^(id error) {
-        
-    }];
+    if (!_renwuView) {
+        _renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        kWeakSelf(weakSelf)
+        _renwuView.headerView.showRiLiBlock = ^{
+            [weakSelf.view bringSubviewToFront:weakSelf.calendar];
+            [weakSelf.calendar show];
+        };
+         [self.view addSubview:_renwuView];
+    }
+    return _renwuView;
 }
+//人员
+-(StoreRenYuanView *)renyuanView
+{
+    if(!_renyuanView){
+        _renyuanView= [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+         kWeakSelf(weakSelf)
+        _renyuanView.showRiLiBlock = ^{
+            [weakSelf.view bringSubviewToFront:weakSelf.calendar];
+            [weakSelf.calendar show];
+        };
+        _renyuanView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
+        
+        [self.view addSubview:_renyuanView];
+    }
+    return _renyuanView;
+}
+//配件
+-(StorePeiJianView *)peijianView
+{
+    if(!_peijianView){
+        _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        [self.view addSubview:_peijianView];
+    }
+    return _peijianView;
+}
+
+//收入
+-(StoreShouRuView *)shouruView
+{
+    if(!_shouruView){
+        _shouruView= [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        [self.view addSubview: _shouruView];
+    }
+    return _shouruView;
+}
+
 //下拉刷新
 -(void)loadNewData0{
     [self getrenyuan_list:YES];

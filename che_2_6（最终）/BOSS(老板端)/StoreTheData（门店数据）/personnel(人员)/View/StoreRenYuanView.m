@@ -8,8 +8,12 @@
 
 #import "StoreRenYuanView.h"
 #import "StoreRenYuanCell.h"
+#import "StoreRenYuanDeileVC.h"
 @implementation StoreRenYuanView
-
+{
+    NSString *yearZhi;
+    NSString *monthZhi;
+}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if(self==[super initWithFrame:(CGRect)frame]){
@@ -18,6 +22,7 @@
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight,kWindowW, 81)];
         self.headerView.backgroundColor = [UIColor whiteColor];
         
+        self.zhuanzhiModel = [[NSMutableArray alloc]init];
         UILabel *line = [[UILabel alloc]init];
         line.backgroundColor = kLineBgColor;
         [self.headerView addSubview:line];
@@ -25,7 +30,7 @@
             make.left.mas_equalTo(0);
             make.right.mas_equalTo(0);
             make.bottom.mas_equalTo(-28);
-            make.height.mas_equalTo(1);
+            make.height.mas_equalTo(0.5);
         }];
         
         UIView * shangview = [[UIView alloc]initWithFrame:CGRectMake(0, 53, kWindowW, 28)];
@@ -59,16 +64,6 @@
         [youLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-76/2);
             make.centerY.mas_equalTo(shangview);
-        }];
-        
-        UILabel * linebom = [[UILabel alloc]init];
-        linebom.backgroundColor = kLineBgColor;
-        [shangview addSubview:linebom];
-        [linebom mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(0);
-            make.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(0);
-            make.height.mas_equalTo(1);
         }];
         
         
@@ -113,9 +108,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         listModel * model = self.zhuanzhiModel[indexPath.row];
         [cell refleshData:model dieIndex:indexPath];
-        [self.mainTable reloadData];
         return cell;
-
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -125,7 +118,13 @@
 {
         return self.zhuanzhiModel.count;
 }
-
+#pragma mark - select
+//点击行
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   
+}
 
 -(void)riliClick:(UIButton *)sender
 {

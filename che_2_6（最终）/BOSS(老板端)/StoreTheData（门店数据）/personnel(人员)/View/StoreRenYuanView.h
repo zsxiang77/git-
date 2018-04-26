@@ -14,4 +14,5 @@
 @property(nonatomic,strong)UIView * headerView;
 @property(nonatomic,strong)NSMutableArray * zhuanzhiModel;
 @property(nonatomic,strong)void  (^showRiLiBlock)(void);
+@property(nonatomic,strong)void  (^xuanzhonRowBlock)(NSMutableArray *zhi,NSString* year,NSString*month);
 @end

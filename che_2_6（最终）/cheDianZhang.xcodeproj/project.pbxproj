@@ -52,6 +52,8 @@
 		18FF100A208C86D40054D16A /* StoreRenWuRenYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1009208C86D40054D16A /* StoreRenWuRenYuanCell.m */; };
 		18FF1016208F2FC20054D16A /* StoreRenYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1015208F2FC20054D16A /* StoreRenYuanCell.m */; };
 		18FF1019208F31D20054D16A /* StoreRenyuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1018208F31D20054D16A /* StoreRenyuanModel.m */; };
+		18FF102F209179180054D16A /* StoreYuanXingtuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF102E209179180054D16A /* StoreYuanXingtuView.m */; };
+		18FF10322091AD5E0054D16A /* StoreRenYuanDeileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10312091AD5E0054D16A /* StoreRenYuanDeileVC.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -1061,6 +1063,10 @@
 		18FF1015208F2FC20054D16A /* StoreRenYuanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenYuanCell.m; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Cell/StoreRenYuanCell.m"; sourceTree = SOURCE_ROOT; };
 		18FF1017208F31D20054D16A /* StoreRenyuanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StoreRenyuanModel.h; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Model/StoreRenyuanModel.h"; sourceTree = SOURCE_ROOT; };
 		18FF1018208F31D20054D16A /* StoreRenyuanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StoreRenyuanModel.m; path = "BOSS(老板端)/StoreTheData（门店数据）/personnel(人员)/Model/StoreRenyuanModel.m"; sourceTree = SOURCE_ROOT; };
+		18FF102D209179170054D16A /* StoreYuanXingtuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreYuanXingtuView.h; sourceTree = "<group>"; };
+		18FF102E209179180054D16A /* StoreYuanXingtuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreYuanXingtuView.m; sourceTree = "<group>"; };
+		18FF10302091AD5E0054D16A /* StoreRenYuanDeileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreRenYuanDeileVC.h; sourceTree = "<group>"; };
+		18FF10312091AD5E0054D16A /* StoreRenYuanDeileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreRenYuanDeileVC.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -3031,6 +3037,8 @@
 				18FF10232090281D0054D16A /* Cell */,
 				18FF10222090281D0054D16A /* Model */,
 				18FF10212090281D0054D16A /* View */,
+				18FF10302091AD5E0054D16A /* StoreRenYuanDeileVC.h */,
+				18FF10312091AD5E0054D16A /* StoreRenYuanDeileVC.m */,
 			);
 			path = "personnel(人员)";
 			sourceTree = "<group>";
@@ -3045,6 +3053,8 @@
 		18FF101F209028120054D16A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18FF102D209179170054D16A /* StoreYuanXingtuView.h */,
+				18FF102E209179180054D16A /* StoreYuanXingtuView.m */,
 				18FF0FF12089DBA60054D16A /* StorePeiJianView.h */,
 				18FF0FF72089DBA60054D16A /* StorePeiJianView.m */,
 			);
@@ -7101,6 +7111,7 @@
 				C617432F1FF38EC000FB7AD8 /* FillVINCodeHeaderView.m in Sources */,
 				BDD4D42020270C3B00C433D1 /* KLCPopup.m in Sources */,
 				18FF1007208C812D0054D16A /* StoreHeaderView.m in Sources */,
+				18FF102F209179180054D16A /* StoreYuanXingtuView.m in Sources */,
 				C625CFE51F53DE1900CC3E73 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BDD4D40620270C3B00C433D1 /* CarInfoColorView.m in Sources */,
 				C6BDA59A208885B600A19406 /* TheSidebarViewController.m in Sources */,
@@ -7210,6 +7221,7 @@
 				18FE48DD206A19470005984F /* LCBottomView.m in Sources */,
 				C692D0FC1F99B0F500FECF74 /* OrderMessageViewController.m in Sources */,
 				C6093FF62013866000530205 /* BXDQViewController.m in Sources */,
+				18FF10322091AD5E0054D16A /* StoreRenYuanDeileVC.m in Sources */,
 				C6093FEA2013812800530205 /* YCGDViewController.m in Sources */,
 				C617431C1FF3801F00FB7AD8 /* FillVINCodeViewController.m in Sources */,
 				C68E90D81FA1D9C200975D68 /* ZXURLTOResultParser.m in Sources */,

@@ -57,7 +57,24 @@
     }];
 }
 
-
+//任务数据
+-(void)getTask_status
+{
+    self.timeStr = [NSString stringWithFormat:@"%@",@""];
+    self.dateStr = [NSString stringWithFormat:@"%@",@"2"];
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:self.timeStr forKey:@"time"];
+    [mDict setObject:self.dateStr forKey:@"date"];
+    kWeakSelf(weakSelf)
+    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/task_status" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        [weakSelf.mainModel setdataDict:dataDic];
+        self.renwuView.zhauModel = weakSelf.mainModel;
+        
+    } failure:^(id error) {
+        
+    }];
+}
 
 
 @end
