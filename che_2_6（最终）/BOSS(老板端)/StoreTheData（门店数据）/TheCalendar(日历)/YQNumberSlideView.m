@@ -267,7 +267,7 @@
 {
     NPrintLog(@"indexqvbeqiwh%ld",index);
     index -- ;
-    [self.SCRV setContentOffset:CGPointMake(self.SCRV.contentOffset.x+(self.lableWidth+self.lableMid)*index,
+    [self.SCRV setContentOffset:CGPointMake((self.lableWidth+self.lableMid)*index,
                                             self.SCRV.contentOffset.y)
                        animated:YES];
 }

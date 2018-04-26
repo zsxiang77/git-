@@ -18,9 +18,10 @@
 
 @end
 
-@interface HWCalendar : UIView<YQNumberSlideViewDelegate>
+@interface HWCalendar : UIView<YQNumberSlideViewDelegate,UIGestureRecognizerDelegate>
 {
     UIView * zuoYouButton;
+    UIView *yueView;
 }
 
 @property(nonatomic,strong) YQNumberSlideView *yueSlideView;
@@ -30,7 +31,7 @@
 
 @property (nonatomic, weak) id<HWCalendarDelegate> delegate;
 
-@property(nonatomic,assign)BOOL  shiFouGengXin;
+@property(nonatomic,assign)BOOL  shiFouNianShuaXin;
 
 - (void)show;
 - (void)dismiss;

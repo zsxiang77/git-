@@ -60,7 +60,7 @@
         
         self.backgroundColor = kColorWithRGB(0, 0, 0, 0.5);
         
-        self.mainView = [[UIView alloc]initWithFrame:CGRectMake(0, ((kWindowH-714/2)-20)/2, kWindowW, 714/2)];
+        self.mainView = [[UIView alloc]initWithFrame:CGRectMake(0, ((kWindowH-780/2)-20)/2, kWindowW, 780/2)];
         [self.mainView.layer setMasksToBounds:YES];
         self.mainView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.mainView];
@@ -140,6 +140,7 @@
         //获取数据源
         [self getDataSource];
 
+        self.shiFouNianShuaXin = YES;
         //创建控件
         [self setZhiNianView];
         [self creatControl];
@@ -151,7 +152,26 @@
         [self reloadData];
     }
     
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(selfViewTouch:)];
+    tapGestureRecognizer.delegate = self;
+    [self addGestureRecognizer:tapGestureRecognizer];
+    
     return self;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isDescendantOfView:self.mainView]) {
+        return NO;
+    }
+    return YES;
+}
+-(void)selfViewTouch:(UIButton*)sender
+{
+    [self dismiss];
 }
 
 -(void)selectClick:(UIButton *)sender
@@ -226,13 +246,16 @@
     [self.nianSlideView setShowArray:self.yearArray];
     [self.nianSlideView show];
     
-    UIView *yueView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, kWindowW, 614/2-60)];
+    yueView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, kWindowW, 614/2-60)];
     [self.nianView addSubview:yueView];
     for (int i = 0; i<self.monthArray.count; i++) {
         UIView *jiaV = [[UIView alloc]initWithFrame:CGRectMake((kWindowW/5)*((i%5)), (i/5)*60, (kWindowW/5), 60)];
+        jiaV.tag = 200+i;
         [yueView addSubview:jiaV];
         
         UIButton *yueBt = [[UIButton alloc]init];
+        yueBt.tag = 500;
+        [yueBt addTarget:self action:@selector(yueBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
         [yueBt setTitleColor:kRGBColor(74, 74, 74) forState:(UIControlStateNormal)];
         [yueBt setTitleColor:[UIColor whiteColor] forState:(UIControlStateSelected)];
         [yueBt setTitle:[NSString stringWithFormat:@"%d",i+1] forState:(UIControlStateNormal)];
@@ -246,6 +269,17 @@
         }];
     }
     self.nianView.hidden = YES;
+}
+
+-(void)yueBtChick:(UIButton *)sender
+{
+    if (sender.selected == YES) {
+        return;
+    }
+    
+    _month = [sender.titleLabel.text integerValue];
+    
+    [self reloadData];
 }
 
 - (void)getDataSource
@@ -372,13 +406,32 @@
         }
     }
     
-    if (self.shiFouGengXin == YES) {
-        self.shiFouGengXin = NO;
-    }else
-    {
-        [self.yueSlideView nextWitnCount:_month];
+    
+    
+//    if (self.shiFouGengXin == YES) {
+//        self.shiFouGengXin = NO;
+//    }else
+//    {
+//        [self.yueSlideView nextWitnCount:_month];
+//    }
+    [self.yueSlideView nextWitnCount:_month];
+    
+    if (self.shiFouNianShuaXin == YES) {
+        [self.nianSlideView nextWitnCount:11];
+        self.shiFouNianShuaXin = NO;
     }
     
+    NSString *ninJieQu = [self.yearLable.text substringToIndex:4];
+    
+    NPrintLog(@"_month%ld",_month);
+    for (int i = 0; i<self.monthArray.count; i++) {
+        UIView *jiaV = [yueView viewWithTag:200+i];
+        UIButton *yueBt = [jiaV viewWithTag:500];
+        yueBt.selected = NO;
+        if (i == (_month-1)) {
+            yueBt.selected = YES;
+        }
+    }
 }
 
 //获取当前时间
@@ -545,9 +598,7 @@
 
 -(void)YQSlideViewDidChangeIndex:(int)count withYQNumberSlideView:(YQNumberSlideView *)SlideView
 {
-    
     _month = count+1;
-    self.shiFouGengXin = YES;
     [self reloadData];
 }
 @end
