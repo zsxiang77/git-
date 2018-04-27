@@ -16,9 +16,10 @@
     UIView * anNniuView;
 }
 @property(nonatomic,strong)UITableView *mainTable;
-@property(nonatomic,strong)UITableView *renyuanmainTable;
 @property(nonatomic,strong)UILabel * timeDateLable;
 @property(nonatomic,strong)StoreHeaderView * headerView;
 
 @property(nonatomic,strong)StoreTheDataModel * zhauModel;
+
+@property(nonatomic,assign)BOOL shiFouRenYuan;
 @end

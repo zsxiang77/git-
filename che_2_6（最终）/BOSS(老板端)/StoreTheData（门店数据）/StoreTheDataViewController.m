@@ -37,32 +37,34 @@
     [self.view addSubview:viewsTine];
 
     self.renwuView.hidden = NO;
+    kWeakSelf(weakSelf)
     viewsTine.viewQieHuan = ^(NSUInteger shifouxuanzhong) {
-        self.renwuView.hidden = YES;
-        self.shouruView.hidden = YES;
-        self.peijianView.hidden = YES;
-        self.renyuanView.hidden = YES;
+        weakSelf.renwuView.hidden = YES;
+        weakSelf.shouruView.hidden = YES;
+        weakSelf.peijianView.hidden = YES;
+        weakSelf.renyuanView.hidden = YES;
         if(shifouxuanzhong ==400){
             NPrintLog(@"任务--1----%ld",shifouxuanzhong);
-            self.renwuView.hidden = NO;
+            weakSelf.renwuView.hidden = NO;
+            [weakSelf getTask_status];
             
         }
         if(shifouxuanzhong ==401){
             NPrintLog(@"人员--2----%ld",shifouxuanzhong);
-             self.renyuanView.hidden = NO;
-             [self getrenyuan_list:YES];
+             weakSelf.renyuanView.hidden = NO;
+             [weakSelf getrenyuan_list:YES];
         }
         if(shifouxuanzhong ==402){
             NPrintLog(@"配件--3----%ld",shifouxuanzhong);
-              self.peijianView.hidden = NO;
+              weakSelf.peijianView.hidden = NO;
         }
         if(shifouxuanzhong ==403){
             NPrintLog(@"收入--4----%ld",shifouxuanzhong);
-             self.shouruView.hidden = NO;
+             weakSelf.shouruView.hidden = NO;
         }
     };
-       [self getTask_status];
     
+    [self getTask_status];
     
     
     //日历
@@ -84,7 +86,7 @@
 -(StoreRenWuView *)renwuView
 {
     if (!_renwuView) {
-        _renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        _renwuView = [[StoreRenWuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
         kWeakSelf(weakSelf)
         _renwuView.headerView.showRiLiBlock = ^{
             [weakSelf.view bringSubviewToFront:weakSelf.calendar];
@@ -98,7 +100,7 @@
 -(StoreRenYuanView *)renyuanView
 {
     if(!_renyuanView){
-        _renyuanView= [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        _renyuanView= [[StoreRenYuanView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
          kWeakSelf(weakSelf)
         _renyuanView.showRiLiBlock = ^{
             [weakSelf.view bringSubviewToFront:weakSelf.calendar];
@@ -123,7 +125,7 @@
 -(StorePeiJianView *)peijianView
 {
     if(!_peijianView){
-        _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
         [self.view addSubview:_peijianView];
     }
     return _peijianView;
@@ -133,7 +135,7 @@
 -(StoreShouRuView *)shouruView
 {
     if(!_shouruView){
-        _shouruView= [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight)];
+        _shouruView= [[StoreShouRuView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
         [self.view addSubview: _shouruView];
     }
     return _shouruView;

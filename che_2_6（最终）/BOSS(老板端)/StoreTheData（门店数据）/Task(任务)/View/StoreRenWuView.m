@@ -15,28 +15,39 @@
 {
     if(self == [super initWithFrame:frame])
     {
-        self.headerView = [[StoreHeaderView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 804/2)];
-        
-        
         self.mainTable = [[UITableView alloc]initWithFrame:CGRectMake(0,0, kWindowW,self.frame.size.height)style:UITableViewStyleGrouped];
+        self.mainTable.backgroundColor = [UIColor yellowColor];
         self.mainTable.delegate = self;
         self.mainTable.tableHeaderView = self.headerView;
         self.mainTable.dataSource = self;
         [self addSubview:self.mainTable];
-        
-        self.renyuanmainTable = [[UITableView alloc]initWithFrame:CGRectMake(0,  0, kWindowW,self.frame.size.height)style:UITableViewStyleGrouped];
-        self.renyuanmainTable.delegate = self;
-        self.renyuanmainTable.dataSource = self;
-        self.renyuanmainTable.hidden = NO;
-        self.renyuanmainTable.tableHeaderView = self.headerView;
-        [self addSubview:self.renyuanmainTable];
-        
+        self.shiFouRenYuan = NO;
+
     }
     return self;
 }
+
+-(StoreHeaderView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[StoreHeaderView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 804/2)];
+        kWeakSelf(weakSelf)
+        _headerView.renYuanShiXiangQieBlock = ^(NSInteger index) {
+            if (index == 0) {
+                weakSelf.shiFouRenYuan = NO;
+            }else{
+               
+                weakSelf.shiFouRenYuan = YES;
+            }
+            
+            [weakSelf.mainTable reloadData];
+        };
+    }
+    return _headerView;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView == self.mainTable){
+    if (self.shiFouRenYuan == NO) {
         static NSString *Identifier = @"Identifier";
         StoreRenWuCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
         if (cell == nil) {
@@ -45,9 +56,11 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        Task_listModel * model =self.zhauModel.task_list[indexPath.row];
+        Task_listModel * model;
+        if (indexPath.row>0) {
+            model = self.zhauModel.task_list[indexPath.row-1];
+        }
         [cell refleshData:model dieIndex: indexPath];
-        [self.mainTable reloadData];
         return cell;
     }else{
         static NSString *Identirenyuan = @"Identirenyuan";
@@ -58,27 +71,37 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        Staff_listModel * model =self.zhauModel.staff_list[indexPath.row];
+        Staff_listModel * model;
+        if (indexPath.row>0) {
+            model = self.zhauModel.staff_list[indexPath.row-1];
+        }
+        
         [cell refleshData:model dieIndex: indexPath];
-         [self.renyuanmainTable reloadData];
         return cell;
     }
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView == self.mainTable){
-        return 45;
-    }else{
-        return 45;
-    }
+    return 45;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView == self.mainTable){
-        return self.zhauModel.task_list.count;
+    if(self.shiFouRenYuan == NO){
+        if (self.zhauModel.task_list.count>0) {
+            return self.zhauModel.task_list.count+1;
+        }else{
+            return 0;
+        }
+        
     }else{
-       return self.zhauModel.staff_list.count;
+        if (self.zhauModel.staff_list.count>0) {
+            return self.zhauModel.staff_list.count+1;
+        }else{
+            return 0;
+        }
+        
     }
    
 }

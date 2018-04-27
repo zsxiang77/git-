@@ -287,7 +287,6 @@
 		C609402220183F4200530205 /* FoundDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C609402120183F4200530205 /* FoundDetailHeaderView.m */; };
 		C60940262018909600530205 /* FoundDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60940252018909600530205 /* FoundDetailCell.m */; };
 		C609402A2019BD3E00530205 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60940292019BD3E00530205 /* MyCollectionViewController.m */; };
-		C60A8D60200C5AC50026111B /* JobBoardViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8D5F200C5AC50026111B /* JobBoardViewController+Net.m */; };
 		C60A8D65200C98DC0026111B /* JobBoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8D64200C98DC0026111B /* JobBoardModel.m */; };
 		C60A8D68200C9C690026111B /* JobBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8D67200C9C690026111B /* JobBoardCell.m */; };
 		C60A8D7F200CC0DD0026111B /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8D73200CC0DC0026111B /* UIView+ZJFrame.m */; };
@@ -314,6 +313,11 @@
 		C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8DC1201196BF0026111B /* TheCustomerSearchVC.m */; };
 		C60A8DC52011F4F60026111B /* TheCustomerGeRenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8DC42011F4F60026111B /* TheCustomerGeRenCell.m */; };
 		C60A8DC8201316C30026111B /* JobBoardDeltailChuLICell.m in Sources */ = {isa = PBXBuildFile; fileRef = C60A8DC7201316C30026111B /* JobBoardDeltailChuLICell.m */; };
+		C60C9A2A2091D4C1006FA4C9 /* WorkQingKuangView.m in Sources */ = {isa = PBXBuildFile; fileRef = C60C9A292091D4C1006FA4C9 /* WorkQingKuangView.m */; };
+		C60C9A2D2091DE8C006FA4C9 /* WorkJieGuoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C60C9A2C2091DE8C006FA4C9 /* WorkJieGuoView.m */; };
+		C60C9A352091E4E2006FA4C9 /* JobBoardViewController+Net.m in Sources */ = {isa = PBXBuildFile; fileRef = C60C9A312091E4E1006FA4C9 /* JobBoardViewController+Net.m */; };
+		C60C9A362091E4E2006FA4C9 /* JobBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60C9A322091E4E1006FA4C9 /* JobBoardViewController.m */; };
+		C60C9A372091E4E2006FA4C9 /* JobBoardViewController+YinDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C60C9A342091E4E2006FA4C9 /* JobBoardViewController+YinDao.m */; };
 		C60DB9EB1FB1522B002B0CC4 /* SettingAITSerialNumberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C60DB9EA1FB1522B002B0CC4 /* SettingAITSerialNumberVC.m */; };
 		C60DB9EF1FB15D81002B0CC4 /* BuyAITProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60DB9EE1FB15D81002B0CC4 /* BuyAITProductsViewController.m */; };
 		C60DB9F61FB1CE09002B0CC4 /* AITListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60DB9F51FB1CE09002B0CC4 /* AITListViewController.m */; };
@@ -854,7 +858,6 @@
 		C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA5772079EC1000A19406 /* LearningZuoCeShiViewController.m */; };
 		C6BDA57C2079FA2F00A19406 /* LearningZuoCeShiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */; };
 		C6BDA57F207B5A2000A19406 /* PartsChangYongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */; };
-		C6BDA587207F43A000A19406 /* JobBoardViewController+YinDao.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */; };
 		C6BDA58C2080968D00A19406 /* libPlateIDOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BDA5882080968C00A19406 /* libPlateIDOCR.a */; };
 		C6BDA58F20809A9100A19406 /* PlateIDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA58E20809A9100A19406 /* PlateIDSlider.m */; };
 		C6BDA59220809B3B00A19406 /* PlateIDOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BDA59020809B3A00A19406 /* PlateIDOverView.m */; };
@@ -884,7 +887,6 @@
 		C6DC6B6A2005F33000F06DB7 /* BossUserMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B692005F33000F06DB7 /* BossUserMeCell.m */; };
 		C6DC6B702006041800F06DB7 /* JobBoardMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DC6B6F2006041800F06DB7 /* JobBoardMenuView.m */; };
 		C6DCEF161F5D691000B0945D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C625D0D11F55337300CC3E73 /* AVFoundation.framework */; };
-		C6E57B9F20030F6D00E945F3 /* JobBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E57B8B20030F6C00E945F3 /* JobBoardViewController.m */; };
 		C6E57BA020030F6D00E945F3 /* TheCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E57B8E20030F6D00E945F3 /* TheCustomerViewController.m */; };
 		C6E57BA120030F6D00E945F3 /* LearningCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E57B9220030F6D00E945F3 /* LearningCenterViewController.m */; };
 		C6E57BA220030F6D00E945F3 /* StoreTheDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E57B9520030F6D00E945F3 /* StoreTheDataViewController.m */; };
@@ -1519,7 +1521,6 @@
 		C60940292019BD3E00530205 /* MyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
 		C60A722C20204672003D0449 /* OrderDetailShaiXuanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailShaiXuanView.h; sourceTree = "<group>"; };
 		C60A722D20204672003D0449 /* OrderDetailShaiXuanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailShaiXuanView.m; sourceTree = "<group>"; };
-		C60A8D5F200C5AC50026111B /* JobBoardViewController+Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+Net.m"; sourceTree = "<group>"; };
 		C60A8D63200C98DC0026111B /* JobBoardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobBoardModel.h; sourceTree = "<group>"; };
 		C60A8D64200C98DC0026111B /* JobBoardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobBoardModel.m; sourceTree = "<group>"; };
 		C60A8D66200C9C690026111B /* JobBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobBoardCell.h; sourceTree = "<group>"; };
@@ -1571,6 +1572,14 @@
 		C60A8DC42011F4F60026111B /* TheCustomerGeRenCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheCustomerGeRenCell.m; sourceTree = "<group>"; };
 		C60A8DC6201316C30026111B /* JobBoardDeltailChuLICell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobBoardDeltailChuLICell.h; sourceTree = "<group>"; };
 		C60A8DC7201316C30026111B /* JobBoardDeltailChuLICell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobBoardDeltailChuLICell.m; sourceTree = "<group>"; };
+		C60C9A282091D4C1006FA4C9 /* WorkQingKuangView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkQingKuangView.h; sourceTree = "<group>"; };
+		C60C9A292091D4C1006FA4C9 /* WorkQingKuangView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkQingKuangView.m; sourceTree = "<group>"; };
+		C60C9A2B2091DE8C006FA4C9 /* WorkJieGuoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkJieGuoView.h; sourceTree = "<group>"; };
+		C60C9A2C2091DE8C006FA4C9 /* WorkJieGuoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkJieGuoView.m; sourceTree = "<group>"; };
+		C60C9A312091E4E1006FA4C9 /* JobBoardViewController+Net.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+Net.m"; sourceTree = "<group>"; };
+		C60C9A322091E4E1006FA4C9 /* JobBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobBoardViewController.m; sourceTree = "<group>"; };
+		C60C9A332091E4E2006FA4C9 /* JobBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobBoardViewController.h; sourceTree = "<group>"; };
+		C60C9A342091E4E2006FA4C9 /* JobBoardViewController+YinDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+YinDao.m"; sourceTree = "<group>"; };
 		C60DB9E91FB1522B002B0CC4 /* SettingAITSerialNumberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAITSerialNumberVC.h; sourceTree = "<group>"; };
 		C60DB9EA1FB1522B002B0CC4 /* SettingAITSerialNumberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAITSerialNumberVC.m; sourceTree = "<group>"; };
 		C60DB9ED1FB15D81002B0CC4 /* BuyAITProductsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyAITProductsViewController.h; sourceTree = "<group>"; };
@@ -2665,7 +2674,6 @@
 		C6BDA57B2079FA2F00A19406 /* LearningZuoCeShiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningZuoCeShiModel.m; sourceTree = "<group>"; };
 		C6BDA57D207B5A2000A19406 /* PartsChangYongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartsChangYongCell.h; sourceTree = "<group>"; };
 		C6BDA57E207B5A2000A19406 /* PartsChangYongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartsChangYongCell.m; sourceTree = "<group>"; };
-		C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JobBoardViewController+YinDao.m"; sourceTree = "<group>"; };
 		C6BDA5882080968C00A19406 /* libPlateIDOCR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPlateIDOCR.a; sourceTree = "<group>"; };
 		C6BDA5892080968C00A19406 /* PlateIDOCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateIDOCR.h; sourceTree = "<group>"; };
 		C6BDA58A2080968C00A19406 /* PlateResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateResult.h; sourceTree = "<group>"; };
@@ -2717,8 +2725,6 @@
 		C6DC6B692005F33000F06DB7 /* BossUserMeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BossUserMeCell.m; sourceTree = "<group>"; };
 		C6DC6B6E2006041800F06DB7 /* JobBoardMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobBoardMenuView.h; sourceTree = "<group>"; };
 		C6DC6B6F2006041800F06DB7 /* JobBoardMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobBoardMenuView.m; sourceTree = "<group>"; };
-		C6E57B8B20030F6C00E945F3 /* JobBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobBoardViewController.m; sourceTree = "<group>"; };
-		C6E57B8C20030F6C00E945F3 /* JobBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobBoardViewController.h; sourceTree = "<group>"; };
 		C6E57B8E20030F6D00E945F3 /* TheCustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheCustomerViewController.m; sourceTree = "<group>"; };
 		C6E57B8F20030F6D00E945F3 /* TheCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheCustomerViewController.h; sourceTree = "<group>"; };
 		C6E57B9220030F6D00E945F3 /* LearningCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearningCenterViewController.m; sourceTree = "<group>"; };
@@ -3004,8 +3010,6 @@
 			children = (
 				18FF0FF62089DBA60054D16A /* StoreDataHeaderView.h */,
 				18FF0FF22089DBA60054D16A /* StoreDataHeaderView.m */,
-				18FF1005208C812D0054D16A /* StoreHeaderView.h */,
-				18FF1006208C812D0054D16A /* StoreHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3147,8 +3151,14 @@
 		18FF1028209028340054D16A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18FF1005208C812D0054D16A /* StoreHeaderView.h */,
+				18FF1006208C812D0054D16A /* StoreHeaderView.m */,
 				18FF0FF02089DBA60054D16A /* StoreRenWuView.h */,
 				18FF0FF52089DBA60054D16A /* StoreRenWuView.m */,
+				C60C9A282091D4C1006FA4C9 /* WorkQingKuangView.h */,
+				C60C9A292091D4C1006FA4C9 /* WorkQingKuangView.m */,
+				C60C9A2B2091DE8C006FA4C9 /* WorkJieGuoView.h */,
+				C60C9A2C2091DE8C006FA4C9 /* WorkJieGuoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6570,15 +6580,15 @@
 		C6E57B8A20030F6C00E945F3 /* JobBoard（工作看板） */ = {
 			isa = PBXGroup;
 			children = (
+				C60C9A332091E4E2006FA4C9 /* JobBoardViewController.h */,
+				C60C9A322091E4E1006FA4C9 /* JobBoardViewController.m */,
+				C60C9A312091E4E1006FA4C9 /* JobBoardViewController+Net.m */,
+				C60C9A342091E4E2006FA4C9 /* JobBoardViewController+YinDao.m */,
 				C60A8DAA201099FD0026111B /* Details（详情） */,
 				C60A8D99200EE6930026111B /* Screening（筛选） */,
 				C60A8D62200C98940026111B /* Model */,
 				C60A8D61200C98500026111B /* Cell */,
 				C6E57BCF200327DE00E945F3 /* View */,
-				C6E57B8C20030F6C00E945F3 /* JobBoardViewController.h */,
-				C6E57B8B20030F6C00E945F3 /* JobBoardViewController.m */,
-				C60A8D5F200C5AC50026111B /* JobBoardViewController+Net.m */,
-				C6BDA586207F43A000A19406 /* JobBoardViewController+YinDao.m */,
 			);
 			path = "JobBoard（工作看板）";
 			sourceTree = "<group>";
@@ -7207,6 +7217,7 @@
 				C60DBA0C1FB2F03F002B0CC4 /* SWUtilityButtonView.m in Sources */,
 				C60A8DC2201196BF0026111B /* TheCustomerSearchVC.m in Sources */,
 				C68E91621FA1D9C200975D68 /* ZXPDF417ScanningDecoder.m in Sources */,
+				C60C9A372091E4E2006FA4C9 /* JobBoardViewController+YinDao.m in Sources */,
 				C643F32D2024693900A2AA57 /* ProjectDetailsChooseView.m in Sources */,
 				C6BDA5782079EC1000A19406 /* LearningZuoCeShiViewController.m in Sources */,
 				C61005BD20453B520045968C /* XiMeiNewOrdersErVC+Net.m in Sources */,
@@ -7522,6 +7533,7 @@
 				BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */,
 				BDD4D32020270A1500C433D1 /* YYTextRunDelegate.m in Sources */,
 				BDD4D40520270C3B00C433D1 /* ScanDrivingLicenseTFCell.m in Sources */,
+				C60C9A362091E4E2006FA4C9 /* JobBoardViewController.m in Sources */,
 				C68E90E31FA1D9C200975D68 /* ZXMonochromeRectangleDetector.m in Sources */,
 				C68E90E71FA1D9C200975D68 /* ZXReedSolomonDecoder.m in Sources */,
 				C68E90D51FA1D9C200975D68 /* ZXTextParsedResult.m in Sources */,
@@ -7637,6 +7649,7 @@
 				C625CFDB1F53DE1900CC3E73 /* SDWebImageCompat.m in Sources */,
 				18EE15822081E51F00312AF7 /* BossJianCeTableViewCell.m in Sources */,
 				C68E90C41FA1D9C200975D68 /* ZXEmailDoCoMoResultParser.m in Sources */,
+				C60C9A352091E4E2006FA4C9 /* JobBoardViewController+Net.m in Sources */,
 				C6A473891FB9479F00DA1218 /* SSKeychainQuery.m in Sources */,
 				C68E91721FA1D9C200975D68 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
 				C68E90DD1FA1D9C200975D68 /* ZXWifiParsedResult.m in Sources */,
@@ -7704,7 +7717,6 @@
 				C60A8D83200CC0DD0026111B /* ZJCustomLabel.m in Sources */,
 				C68E91171FA1D9C200975D68 /* ZXDataMatrixReader.m in Sources */,
 				BD99E36A20277F6200027D23 /* OrderSectionModel.m in Sources */,
-				C6E57B9F20030F6D00E945F3 /* JobBoardViewController.m in Sources */,
 				C68E915E1FA1D9C200975D68 /* ZXPDF417DecodedBitStreamParser.m in Sources */,
 				BDD4D32120270A1500C433D1 /* YYTextUtilities.m in Sources */,
 				C6FAF9E11F553E9800FE1935 /* NetWorkManager.m in Sources */,
@@ -7752,7 +7764,6 @@
 				C68E90E61FA1D9C200975D68 /* ZXGenericGFPoly.m in Sources */,
 				C6FDBACC1F5E406900360B6F /* QrCodeScanningViewController.m in Sources */,
 				C68E91011FA1D9C200975D68 /* ZXPlanarYUVLuminanceSource.m in Sources */,
-				C60A8D60200C5AC50026111B /* JobBoardViewController+Net.m in Sources */,
 				C68E90EB1FA1D9C200975D68 /* ZXBitSource.m in Sources */,
 				C643F2FF2022B5C100A2AA57 /* OrderDetailViewController+Net.m in Sources */,
 				C61005FF204A76CE0045968C /* BOSSForTochangeMailViewController.m in Sources */,
@@ -7791,7 +7802,6 @@
 				18FE4933207A2C220005984F /* LearningZuoCell.m in Sources */,
 				BDD4D32420270A1500C433D1 /* NSAttributedString+YYText.m in Sources */,
 				C68E91781FA1D9C200975D68 /* ZXQRCodeVersion.m in Sources */,
-				C6BDA587207F43A000A19406 /* JobBoardViewController+YinDao.m in Sources */,
 				C625CFD01F53DE1900CC3E73 /* MJRefreshStateHeader.m in Sources */,
 				C625D02B1F53E55F00CC3E73 /* View+MASAdditions.m in Sources */,
 				C68E91531FA1D9C200975D68 /* ZXUPCEANReader.m in Sources */,
@@ -7831,6 +7841,7 @@
 				C6100600204A76CE0045968C /* StoresInformationViewController.m in Sources */,
 				C617433C1FF65D0900FB7AD8 /* VINquedingVIew.m in Sources */,
 				C6DC6B6A2005F33000F06DB7 /* BossUserMeCell.m in Sources */,
+				C60C9A2A2091D4C1006FA4C9 /* WorkQingKuangView.m in Sources */,
 				C6A473881FB9479F00DA1218 /* SSKeychain.m in Sources */,
 				C68E91131FA1D9C200975D68 /* ZXDataMatrixSymbolInfo.m in Sources */,
 				C6AC05A61F7F53850040B32B /* RealReachability.m in Sources */,
@@ -7913,6 +7924,7 @@
 				C68E91121FA1D9C200975D68 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				C6AC05A11F7F53850040B32B /* ReachStateWWAN.m in Sources */,
 				18FF0FE9208607530054D16A /* ProjecAddProjectView.m in Sources */,
+				C60C9A2D2091DE8C006FA4C9 /* WorkJieGuoView.m in Sources */,
 				C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

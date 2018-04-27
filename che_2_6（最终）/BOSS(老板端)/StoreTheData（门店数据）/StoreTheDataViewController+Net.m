@@ -69,7 +69,8 @@
     [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/task_status" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
         [weakSelf.mainModel setdataDict:dataDic];
-        self.renwuView.zhauModel = weakSelf.mainModel;
+        weakSelf.renwuView.zhauModel = weakSelf.mainModel;
+        [weakSelf.renwuView.mainTable reloadData];
         
     } failure:^(id error) {
         

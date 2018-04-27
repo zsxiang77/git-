@@ -28,7 +28,7 @@
     self.staff_list = Staff_listC;
     
     NSMutableArray *Task_listC = [[NSMutableArray alloc]init];
-    NSArray * Task_listC1 = [[NSArray alloc]init];
+    NSArray * Task_listC1 = KISDictionaryHaveKey(dict, @"task_list");
     if(Task_listC1.count>0){
         for (int i=0; i<Task_listC1.count; i++) {
             Task_listModel * model = [[Task_listModel alloc]init];

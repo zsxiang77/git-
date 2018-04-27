@@ -75,14 +75,14 @@
         scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 54, kWindowW, 310)];
         [self addSubview:scrollView];
         
-        UIView * viewBiao = [[UIView alloc]initWithFrame:CGRectMake(12, 0, kWindowW-12-28, 552/2)];
-        [viewBiao.layer setCornerRadius:5];
-        [viewBiao.layer setBorderWidth:1];
-        [viewBiao.layer setBorderColor:kRGBColor(192,218,254).CGColor];
-        viewBiao.layer.shadowColor = kRGBColor(192,218,254).CGColor;//shadowColor阴影颜色
+        UIView * viewBiao = [[UIView alloc]initWithFrame:CGRectMake(12, 10, kWindowW-12-28, 552/2)];
+        [viewBiao.layer setCornerRadius:10];
+        viewBiao.layer.shadowColor = [UIColor blueColor].CGColor;//shadowColor阴影颜色
+        viewBiao.layer.shadowOffset = CGSizeMake(5,5);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+        viewBiao.backgroundColor = [UIColor whiteColor];
         viewBiao.layer.shadowOpacity = 0.5;
         viewBiao.layer.shadowRadius = 2;// 阴影扩散的范围控制
-        viewBiao.layer.shadowOffset = CGSizeMake(0,6);// 阴影的范围
+        viewBiao.layer.shadowOffset = CGSizeMake(0, 0);// 阴影的范围
         [scrollView addSubview:viewBiao];
         
         anNniuView = [[UIView alloc]init];
@@ -155,11 +155,14 @@
     if (sender.selected == YES) {
         return;
     }
+    
     for (int i =0; i<2; i++) {
         UIButton *bt = [anNniuView viewWithTag:500+i];
         bt.selected = NO;
     }
     sender.selected =! sender.selected;
+    
+    self.renYuanShiXiangQieBlock(sender.tag - 500);
 
 }
 

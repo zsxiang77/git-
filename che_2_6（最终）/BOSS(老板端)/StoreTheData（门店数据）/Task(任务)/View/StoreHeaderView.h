@@ -15,4 +15,5 @@
 }
 @property(nonatomic,strong)UILabel * timeDateLable;
 @property(nonatomic,strong)void  (^showRiLiBlock)(void);
+@property(nonatomic,strong)void  (^renYuanShiXiangQieBlock)(NSInteger index);
 @end
