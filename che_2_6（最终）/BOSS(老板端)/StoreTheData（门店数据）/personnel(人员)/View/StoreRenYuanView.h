@@ -14,5 +14,5 @@
 @property(nonatomic,strong)UIView * headerView;
 @property(nonatomic,strong)NSMutableArray * zhuanzhiModel;
 @property(nonatomic,strong)void  (^showRiLiBlock)(void);
-@property(nonatomic,strong)void  (^xuanzhonRowBlock)(listModel *mode);
+@property(nonatomic,strong)void  (^xuanzhonRowBlock)(listModel *mode,NSUInteger index);
 @end

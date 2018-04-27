@@ -7,8 +7,9 @@
 //
 
 #import "StoreRenYuanDeileVC.h"
+#import "StoreRenYuanNengLiCell.h"
 
-@interface StoreRenYuanDeileVC ()
+@interface StoreRenYuanDeileVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -17,12 +18,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTopViewWithTitle:@"员工能力" withBackButton:YES];
+    
+    self.headerview = [[StoreCellHeaderView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 894/2)];
+    
+    
+    
+    self.mainTable = [[UITableView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight) style:UITableViewStyleGrouped];
+    self.mainTable.backgroundColor = [UIColor whiteColor];
+    self.mainTable.delegate = self;
+    self.mainTable.dataSource = self;
+    self.mainTable.tableHeaderView = self.headerview;
+    [self.view addSubview:self.mainTable];
     [self getXiangqing_staff_ability];
 }
+#pragma mark- cell 数据
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    static NSString *Identifier = @"Identifier";
+    StoreRenYuanNengLiCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    if (cell == nil) {
+        cell = [[StoreRenYuanNengLiCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+    }
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell refleshData:self.chaunzhiModel.achievement dieIndex:indexPath];
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+    
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 8;
+}
+-(StoreDetliModel *)chaunzhiModel
+{
+    if (!_chaunzhiModel) {
+        _chaunzhiModel = [[StoreDetliModel alloc]init];
+    }
+    return _chaunzhiModel;
 }
 //人员详情
 -(void)getXiangqing_staff_ability
@@ -36,9 +74,12 @@
     kWeakSelf(weakSelf)
     [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/staff_ability" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
-        //[weakSelf.mainModel setdataDict:dataDic];
-       // self.renwuView.zhauModel = weakSelf.mainModel;
-        
+        [weakSelf.chaunzhiModel setdataDict:dataDic];
+        weakSelf.headerview.dataModel = weakSelf.chaunzhiModel;
+        weakSelf.headerview.modes = weakSelf.chaunzhiStr;
+        weakSelf.headerview.indexRow = weakSelf.index;
+        [weakSelf.mainTable reloadData];
+        [weakSelf.headerview reloadData];
     } failure:^(id error) {
         
     }];

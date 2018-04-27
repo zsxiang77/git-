@@ -104,12 +104,14 @@
             [weakSelf.view bringSubviewToFront:weakSelf.calendar];
             [weakSelf.calendar show];
         };
-        _renyuanView.xuanzhonRowBlock = ^(listModel *mode) {
+        _renyuanView.xuanzhonRowBlock = ^(listModel *mode, NSUInteger index) {
             StoreRenYuanDeileVC *vc = [[StoreRenYuanDeileVC alloc]init];
-            vc.chaunzhiStr = mode;
-            vc.yearStrzhi =  weakSelf.yearStr;
-            vc.monthStrzhi = weakSelf.mouchStr;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
+                        vc.chaunzhiStr = mode;
+                        vc.yearStrzhi =  weakSelf.yearStr;
+                        vc.monthStrzhi = weakSelf.mouchStr;
+                        vc.index = index;
+                        vc.hidesBottomBarWhenPushed = YES;
+                        [weakSelf.navigationController pushViewController:vc animated:YES];
         };
         _renyuanView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData0)];
         

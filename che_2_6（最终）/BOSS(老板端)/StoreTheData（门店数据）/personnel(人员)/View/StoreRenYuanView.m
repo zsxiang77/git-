@@ -124,9 +124,10 @@
 {
    // [tableView deselectRowAtIndexPath:indexPath animated:YES];
     listModel * model = self.zhuanzhiModel[indexPath.row];
-    self.xuanzhonRowBlock(model);
+    self.xuanzhonRowBlock(model,indexPath.row+1);
    
 }
+
 
 -(void)riliClick:(UIButton *)sender
 {
