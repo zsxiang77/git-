@@ -141,22 +141,7 @@
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:model.a_id forKey:@"a_id"];
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@user/study/my_exam_detail",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *filData = responseObject;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NPrintLog(@"get参数%@\n返回：%@",mDict,parserDict);
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [BOSSNetWorkManager loginAgain:weakSelf];
-            return;
-        }
+    [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/study/my_exam_detail" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary *adData = kParseData(responseObject);
         if (![adData isKindOfClass:[NSDictionary class]]) {
             return ;
@@ -177,9 +162,8 @@
         {
             [weakSelf xiuGaiView];
         }
-        NPrintLog(@"测试%@",weakSelf.chuanZhiArray);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
+    } failure:^(id error) {
+        
     }];
 }
 

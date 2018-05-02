@@ -50,41 +50,17 @@
 }
 -(void)huoquMenDianData
 {
-    [self showOrHideLoadView:YES];
+    NSDictionary *dict = [[NSDictionary alloc]init];
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@user/ucenter/store_info",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *responseData = responseObject;
-        NSData *filData = responseData;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NPrintLog(@"n返回：%@",parserDict);
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [BOSSNetWorkManager loginAgain:weakSelf];
-            return;
-        }
-        
-        if ([KISDictionaryHaveKey(parserDict, @"code") integerValue] == 404) {
-            NPrintLog(@"msg:%@",KISDictionaryHaveKey(parserDict, @"msg"));
-            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(parserDict, @"msg") buttonTitle:@"确定"];
-            return;
-        }
+    [BOSSNetWorkManager requestWithParametersGET:dict withUrl:@"user/ucenter/store_info" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary *adData = kParseData(responseObject);
         if([adData isKindOfClass:[NSDictionary class]]){
             weakSelf.mainData = adData;
             [weakSelf.mainTableView reloadData];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NPrintLog(@"task是%@",task);
-        [weakSelf showOrHideLoadView:NO];
+    } failure:^(id error) {
+        
     }];
-    
 }
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -131,7 +107,7 @@
 {
     
     if(indexPath.row==0){
- BOSSForTochangeNameViewController*vc=[[BOSSForTochangeNameViewController alloc]init];
+        BOSSForTochangeNameViewController*vc=[[BOSSForTochangeNameViewController alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         vc.chaunzhiMdisn=self.mainData;
         [self.navigationController pushViewController:vc animated:YES];

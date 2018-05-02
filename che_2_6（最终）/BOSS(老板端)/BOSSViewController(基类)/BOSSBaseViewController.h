@@ -10,7 +10,6 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "BOSSCheDianZhangCommon.h"
 #import "BOSSNetWorkManager.h"
-#import "NetWorkManagerGet.h"
 #import "BOSSLoadView.h"
 #import "MJRefresh.h"
 // 引入JPush功能所需头文件

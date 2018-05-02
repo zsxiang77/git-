@@ -133,36 +133,8 @@
     
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     [mDict setObject:@"2" forKey:@"channel_id"];
-    [self showOrHideLoadView:YES];
-    
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@order/order/services",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *filData = responseObject;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NPrintLog(@"get参数%@\n返回：%@",mDict,parserDict);
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [NetWorkManager loginAgain:self];
-            return;
-        }else if (code == 605)
-        {
-            
-            UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil];
-            [alc show];
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [NetWorkManager loginAgain:self];
-            return;
-        }
-        
+    [NetWorkManagerGet requestWithParametersGet:mDict withUrl:@"order/order/services" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary *adData = kParseData(responseObject);
         if (![adData isKindOfClass:[NSDictionary class]]) {
             return ;
@@ -175,11 +147,9 @@
             [weakSelf.classDataArr addObject:model];
         }
         [weakSelf setBuJU];
+    } failure:^(id error) {
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
     }];
-    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

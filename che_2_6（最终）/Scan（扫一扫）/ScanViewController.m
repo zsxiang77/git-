@@ -92,13 +92,10 @@
     [MobClick event:@"RichScan_Self_Motion_Manual_Operation"];
     
     [UserInfo shareInstance].shiFouShouDong = YES;
-    
-    [self showOrHideLoadView:YES];
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@order/order/channels",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    [NetWorkManagerGet requestWithParametersGet:mDict withUrl:@"order/order/channels" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         [weakSelf showOrHideLoadView:NO];
         NSData *responseData = responseObject;
         NSData *filData = responseData;
@@ -120,12 +117,9 @@
             vc.chuanZhiArray = KISDictionaryHaveKey(adData, @"channels");
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
+    } failure:^(id error) {
+        
     }];
-    
-//    QrCodeScanningViewController *vc = [[QrCodeScanningViewController alloc]init];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
+
 }
 @end

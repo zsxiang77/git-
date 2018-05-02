@@ -102,11 +102,7 @@
     [mDict setObject:@"2" forKey:@"type"];
     
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@store_staff/staff_user/version",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [NetWorkManagerGet requestWithParametersGet:mDict withUrl:@"store_staff/staff_user/version" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         [weakSelf showOrHideLoadView:NO];
         
         NSData *filData = responseObject;
@@ -139,9 +135,8 @@
                 weakSelf.shiFouZuiXinLabel.text = [NSString stringWithFormat:@"最新版本是%@",weakSelf.versionStr];
             }
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
-        [[UserInfo shareInstance] showNotNetView];
+    } failure:^(id error) {
+        
     }];
     
 }

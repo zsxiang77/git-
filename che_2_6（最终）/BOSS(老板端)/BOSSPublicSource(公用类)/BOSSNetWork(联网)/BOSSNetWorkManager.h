@@ -35,5 +35,8 @@
 
 + (void)loginAgain:(BOSSBaseViewController*)viewController;
 
+#pragma mark - get
++ (void)requestWithParametersGET:(NSDictionary *)parameters withUrl:(NSString *)url viewController:(BOSSBaseViewController*)viewController withRedictLogin:(BOOL)longin isShowLoading:(BOOL)isShow success:(void (^)(id responseObject))success failure:(void (^)(id error))failure;
+
 
 @end

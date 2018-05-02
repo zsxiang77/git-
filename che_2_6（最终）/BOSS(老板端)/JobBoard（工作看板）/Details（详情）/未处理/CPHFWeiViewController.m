@@ -165,66 +165,43 @@
     [mDict setObject:self.chuanZhiModel.task_id forKey:@"task_id"];
     
     kWeakSelf(weakSelf)
-    [self showOrHideLoadView:YES];
-    NSString *path = [NSString stringWithFormat:@"%@user/work_board/task_detail",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress){
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *responseData = responseObject;
-        NSData *filData = responseData;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [BOSSNetWorkManager loginAgain:weakSelf];
-            return;
+    [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/work_board/task_detail" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        weakSelf.mainDataDict = [[JobBoardDetailModel alloc]init];
+        [weakSelf.mainDataDict setdataWithDict:dataDic];
+        
+        [weakSelf.headerView refreshData:weakSelf.mainDataDict];
+        
+        weakSelf.mainTableView.tableHeaderView = weakSelf.headerView;
+        [weakSelf.maiChuLiArray removeAllObjects];
+        if (weakSelf.mainDataDict.task_detail.count>0) {
+            for (int i = 0; i<weakSelf.mainDataDict.task_detail.count; i++) {
+                [weakSelf.maiChuLiArray addObject:weakSelf.mainDataDict.task_detail[i]];
+            }
         }
-
-        if (code == 200) {
-            NSDictionary* dataDic = kParseData(responseObject);
-            weakSelf.mainDataDict = [[JobBoardDetailModel alloc]init];
-            [weakSelf.mainDataDict setdataWithDict:dataDic];
-            
-            [weakSelf.headerView refreshData:weakSelf.mainDataDict];
-            
-            weakSelf.mainTableView.tableHeaderView = weakSelf.headerView;
-            [weakSelf.maiChuLiArray removeAllObjects];
-            if (weakSelf.mainDataDict.task_detail.count>0) {
-                for (int i = 0; i<weakSelf.mainDataDict.task_detail.count; i++) {
-                    [weakSelf.maiChuLiArray addObject:weakSelf.mainDataDict.task_detail[i]];
-                }
-            }
-            weakSelf.shangCuiView.hidden = YES;
-            weakSelf.xiaCuiView.hidden = YES;
-            if ([weakSelf.mainDataDict.info.status integerValue] == 0 && weakSelf.mainDataDict.info.press_time.length>0) {
-                weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight+kShangCuiViewHeight, kWindowW, kWindowH-kBOSSNavBarHeight-kShangCuiViewHeight - kXiaCuiViewHeight);
-//                weakSelf.mainTableView.hidden = YES;
-                weakSelf.shangCuiView.hidden = NO;
-                weakSelf.shangCuilabel.text = [NSString stringWithFormat:@"已催办 %@",weakSelf.mainDataDict.info.press_time];
-                weakSelf.xiaCuiView.hidden = NO;
-                [weakSelf.xiaCuiBt setTitle:@"再次催办" forState:(UIControlStateNormal)];
-            }else if ([weakSelf.mainDataDict.info.status integerValue] == 0 && !(weakSelf.mainDataDict.info.press_time.length>0)) {
-                weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-kXiaCuiViewHeight );
-                weakSelf.xiaCuiView.hidden = NO;
-                [weakSelf.xiaCuiBt setTitle:@"催办" forState:(UIControlStateNormal)];
-            }else{
-                weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight);
-            }
-            
-            
-            [weakSelf.mainTableView reloadData];
+        weakSelf.shangCuiView.hidden = YES;
+        weakSelf.xiaCuiView.hidden = YES;
+        if ([weakSelf.mainDataDict.info.status integerValue] == 0 && weakSelf.mainDataDict.info.press_time.length>0) {
+            weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight+kShangCuiViewHeight, kWindowW, kWindowH-kBOSSNavBarHeight-kShangCuiViewHeight - kXiaCuiViewHeight);
+            //                weakSelf.mainTableView.hidden = YES;
+            weakSelf.shangCuiView.hidden = NO;
+            weakSelf.shangCuilabel.text = [NSString stringWithFormat:@"已催办 %@",weakSelf.mainDataDict.info.press_time];
+            weakSelf.xiaCuiView.hidden = NO;
+            [weakSelf.xiaCuiBt setTitle:@"再次催办" forState:(UIControlStateNormal)];
+        }else if ([weakSelf.mainDataDict.info.status integerValue] == 0 && !(weakSelf.mainDataDict.info.press_time.length>0)) {
+            weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-kXiaCuiViewHeight );
+            weakSelf.xiaCuiView.hidden = NO;
+            [weakSelf.xiaCuiBt setTitle:@"催办" forState:(UIControlStateNormal)];
         }else{
-            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(parserDict, @"msg") buttonTitle:@"确定"];
-            return;
+            weakSelf.mainTableView.frame = CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight);
         }
         
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
+        [weakSelf.mainTableView reloadData];
+    } failure:^(id error) {
+        
     }];
+    
 }
 
 //设置催办

@@ -51,43 +51,18 @@
     self.yingDaoScrollView.hidden = YES;
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     kWeakSelf(weakSelf)
-    
-    
-    [self showOrHideLoadView:YES];
-    NSString *path = [NSString stringWithFormat:@"%@user/study/mask_video",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *responseData = responseObject;
-        NSData *filData = responseData;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [BOSSNetWorkManager loginAgain:weakSelf];
-            return;
-        }
+    [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/study/mask_video" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.isNoShowNavBar = NO;
         
-        if (code == 200) {
-            NSDictionary* dataDic = kParseData(responseObject);
-            WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.isNoShowNavBar = NO;
-            
-            vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dataDic, @"url"),KISDictionaryHaveKey(dataDic, @"video_id")];
-            [weakSelf.navigationController pushViewController:vc animated:YES];
-        }else{
-            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(parserDict, @"msg") buttonTitle:@"确定"];
-            return;
-        }
+        vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dataDic, @"url"),KISDictionaryHaveKey(dataDic, @"video_id")];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
+    } failure:^(id error) {
         
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
     }];
+    
 }
 
 @end

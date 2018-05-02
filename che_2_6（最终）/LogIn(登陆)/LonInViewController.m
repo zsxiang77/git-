@@ -11,7 +11,6 @@
 #import "NSString+MD5.h"
 #import <AdSupport/AdSupport.h>
 #import "sys/utsname.h"
-#import "NetWorkManagerGet.h"
 #import "LogInBaseBt.h"
 #import "NumberKeyboard.h"
 
@@ -949,57 +948,5 @@
     }];
 
 }
-
-
-//-(void)getrequest_method
-//{
-//    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-//    [self showOrHideLoadView:YES];
-//
-//    kWeakSelf(weakSelf)
-//    NSString *path = [NSString stringWithFormat:@"%@store_staff/store_set/settings",HOST_URL];
-//    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-//
-//        nil;
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [weakSelf showOrHideLoadView:NO];
-//        NSData *filData = responseObject;
-//        NSDictionary* parserDict = (NSDictionary *)filData;
-//        NPrintLog(@"\n返回：%@",parserDict);
-//
-//        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-//
-//        NSDictionary *adData = kParseData(responseObject);
-//        if (![adData isKindOfClass:[NSDictionary class]]) {
-//
-//            return ;
-//        }
-//
-//        NSDictionary *settings = KISDictionaryHaveKey(adData, @"settings");
-//
-//        if (code == 200) {
-//            [UserInfo shareInstance].isLogined = YES;
-//            [UserInfo shareInstance].isExplod = KISDictionaryHaveKey(settings, @"is_explod");
-//            [UserInfo savekIsExplod];
-//            [UserInfo shareInstance].userZhangHao = userNameTextField.text;
-//            [UserInfo saveUserName];
-//
-//            [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
-//            //发送登录成功的通知
-//            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
-//            AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//            [delegate startFirstPage];
-//        }else
-//        {
-//            [[UserInfo shareInstance] cleanUserInfor];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
-//            [weakSelf showMessageWindowWithTitle:KISDictionaryHaveKey(responseObject, @"msg") point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
-//        }
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [weakSelf showOrHideLoadView:NO];
-//    }];
-//
-//}
 
 @end

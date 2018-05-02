@@ -77,34 +77,12 @@
     [mDict setObject:@"2" forKey:@"status"];
     
     kWeakSelf(weakSelf)
-    [self showOrHideLoadView:YES];
-    NSString *path = [NSString stringWithFormat:@"%@user/ucenter/about_us",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [weakSelf showOrHideLoadView:NO];
-        NSData *responseData = responseObject;
-        NSData *filData = responseData;
-        NSDictionary* parserDict = (NSDictionary *)filData;
-        NSInteger code = [KISDictionaryHaveKey(parserDict, @"code") integerValue];
-        if (code == 604)
-        {
-            [[UserInfo shareInstance] cleanUserInfor];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
-            [BOSSNetWorkManager loginAgain:weakSelf];
-            return;
-        }
+    [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/ucenter/about_us" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        NSDictionary* dataDic = kParseData(responseObject);
+        weakSelf.maidct = KISDictionaryHaveKey(dataDic, @"info");
+        [weakSelf.mainTableView reloadData];
+    } failure:^(id error) {
         
-        if (code == 200) {
-            NSDictionary* dataDic = kParseData(responseObject);
-            weakSelf.maidct = KISDictionaryHaveKey(dataDic, @"info");
-            [weakSelf.mainTableView reloadData];
-        }else{
-            [weakSelf showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(parserDict, @"msg") buttonTitle:@"确定"];
-            return;
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
     }];
 }
 

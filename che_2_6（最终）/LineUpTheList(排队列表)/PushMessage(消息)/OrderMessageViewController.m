@@ -109,11 +109,7 @@
     
     
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@store_staff/store_set/settings",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [NetWorkManagerGet requestWithParametersGet:mDict withUrl:@"store_staff/store_set/settings" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         [weakSelf showOrHideLoadView:NO];
         
         NSData *filData = responseObject;
@@ -142,9 +138,8 @@
             vc.chuanZhiModel = model;
             [self.navigationController pushViewController:vc animated:YES];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
-        [[UserInfo shareInstance] showNotNetView];
+    } failure:^(id error) {
+        
     }];
     
 }

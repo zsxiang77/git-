@@ -14,13 +14,9 @@
 @implementation TheWorkbenchViewController (Net)
 
 -(void)rREQUEST_METHODNetwork{
-    
-    [self showOrHideLoadView:YES];
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@order/order/channels",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [NetWorkManagerGet requestWithParametersGet:mDict withUrl:@"order/order/channels" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         [weakSelf showOrHideLoadView:NO];
         NSData *responseData = responseObject;
         NSData *filData = responseData;
@@ -51,11 +47,9 @@
             
             [weakSelf postrequest_methodDataWithIndex:diJiYeIndex withShuaXin:YES];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NPrintLog(@"task是%@",task);
-        [weakSelf showOrHideLoadView:NO];
+    } failure:^(id error) {
+        
     }];
-    
 }
 
 -(void)postrequest_methodDataWithIndex:(NSInteger )index withShuaXin:(BOOL)shuaX

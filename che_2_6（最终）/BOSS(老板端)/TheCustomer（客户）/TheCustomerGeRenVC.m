@@ -185,12 +185,9 @@
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     
     [mDict setObject:self.chuanZhiModel.user_id forKey:@"user_id"];
-    [self showOrHideLoadView:YES];
+    
     kWeakSelf(weakSelf)
-    NSString *path = [NSString stringWithFormat:@"%@user/ucenter/get_one_consume",HOST_URL];
-    [[NetWorkManagerGet sharedAFManager] GET:path parameters:mDict progress:^(NSProgress * _Nonnull downloadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/ucenter/get_one_consume" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         [weakSelf showOrHideLoadView:NO];
         NSData *responseData = responseObject;
         NSData *filData = responseData;
@@ -213,7 +210,7 @@
             weakSelf.nameLabel.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(weakSelf.mainDict, @"store_alias")];
             
             weakSelf.numberLaber.text = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(weakSelf.mainDict, @"year_num")];
-
+            
             
             [weakSelf.mainTableView reloadData];
         }else{
@@ -222,9 +219,10 @@
         }
         
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf showOrHideLoadView:NO];
+    } failure:^(id error) {
+        
     }];
+    
 }
 
 
