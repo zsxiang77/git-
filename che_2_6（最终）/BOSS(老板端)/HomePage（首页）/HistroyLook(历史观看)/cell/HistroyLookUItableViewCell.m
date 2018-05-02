@@ -85,7 +85,8 @@
     titleUilable.text=dict.title;
     keshiUilable.text=[NSString stringWithFormat:@"第%@课",dict.num];
     studyUilable.text=@"已学习";
-    timeLongLable.text=dict.minutes;
+    NSInteger minutes = [dict.minutes integerValue]/60000;
+    timeLongLable.text=[NSString stringWithFormat:@"%ld",minutes];
     [mainimgView sd_setImageWithURL:[NSURL URLWithString:dict.image] placeholderImage:DJImageNamed(@"Boss_fond_beijing")];
 }
 @end

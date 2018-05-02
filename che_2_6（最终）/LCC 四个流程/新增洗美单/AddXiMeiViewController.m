@@ -152,6 +152,15 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
             [NetWorkManager loginAgain:self];
             return;
+        }else if (code == 605)
+        {
+            
+            UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil];
+            [alc show];
+            [[UserInfo shareInstance] cleanUserInfor];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
+            [NetWorkManager loginAgain:self];
+            return;
         }
         
         NSDictionary *adData = kParseData(responseObject);

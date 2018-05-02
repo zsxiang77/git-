@@ -19,6 +19,8 @@
 @property(nonatomic,strong)UITableView *main_tableView;
 - (void)buildAdView;
 
+@property(nonatomic,assign)BOOL   shiFouShuaXin;
+
 @end
 @interface LearningCenterViewController (Net)
 -(void)qingQiuLuoBoData;

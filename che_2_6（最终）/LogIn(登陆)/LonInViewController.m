@@ -918,16 +918,19 @@
 
             [UserInfo shareInstance].isLogined = YES;
             [UserInfo shareInstance].userZhangHao = userNameTextField.text;
-            [UserInfo saveUserName];
+            
 
             [weakSelf showMessageWindowWithTitle:@"登录成功" point:CGPointMake(kWindowW/2.0,kWindowH - 100) delay:2.0];
             BOOL is_active = [KISDictionaryHaveKey(dataDic, @"is_active")boolValue];
             if (is_active == YES) {
+                [UserInfo saveUserName];
                 //发送登录成功的通知
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
                 AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate startFirstPage];
             }else{
+                [UserInfo shareInstance].isLogined = NO;
+                [UserInfo saveUserName];
                 ChangeModileViewController *vc = [[ChangeModileViewController alloc]init];
                 vc.staff_id = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"staff_id")];
                 vc.chuanZhiModile = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dataDic, @"mobile")];

@@ -9,7 +9,6 @@
 #import "CLPlayerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "CLPlayerMaskView.h"
 #import "CLGCDTimerManager.h"
 
 static NSString *CLPlayer_sliderTimer = @"CLPlayer_sliderTimer";
@@ -52,14 +51,12 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 @property (nonatomic, assign) BOOL             isUserTapMaxButton;
 /**播放完成标记*/
 @property (nonatomic, assign) BOOL             isEnd;
-/**播放器*/
-@property (nonatomic, strong) AVPlayer         *player;
+
 /**playerLayer*/
 @property (nonatomic, strong) AVPlayerLayer    *playerLayer;
 /**播放器item*/
 @property (nonatomic, strong) AVPlayerItem     *playerItem;
-/**遮罩*/
-@property (nonatomic, strong) CLPlayerMaskView *maskView;
+
 /** 用来保存快进的总时长 */
 @property (nonatomic, assign) CGFloat          sumTime;
 /** 定义一个实例变量，保存枚举值 */
@@ -577,11 +574,29 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 #pragma mark - 拖动进度条
 //开始
 -(void)cl_progressSliderTouchBegan:(CLSlider *)slider{
+    
     //暂停
     [self pausePlay];
     //销毁定时消失工具条定时器
     [self destroyToolBarTimer];
 }
+//设置开始播放时间
+-(void)sheZhiDaoFangShiJian:(NSInteger)send
+{
+//    CMTime duration = _player.currentItem.asset.duration;
+//    NSInteger seconds = CMTimeGetSeconds(duration);
+//    //计算出拖动的当前秒数
+//    slider.value =
+//    CGFloat total           = (CGFloat)_playerItem.duration.value / _playerItem.duration.timescale;
+//    CGFloat dragedSeconds   = total * slider.value;
+//    //转换成CMTime才能给player来控制播放进度
+//    CMTime dragedCMTime     = CMTimeMake(dragedSeconds, 1);
+//    [_player seekToTime:dragedCMTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+//    NSInteger proMin                    = (NSInteger)CMTimeGetSeconds(dragedCMTime) / 60;//当前秒
+//    NSInteger proSec                    = (NSInteger)CMTimeGetSeconds(dragedCMTime) % 60;//当前分钟
+//    self.maskView.currentTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (long)proMin, (long)proSec];
+}
+
 //结束
 -(void)cl_progressSliderTouchEnded:(CLSlider *)slider{
     if (slider.value != 1) {
@@ -828,6 +843,7 @@ typedef NS_ENUM(NSInteger, CLPanDirection){
 }
 //销毁定时消失定时器
 - (void)destroyToolBarTimer{
+    
     [[CLGCDTimerManager sharedManager] cancelTimerWithName:CLPlayer_tapTimer];
 }
 #pragma mark - 屏幕旋转通知

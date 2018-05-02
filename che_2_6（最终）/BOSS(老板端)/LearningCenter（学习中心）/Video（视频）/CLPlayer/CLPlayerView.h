@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KDWaterWaveView.h"
+#import "CLPlayerMaskView.h"
 
 typedef NS_ENUM(NSInteger,VideoFillMode){
     VideoFillModeResize = 0,       //拉伸占满整个播放器，不按原比例拉伸
@@ -77,5 +78,12 @@ typedef void(^EndBolck)(void);
 - (void)endPlay:(EndBolck) end;
 /**销毁播放器*/
 - (void)destroyPlayer;
+/**遮罩*/
+@property (nonatomic, strong) CLPlayerMaskView *maskView;
+/**播放器*/
+@property (nonatomic, strong) AVPlayer         *player;
+
+//设置开始播放时间
+-(void)sheZhiDaoFangShiJian:(NSInteger)send;
 
 @end

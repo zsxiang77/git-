@@ -128,9 +128,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     BossShouCangModel *model = main_dataArry[indexPath.row];
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
+    
+    
+    LearningModel *model2 = [[LearningModel alloc]init];
+    model2.title = model.title;
+    model2.video_id = model.video_id;
+    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    vc.chuanMOdel = model2;
+    vc.video_id = model.video_id;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

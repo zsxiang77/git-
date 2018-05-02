@@ -30,8 +30,18 @@
                     model.shiFouXuanZhong = YES;
                     weakSelf.playerView.url = [NSURL URLWithString:model.video_url];
                 }
+                if (weakSelf.chuanSeconds>0) {
+                    [weakSelf.playerView sheZhiDaoFangShiJian:weakSelf.chuanSeconds];
+                }
                 
                 [weakSelf.mainJiShuArray addObject:model];
+                
+                weakSelf.chuanMOdel.video_id = weakSelf.video_id;
+                weakSelf.chuanMOdel.title = model.title;
+                weakSelf.chuanMOdel.user_coll = model.user_coll;
+                
+                
+                [weakSelf shuXinNavigationHeaderView];
             }
         }
         
@@ -52,7 +62,7 @@
         NSDictionary *dataDic = kParseData(responseObject);/*dataDic[@"data"];*/
         NSArray *order_list = KISDictionaryHaveKey(dataDic, @"list");
         
-        
+        [weakSelf.mainListArray removeAllObjects];
         for (int i = 0; i<order_list.count; i++) {
             LearningModel *model = [[LearningModel alloc]init];
             [model setDatashuJu:order_list[i]];
@@ -89,6 +99,38 @@
             
         }];
     }
+    
+}
+
+
+//客户播放的视频与进度
+-(void)postuser_video_study
+{
+    LearningVideoModel *model;
+    for (int i = 0; i<self.mainJiShuArray.count; i++) {
+        LearningVideoModel *model2 = self.mainJiShuArray[i];
+        if (model2.shiFouXuanZhong == YES) {
+            model = model2;
+        }
+        
+    }
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:model.video_id forKey:@"video_id"];
+    NSInteger bb = self.playerView.maskView.slider.value*100;
+    [mDict setObject:[NSString stringWithFormat:@"%ld%%",bb] forKey:@"history"];
+    CMTime time = self.playerView.player.currentTime;
+    
+    NSTimeInterval currentTimeSec = time.value / time.timescale;
+    NSInteger haoMiao = currentTimeSec*1000;
+    NPrintLog(@"haoMiao%ld",haoMiao);
+
+    [mDict setObject:[NSString stringWithFormat:@"%ld",haoMiao] forKey:@"minutes"];
+    
+    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/study/user_video_study" viewController:nil withRedictLogin:YES isShowLoading:NO success:^(id responseObject) {
+        
+    } failure:^(id error) {
+        
+    }];
     
 }
 

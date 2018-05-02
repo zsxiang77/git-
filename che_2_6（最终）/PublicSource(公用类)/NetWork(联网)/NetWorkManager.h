@@ -53,4 +53,5 @@
 //当前网络状态
 + (NSString*)getNetWorkWithWWAN;
 
++ (NSDictionary*)getNetFailDictionary:(NSError*)error parameters:(NSDictionary*)parameters;
 @end

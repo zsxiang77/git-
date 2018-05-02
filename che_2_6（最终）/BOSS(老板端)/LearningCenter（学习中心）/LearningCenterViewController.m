@@ -45,14 +45,29 @@
     [self setTopViewWithTitle:@"学习中心" withBackButton:NO];
     self.adDatas = [[NSMutableArray alloc]init];
     self.mainListArray = [[NSMutableArray alloc]init];
+    
+    self.shiFouShuaXin = NO;
     [self qingQiuLuoBoData];
     [self postrequest_methodDatawithShuaXin:YES];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     //设置打开抽屉模式
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    if (self.shiFouShuaXin == YES) {
+        [self qingQiuLuoBoData];
+        [self postrequest_methodDatawithShuaXin:YES];
+    }
+    self.shiFouShuaXin = NO;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self qingQiuLuoBoData];
+    [self postrequest_methodDatawithShuaXin:YES];
 }
 
 #pragma mark 头部
@@ -96,10 +111,19 @@
 {
     
     NSDictionary *dict = [self.adDatas objectAtIndex:MAX(item-1, 0)];
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    vc.isNoShowNavBar = NO;
+//    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dict, @"url"),KISDictionaryHaveKey(dict, @"video_id")];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    self.shiFouShuaXin = YES;
+    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    LearningModel *model =  [[LearningModel alloc]init];
+    [model setDatashuJu:dict];
+    vc.chuanMOdel = model;
+    vc.video_id = KISDictionaryHaveKey(dict, @"video_id");
     vc.hidesBottomBarWhenPushed = YES;
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dict, @"url"),KISDictionaryHaveKey(dict, @"video_id")];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -136,8 +160,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.shiFouShuaXin = YES;
     LearningModel *model = self.mainListArray[indexPath.row];
     LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    vc.chuanMOdel = model;
     vc.video_id = model.video_id;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

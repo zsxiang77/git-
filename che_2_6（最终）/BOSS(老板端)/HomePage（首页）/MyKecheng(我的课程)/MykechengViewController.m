@@ -128,13 +128,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MyKechengModel *model = main_dataArry[indexPath.row];
-    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
-    vc.isNoShowNavBar = NO;
-    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
-    [self.navigationController pushViewController:vc animated:YES];
+//    WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+//    vc.isNoShowNavBar = NO;
+//    vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",model.url,model.video_id];
+//    [self.navigationController pushViewController:vc animated:YES];
     
 //    JobBoardViewController *vc = [[JobBoardViewController alloc]init];
 //    [self.navigationController pushViewController:vc animated:YES];
+    
+    LearningModel *model2 = [[LearningModel alloc]init];
+    model2.title = model.title;
+    model2.video_id = model.video_id;
+    LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+    vc.chuanMOdel = model2;
+    vc.video_id = model.video_id;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 @end

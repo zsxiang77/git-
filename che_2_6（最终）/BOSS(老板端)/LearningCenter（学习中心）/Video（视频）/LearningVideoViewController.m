@@ -9,6 +9,7 @@
 #import "LearningVideoViewController.h"
 #import "UIImage+ImageWithColor.h"
 #import "LearningCenterCellTableViewCell.h"
+#import "LearningJieShaoView.h"
 
 
 #define SHIPINGGAO (kWindowW*472/750)//视频高度
@@ -16,6 +17,7 @@
 @interface LearningVideoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *btView;
+    LearningJieShaoView *learningJieShaoView;
 }
 
 @property(nonatomic,assign)BOOL  shiFouShiP;//是否视频选项
@@ -45,6 +47,27 @@
     [self.daoHangLanView addSubview:backButton];
     
     self.titleLabe = [[UILabel alloc]init];
+    self.titleLabe.font = [UIFont systemFontOfSize:17];
+    self.titleLabe.textColor = [UIColor whiteColor];
+    [self.daoHangLanView addSubview:self.titleLabe];
+    [self.titleLabe mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(backButton.mas_right).mas_equalTo(-5);
+        make.centerY.mas_equalTo(backImageView);
+    }];
+    
+    guanZhuBt = [[UIButton alloc]init];
+    [guanZhuBt addTarget:self action:@selector(guanZhuBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    guanZhuBt.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    [guanZhuBt setImage:DJImageNamed(@"shoucang") forState:(UIControlStateSelected)];
+    [guanZhuBt setImage:DJImageNamed(@"bushoucang") forState:(UIControlStateNormal)];
+    [self.daoHangLanView addSubview:guanZhuBt];
+    [guanZhuBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.centerY.mas_equalTo(backImageView);
+        make.width.height.mas_equalTo(30);
+    }];
+
+    
     
     
     self.shiFouShiP = YES;
@@ -114,6 +137,54 @@
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
     [self.view bringSubviewToFront:self.daoHangLanView];
+    
+    learningJieShaoView = [[LearningJieShaoView alloc]initWithFrame:CGRectMake(0, kWindowH, kWindowW, kWindowH)];
+    [self.view addSubview:learningJieShaoView];
+}
+
+
+-(void)shuXinNavigationHeaderView
+{
+    self.titleLabe.text = self.chuanMOdel.title;
+    if([self.chuanMOdel.user_coll boolValue]==YES){
+        guanZhuBt.selected = YES;
+    }else{
+        guanZhuBt.selected = NO;
+    }
+}
+-(void)guanZhuBtChick:(UIButton *)sender
+{
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:self.chuanMOdel.video_id forKey:@"video_id"];
+    
+    kWeakSelf(weakSelf)
+    if([self.chuanMOdel.user_coll boolValue]==YES){
+        [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/study/del_collection" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            weakSelf.chuanMOdel.user_coll = @"0";
+            weakSelf.chuanMOdel.likenum = [NSString stringWithFormat:@"%ld",[weakSelf.chuanMOdel.likenum integerValue]-1];
+            if([self.chuanMOdel.user_coll boolValue]==YES){
+                guanZhuBt.selected = YES;
+            }else{
+                guanZhuBt.selected = NO;
+            }
+            
+        } failure:^(id error) {
+            
+        }];
+    }else{
+        [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/study/add_collection" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+            weakSelf.chuanMOdel.user_coll = @"1";
+            weakSelf.chuanMOdel.likenum = [NSString stringWithFormat:@"%ld",[weakSelf.chuanMOdel.likenum integerValue]+1];
+            if([self.chuanMOdel.user_coll boolValue]==YES){
+                guanZhuBt.selected = YES;
+            }else{
+                guanZhuBt.selected = NO;
+            }
+        } failure:^(id error) {
+            
+        }];
+    }
+    
 }
 
 -(void)qieHuanDianJChick:(UIButton *)sender
@@ -169,11 +240,16 @@
         self.playerView.kDWaterWaveView.hidden = NO;
         [self.playerView.kDWaterWaveView startWave];
     }else{
-        LearningZuoCeShiViewController *vc = [[LearningZuoCeShiViewController alloc]init];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.chuanZhiModel = model;
-        vc.fatherViewController = self;
-        [self.navigationController pushViewController:vc animated:YES];
+        if ([model.exam_id boolValue] == YES) {
+            LearningZuoCeShiViewController *vc = [[LearningZuoCeShiViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.chuanZhiModel = model;
+            vc.fatherViewController = self;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            [self showMessageWindowWithTitle:@"该视频没有试题" point:self.view.center delay:2];
+        }
+        
     }
     
 }
@@ -267,6 +343,36 @@
     [jieShaoL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(13);
         make.top.mas_equalTo(30);
+        make.right.mas_equalTo(-60);
+    }];
+    
+    UIImageView *jianTouIm = [[UIImageView alloc]initWithImage:DJImageNamed(@"Boss_hall_jiantou")];
+    [headView addSubview:jianTouIm];
+    [jianTouIm  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-10);
+        make.centerY.mas_equalTo(jieShaoL);
+        make.width.mas_equalTo(10);
+        make.height.mas_equalTo(16);
+    }];
+    
+    UILabel *zhanL = [[UILabel alloc]init];
+    zhanL.text = @"展开";
+    zhanL.font = [UIFont boldSystemFontOfSize:14];
+    zhanL.textColor = kRGBColor(74, 74, 74);
+    [headView addSubview:zhanL];
+    [zhanL  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-30);
+        make.centerY.mas_equalTo(jieShaoL);
+    }];
+    
+    UIButton *zhuanKaiBt = [[UIButton alloc]init];
+    [zhuanKaiBt addTarget:self action:@selector(zhuanKaiBtChick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [headView addSubview:zhuanKaiBt];
+    [zhuanKaiBt  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.centerY.mas_equalTo(jieShaoL);
+        make.height.mas_equalTo(30);
+        make.width.mas_equalTo(50);
     }];
     
     UILabel *line1 = [[UILabel alloc]init];
@@ -331,7 +437,21 @@
 }
 -(void)dealloc
 {
+    [self postuser_video_study];
     [_playerView destroyPlayer];
+}
+
+-(void)zhuanKaiBtChick:(UIButton *)sender
+{
+    LearningVideoModel *model;
+    for (int i = 0; i<self.mainJiShuArray.count; i++) {
+        LearningVideoModel *model2 = self.mainJiShuArray[i];
+        if (model2.shiFouXuanZhong == YES) {
+            model = model2;
+        }
+    }
+    [learningJieShaoView shuanXinDataWithTitle:@"介绍" WithContent:model.brief];
+    [self.view bringSubviewToFront:learningJieShaoView];
 }
 
 
@@ -395,5 +515,7 @@
         self.playerView.url = [NSURL URLWithString:model2.auto_url];
     }
     [self.mainTableView reloadData];
+    self.chuanMOdel.title = model2.title; 
+    self.titleLabe.text = self.chuanMOdel.title;
 }
 @end

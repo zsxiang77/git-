@@ -8,6 +8,7 @@
 
 #import "BOSSBaseViewController.h"
 #import "HistroyModel.h"
+#import "LearningVideoViewController.h"
 @interface HistroyLookVController : BOSSBaseViewController
 {
     NSInteger     page;

@@ -79,6 +79,7 @@
     if (self.chuanZhiModile.length>0) {
         _phoneTextField.text = self.chuanZhiModile;
     }
+    _phoneTextField.userInteractionEnabled = YES;
     if (self.shiFouBiGai == 2) {
         _phoneTextField.userInteractionEnabled = NO;
     }
@@ -136,6 +137,8 @@
             
             if (code == 200) {
                 [weakSelf showMessageWindowWithTitle:@"激活成功" point:weakSelf.view.center delay:1];
+                [UserInfo shareInstance].isLogined = YES;
+                [UserInfo saveUserName];
                 //发送登录成功的通知
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:@"YES"];
                 AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

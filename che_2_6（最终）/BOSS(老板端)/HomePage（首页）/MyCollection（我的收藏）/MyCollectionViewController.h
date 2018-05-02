@@ -7,6 +7,7 @@
 //
 
 #import "BOSSBaseViewController.h"
+#import "LearningVideoViewController.h"
 
 @interface MyCollectionViewController : BOSSBaseViewController
 {

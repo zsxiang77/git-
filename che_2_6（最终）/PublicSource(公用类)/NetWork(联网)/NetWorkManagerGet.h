@@ -13,5 +13,6 @@
 @interface NetWorkManagerGet : NSObject
 
 + (AFHTTPSessionManager *)sharedAFManager;
++ (void)requestWithParametersGet:(NSDictionary *)parameters withUrl:(NSString *)url viewController:(BaseViewController*)viewController withRedictLogin:(BOOL)longin isShowLoading:(BOOL)isShow success:(void (^)(id responseObject))success failure:(void (^)(id error))failure;
 
 @end

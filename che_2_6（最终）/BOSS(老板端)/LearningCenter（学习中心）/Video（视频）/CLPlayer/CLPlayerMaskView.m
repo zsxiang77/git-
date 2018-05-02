@@ -76,14 +76,14 @@
     }];
     //播放按钮
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(Padding);
-        make.bottom.mas_equalTo(-Padding);
+        make.left.mas_equalTo(Padding);
+        make.bottom.top.mas_equalTo(0);
         make.width.mas_equalTo(self.backButton.mas_height);
     }];
     //全屏按钮
     [self.fullButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.mas_equalTo(-Padding);
-        make.top.mas_equalTo(Padding);
+        make.right.mas_equalTo(-Padding);
+        make.bottom.top.mas_equalTo(0);
         make.width.mas_equalTo(self.backButton.mas_height);
     }];
     //当前播放时间
@@ -179,6 +179,7 @@
 - (UIButton *) playButton{
     if (_playButton == nil){
         _playButton = [[UIButton alloc] init];
+        _playButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
         _playButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_playButton setImage:[self getPictureWithName:@"CLPlayBtn"] forState:UIControlStateNormal];
         [_playButton setImage:[self getPictureWithName:@"CLPauseBtn"] forState:UIControlStateSelected];
@@ -191,6 +192,7 @@
     if (_fullButton == nil){
         _fullButton = [[UIButton alloc] init];
         _fullButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _fullButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
         [_fullButton setImage:[self getPictureWithName:@"CLMaxBtn"] forState:UIControlStateNormal];
         [_fullButton setImage:[self getPictureWithName:@"CLMinBtn"] forState:UIControlStateSelected];
         [_fullButton addTarget:self action:@selector(fullButtonAction:) forControlEvents:UIControlEventTouchUpInside];

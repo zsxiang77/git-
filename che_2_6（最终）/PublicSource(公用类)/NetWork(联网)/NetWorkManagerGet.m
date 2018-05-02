@@ -48,4 +48,67 @@ static AFHTTPSessionManager *manager = nil;
     return manager;
 }
 
++ (void)requestWithParametersGet:(NSDictionary *)parameters withUrl:(NSString *)url viewController:(BaseViewController*)viewController withRedictLogin:(BOOL)longin isShowLoading:(BOOL)isShow success:(void (^)(id responseObject))success failure:(void (^)(id error))failure
+{
+    if (viewController != nil && isShow) {
+        [viewController showOrHideLoadView:YES];
+    }
+    
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 20;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];//设置超时
+    
+    NSMutableDictionary* requestDic = [[NSMutableDictionary alloc]init];
+    [requestDic addEntriesFromDictionary:parameters];
+    
+    
+    NSString *path = [NSString stringWithFormat:@"%@%@",HOST_URL,url];
+    NSError *error = nil;
+
+    
+    [[NetWorkManagerGet sharedAFManager] GET:path parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSDictionary *allHeaders = response.allHeaderFields;
+        
+        if (viewController != nil && isShow) {
+            [viewController showOrHideLoadView:NO];
+        }
+        NSData *responseData = responseObject;
+        NSData *filData = responseData;
+        NSDictionary* parserDict = (NSDictionary *)filData;
+        
+        
+        
+        if ([KISDictionaryHaveKey(parserDict, @"code") integerValue] == 404) {
+            NPrintLog(@"msg:%@",KISDictionaryHaveKey(parserDict, @"msg"));
+            [viewController showAlertViewWithTitle:nil Message:KISDictionaryHaveKey(parserDict, @"msg") buttonTitle:@"确定"];
+            return;
+        }else if ([KISDictionaryHaveKey(parserDict, @"code") integerValue] == 604)
+        {
+            [[UserInfo shareInstance] cleanUserInfor];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
+            if (viewController != nil) {
+                [NetWorkManager loginAgain:viewController];
+            }
+            return;
+        }
+        
+        success(parserDict);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MobClick event:@"NetFail" attributes:[NetWorkManager getNetFailDictionary:error parameters:parameters]];
+        failure(error);
+        if (viewController != nil && isShow) {
+            [viewController showOrHideLoadView:NO];
+        }
+        [[UserInfo shareInstance] showNotNetView];
+    }];
+    
+}
+
+
+
 @end

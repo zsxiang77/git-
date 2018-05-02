@@ -15,6 +15,8 @@
 @interface LearningVideoViewController : BOSSBaseViewController
 {
     UIScrollView *zuoYouScrollView;
+    
+    UIButton     *guanZhuBt;
 }
 
 /**CLplayer*/
@@ -28,8 +30,9 @@
 
 @property(nonatomic,strong)UITableView *mainTableView;
 
-//@property(nonatomic,strong)NSString    * 
-
+@property(nonatomic,strong)LearningModel    *chuanMOdel;
+@property(nonatomic,assign)NSInteger        chuanSeconds;
+-(void)shuXinNavigationHeaderView;
 @end
 
 
@@ -37,5 +40,7 @@
 -(void)qingQiuLuoBoData;
 //收藏
 -(void)postdo_article_praise:(LearningModel *)model withIndex:(NSIndexPath*)index;
+//客户播放的视频与进度
+-(void)postuser_video_study;
 
 @end

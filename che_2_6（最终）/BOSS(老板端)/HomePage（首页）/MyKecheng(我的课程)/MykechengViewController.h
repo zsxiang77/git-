@@ -8,6 +8,7 @@
 
 #import "BOSSBaseViewController.h"
 #import "MyKechengModel.h"
+#import "LearningVideoViewController.h"
 @interface MykechengViewController : BOSSBaseViewController
 {
     NSInteger     page;

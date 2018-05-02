@@ -426,6 +426,7 @@
 		C61743351FF49AA200FB7AD8 /* FillVINCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743341FF49AA200FB7AD8 /* FillVINCodeCell.m */; };
 		C61743391FF4F4CA00FB7AD8 /* VINNewAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C61743381FF4F4CA00FB7AD8 /* VINNewAlertView.m */; };
 		C617433C1FF65D0900FB7AD8 /* VINquedingVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = C617433B1FF65D0900FB7AD8 /* VINquedingVIew.m */; };
+		C62468C12092FB4200251B6E /* LearningJieShaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C62468C02092FB4200251B6E /* LearningJieShaoView.m */; };
 		C625CC671F53D29600CC3E73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC661F53D29600CC3E73 /* main.m */; };
 		C625CC6A1F53D29600CC3E73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC691F53D29600CC3E73 /* AppDelegate.m */; };
 		C625CC6D1F53D29600CC3E73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C625CC6C1F53D29600CC3E73 /* ViewController.m */; };
@@ -1764,6 +1765,8 @@
 		C61743381FF4F4CA00FB7AD8 /* VINNewAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VINNewAlertView.m; sourceTree = "<group>"; };
 		C617433A1FF65D0900FB7AD8 /* VINquedingVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VINquedingVIew.h; sourceTree = "<group>"; };
 		C617433B1FF65D0900FB7AD8 /* VINquedingVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VINquedingVIew.m; sourceTree = "<group>"; };
+		C62468BF2092FB4200251B6E /* LearningJieShaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearningJieShaoView.h; sourceTree = "<group>"; };
+		C62468C02092FB4200251B6E /* LearningJieShaoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearningJieShaoView.m; sourceTree = "<group>"; };
 		C625CC621F53D29600CC3E73 /* cheDianZhang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cheDianZhang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C625CC661F53D29600CC3E73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C625CC681F53D29600CC3E73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3957,6 +3960,8 @@
 		C607D8C6206B7222005667BF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C62468BF2092FB4200251B6E /* LearningJieShaoView.h */,
+				C62468C02092FB4200251B6E /* LearningJieShaoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7482,6 +7487,7 @@
 				C68E91361FA1D9C200975D68 /* ZXAbstractRSSReader.m in Sources */,
 				C6C4A9DD2090311100FA8338 /* HWOptionButton.m in Sources */,
 				C60A8DC8201316C30026111B /* JobBoardDeltailChuLICell.m in Sources */,
+				C62468C12092FB4200251B6E /* LearningJieShaoView.m in Sources */,
 				BDD4D31E20270A1500C433D1 /* YYTextDebugOption.m in Sources */,
 				C6BA12B21FBD4765005081A3 /* DCURLNavgation.m in Sources */,
 				C68E90C51FA1D9C200975D68 /* ZXExpandedProductParsedResult.m in Sources */,
