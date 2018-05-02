@@ -20,7 +20,7 @@
 #import "StoreRenYuanView.h"
 #import "StoreHeaderView.h"
 #import "StoreRenyuanModel.h"
-
+#import "StorePeiJianModel.h"
 @interface StoreTheDataViewController : BOSSBaseViewController<HWCalendarDelegate>
 {
     NSInteger page;
@@ -51,5 +51,6 @@
 
 -(void)getrenyuan_list:(BOOL)shuaX;
 -(void)getTask_status;
+-(void)getStore_stock_list:(BOOL)shuaX;
 @end
 

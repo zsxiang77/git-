@@ -20,6 +20,7 @@
     [self.achievement setdataDict:work_ability];
     
     self.task = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"task")];
+    self.time = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"time")];
     self.y = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"y")];
     self.m = [NSString stringWithFormat:@"%@",KISDictionaryHaveKey(dict, @"m")];
 }

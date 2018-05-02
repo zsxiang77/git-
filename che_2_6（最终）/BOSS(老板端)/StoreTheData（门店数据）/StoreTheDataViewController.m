@@ -56,7 +56,9 @@
         }
         if(shifouxuanzhong ==402){
             NPrintLog(@"配件--3----%ld",shifouxuanzhong);
-              weakSelf.peijianView.hidden = NO;
+            self.peijianView.hidden = NO;
+            [self getStore_stock_list:YES];
+            weakSelf.peijianView.hidden = NO;
         }
         if(shifouxuanzhong ==403){
             NPrintLog(@"收入--4----%ld",shifouxuanzhong);
@@ -125,7 +127,8 @@
 -(StorePeiJianView *)peijianView
 {
     if(!_peijianView){
-        _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
+         _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
+        _peijianView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData1)];
         [self.view addSubview:_peijianView];
     }
     return _peijianView;
@@ -145,7 +148,9 @@
 -(void)loadNewData0{
     [self getrenyuan_list:YES];
 }
-
+-(void)loadNewData1{
+    [self getStore_stock_list:YES];
+}
 #pragma mark - HWCalendarDelegate
 - (void)calendar:(HWCalendar *)calendar didClickSureButtonWithDate:(NSString *)date
 {

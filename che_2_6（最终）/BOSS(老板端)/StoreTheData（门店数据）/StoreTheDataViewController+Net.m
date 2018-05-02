@@ -76,5 +76,48 @@
         
     }];
 }
-
+//配件数据
+-(void)getStore_stock_list:(BOOL)shuaX
+{
+    if (shuaX == YES) {
+        page = 1;
+    }
+    self.timeStr = [NSString stringWithFormat:@"%@",@"1521475200"];
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [mDict setObject:@"20" forKey:@"pagesize"];
+    [mDict setObject:[NSString stringWithFormat:@"%ld",page] forKey:@"page"];
+    [mDict setObject:self.timeStr forKey:@"time"];
+    [self.peijianView.mainTable.mj_header endRefreshing];
+    [self.peijianView.mainTable.mj_footer endRefreshing];
+    kWeakSelf(weakSelf)
+    [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/store_stock_list" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
+        if (shuaX == YES) {
+            [weakSelf.peijianView.zhuanzhiModel removeAllObjects];
+        }
+        NSDictionary* dataDic = kParseData(responseObject);
+        
+        
+        NSArray *order_list = KISDictionaryHaveKey(dataDic, @"sale_list");
+        
+        if (order_list.count>=20) {
+            weakSelf.peijianView.mainTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                page ++;
+                [weakSelf getrenyuan_list:NO];
+            }];
+        }else{
+            weakSelf.peijianView.mainTable.mj_footer = nil;
+        }
+        
+        for (int i = 0; i<order_list.count; i++) {
+            listPeiJianModel *model = [[listPeiJianModel alloc]init];
+            [model setdataDict:order_list[i]];
+            [weakSelf.peijianView.zhuanzhiModel addObject:model];
+        }
+        [weakSelf.peijianView.mainTable reloadData];
+    } failure:^(id error) {
+        
+        
+    }];
+    
+}
 @end
