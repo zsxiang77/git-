@@ -19,53 +19,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/StoreTheData&#xff08;&#x95e8;&#x5e97;&#x6570;&#x636e;&#xff09;/accessories(&#x914d;&#x4ef6;)/Cell/StorePeiJianCell.m"
-            timestampString = "546943809.379096"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-refleshData:dieIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/StoreTheData&#xff08;&#x95e8;&#x5e97;&#x6570;&#x636e;&#xff09;/accessories(&#x914d;&#x4ef6;)/Cell/StorePeiJianCell.m"
-            timestampString = "546943809.379449"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-initWithStyle:reuseIdentifier:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BOSS(&#x8001;&#x677f;&#x7aef;)/StoreTheData&#xff08;&#x95e8;&#x5e97;&#x6570;&#x636e;&#xff09;/accessories(&#x914d;&#x4ef6;)/View/StorePeiJianView.m"
-            timestampString = "546943935.9966429"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

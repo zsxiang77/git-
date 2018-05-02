@@ -62,6 +62,7 @@
 		18FF108F2099AE7F0054D16A /* StoreRenYuanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10842099AE7F0054D16A /* StoreRenYuanView.m */; };
 		18FF10902099AE7F0054D16A /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10852099AE7F0054D16A /* DrawView.m */; };
 		18FF10912099AE7F0054D16A /* StoreCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10892099AE7F0054D16A /* StoreCellHeaderView.m */; };
+		18FF10942099BC6C0054D16A /* StoreBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10932099BC6C0054D16A /* StoreBottomView.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -1094,6 +1095,8 @@
 		18FF10872099AE7F0054D16A /* StoreRenYuanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreRenYuanView.h; sourceTree = "<group>"; };
 		18FF10882099AE7F0054D16A /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
 		18FF10892099AE7F0054D16A /* StoreCellHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCellHeaderView.m; sourceTree = "<group>"; };
+		18FF10922099BC6C0054D16A /* StoreBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreBottomView.h; sourceTree = "<group>"; };
+		18FF10932099BC6C0054D16A /* StoreBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreBottomView.m; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -3149,6 +3152,8 @@
 				18FF10722099ADF70054D16A /* StorePeiJianView.m */,
 				18FF106E2099ADF70054D16A /* StoreYuanXingtuView.h */,
 				18FF10712099ADF70054D16A /* StoreYuanXingtuView.m */,
+				18FF10922099BC6C0054D16A /* StoreBottomView.h */,
+				18FF10932099BC6C0054D16A /* StoreBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7157,6 +7162,7 @@
 				BDD4D34020270A1500C433D1 /* NSDate+YYAdd.m in Sources */,
 				C61005E120453DA30045968C /* NewMaterialViewController.m in Sources */,
 				C63CCA30202741CA00BD7815 /* ModelCarViewController+Net.m in Sources */,
+				18FF10942099BC6C0054D16A /* StoreBottomView.m in Sources */,
 				C60DBA0B1FB2F03F002B0CC4 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				BDD4D34620270A1500C433D1 /* CALayer+YYAdd.m in Sources */,
 				C68A902F1F8B22030001BDE0 /* PerformanceCell.m in Sources */,

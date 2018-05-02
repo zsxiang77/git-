@@ -128,7 +128,7 @@
 {
     if(!_peijianView){
          _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
-        _peijianView.mainTable.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData1)];
+        _peijianView.mainScrollView.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData1)];
         [self.view addSubview:_peijianView];
     }
     return _peijianView;

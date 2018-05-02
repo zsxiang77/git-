@@ -39,18 +39,6 @@
              recognizer.direction = UISwipeGestureRecognizerDirectionLeft;
              [gundongView addGestureRecognizer:recognizer];
         
-        
-        
-        //收起按钮
-        UIButton * btn = [[UIButton alloc]init];
-        [self addSubview:btn];
-        btn.backgroundColor = [UIColor redColor];
-        [btn addTarget:self action:@selector(shouqiAnniuClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-30);
-            make.bottom.mas_equalTo(0);
-            make.height.width.mas_equalTo(50);
-        }];
     }
     return self;
 }
@@ -99,8 +87,5 @@
     }
 }
 
--(void)shouqiAnniuClick:(UIButton*)sender
-{
-    
-}
+
 @end

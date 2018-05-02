@@ -8,7 +8,7 @@
 
 #import "StorePeiJianView.h"
 #import "CPArcModel.h"
-#import "StorePeiJianCell.h"
+#import "StoreBottomView.h"
 #define UIColorWithRandom [UIColor colorWithRed:arc4random() % 255 / 255.0 green:arc4random() % 255 / 255.0 blue:arc4random() % 255 / 255.0 alpha:1]
 @implementation StorePeiJianView
 
@@ -17,6 +17,7 @@
     if(self==[super initWithFrame:(CGRect)frame]){
         self.backgroundColor = [UIColor redColor];
         self.backgroundColor = [UIColor whiteColor];
+        self.zhuanzhiModel = [[NSMutableArray alloc]init];
         UIButton * btn = [[UIButton alloc]init];
         [btn setBackgroundImage:[UIImage imageNamed:@"shijianTuPian"] forState:(UIControlStateNormal)];
         [btn addTarget:self action:@selector(riliClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -78,18 +79,12 @@
             }
         }
         
-       self.headerView = [[StoreYuanXingtuView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 666/2)];
-       self.headerView.backgroundColor = [UIColor whiteColor];
-        
-       self.mainTable= [[UITableView alloc]initWithFrame:CGRectMake(0, 52, kWindowW,self.frame.size.height-52)style:UITableViewStyleGrouped];
-         self.mainTable.delegate = self;
-        self.mainTable.dataSource = self;
-         self.mainTable.hidden = NO;
-         self.mainTable.tableHeaderView = self.headerView;
-        [self addSubview: self.mainTable];
-
+        self. mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 130/2, kWindowW, 666/2)];
+        [self addSubview:self.mainScrollView];
+        self.headerView = [[StoreYuanXingtuView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 666/2)];
+        self.headerView.backgroundColor = [UIColor whiteColor];
+        [self.mainScrollView addSubview:self.headerView];
         NSArray *progresses = @[@"0.3", @"0.3", @"0.1", @"0.3"];
-        
         NSMutableArray *mutArr = [NSMutableArray array];
         
         for (int i = 0; i < progresses.count; i++) {
@@ -102,6 +97,10 @@
         }
         [self.headerView  setArcs:mutArr];
         
+        StoreBottomView * bottomView = [[StoreBottomView alloc]initWithFrame:CGRectMake(0, 130/2+666/2-50, kWindowW, 150)];
+        bottomView.backgroundColor = kColorWithRGB(0, 0, 0, 0);
+        [self addSubview:bottomView];
+       
     }
        return self;
 }
@@ -115,36 +114,7 @@
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
 
-        static NSString *Identifier = @"Identifier";
-        StorePeiJianCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-        if (cell == nil) {
-            cell = [[StorePeiJianCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-        }
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        listPeiJianModel * model = self.zhuanzhiModel[indexPath.row];
-        [cell refleshData:model dieIndex:indexPath];
-        return cell;
-   
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-        return 74/2;
-   
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
-        return self.zhuanzhiModel.count;;
-  
-    
-}
 -(void)xuanzeRenYuanBtn:(UIButton *)sender
 {
     if (sender.selected == YES) {
@@ -156,9 +126,9 @@
     }
     sender.selected =! sender.selected;
     self.cunView.hidden = YES;
-    self.mainTable.hidden= YES;
+    self.mainScrollView.hidden= YES;
     if(sender.tag ==500){
-       self.mainTable.hidden= NO;
+       self.mainScrollView.hidden= NO;
     }else if(sender.tag ==501){
          self.cunView.hidden = NO;
     }
