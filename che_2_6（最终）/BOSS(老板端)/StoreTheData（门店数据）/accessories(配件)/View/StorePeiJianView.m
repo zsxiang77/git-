@@ -9,6 +9,18 @@
 #import "StorePeiJianView.h"
 #import "CPArcModel.h"
 #import "StoreBottomView.h"
+
+
+#define k_MainBoundsWidth [UIScreen mainScreen].bounds.size.width
+#define k_MainBoundsHeight [UIScreen mainScreen].bounds.size.height
+#define k_PointColor [UIColor colorWithRed:25 / 255.0 green:65 / 255.0 blue:86 / 255.0 alpha:1.0]
+
+
+
+
+
+
+
 #define UIColorWithRandom [UIColor colorWithRed:arc4random() % 255 / 255.0 green:arc4random() % 255 / 255.0 blue:arc4random() % 255 / 255.0 alpha:1]
 @implementation StorePeiJianView
 
@@ -81,21 +93,25 @@
         
         self. mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 130/2, kWindowW, 666/2)];
         [self addSubview:self.mainScrollView];
+        
+        
         self.headerView = [[StoreYuanXingtuView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 666/2)];
         self.headerView.backgroundColor = [UIColor whiteColor];
         [self.mainScrollView addSubview:self.headerView];
         NSArray *progresses = @[@"0.3", @"0.3", @"0.1", @"0.3"];
+        NSArray *name = @[@"车1",@"车2",@"车3",@"车4"];
         NSMutableArray *mutArr = [NSMutableArray array];
-        
         for (int i = 0; i < progresses.count; i++) {
             CPArcModel *model = [[CPArcModel alloc] init];
             model.color       = UIColorWithRandom;
             model.width       = 50.0;
             model.progress    = [progresses[i] floatValue];
             model.radius      = self.headerView.frame.size.width/2+1;
+            model.nameText    = name[i];
             [mutArr addObject:model];
         }
         [self.headerView  setArcs:mutArr];
+        
         
         StoreBottomView * bottomView = [[StoreBottomView alloc]initWithFrame:CGRectMake(0, 130/2+666/2-50, kWindowW, 150)];
         bottomView.backgroundColor = kColorWithRGB(0, 0, 0, 0);
@@ -138,4 +154,5 @@
 {
     self.showRiLiBlock();
 }
+
 @end

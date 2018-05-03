@@ -8,6 +8,20 @@
 
 #import "StoreYuanXingtuView.h"
 #import "CPArcModel.h"
+/**
+ *  角度转换成弧度
+ */
+#define k_DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+/**
+ *  弧度转角度
+ */
+#define k_RADIANS_TO_DEGREES(radians) ((radians) * (180.0 / M_PI))
+
+#define k_ProgressLabel_Width  40.0
+#define k_ProgressLabel_Height 80.0
+// 调整圆环和文字距离
+#define k_Radius_Coefficient   2.1
+
 @implementation StoreYuanXingtuView
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -67,10 +81,58 @@
         shapeLayer.strokeStart = strokeStart+0.003;
         shapeLayer.strokeEnd = model.progress + strokeStart; // 占圆环的比例
         [self.layer addSublayer:shapeLayer];
-        //[self setupLabelWithModel:model strokeStart:strokeStart]; // 添加label
+        [self setupLabelWithModel:model strokeStart:strokeStart]; // 添加label
         strokeStart = shapeLayer.strokeEnd;
     }
 }
+- (void)setupLabelWithModel:(CPArcModel *)model strokeStart:(CGFloat)strokeStart {
+    
+    CGFloat angle = 360 * (strokeStart + model.progress / 2.0); // 角度
+    CGFloat radius = model.radius;
+    CGFloat radians = 0; // 初始化弧度
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGPoint point = self.center;
+    NSTextAlignment textAlignment = NSTextAlignmentCenter;
+    if (angle <= 90) {
+        radians = k_DEGREES_TO_RADIANS(angle); // 角度转成弧度
+        CGFloat currentX = cos(radians) * radius;
+        CGFloat currentY = sin(radians) * radius;
+        x = point.x + currentX;
+        y = point.y - currentY;
+    } else if (angle <= 180) {
+        radians = k_DEGREES_TO_RADIANS(180 - angle);
+        CGFloat currentX = cos(radians) * radius;
+        CGFloat currentY = sin(radians) * radius;
+        x = point.x - currentX ;
+        y = point.y - currentY ;
+
+    } else if (angle <= 270) {
+        radians = k_DEGREES_TO_RADIANS(angle - 180);
+        CGFloat currentX = cos(radians) * radius;
+        CGFloat currentY = sin(radians) * radius;
+        x = point.x - currentX;
+        y = point.y + currentY;
+
+    } else {
+        radians = k_DEGREES_TO_RADIANS(360 - angle);
+        CGFloat currentX = cos(radians) * radius;
+        CGFloat currentY = sin(radians) * radius;
+        x = point.x + currentX;
+        y = point.y + currentY;
+    }
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, k_ProgressLabel_Width, k_ProgressLabel_Height)];
+    //label.backgroundColor = [UIColor grayColor];
+    label.center = CGPointMake(x,y);
+    label.textAlignment = textAlignment;
+    label.textColor = [UIColor blackColor];
+    label.numberOfLines =2;
+    label.text = [NSString stringWithFormat:@"名字\n%.0f%%", model.progress * 100.0];
+    label.font = [UIFont systemFontOfSize:12];
+    [self addSubview:label];
+    
+}
+
 -(void)handleSwipe:(UISwipeGestureRecognizer*)sender
 {
     if(self.isSelectXuan){

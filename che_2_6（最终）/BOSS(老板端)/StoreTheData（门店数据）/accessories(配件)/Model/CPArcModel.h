@@ -26,5 +26,5 @@
  */
 @property (nonatomic, assign)CGFloat radius;
 
-
+@property(nonatomic,strong)NSString * nameText;
 @end
