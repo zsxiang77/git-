@@ -38,6 +38,15 @@
             make.top.mas_equalTo(50);
         }];
         
+        UILabel *line = [[UILabel alloc]init];
+        line.backgroundColor = kLineBgColor;
+        [mainView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.right.mas_equalTo(0);
+            make.height.mas_equalTo(1);
+            make.top.mas_equalTo(50);
+        }];
     }
     return self;
 }

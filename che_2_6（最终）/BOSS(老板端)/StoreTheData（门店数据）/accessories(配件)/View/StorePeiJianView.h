@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "StoreYuanXingtuView.h"
 #import "StoreCunView.h"
-#import "JHChartHeader.h"
 @interface StorePeiJianView : UIView
 
 {
@@ -26,6 +25,7 @@
 @property(nonatomic,strong)UILabel* timeDateLable;
 @property(nonatomic,strong)NSMutableArray *zhuanzhiModel;
 @property(nonatomic,strong)void  (^showRiLiBlock)(void);
+@property(nonatomic,strong)void(^dianjihide)(BOOL showBool);
 
 
 @end

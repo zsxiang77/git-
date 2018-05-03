@@ -15,13 +15,6 @@
 #define k_MainBoundsHeight [UIScreen mainScreen].bounds.size.height
 #define k_PointColor [UIColor colorWithRed:25 / 255.0 green:65 / 255.0 blue:86 / 255.0 alpha:1.0]
 
-
-
-
-
-
-
-#define UIColorWithRandom [UIColor colorWithRed:arc4random() % 255 / 255.0 green:arc4random() % 255 / 255.0 blue:arc4random() % 255 / 255.0 alpha:1]
 @implementation StorePeiJianView
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -91,19 +84,28 @@
             }
         }
         
-        self. mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 130/2, kWindowW, 666/2)];
+        self.mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 130/2, kWindowW, 666/2)];
         [self addSubview:self.mainScrollView];
         
-        
+        UIView *mainNewView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 666/2)];
+        if (kWindowW>320) {
+            mainNewView.frame = CGRectMake(0, 0, kWindowW, 666/2);
+        }else{
+            mainNewView.frame = CGRectMake(0, -20, kWindowW, 666/2);
+        }
+        [self.mainScrollView addSubview:mainNewView];
         self.headerView = [[StoreYuanXingtuView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 666/2)];
+        
+    
         self.headerView.backgroundColor = [UIColor whiteColor];
-        [self.mainScrollView addSubview:self.headerView];
+        [mainNewView addSubview:self.headerView];
         NSArray *progresses = @[@"0.3", @"0.3", @"0.1", @"0.3"];
         NSArray *name = @[@"车1",@"车2",@"车3",@"车4"];
+        NSArray *cloreArray = @[kRGBColor(193,163,255),kRGBColor(91,217,159),kRGBColor(135,179,231),kRGBColor(100,188,255)];
         NSMutableArray *mutArr = [NSMutableArray array];
         for (int i = 0; i < progresses.count; i++) {
             CPArcModel *model = [[CPArcModel alloc] init];
-            model.color       = UIColorWithRandom;
+            model.color       = cloreArray[i];
             model.width       = 50.0;
             model.progress    = [progresses[i] floatValue];
             model.radius      = self.headerView.frame.size.width/2+1;
@@ -111,8 +113,6 @@
             [mutArr addObject:model];
         }
         [self.headerView  setArcs:mutArr];
-        
-       
     }
        return self;
 }
@@ -129,6 +129,7 @@
 
 -(void)xuanzeRenYuanBtn:(UIButton *)sender
 {
+
     if (sender.selected == YES) {
         return;
     }
@@ -137,13 +138,17 @@
         bt.selected = NO;
     }
     sender.selected =! sender.selected;
+    
     self.cunView.hidden = YES;
     self.mainScrollView.hidden= YES;
     if(sender.tag ==500){
        self.mainScrollView.hidden= NO;
+        self.dianjihide(NO);
     }else if(sender.tag ==501){
          self.cunView.hidden = NO;
+        self.dianjihide(YES);
     }
+    
 }
 
 -(void)riliClick:(UIButton *)sender

@@ -16,15 +16,18 @@
     {
         fenleiLable = [[UILabel alloc]init];
         fenleiLable.font = [UIFont systemFontOfSize:14];
+        fenleiLable.textAlignment = NSTextAlignmentCenter;
+        fenleiLable.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:fenleiLable];
         [fenleiLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
-            make.left.mas_equalTo(0);
+            make.left.mas_equalTo(10);
             make.width.mas_equalTo(kWindowW/6);
         }];
         
         yiwanChengLable = [[UILabel alloc]init];
          yiwanChengLable.font = [UIFont systemFontOfSize:14];
+          yiwanChengLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:yiwanChengLable];
         [yiwanChengLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
@@ -33,6 +36,7 @@
         }];
         
         weiWanchengLable = [[UILabel alloc]init];
+        weiWanchengLable.textAlignment = NSTextAlignmentCenter;
          weiWanchengLable.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:weiWanchengLable];
         [weiWanchengLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -42,6 +46,7 @@
         }];
         guoqiLable = [[UILabel alloc]init];
           guoqiLable.font = [UIFont systemFontOfSize:14];
+         guoqiLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:guoqiLable];
         [guoqiLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
@@ -50,6 +55,7 @@
         }];
         zongshuLable = [[UILabel alloc]init];
          zongshuLable.font = [UIFont systemFontOfSize:14];
+        zongshuLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:zongshuLable];
         [zongshuLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
@@ -58,6 +64,7 @@
         }];
         yuyueLable = [[UILabel alloc]init];
         yuyueLable.font = [UIFont systemFontOfSize:14];
+        yuyueLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:yuyueLable];
         [yuyueLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);

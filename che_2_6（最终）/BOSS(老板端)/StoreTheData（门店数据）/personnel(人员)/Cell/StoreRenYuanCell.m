@@ -99,20 +99,24 @@
 }
 
 -(void)refleshData:(listModel *)dict dieIndex:(NSIndexPath*)index{
+      touImgview.hidden = YES;
     if (index.row ==0) {
         touImgview.image = [UIImage imageNamed:@"huangGuan1"];
          [yejiLable setTextColor:kRGBColor(228,84,71)];
         shunxuLable.hidden = YES;
+        touImgview.hidden = NO;
     }else if(index.row == 1)
     {
          touImgview.image = [UIImage imageNamed:@"huangGuan2"];
          [yejiLable setTextColor:kRGBColor(228,84,71)];
          shunxuLable.hidden = YES;
+        touImgview.hidden = NO;
     }else if(index.row == 2)
     {
          touImgview.image = [UIImage imageNamed:@"huangGuan3"];
          [yejiLable setTextColor:kRGBColor(228,84,71)];
          shunxuLable.hidden = YES;
+        touImgview.hidden = NO;
     }else{
         shunxuLable.text = [NSString stringWithFormat:@"%ld",index.row+1];
          [yejiLable setTextColor:kRGBColor(74, 74, 74)];

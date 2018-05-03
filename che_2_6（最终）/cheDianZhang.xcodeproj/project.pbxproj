@@ -63,21 +63,6 @@
 		18FF10902099AE7F0054D16A /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10852099AE7F0054D16A /* DrawView.m */; };
 		18FF10912099AE7F0054D16A /* StoreCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10892099AE7F0054D16A /* StoreCellHeaderView.m */; };
 		18FF10942099BC6C0054D16A /* StoreBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10932099BC6C0054D16A /* StoreBottomView.m */; };
-		18FF10B3209AD65C0054D16A /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF1098209AD65C0054D16A /* JHRadarChart.m */; };
-		18FF10B4209AD65C0054D16A /* JHPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF109A209AD65C0054D16A /* JHPieChart.m */; };
-		18FF10B5209AD65C0054D16A /* JHWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF109C209AD65C0054D16A /* JHWaveChart.m */; };
-		18FF10B6209AD65C0054D16A /* JHTableDataRowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF109D209AD65C0054D16A /* JHTableDataRowModel.m */; };
-		18FF10B7209AD65C0054D16A /* JHColumnChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10A3209AD65C0054D16A /* JHColumnChart.m */; };
-		18FF10B8209AD65C0054D16A /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10A4209AD65C0054D16A /* JHChart.m */; };
-		18FF10B9209AD65C0054D16A /* JHRingChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10A6209AD65C0054D16A /* JHRingChart.m */; };
-		18FF10BA209AD65C0054D16A /* JHLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10A7209AD65C0054D16A /* JHLineChart.m */; };
-		18FF10BB209AD65C0054D16A /* JHShowInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10AA209AD65C0054D16A /* JHShowInfoView.m */; };
-		18FF10BC209AD65C0054D16A /* JHPieItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10AD209AD65C0054D16A /* JHPieItemsView.m */; };
-		18FF10BD209AD65C0054D16A /* JHLineItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10AE209AD65C0054D16A /* JHLineItemView.m */; };
-		18FF10BE209AD65C0054D16A /* JHPieForeBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10AF209AD65C0054D16A /* JHPieForeBGView.m */; };
-		18FF10BF209AD65C0054D16A /* JHTableChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10B0209AD65C0054D16A /* JHTableChart.m */; };
-		18FF10C0209AD65C0054D16A /* JHScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10B1209AD65C0054D16A /* JHScatterChart.m */; };
-		18FF10C3209AE22E0054D16A /* UIImage+colorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF10C1209AE22E0054D16A /* UIImage+colorImage.m */; };
 		23C7928B2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */; };
 		BD8153D22028BF820025A93C /* WritePersonalUnitInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D12028BF820025A93C /* WritePersonalUnitInfoView.m */; };
 		BD8153D52028C1610025A93C /* WritePersonalInputTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8153D42028C1610025A93C /* WritePersonalInputTFView.m */; };
@@ -1112,37 +1097,6 @@
 		18FF10892099AE7F0054D16A /* StoreCellHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCellHeaderView.m; sourceTree = "<group>"; };
 		18FF10922099BC6C0054D16A /* StoreBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreBottomView.h; sourceTree = "<group>"; };
 		18FF10932099BC6C0054D16A /* StoreBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreBottomView.m; sourceTree = "<group>"; };
-		18FF1096209AD65C0054D16A /* JHLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLineChart.h; sourceTree = "<group>"; };
-		18FF1097209AD65C0054D16A /* JHRingChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRingChart.h; sourceTree = "<group>"; };
-		18FF1098209AD65C0054D16A /* JHRadarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRadarChart.m; sourceTree = "<group>"; };
-		18FF1099209AD65C0054D16A /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
-		18FF109A209AD65C0054D16A /* JHPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPieChart.m; sourceTree = "<group>"; };
-		18FF109B209AD65C0054D16A /* JHShowInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHShowInfoView.h; sourceTree = "<group>"; };
-		18FF109C209AD65C0054D16A /* JHWaveChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWaveChart.m; sourceTree = "<group>"; };
-		18FF109D209AD65C0054D16A /* JHTableDataRowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTableDataRowModel.m; sourceTree = "<group>"; };
-		18FF109E209AD65C0054D16A /* JHScatterChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHScatterChart.h; sourceTree = "<group>"; };
-		18FF109F209AD65C0054D16A /* JHTableChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTableChart.h; sourceTree = "<group>"; };
-		18FF10A0209AD65C0054D16A /* JHPieForeBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPieForeBGView.h; sourceTree = "<group>"; };
-		18FF10A1209AD65C0054D16A /* JHLineItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLineItemView.h; sourceTree = "<group>"; };
-		18FF10A2209AD65C0054D16A /* JHPieItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPieItemsView.h; sourceTree = "<group>"; };
-		18FF10A3209AD65C0054D16A /* JHColumnChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHColumnChart.m; sourceTree = "<group>"; };
-		18FF10A4209AD65C0054D16A /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
-		18FF10A5209AD65C0054D16A /* JHRadarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRadarChart.h; sourceTree = "<group>"; };
-		18FF10A6209AD65C0054D16A /* JHRingChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRingChart.m; sourceTree = "<group>"; };
-		18FF10A7209AD65C0054D16A /* JHLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLineChart.m; sourceTree = "<group>"; };
-		18FF10A8209AD65C0054D16A /* JHTableDataRowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTableDataRowModel.h; sourceTree = "<group>"; };
-		18FF10A9209AD65C0054D16A /* JHWaveChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWaveChart.h; sourceTree = "<group>"; };
-		18FF10AA209AD65C0054D16A /* JHShowInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHShowInfoView.m; sourceTree = "<group>"; };
-		18FF10AB209AD65C0054D16A /* JHPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPieChart.h; sourceTree = "<group>"; };
-		18FF10AC209AD65C0054D16A /* JHColumnChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHColumnChart.h; sourceTree = "<group>"; };
-		18FF10AD209AD65C0054D16A /* JHPieItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPieItemsView.m; sourceTree = "<group>"; };
-		18FF10AE209AD65C0054D16A /* JHLineItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLineItemView.m; sourceTree = "<group>"; };
-		18FF10AF209AD65C0054D16A /* JHPieForeBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPieForeBGView.m; sourceTree = "<group>"; };
-		18FF10B0209AD65C0054D16A /* JHTableChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTableChart.m; sourceTree = "<group>"; };
-		18FF10B1209AD65C0054D16A /* JHScatterChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHScatterChart.m; sourceTree = "<group>"; };
-		18FF10B2209AD65C0054D16A /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
-		18FF10C1209AE22E0054D16A /* UIImage+colorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+colorImage.m"; sourceTree = "<group>"; };
-		18FF10C2209AE22E0054D16A /* UIImage+colorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+colorImage.h"; sourceTree = "<group>"; };
 		23C792892029F7D3008688D2 /* ScanDrivingLicenseVinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDrivingLicenseVinCell.h; sourceTree = "<group>"; };
 		23C7928A2029F7D3008688D2 /* ScanDrivingLicenseVinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDrivingLicenseVinCell.m; sourceTree = "<group>"; };
 		297C64342028D36100C54C8E /* WriteSaoMiaoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteSaoMiaoView.h; sourceTree = "<group>"; };
@@ -3084,9 +3038,6 @@
 		18FF101A209027A70054D16A /* accessories(配件) */ = {
 			isa = PBXGroup;
 			children = (
-				18FF10C2209AE22E0054D16A /* UIImage+colorImage.h */,
-				18FF10C1209AE22E0054D16A /* UIImage+colorImage.m */,
-				18FF1095209AD65C0054D16A /* JHChart */,
 				18FF106C2099ADF70054D16A /* View */,
 				18FF105E2099AD810054D16A /* Cell */,
 				18FF10612099AD820054D16A /* Model */,
@@ -3252,42 +3203,6 @@
 				18FF10892099AE7F0054D16A /* StoreCellHeaderView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		18FF1095209AD65C0054D16A /* JHChart */ = {
-			isa = PBXGroup;
-			children = (
-				18FF1096209AD65C0054D16A /* JHLineChart.h */,
-				18FF1097209AD65C0054D16A /* JHRingChart.h */,
-				18FF1098209AD65C0054D16A /* JHRadarChart.m */,
-				18FF1099209AD65C0054D16A /* JHChartHeader.h */,
-				18FF109A209AD65C0054D16A /* JHPieChart.m */,
-				18FF109B209AD65C0054D16A /* JHShowInfoView.h */,
-				18FF109C209AD65C0054D16A /* JHWaveChart.m */,
-				18FF109D209AD65C0054D16A /* JHTableDataRowModel.m */,
-				18FF109E209AD65C0054D16A /* JHScatterChart.h */,
-				18FF109F209AD65C0054D16A /* JHTableChart.h */,
-				18FF10A0209AD65C0054D16A /* JHPieForeBGView.h */,
-				18FF10A1209AD65C0054D16A /* JHLineItemView.h */,
-				18FF10A2209AD65C0054D16A /* JHPieItemsView.h */,
-				18FF10A3209AD65C0054D16A /* JHColumnChart.m */,
-				18FF10A4209AD65C0054D16A /* JHChart.m */,
-				18FF10A5209AD65C0054D16A /* JHRadarChart.h */,
-				18FF10A6209AD65C0054D16A /* JHRingChart.m */,
-				18FF10A7209AD65C0054D16A /* JHLineChart.m */,
-				18FF10A8209AD65C0054D16A /* JHTableDataRowModel.h */,
-				18FF10A9209AD65C0054D16A /* JHWaveChart.h */,
-				18FF10AA209AD65C0054D16A /* JHShowInfoView.m */,
-				18FF10AB209AD65C0054D16A /* JHPieChart.h */,
-				18FF10AC209AD65C0054D16A /* JHColumnChart.h */,
-				18FF10AD209AD65C0054D16A /* JHPieItemsView.m */,
-				18FF10AE209AD65C0054D16A /* JHLineItemView.m */,
-				18FF10AF209AD65C0054D16A /* JHPieForeBGView.m */,
-				18FF10B0209AD65C0054D16A /* JHTableChart.m */,
-				18FF10B1209AD65C0054D16A /* JHScatterChart.m */,
-				18FF10B2209AD65C0054D16A /* JHChart.h */,
-			);
-			path = JHChart;
 			sourceTree = "<group>";
 		};
 		BD99E2E720277F6200027D23 /* LCC 四个流程 */ = {
@@ -7281,7 +7196,6 @@
 				C6093FF32013858400530205 /* YYGJViewController.m in Sources */,
 				C625CFCD1F53DE1900CC3E73 /* MJRefreshBackStateFooter.m in Sources */,
 				18FE49272074B2070005984F /* HaoCaiTableViewCell2.m in Sources */,
-				18FF10B3209AD65C0054D16A /* JHRadarChart.m in Sources */,
 				C68E91631FA1D9C200975D68 /* ZXPDF417Detector.m in Sources */,
 				C61005BF20453B520045968C /* XiMeiNewOrdersErModel.m in Sources */,
 				C68A902C1F8B21920001BDE0 /* PerformanceViewController.m in Sources */,
@@ -7298,7 +7212,6 @@
 				C68E91581FA1D9C200975D68 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				BDD4D31D20270A1500C433D1 /* YYTextKeyboardManager.m in Sources */,
 				18FF0FDD2084A2060054D16A /* ProjectDetailsADDVC+search.m in Sources */,
-				18FF10BC209AD65C0054D16A /* JHPieItemsView.m in Sources */,
 				C6AC059D1F7F53850040B32B /* ReachStateLoading.m in Sources */,
 				C6E57BA520030F6D00E945F3 /* PushController.m in Sources */,
 				BDD4D32720270A1500C433D1 /* YYTextArchiver.m in Sources */,
@@ -7316,7 +7229,6 @@
 				18954D8F207B47050093AB2C /* LearningWrongModel.m in Sources */,
 				C61743321FF3A33000FB7AD8 /* VINinPutView.m in Sources */,
 				BD99E36420277F6200027D23 /* OrderClassCell.m in Sources */,
-				18FF10BA209AD65C0054D16A /* JHLineChart.m in Sources */,
 				C68E917B1FA1D9C200975D68 /* ZXQRCodeDetector.m in Sources */,
 				C68E917A1FA1D9C200975D68 /* ZXQRCodeAlignmentPatternFinder.m in Sources */,
 				BDD4D38220270C0D00C433D1 /* IQTitleBarButtonItem.m in Sources */,
@@ -7382,7 +7294,6 @@
 				C6C4A9C4208EDAB000FA8338 /* SATheCustomerSearchVC.m in Sources */,
 				BDD4D41F20270C3B00C433D1 /* PopTimePickerView.m in Sources */,
 				BDD4D41B20270C3B00C433D1 /* BorderColorButton.m in Sources */,
-				18FF10B4209AD65C0054D16A /* JHPieChart.m in Sources */,
 				C643F329202467D000A2AA57 /* ProjectDetailsADDZDYVC.m in Sources */,
 				C6AB744E201CDFF800F157EB /* BossShouCangModel.m in Sources */,
 				C68E90B71FA1D9C200975D68 /* ZXAztecToken.m in Sources */,
@@ -7621,7 +7532,6 @@
 				C6E57BA420030F6D00E945F3 /* LeftController.m in Sources */,
 				C61005E220453DA30045968C /* NewMaterialViewController+Net.m in Sources */,
 				C68E915A1FA1D9C200975D68 /* ZXPDF417BarcodeValue.m in Sources */,
-				18FF10B6209AD65C0054D16A /* JHTableDataRowModel.m in Sources */,
 				BD99E36720277F6200027D23 /* OrderSectionHeaderView.m in Sources */,
 				C68E917F1FA1D9C200975D68 /* ZXQRCode.m in Sources */,
 				C625CFD91F53DE1900CC3E73 /* SDImageCache.m in Sources */,
@@ -7647,7 +7557,6 @@
 				BD99E36520277F6200027D23 /* OrderCreatViewController.m in Sources */,
 				C625CFA91F53DE1900CC3E73 /* AFNetworkReachabilityManager.m in Sources */,
 				C605494C1FED0C4B0020EF9B /* DetailAITProductsViewController.m in Sources */,
-				18FF10BF209AD65C0054D16A /* JHTableChart.m in Sources */,
 				C68E90BA1FA1D9C200975D68 /* ZXAztecWriter.m in Sources */,
 				C63CCA2D202741CA00BD7815 /* ModelCarJiBenCell.m in Sources */,
 				C6134C25202ABDBC0099431E /* ScanDrivingLicenseViewController.m in Sources */,
@@ -7736,7 +7645,6 @@
 				C68E91251FA1D9C200975D68 /* ZXAI013x0xDecoder.m in Sources */,
 				C68E90B41FA1D9C200975D68 /* ZXAztecHighLevelEncoder.m in Sources */,
 				BDD4D35120270A1500C433D1 /* YYThreadSafeArray.m in Sources */,
-				18FF10BD209AD65C0054D16A /* JHLineItemView.m in Sources */,
 				C643F37D2026CB6B00A2AA57 /* AccessoryEquipmentModel.m in Sources */,
 				BD99E36B20277F6200027D23 /* TopDanXuanCollectionView.m in Sources */,
 				C66D160220899E7200155A2D /* ChangeNameViewController.m in Sources */,
@@ -7754,7 +7662,6 @@
 				C68E90FB1FA1D9C200975D68 /* ZXDecodeHints.m in Sources */,
 				C643F31C2024483C00A2AA57 /* OrderDetailProjectVC.m in Sources */,
 				C68E913E1FA1D9C200975D68 /* ZXCode128Reader.m in Sources */,
-				18FF10B8209AD65C0054D16A /* JHChart.m in Sources */,
 				C68E90BB1FA1D9C200975D68 /* ZXAbstractDoCoMoResultParser.m in Sources */,
 				C60A8D8A200DAA1E0026111B /* TheCustomerViewController+Net.m in Sources */,
 				BDD4D32E20270A1500C433D1 /* UITableView+YYAdd.m in Sources */,
@@ -7771,7 +7678,6 @@
 				C643F3CB2027291200A2AA57 /* TheNewWorkOrderModel.m in Sources */,
 				C60A8DBB2010B9F60026111B /* JobBoardDetailModel.m in Sources */,
 				C625CC671F53D29600CC3E73 /* main.m in Sources */,
-				18FF10B7209AD65C0054D16A /* JHColumnChart.m in Sources */,
 				C68E90FE1FA1D9C200975D68 /* ZXErrors.m in Sources */,
 				C61005AB2042CC630045968C /* BOSSAboutCell.m in Sources */,
 				C61743351FF49AA200FB7AD8 /* FillVINCodeCell.m in Sources */,
@@ -7890,14 +7796,12 @@
 				C68E91731FA1D9C200975D68 /* ZXQRCodeDecoder.m in Sources */,
 				18FE492D2074E6120005984F /* HaoCaiAddViewController.m in Sources */,
 				BDD4D31020270A1500C433D1 /* CALayer+YYWebImage.m in Sources */,
-				18FF10BB209AD65C0054D16A /* JHShowInfoView.m in Sources */,
 				C68E910C1FA1D9C200975D68 /* ZXDataMatrixBase256Encoder.m in Sources */,
 				18EE15862081E51F00312AF7 /* BossJianCeXiangQingModel.m in Sources */,
 				C6B5D29B1F6005A800C968F5 /* UIImage+ImageWithColor.m in Sources */,
 				C643F33A2024881600A2AA57 /* AITBaoGaoListVC.m in Sources */,
 				BDD4D41720270C3B00C433D1 /* NSObject+Parse.m in Sources */,
 				C68E91441FA1D9C200975D68 /* ZXEAN13Writer.m in Sources */,
-				18FF10B9209AD65C0054D16A /* JHRingChart.m in Sources */,
 				C68E90E61FA1D9C200975D68 /* ZXGenericGFPoly.m in Sources */,
 				C6FDBACC1F5E406900360B6F /* QrCodeScanningViewController.m in Sources */,
 				C68E91011FA1D9C200975D68 /* ZXPlanarYUVLuminanceSource.m in Sources */,
@@ -7958,7 +7862,6 @@
 				C6AB748F201ECD1400F157EB /* BOSSSystemMessageVC.m in Sources */,
 				C68E914C1FA1D9C200975D68 /* ZXOneDimensionalCodeWriter.m in Sources */,
 				C6134C29202AD70C0099431E /* WriteSaoMiaoView.m in Sources */,
-				18FF10B5209AD65C0054D16A /* JHWaveChart.m in Sources */,
 				18FF0FDA20849A760054D16A /* ProjectModeChangYong.m in Sources */,
 				C6100609204F8CD10045968C /* SaoMiaoSFZViewController.mm in Sources */,
 				C625CFE21F53DE1900CC3E73 /* UIImage+GIF.m in Sources */,
@@ -7973,7 +7876,6 @@
 				C625CFD41F53DE1900CC3E73 /* UIScrollView+MJRefresh.m in Sources */,
 				BDD4D3FE20270C3B00C433D1 /* EnvironmentModel.m in Sources */,
 				BDD4D38920270C0D00C433D1 /* IQUIWindow+Hierarchy.m in Sources */,
-				18FF10C3209AE22E0054D16A /* UIImage+colorImage.m in Sources */,
 				C68E90C21FA1D9C200975D68 /* ZXEmailAddressParsedResult.m in Sources */,
 				C625CFC01F53DE1900CC3E73 /* NSObject+MJKeyValue.m in Sources */,
 				BDD4D42120270C3B00C433D1 /* RepairSecondModel.m in Sources */,
@@ -8038,7 +7940,6 @@
 				BDD4D41D20270C3B00C433D1 /* PopInsuranceListModel.m in Sources */,
 				C643F32320244E9D00A2AA57 /* OrderDetailProjectCell2.m in Sources */,
 				BDD4D41320270C3B00C433D1 /* CarCheckViewController.m in Sources */,
-				18FF10C0209AD65C0054D16A /* JHScatterChart.m in Sources */,
 				C64C994D1FDFD852007E3E71 /* HomeRightBottomButton.m in Sources */,
 				C68E90E81FA1D9C200975D68 /* ZXReedSolomonEncoder.m in Sources */,
 				C68E90F01FA1D9C200975D68 /* ZXDefaultGridSampler.m in Sources */,
@@ -8067,7 +7968,6 @@
 				18FF0FE9208607530054D16A /* ProjecAddProjectView.m in Sources */,
 				C60C9A2D2091DE8C006FA4C9 /* WorkJieGuoView.m in Sources */,
 				C60ECD112057C4BE00F94EAF /* CustomerInformationYYueCell2.m in Sources */,
-				18FF10BE209AD65C0054D16A /* JHPieForeBGView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

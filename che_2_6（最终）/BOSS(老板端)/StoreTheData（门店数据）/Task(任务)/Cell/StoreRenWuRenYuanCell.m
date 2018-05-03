@@ -15,15 +15,17 @@
     {
         nameLable = [[UILabel alloc]init];
         nameLable.font = [UIFont systemFontOfSize:14];
+        nameLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:nameLable];
         [nameLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
-            make.left.mas_equalTo(0);
+            make.left.mas_equalTo(24);
             make.width.mas_equalTo(kWindowW/3);
         }];
         
         daodianLable = [[UILabel alloc]init];
         daodianLable.font = [UIFont systemFontOfSize:14];
+         daodianLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:daodianLable];
         [daodianLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
@@ -33,6 +35,7 @@
         
         yuyueLable = [[UILabel alloc]init];
         yuyueLable.font = [UIFont systemFontOfSize:14];
+        yuyueLable.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:yuyueLable];
         [yuyueLable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);

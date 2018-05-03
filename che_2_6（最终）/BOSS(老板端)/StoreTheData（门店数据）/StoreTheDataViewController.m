@@ -69,7 +69,6 @@
              weakSelf.shouruView.hidden = NO;
         }
     };
-    
     [self getTask_status];
     
     
@@ -134,6 +133,16 @@
          _peijianView = [[StorePeiJianView alloc]initWithFrame:CGRectMake(0, kBOSSNavBarHeight, kWindowW, kWindowH-kBOSSNavBarHeight-[self getTabBarHeight])];
         _peijianView.mainScrollView.mj_header =[MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData1)];
         [self.view addSubview:_peijianView];
+            kWeakSelf(weakSelf)
+        _peijianView.dianjihide = ^(BOOL showBool) {
+            if(showBool==YES){
+                   weakSelf.storeBottomView.hidden = YES;
+                NPrintLog(@"12334444")
+            }else{
+                   weakSelf.storeBottomView.hidden = NO;
+                NPrintLog(@"989898989")
+            }
+        };
     }
     return _peijianView;
 }
