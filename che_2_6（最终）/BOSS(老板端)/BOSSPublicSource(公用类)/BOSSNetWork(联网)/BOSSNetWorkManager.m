@@ -103,7 +103,7 @@
             }else if ([KISDictionaryHaveKey(parserDict, @"code") integerValue] == 605)
             {
                 
-                UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil];
+                UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alc show];
                 [[UserInfo shareInstance] cleanUserInfor];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
@@ -617,7 +617,7 @@ static AFHTTPSessionManager *manager = nil;
         }else if ([KISDictionaryHaveKey(parserDict, @"code") integerValue] == 605)
         {
             
-            UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil];
+            UIAlertView *alc = [[UIAlertView alloc]initWithTitle:nil message:KISDictionaryHaveKey(parserDict, @"msg") delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alc show];
             [[UserInfo shareInstance] cleanUserInfor];
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];//发送退出登录成功
