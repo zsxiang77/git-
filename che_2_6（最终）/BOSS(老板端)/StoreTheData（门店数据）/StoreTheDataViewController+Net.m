@@ -92,6 +92,7 @@
     [BOSSNetWorkManager requestWithParameters:mDict withUrl:@"user/store_data/store_stock_list" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         if (shuaX == YES) {
             [weakSelf.peijianView.zhuanzhiModel removeAllObjects];
+            [weakSelf.storeBottomView.listModelArray removeAllObjects];
         }
         NSDictionary* dataDic = kParseData(responseObject);
         NSArray *order_list = KISDictionaryHaveKey(dataDic, @"sale_list");
@@ -99,12 +100,12 @@
             listPeiJianModel *model = [[listPeiJianModel alloc]init];
             [model setdataDict:order_list[i]];
             [weakSelf.peijianView.zhuanzhiModel addObject:model];
+            [weakSelf.storeBottomView.listModelArray addObject:model];
         }
+        [weakSelf.storeBottomView.mainTable reloadData];
         
-        }
-  failure:^(id error) {
-        
-        
+    }failure:^(id error) {
     }];
 }
 @end
+

@@ -72,15 +72,19 @@
 }
 -(void)refleshData:(listPeiJianModel *)dict dieIndex:(NSIndexPath*)index
 {
+    touImgview.hidden = YES;
     if (index.row ==0) {
+        touImgview.hidden = NO;
         touImgview.image = [UIImage imageNamed:@"huangGuan1"];
         shunxuLable.hidden = YES;
     }else if(index.row == 1)
     {
+        touImgview.hidden = NO;
         touImgview.image = [UIImage imageNamed:@"huangGuan2"];
         shunxuLable.hidden = YES;
     }else if(index.row == 2)
     {
+        touImgview.hidden = NO;
         touImgview.image = [UIImage imageNamed:@"huangGuan3"];
         shunxuLable.hidden = YES;
     }else{

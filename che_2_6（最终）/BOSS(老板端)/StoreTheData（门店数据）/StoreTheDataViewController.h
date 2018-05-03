@@ -21,6 +21,8 @@
 #import "StoreHeaderView.h"
 #import "StoreRenyuanModel.h"
 #import "StorePeiJianModel.h"
+#import "StoreBottomView.h"
+
 @interface StoreTheDataViewController : BOSSBaseViewController<HWCalendarDelegate>
 {
     NSInteger page;
@@ -28,7 +30,7 @@
     CGFloat widths;
 }
 
-
+@property(nonatomic,strong) StoreBottomView * storeBottomView;
 @property(nonatomic,strong) StoreRenWuView * renwuView;  //任务
 @property(nonatomic,strong)  StoreRenYuanView * renyuanView;//人员
 @property(nonatomic,strong) StorePeiJianView * peijianView;//配件

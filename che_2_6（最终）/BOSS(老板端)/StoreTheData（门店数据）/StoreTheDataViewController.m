@@ -43,6 +43,7 @@
         weakSelf.shouruView.hidden = YES;
         weakSelf.peijianView.hidden = YES;
         weakSelf.renyuanView.hidden = YES;
+        weakSelf.storeBottomView.hidden = YES;
         if(shifouxuanzhong ==400){
             NPrintLog(@"任务--1----%ld",shifouxuanzhong);
             weakSelf.renwuView.hidden = NO;
@@ -56,9 +57,12 @@
         }
         if(shifouxuanzhong ==402){
             NPrintLog(@"配件--3----%ld",shifouxuanzhong);
-            self.peijianView.hidden = NO;
-            [self getStore_stock_list:YES];
             weakSelf.peijianView.hidden = NO;
+            [weakSelf getStore_stock_list:YES];
+            weakSelf.peijianView.hidden = NO;
+            weakSelf.storeBottomView.hidden = NO;
+            [weakSelf.storeBottomView dismiss];
+            [weakSelf.view bringSubviewToFront:weakSelf.storeBottomView];
         }
         if(shifouxuanzhong ==403){
             NPrintLog(@"收入--4----%ld",shifouxuanzhong);
@@ -132,6 +136,15 @@
         [self.view addSubview:_peijianView];
     }
     return _peijianView;
+}
+-(StoreBottomView *)storeBottomView
+{
+    if (!_storeBottomView) {
+        _storeBottomView = [[StoreBottomView alloc]initWithFrame:CGRectMake(0, kWindowH - [self getTabBarHeight] -160, kWindowW, 160) withTaberHei:[self getTabBarHeight]];
+        _storeBottomView.hidden = YES;
+        [self.view addSubview:_storeBottomView];
+    }
+    return _storeBottomView;
 }
 
 //收入

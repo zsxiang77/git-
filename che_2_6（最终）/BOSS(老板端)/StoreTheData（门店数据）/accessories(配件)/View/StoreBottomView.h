@@ -9,6 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface StoreBottomView : UIView<UITableViewDataSource,UITableViewDelegate>
+{
+    UIView *mainView;
+    CGFloat _taberHei;
+    UIButton *dianJiShouQibt;
+}
 @property(nonatomic,strong)UITableView * mainTable;
-@property(nonatomic,strong)NSMutableArray *listModel;
+@property(nonatomic,strong)NSMutableArray *listModelArray;
+
+-(instancetype)initWithFrame:(CGRect)frame withTaberHei:(CGFloat)taberHei;
+
+
+- (void)show;
+- (void)dismiss;
 @end

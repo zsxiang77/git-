@@ -8,7 +8,7 @@
 
 #import "StorePeiJianView.h"
 #import "CPArcModel.h"
-#import "StoreBottomView.h"
+
 
 
 #define k_MainBoundsWidth [UIScreen mainScreen].bounds.size.width
@@ -112,10 +112,6 @@
         }
         [self.headerView  setArcs:mutArr];
         
-        
-        StoreBottomView * bottomView = [[StoreBottomView alloc]initWithFrame:CGRectMake(0, 130/2+666/2-50, kWindowW, 150)];
-        bottomView.backgroundColor = kColorWithRGB(0, 0, 0, 0);
-        [self addSubview:bottomView];
        
     }
        return self;

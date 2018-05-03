@@ -15,6 +15,8 @@
 {
     UIView * anNniuView;
 }
+
+
 @property(nonatomic,strong)StoreYuanXingtuView * headerView;
 @property(nonatomic,strong)StoreCunView * cunView;
 
