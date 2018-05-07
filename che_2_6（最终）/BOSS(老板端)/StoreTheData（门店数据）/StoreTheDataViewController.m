@@ -48,7 +48,6 @@
             NPrintLog(@"任务--1----%ld",shifouxuanzhong);
             weakSelf.renwuView.hidden = NO;
             [weakSelf getTask_status];
-            
         }
         if(shifouxuanzhong ==401){
             NPrintLog(@"人员--2----%ld",shifouxuanzhong);

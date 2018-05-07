@@ -13,6 +13,7 @@
 #import "JobBoardModel.h"
 #import "UIImageView+WebCache.h"
 
+
 static NSString* kFirstOpenQianDaoAddFirstPage = @"kFirstOpenQianDaoAddFirstPageNEW";
 
 @interface JobBoardViewController : BOSSBaseViewController<UIScrollViewDelegate>

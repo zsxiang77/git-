@@ -7,6 +7,7 @@
 //
 
 #import "JobBoardViewController.h"
+#import "LearningVideoViewController.h"
 
 @implementation JobBoardViewController (YinDao)
 
@@ -53,12 +54,11 @@
     kWeakSelf(weakSelf)
     [BOSSNetWorkManager requestWithParametersGET:mDict withUrl:@"user/study/mask_video" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
-        WKWebViewViewController *vc = [[WKWebViewViewController alloc]init];
+        LearningVideoViewController *vc = [[LearningVideoViewController alloc]init];
+        vc.video_id = KISDictionaryHaveKey(dataDic, @"video_id");
         vc.hidesBottomBarWhenPushed = YES;
-        vc.isNoShowNavBar = NO;
-        
-        vc.webUrl = [NSString stringWithFormat:@"%@?video_id=%@&exam_id=1",KISDictionaryHaveKey(dataDic, @"url"),KISDictionaryHaveKey(dataDic, @"video_id")];
         [weakSelf.navigationController pushViewController:vc animated:YES];
+
     } failure:^(id error) {
         
     }];

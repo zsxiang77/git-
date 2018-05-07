@@ -173,6 +173,7 @@
     [NetWorkManager requestWithParameters:mDict withUrl:@"order/repair_order/order_goods" viewController:self withRedictLogin:YES isShowLoading:YES success:^(id responseObject) {
         NSDictionary* dataDic = kParseData(responseObject);
         NSArray *goods = KISDictionaryHaveKey(dataDic, @"goods");
+        weakSelf.goods_remarkStr = KISDictionaryHaveKey(dataDic, @"goods_remark");
         for (int i = 0; i<goods.count; i++) {
             AccessoryEquipmentModel *model = [[AccessoryEquipmentModel alloc]init];
             [model setDataShuJu:goods[i]];

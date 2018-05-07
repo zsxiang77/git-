@@ -82,6 +82,7 @@
     _phoneTextField.userInteractionEnabled = YES;
     if (self.shiFouBiGai == 2) {
         _phoneTextField.userInteractionEnabled = NO;
+        _phoneTextField.clearButtonMode = UITextFieldViewModeNever;
     }
     
     
@@ -95,6 +96,12 @@
         self.yanZhengMaBt.backgroundColor = kRGBColor(208, 208, 208);
         self.yanZhengMaBt.userInteractionEnabled = NO;
     }
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.yanZhengMaTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
 }
 
 - (void)backButtonClick:(id)sender

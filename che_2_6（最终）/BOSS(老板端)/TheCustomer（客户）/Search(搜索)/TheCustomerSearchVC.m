@@ -223,13 +223,28 @@
     return _mainDataArray;
 }
 
+-(UILabel *)cLabel
+{
+    if (!_cLabel) {
+        _cLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, kWindowW, 50)];
+        _cLabel.text = @"暂无搜索数据";
+        self.cLabel.hidden = YES;
+        _cLabel.textAlignment = NSTextAlignmentCenter;
+        _cLabel.textColor = kColorWithRGB(116.0, 116.0, 116.0, 1.0);
+        _cLabel.font = [UIFont boldSystemFontOfSize:20];
+        _cLabel.backgroundColor = [UIColor clearColor];
+        [self.mainTableView addSubview:_cLabel];
+    }
+    return _cLabel;
+}
+
 -(void)postwork_boardwithShuaXin:(BOOL)shuaX
 {
     if (self.mainTextField.text.length<=0) {
         return;
     }
     
-    [[self.mainTableView viewWithTag:4000] removeFromSuperview];
+    self.cLabel.hidden = YES;
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];
     
     [mDict setObject:@"20" forKey:@"pagesize"];
@@ -282,15 +297,7 @@
             
             if(weakSelf.mainDataArray.count<=0)
             {
-                UILabel *cLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, kWindowW, 50)];
-                cLabel.text = @"暂无搜索数据";
-                cLabel.tag = 4000;
-                cLabel.textAlignment = NSTextAlignmentCenter;
-                cLabel.textColor = kColorWithRGB(116.0, 116.0, 116.0, 1.0);
-                cLabel.font = [UIFont boldSystemFontOfSize:20];
-                cLabel.backgroundColor = [UIColor clearColor];
-                [weakSelf.mainTableView addSubview:cLabel];
-                
+                weakSelf.cLabel.hidden = NO;
             }
             [weakSelf setheaderTitleNumber];
             [weakSelf.mainTableView reloadData];

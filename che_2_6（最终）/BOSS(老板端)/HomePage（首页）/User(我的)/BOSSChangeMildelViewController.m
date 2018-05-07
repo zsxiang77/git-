@@ -73,15 +73,19 @@
 {
     if (self.phoneTextField.text.length<=0) {
         [self showMessageWindowWithTitle:@"请输入手机号" point:self.view.center delay:1];
+        return;
     }
     if (self.phoneTextField.text.length<10) {
         [self showMessageWindowWithTitle:@"请填写正确的手机号" point:self.view.center delay:1];
+        return;
     }
     if (self.yanZhengMaTextField.text.length<=0) {
         [self showMessageWindowWithTitle:@"请填写验证吗" point:self.view.center delay:1];
+        return;
     }
     if (self.yanZhengMaTextField.text.length<5) {
         [self showMessageWindowWithTitle:@"请填写正确的验证码" point:self.view.center delay:1];
+        return;
     }
     
     NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithCapacity:10];

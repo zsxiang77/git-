@@ -13,5 +13,6 @@
 @property(nonatomic,assign)NSInteger selelctIndex;
 
 @property(nonatomic,strong)NSDictionary *mainDataDict;
+@property(nonatomic,strong)UILabel *cLabel;
 
 @end
