@@ -117,18 +117,15 @@
 //弹出视图
 - (void)dismiss
 {
-    
     self.backgroundColor = kColorWithRGB(0, 0, 0, 0);
     [UIView animateWithDuration:0.3f animations:^{
         self.frame = CGRectMake(0, kWindowH - _taberHei -160, kWindowW, 160);
-        
 //        NSInteger xianHei = 320;
 //        if (xianHei>160) {
 //            xianHei = xianHei- mainView.frame.origin.y;
 //        }else{
 //            xianHei = 160;
 //        }
-        
         mainView.frame = CGRectMake(0, 0, kWindowW, 160);
     }];
 }
